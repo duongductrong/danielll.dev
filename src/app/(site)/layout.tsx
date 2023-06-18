@@ -1,3 +1,4 @@
+import Pursuer from "@/components/pursuer";
 import dynamic from "next/dynamic";
 import { FC, HTMLAttributes, ReactNode } from "react";
 
@@ -12,11 +13,14 @@ export interface SiteLayoutProps extends Pick<HTMLAttributes<any>, "children"> {
 
 const SiteLayout: FC<SiteLayoutProps> = ({ children, footer, header }) => {
   return (
-    <Smoother>
-      {header}
-      {children}
-      {footer}
-    </Smoother>
+    <>
+      <Smoother>
+        {header}
+        {children}
+        {footer}
+      </Smoother>
+      <Pursuer />
+    </>
   );
 };
 
