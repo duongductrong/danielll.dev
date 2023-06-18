@@ -28,7 +28,7 @@ const RotatePersonal: FC<RotatePersonalProps> = ({ enableLogo, ...props }) => {
         ) : (
           <div
             className={clsx(
-              "w-[170px] h-[170px] rounded-full dark:bg-gray-950",
+              "w-[170px] h-[170px] rounded-full bg-background",
               "flex items-center justify-center text-3xl font-bold"
             )}
           >

@@ -17,6 +17,9 @@ module.exports = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
       },
+      animation: {
+        "spin-slow": "spin 10s linear infinite",
+      },
     },
   },
   plugins: [],

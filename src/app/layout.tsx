@@ -1,7 +1,9 @@
 import NextThemeProvider from "@/components/next-theme-provider";
 import { Inter } from "next/font/google";
 import clsx from "clsx";
-import "./globals.css";
+
+import "locomotive-scroll/dist/locomotive-scroll.css";
+import "../styles/globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx(inter.className, "!overflow-auto")}>
+      <body className={clsx(inter.className)}>
         <NextThemeProvider>{children}</NextThemeProvider>
       </body>
     </html>

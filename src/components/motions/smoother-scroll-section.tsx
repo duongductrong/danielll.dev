@@ -10,8 +10,11 @@ import {
 
 export interface SmootherScrollSectionProps
   extends HTMLAttributes<HTMLDivElement> {
-  asHorizontalScroll?: boolean;
+  sectionInnerProps?: HTMLAttributes<HTMLDivElement>;
+
   asChild?: boolean;
+  asHorizontalScroll?: boolean;
+  asStackedScroll?: boolean;
   enableSectionInner?: boolean;
 }
 
@@ -22,8 +25,10 @@ const SmootherScrollSection = forwardRef<
   (
     {
       children,
-      asHorizontalScroll,
+      sectionInnerProps,
       asChild,
+      asStackedScroll,
+      asHorizontalScroll,
       enableSectionInner = true,
       ...props
     },
@@ -39,13 +44,25 @@ const SmootherScrollSection = forwardRef<
           "!max-h-fit": asHorizontalScroll,
         })}
         data-scroll-horizontal={asHorizontalScroll ? "true" : undefined}
+        data-scroll-stacked={asStackedScroll ? "true" : undefined}
         data-scroll-section
       >
         <CompSectionInner
-          {...(enableSectionInner ? { className: "section-inner w-full" } : {})}
+          {...(enableSectionInner
+            ? {
+                className: clsx(
+                  sectionInnerProps?.className,
+                  "section-inner w-full max-h-fit"
+                ),
+              }
+            : {})}
         >
           {cloneElement(children as ReactElement, {
-            "data-scroll-in-section": true,
+            "data-scroll-in-section": asHorizontalScroll || asStackedScroll,
+            className: clsx(
+              (children as ReactElement).props.className,
+              "w-full h-full"
+            ),
           })}
         </CompSectionInner>
       </Comp>

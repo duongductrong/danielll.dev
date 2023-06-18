@@ -4,8 +4,8 @@ import { Slot } from "@radix-ui/react-slot";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import LocomotiveScroll from "locomotive-scroll";
-import "locomotive-scroll/dist/locomotive-scroll.css";
 import { debounce } from "lodash";
+import { usePathname } from "next/navigation";
 import {
   FC,
   ForwardRefExoticComponent,
@@ -15,10 +15,10 @@ import {
   useRef,
   useState,
 } from "react";
+import InitPageSplash from "../loadings/init-page-splash";
 import SmootherScrollSection, {
   SmootherScrollSectionProps,
 } from "./smoother-scroll-section";
-import InitPageSplash from "../loadings/init-page-splash";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,8 +33,11 @@ export interface SmootherRootProps extends FC<SmootherProps> {
 }
 
 const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
-  const Comp = asChild ? Slot : "div";
+  const pathname = usePathname();
+
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const Comp = asChild ? Slot : "div";
 
   const [isReadyForScroll, setIsReadyForScroll] = useState(false);
 
@@ -54,8 +57,6 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
   );
 
   const handleWaitingLocoScrollIsReady = (_locoScroll: LocomotiveScroll) => {
-    setIsReadyForScroll(false);
-
     _locoScroll.on(
       "scroll",
       debounce(() => {
@@ -66,6 +67,8 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
 
   useLayoutEffect(() => {
     if (containerRef.current) {
+      setIsReadyForScroll(false);
+
       const containerEl = containerRef.current;
 
       // Handle create instance locomotive scrolling
@@ -122,19 +125,24 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
             });
 
             gsap.to(scrollInSectionEl, {
-              x: () =>
-                `${-(
+              x: () => {
+                return `${-(
                   section.scrollWidth - document.documentElement.clientWidth
-                )}px`,
+                )}px`;
+              },
               ease: "none",
               scrollTrigger: {
                 trigger: scrollInSectionEl,
                 scroller: containerEl,
                 start: "center center",
-                end: () => `+=${section.scrollWidth}`,
+                end: () => `+=${section.scrollWidth + 800}`,
                 scrub: true,
               },
             });
+          }
+
+          if (section.hasAttribute("data-scroll-stacked")) {
+            // Do not working on here
           }
 
           // Each time the window updates, we should refresh ScrollTrigger and then update LocomotiveScroll.
@@ -146,15 +154,22 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
           ScrollTrigger.refresh();
         });
       }
+      return () => {
+        locoScroll?.destroy();
+      };
     }
-  }, [containerRef, handleLocomotiveScroll]);
+  }, [pathname, containerRef, handleLocomotiveScroll]);
 
   return (
     <>
-      {!isReadyForScroll ? <InitPageSplash /> : null}
-      <Comp ref={containerRef} data-scroll-container>
+      <Comp
+        ref={containerRef}
+        data-scroll-container
+        style={{ perspective: "1px" }}
+      >
         {children}
       </Comp>
+      <InitPageSplash active={!isReadyForScroll} />
     </>
   );
 };

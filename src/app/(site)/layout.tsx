@@ -1,5 +1,9 @@
-import Smoother from "@/components/motions/smoother";
+import dynamic from "next/dynamic";
 import { FC, HTMLAttributes, ReactNode } from "react";
+
+const Smoother = dynamic(() => import("@/components/motions/smoother"), {
+  ssr: false,
+});
 
 export interface SiteLayoutProps extends Pick<HTMLAttributes<any>, "children"> {
   header?: ReactNode;

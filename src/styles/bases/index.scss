@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
   --background: 0 0% 100%;
   --foreground: 222.2 47.4% 11.2%;
@@ -15,13 +11,18 @@
   } */
 
 .dark {
-  --background: 0, 0%, 0%;
-  --foreground: 0Ø, 0%, 98%;
+  --background: 0, 0%, 8%;
+  --foreground: 0, 0%, 98%;
 }
 
 @layer base {
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html.has-scroll-smooth {
+    backface-visibility: hidden;
+    transform: translateZ(0);
   }
 }

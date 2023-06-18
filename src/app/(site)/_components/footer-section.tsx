@@ -1,4 +1,3 @@
-import Smoother from "@/components/motions/smoother";
 import { FC, HTMLAttributes } from "react";
 
 export interface FooterSectionProps extends HTMLAttributes<HTMLDivElement> {}
