@@ -17,7 +17,7 @@ export interface AboutMeProps {}
 const AboutMe = (props: AboutMeProps) => {
   return (
     <>
-      <Smoother.ScrollSection className="w-full h-[calc(80vh-72px)] flex items-center justify-center">
+      <Smoother.ScrollSection className="w-full py-24 min-h-[calc(80vh-72px)] flex items-center justify-center">
         <Container>
           <TextLegend className="mb-12">About me</TextLegend>
           <TextMain className="mb-10">
@@ -35,7 +35,7 @@ const AboutMe = (props: AboutMeProps) => {
         className="min-h-[90vh] flex items-center justify-center"
         sectionInnerProps={{ className: "h-full" }}
       >
-        <Container className="flex gap-24">
+        <Container className="flex flex-col md:flex-row gap-24">
           <div className="flex-1 overflow-hidden">
             <Image
               src="/avatar-full.png"
@@ -94,7 +94,7 @@ const AboutMe = (props: AboutMeProps) => {
           {PAGE_CONTENT_ABOUT_ME.WORKS_EXPERIENCE.map((content) => (
             <div
               key={content.id}
-              className="flex items-start justify-start mb-20 gap-4"
+              className="flex flex-col md:flex-row items-start justify-start mb-20 gap-4"
             >
               <div className="flex items-center w-full max-w-[400px]">
                 <p className="w-full text-2xl font-light text-gray-400 dark:text-gray-500">
@@ -127,7 +127,7 @@ const AboutMe = (props: AboutMeProps) => {
             development and outsourcing
           </TextMain>
 
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
             <p className="text-lg font-medium mb-2">React.js</p>
             <p className="text-lg font-medium mb-2">Next.js</p>
             <p className="text-lg font-medium mb-2">Remix.run</p>

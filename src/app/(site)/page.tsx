@@ -11,7 +11,7 @@ import TextMain from "@/components/texts/text-main";
 export default function Home() {
   return (
     <>
-      <Smoother.ScrollSection className="h-[calc(100vh-72px)] flex items-center justify-center">
+      <Smoother.ScrollSection className="py-24 min-h-[calc(100vh-72px)] flex items-center justify-center">
         <Container className="relative">
           <TextLegend className="mb-12">HEY THERE!</TextLegend>
           <TextMain className="mb-10">
@@ -30,7 +30,7 @@ export default function Home() {
         </Container>
       </Smoother.ScrollSection>
 
-      <Smoother.ScrollSection className="h-[50vh] flex items-center justify-center">
+      <Smoother.ScrollSection className="py-24 min-h-[50vh] flex items-center justify-center">
         <Container className="relative">
           <TextLegend className="mb-12">MY EXPERTISE</TextLegend>
           <h2 className="text-4xl mb-12 font-normal leading-normal	">

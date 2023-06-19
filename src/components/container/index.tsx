@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import { FC, HTMLAttributes } from "react";
 
-export const containerVariants = cva("w-full px-4", {
+export const containerVariants = cva("w-full px-6", {
   variants: {
     variant: {
       base: "max-w-[1140px] mx-auto",

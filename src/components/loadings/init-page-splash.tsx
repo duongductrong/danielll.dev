@@ -13,7 +13,7 @@ const InitPageSplash: FC<InitPageSplashProps> = ({ active }) => {
   return (
     <div
       className={clsx(
-        "text-foreground bg-background fixed top-0 left-0 w-full h-screen",
+        "text-foreground bg-background fixed top-0 left-0 w-full h-screen pointer-events-none",
         "grid place-items-center",
         "z-[999]",
         activeClass

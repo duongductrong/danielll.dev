@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from "clsx";
+import Image from "next/image";
 import { FC, HTMLAttributes } from "react";
 
 export interface RotatePersonalProps extends HTMLAttributes<HTMLDivElement> {
@@ -10,19 +11,19 @@ const RotatePersonal: FC<RotatePersonalProps> = ({ enableLogo, ...props }) => {
   return (
     <div {...props} className={clsx(props.className)}>
       <div className="w-full h-full relative">
-        {/* <Image
-          width={170}
-          height={170}
-          className="rounded-full max-w-[170px] max-h-[170px] object-cover"
-          src="https://res.cloudinary.com/xskill/image/upload/v1686988257/meee/IMG_1101_2_csddw0.png"
-          alt="Personal"
-        /> */}
         {!enableLogo ? (
-          <img
+          // <img
+          //   width={170}
+          //   height={170}
+          //   className="rounded-full max-w-[170px] max-h-[170px] object-cover"
+          //   src="https://res.cloudinary.com/xskill/image/upload/v1686988257/meee/IMG_1101_2_csddw0.png"
+          //   alt="Personal"
+          // />
+          <Image
             width={170}
             height={170}
             className="rounded-full max-w-[170px] max-h-[170px] object-cover"
-            src="https://res.cloudinary.com/xskill/image/upload/v1686988257/meee/IMG_1101_2_csddw0.png"
+            src="/avatar-small.png"
             alt="Personal"
           />
         ) : (

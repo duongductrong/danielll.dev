@@ -47,6 +47,14 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
         return new LocomotiveScroll({
           smooth: true,
           ...options,
+          smartphone: {
+            smooth: true,
+          },
+          tablet: {
+            breakpoint: 768.5,
+            smooth: true, 
+          },
+          resetNativeScroll: true,
           el: $el,
         });
       }

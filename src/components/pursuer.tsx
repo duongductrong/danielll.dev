@@ -6,9 +6,11 @@ import { ArrowRight } from "lucide-react";
 import { FC, MouseEvent } from "react";
 import { useEvent } from "react-use";
 
-export interface PursuerProps {}
+export interface PursuerProps {
+}
 
 const Pursuer: FC<PursuerProps> = () => {
+
   useEvent(
     "mousemove",
     throttle((event: MouseEvent<HTMLElement>) => {
@@ -42,18 +44,17 @@ const Pursuer: FC<PursuerProps> = () => {
   return (
     <div
       className={clsx(
-        "w-8 h-8 rounded-full border border-gray-50/20 z-10 absolute top-0 left-0 transition-transform duration-300 ease-linear pointer-events-none",
-        "flex items-center justify-center"
+        "w-8 h-8 rounded-full border border-gray-50/20 z-10 absolute top-0 left-0 transition-transform duration-300 ease-out pointer-events-none",
+        "hidden md:flex items-center justify-center"
       )}
       style={{
         mixBlendMode: "difference",
-
         transform:
           "translateX(var(--pursuer-x)) translateY(var(--pursuer-y)) translateZ(0)",
       }}
     >
       <div
-        className="relative w-2 h-2 rounded-full dark:bg-white transition duration-300 ease-out"
+        className="relative w-2 h-2 rounded-full bg-white dark:bg-white transition duration-300 ease-out"
         style={{
           transform: "scale(var(--pursuer-scale))",
           transformOrigin: "center center",
