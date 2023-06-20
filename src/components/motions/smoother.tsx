@@ -19,6 +19,7 @@ import InitPageSplash from "../loadings/init-page-splash";
 import SmootherScrollSection, {
   SmootherScrollSectionProps,
 } from "./smoother-scroll-section";
+import { useDebounce } from "react-use";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -167,6 +168,10 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
       };
     }
   }, [pathname, containerRef, handleLocomotiveScroll]);
+
+  useDebounce(() => {
+    ScrollTrigger.refresh();
+  }, 300, [pathname])
 
   return (
     <>

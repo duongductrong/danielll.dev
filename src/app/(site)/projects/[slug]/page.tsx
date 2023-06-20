@@ -9,7 +9,6 @@ import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
 import { PAGE_CONTENT_PROJECTS } from "@/enums/page-content";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 
 export interface DetailedProjectProps {
   params: {
@@ -55,12 +54,13 @@ const DetailedProject = ({ params }: DetailedProjectProps) => {
           </div>
         </Container>
       </Smoother.ScrollSection>
-      <Smoother.ScrollSection className="py-24">
+
+      <Smoother.ScrollSection className="py-24 min-h-[50vh]">
         <Container>
           <TextLegend className="mb-12">The result</TextLegend>
           <TextMain className="mb-20">{detailedProject?.theResult}</TextMain>
 
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-8">
             <div>
               <h3 className="text-lg font-semibold uppercase mb-4">Services</h3>
               <p className="font-light text-base">
@@ -86,6 +86,18 @@ const DetailedProject = ({ params }: DetailedProjectProps) => {
                 </a>
               ) : null}
             </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8">
+            {detailedProject?.metadata.thumbnails?.map((thumbnail) => (
+              <img
+                key={thumbnail}
+                src={thumbnail}
+                width={800}
+                alt="Sample"
+                className="w-full rounded-lg"
+              />
+            ))}
           </div>
         </Container>
       </Smoother.ScrollSection>

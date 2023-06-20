@@ -56,8 +56,8 @@ export const PAGE_CONTENT_PROJECTS = {
     {
       id: "casio.anhkhue.com",
       slug: "casio-anhkhue-com",
-      detailedName: "Anh khue Casio Watch",
-      title: "Anhkhue Casio Watch Commerce",
+      detailedName: "Anh khue Casio",
+      title: "Casio Anh Khue",
       referenceSiteUrl: "//casio.anhkhue.com",
       description: "The store sales the watches",
       image:
@@ -68,6 +68,12 @@ export const PAGE_CONTENT_PROJECTS = {
         services: ["E-commerce"],
         location: "Ho Chi Minh City",
         website: "https://casio.anhkhue.com",
+        thumbnails: [
+          "https://res.cloudinary.com/xskill/image/upload/v1687277369/meee/casio-1_vam33e.webp",
+          "https://res.cloudinary.com/xskill/image/upload/v1687277370/meee/casio-2_kbrgrz.webp",
+          "https://res.cloudinary.com/xskill/image/upload/v1687277368/meee/casio-3_ah4ihe.webp",
+          "https://res.cloudinary.com/xskill/image/upload/v1687277368/meee/casio-4_tgrr77.webp",
+        ],
       },
     },
     {
@@ -85,6 +91,9 @@ export const PAGE_CONTENT_PROJECTS = {
         services: ["Solutions"],
         location: "Ho Chi Minh City",
         website: null,
+        thumbnails: [
+          "https://res.cloudinary.com/xskill/image/upload/v1658076049/statics/gambox-desktop_vzgq24.webp",
+        ],
       },
     },
     {
@@ -103,6 +112,12 @@ export const PAGE_CONTENT_PROJECTS = {
         services: ["Blog"],
         location: "Unknown",
         website: "https://codestus.com",
+        thumbnails: [
+          "https://res.cloudinary.com/xskill/image/upload/v1687275936/meee/codestus-1_tho7lj.webp",
+          "https://res.cloudinary.com/xskill/image/upload/v1687275936/meee/codestus-2_xoffk0.webp",
+          "https://res.cloudinary.com/xskill/image/upload/v1687275936/meee/codestus-4_m2u2up.webp",
+          // "https://res.cloudinary.com/xskill/image/upload/v1687275936/meee/codestus-3_pybl5u.webp",
+        ],
       },
     },
   ],
