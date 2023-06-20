@@ -5,11 +5,12 @@
 import Button from "@/components/buttons/button";
 import Container from "@/components/container";
 import Smoother from "@/components/motions/smoother";
+import ReferenceSocialsGroup from "@/components/reference-socials-group";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
 import { PAGE_CONTENT_ABOUT_ME } from "@/enums/page-content";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
 export interface AboutMeProps {}
@@ -49,39 +50,31 @@ const AboutMe = (props: AboutMeProps) => {
             <h2 className="font-medium leading-normal	-tracking-tighter text-4xl mb-8 uppercase">
               MORE ABOUT ME
             </h2>
-            <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">
+            <p className="text-lg text-gray-800 dark:text-gray-200 mb-8">
               I always enjoy taking on new challenges and pushing myself to the
               limit. My goal is always to provide elegant & fast solutions to
               clients.
             </p>
-            <p className="text-lg text-gray-500 dark:text-gray-400 mb-8">
-              Being listed on DesignRush's prestigious collection of the best
-              website designs is a testament to the quality and creativity of my
-              work.
+            <p className="text-lg text-gray-800 dark:text-gray-200 mb-8">
+              Received trust and recognition as a promising individual at RIO
+              Technology company where I have participated and contributed
+              during my work tenure.
             </p>
-            <p className="text-lg text-gray-500 dark:text-gray-400 mb-16">
-              Whether you are a small business owner, a startup, or an
-              individual in need of a personal website, I am here to transform
-              your vision into a captivating online presence. Let's collaborate
-              and bring your digital dreams to life!
+            <p className="text-lg text-gray-800 dark:text-gray-200 mb-16">
+              Currently, I am working at WhammyTech as a Software Engineer,
+              gaining experience in various project domains such as Logistics,
+              Drag & drop applications, etc. My goal is to continue developing
+              my skills and professional knowledge!.
+            </p>
+            <p className="text-lg text-gray-800 dark:text-gray-200 mb-16">
+              I also enjoy contributing to open source projects and developing
+              products for personal growth
             </p>
             <Button className="min-w-[170px] mb-16">
               Get in touch. <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <div className="flex items-center gap-6">
-              <div className="inline-flex items-center gap-2">
-                <ArrowUpRight className="w-4 h-4" />
-                Linked In
-              </div>
-              <div className="inline-flex items-center gap-2">
-                <ArrowUpRight className="w-4 h-4" />
-                Twitter
-              </div>
-              <div className="inline-flex items-center gap-2">
-                <ArrowUpRight className="w-4 h-4" />
-                Github
-              </div>
-            </div>
+
+            <ReferenceSocialsGroup />
           </div>
         </Container>
       </Smoother.ScrollSection>
@@ -97,7 +90,7 @@ const AboutMe = (props: AboutMeProps) => {
               className="flex flex-col md:flex-row items-start justify-start mb-20 gap-4"
             >
               <div className="flex items-center w-full max-w-[400px]">
-                <p className="w-full text-2xl font-light text-gray-400 dark:text-gray-500">
+                <p className="w-full text-2xl font-light text-gray-500 dark:text-gray-400">
                   {content.date}
                 </p>
                 {/* <div className="w-full h-[1px] border-t border-solid border-gray-50"></div> */}

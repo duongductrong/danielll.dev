@@ -122,3 +122,36 @@ export const PAGE_CONTENT_PROJECTS = {
     },
   ],
 };
+
+export const PAGE_CONTENT_HOME = {
+  CODEPENS: [
+    {
+      href: "https://codepen.io/CodeEN/pen/gOzByzm",
+      src: "https://res.cloudinary.com/xskill/image/upload/v1687279185/meee/codepen-1_lqljph.webp",
+    },
+    {
+      href: "https://codepen.io/CodeEN/pen/vYpYRbZ",
+      src: "https://res.cloudinary.com/xskill/image/upload/v1687279185/meee/codepen-2_jxfxbo.webp",
+    },
+    {
+      href: "https://codepen.io/CodeEN/pen/ZEagjJE",
+      src: "https://res.cloudinary.com/xskill/image/upload/v1687279185/meee/codepen-3_qz57bd.webp",
+    },
+    {
+      href: "https://codepen.io/CodeEN/pen/ZEaPXXW",
+      src: "https://res.cloudinary.com/xskill/image/upload/v1687279185/meee/codepen-4_toc1wv.webp",
+    },
+    {
+      href: "https://codepen.io/CodeEN/pen/JjXmojm",
+      src: "https://res.cloudinary.com/xskill/image/upload/v1687279185/meee/codepen-6_wvde3w.webp",
+    },
+    {
+      href: "https://codepen.io/CodeEN/pen/XWdxBap",
+      src: "https://res.cloudinary.com/xskill/image/upload/v1687279185/meee/codepen-5_qqcoqi.webp",
+    },
+    {
+      href: "https://codepen.io/CodeEN/pen/wvMqLEE",
+      src: "https://res.cloudinary.com/xskill/image/upload/v1687279186/meee/codepen-7_xrljqs.webp",
+    },
+  ],
+};

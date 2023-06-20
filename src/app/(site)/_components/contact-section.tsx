@@ -1,4 +1,5 @@
 import Button from "@/components/buttons/button";
+import ReferenceSocialsGroup from "@/components/reference-socials-group";
 import TextDescription from "@/components/texts/text-description";
 import TextMain from "@/components/texts/text-main";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -27,20 +28,7 @@ const ContactSection: FC<ContactSectionProps> = (props) => {
         Get in touch <ArrowRight className="w-4 h-4 ml-2" />
       </Button>
 
-      <div className="flex items-center gap-6">
-        <div className="inline-flex items-center gap-2">
-          <ArrowUpRight className="w-4 h-4" />
-          Linked In
-        </div>
-        <div className="inline-flex items-center gap-2">
-          <ArrowUpRight className="w-4 h-4" />
-          Twitter
-        </div>
-        <div className="inline-flex items-center gap-2">
-          <ArrowUpRight className="w-4 h-4" />
-          Github
-        </div>
-      </div>
+      <ReferenceSocialsGroup />
     </div>
   );
 };

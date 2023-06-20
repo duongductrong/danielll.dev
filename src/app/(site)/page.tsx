@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Button from "@/components/buttons/button";
@@ -7,6 +8,7 @@ import RotatePersonal from "@/components/rotate-personal";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
+import { PAGE_CONTENT_HOME } from "@/enums/page-content";
 
 export default function Home() {
   return (
@@ -41,12 +43,23 @@ export default function Home() {
       </Smoother.ScrollSection>
 
       <Smoother.ScrollSection asHorizontalScroll>
-        <div className="flex gap-4">
-          <div className="flex-1 min-w-[500px] h-[500px] bg-slate-950 dark:bg-slate-50"></div>
-          <div className="flex-1 min-w-[500px] h-[500px] bg-slate-950 dark:bg-slate-50"></div>
-          <div className="flex-1 min-w-[500px] h-[500px] bg-slate-950 dark:bg-slate-50"></div>
-          <div className="flex-1 min-w-[500px] h-[500px] bg-slate-950 dark:bg-slate-50"></div>
-          <div className="flex-1 min-w-[500px] h-[500px] bg-slate-950 dark:bg-slate-50"></div>
+        <div className="flex gap-12 px-8">
+          {PAGE_CONTENT_HOME.CODEPENS.map((codepen) => (
+            <a
+              key={codepen.href}
+              href={codepen.href}
+              target="_blank"
+              className="block flex-1 min-w-[500px] h-[500px]"
+            >
+              <img
+                width="100%"
+                height="100%"
+                src={codepen.src}
+                alt="Codepen thumbnail"
+                className="w-full h-full object-contain"
+              />
+            </a>
+          ))}
         </div>
       </Smoother.ScrollSection>
     </>
