@@ -24,8 +24,15 @@ const ContactSection: FC<ContactSectionProps> = (props) => {
         learn more about my methodologies, or just to say hello!
       </TextDescription>
 
-      <Button rounded="base" color="base" className="min-w-[170px] mb-8">
-        Get in touch <ArrowRight className="w-4 h-4 ml-2" />
+      <Button
+        rounded="base"
+        color="base"
+        className="min-w-[170px] mb-8"
+        asChild
+      >
+        <a target="_blank" href="mailto:duongductrong06@gmail.com">
+          Get in touch <ArrowRight className="w-4 h-4 ml-2" />
+        </a>
       </Button>
 
       <ReferenceSocialsGroup />

@@ -24,8 +24,8 @@ export default function Home() {
           <TextDescription className="mb-16">
             I develope websites that gets you real results.
           </TextDescription>
-          <Button rounded="base" color="base" className="min-w-[170px]">
-            Let me help you
+          <Button rounded="base" color="base" className="min-w-[170px]" asChild>
+            <a href="mailto:duongductrong06@gmail.com">Let me help you</a>
           </Button>
 
           <RotatePersonal className="absolute bottom-12 right-8" />
