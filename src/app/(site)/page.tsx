@@ -15,7 +15,10 @@ export default function Home() {
     <>
       <Smoother.ScrollSection className="py-24 min-h-[calc(100vh-72px)] flex items-center justify-center">
         <Container className="relative">
+          <RotatePersonal className="ml-8 md:ml-0 mb-16 md:mb-0 md:absolute bottom-12 right-8" />
+          
           <TextLegend className="mb-12">HEY THERE!</TextLegend>
+
           <TextMain className="mb-10">
             I am a Front-end Developer <br />
             with a passion for <br />
@@ -24,11 +27,11 @@ export default function Home() {
           <TextDescription className="mb-16">
             I develope websites that gets you real results.
           </TextDescription>
+                    
           <Button rounded="base" color="base" className="min-w-[170px]" asChild>
             <a href="mailto:duongductrong06@gmail.com">Let me help you</a>
           </Button>
 
-          <RotatePersonal className="absolute bottom-12 right-8" />
         </Container>
       </Smoother.ScrollSection>
 

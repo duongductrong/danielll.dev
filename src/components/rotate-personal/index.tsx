@@ -2,12 +2,15 @@
 import clsx from "clsx";
 import Image from "next/image";
 import { FC, HTMLAttributes } from "react";
+import { useWindowSize } from "react-use";
 
 export interface RotatePersonalProps extends HTMLAttributes<HTMLDivElement> {
   enableLogo?: boolean;
 }
 
 const RotatePersonal: FC<RotatePersonalProps> = ({ enableLogo, ...props }) => {
+  const point = useWindowSize();
+
   return (
     <div {...props} className={clsx(props.className)}>
       <div className="w-full h-full relative">
@@ -22,14 +25,14 @@ const RotatePersonal: FC<RotatePersonalProps> = ({ enableLogo, ...props }) => {
           <Image
             width={170}
             height={170}
-            className="rounded-full max-w-[170px] max-h-[170px] object-cover"
+            className="rounded-full max-w-[100px] md:max-w-[170px] max-h-[100px] md:max-h-[170px] object-cover"
             src="/avatar-small.png"
             alt="Personal"
           />
         ) : (
           <div
             className={clsx(
-              "w-[170px] h-[170px] rounded-full bg-background",
+              "w-[100px] md:w-[170px] h-[100px] md:h-[170px] rounded-full bg-background",
               "flex items-center justify-center text-3xl font-bold"
             )}
           >
@@ -41,7 +44,7 @@ const RotatePersonal: FC<RotatePersonalProps> = ({ enableLogo, ...props }) => {
           viewBox="0 0 100 100"
           width="280"
           height="280"
-          className="absolute -top-[56px] -left-[56px] rotate-90"
+          className="absolute w-[180px] md:w-[280px] h-[180px] md:h-[280px] -top-[40px] md:-top-[56px] -left-[40px] md:-left-[56px] rotate-90"
         >
           <defs>
             <path

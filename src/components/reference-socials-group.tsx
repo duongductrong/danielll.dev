@@ -5,7 +5,7 @@ export interface ReferenceSocialsGroupProps {}
 
 const ReferenceSocialsGroup: FC<ReferenceSocialsGroupProps> = () => {
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex flex-wrap items-center gap-6">
       <a
         target="_blank"
         href="https://www.linkedin.com/in/duongductrong/"
