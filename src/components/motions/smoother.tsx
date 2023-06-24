@@ -1,5 +1,6 @@
 "use client";
 
+import useDevice from "@/hooks/use-device";
 import { Slot } from "@radix-ui/react-slot";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
@@ -15,11 +16,12 @@ import {
   useRef,
   useState,
 } from "react";
+import { useDebounce } from "react-use";
 import InitPageSplash from "../loadings/init-page-splash";
+import { DEFINE_LOCOMOTIVE_LERP } from "./constant";
 import SmootherScrollSection, {
   SmootherScrollSectionProps,
 } from "./smoother-scroll-section";
-import { useDebounce } from "react-use";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,6 +37,7 @@ export interface SmootherRootProps extends FC<SmootherProps> {
 
 const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
   const pathname = usePathname();
+  const { device } = useDevice();
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -45,7 +48,10 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
   const handleLocomotiveScroll = useCallback(
     ($el: HTMLElement) => {
       if ($el) {
+        const lerp = DEFINE_LOCOMOTIVE_LERP[device];
+
         return new LocomotiveScroll({
+          lerp,
           smooth: true,
           ...options,
           smartphone: {
@@ -53,7 +59,7 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
           },
           tablet: {
             breakpoint: 768.5,
-            smooth: true, 
+            smooth: true,
           },
           resetNativeScroll: true,
           el: $el,
@@ -62,7 +68,7 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
 
       return null;
     },
-    [JSON.stringify(options)]
+    [JSON.stringify(options), device]
   );
 
   const handleWaitingLocoScrollIsReady = (_locoScroll: LocomotiveScroll) => {
@@ -169,9 +175,13 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
     }
   }, [pathname, containerRef, handleLocomotiveScroll]);
 
-  useDebounce(() => {
-    ScrollTrigger.refresh();
-  }, 300, [pathname])
+  useDebounce(
+    () => {
+      ScrollTrigger.refresh();
+    },
+    300,
+    [pathname, device]
+  );
 
   return (
     <>
