@@ -2,7 +2,7 @@ import NextThemeProvider from "@/components/next-theme-provider";
 import { Inter } from "next/font/google";
 import clsx from "clsx";
 
-import "../styles/globals.scss";
+import "./_styles/globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 
