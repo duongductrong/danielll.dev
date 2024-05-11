@@ -7,8 +7,8 @@ export interface PageProps {}
 const Page = (props: PageProps) => {
   return (
     <>
-      <Welcome className="mt-6" />
-      <Timezone className="mt-20" />
+      <Welcome className="mt-4" />
+      <Timezone className="mt-10" />
       <ThingIDo className="mt-20" />
     </>
   );

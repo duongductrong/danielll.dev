@@ -1,38 +1,123 @@
 import { cn } from "@/lib/utils/tailwind";
-import Image from "next/image";
 import { ComponentPropsWithoutRef } from "react";
+import { ProjectShowCase } from "./project-showcase";
 
 export interface ThingIDoProps extends ComponentPropsWithoutRef<"section"> {}
 
 const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
   return (
     <section {...props} className={cn(className)}>
-      <h2 className="text-xl font-semibold leading-normal container-base mb-10">
-        Thing I do:
+      <h2 className="text-xl font-semibold leading-normal container-base py-0 mb-10">
+        Selected works:
       </h2>
-      <article className="container grid grid-cols-12 gap-10">
-        <Image
-          src="https://framerusercontent.com/images/aV2RPo3qOkvQPUqCW81LmgNyQ.png?scale-down-to=2048"
-          width={500}
-          height={500}
-          alt="Project 1"
-          className="col-span-12 rounded-2xl w-full h-full object-cover md:col-span-6"
+
+      <section className="flex flex-col gap-20 container">
+        <ProjectShowCase
+          title={
+            <>
+              I helped Langfarm build their UX/UI and <br /> integrate features
+              for their brand.
+            </>
+          }
+          description={
+            <>
+              Langfarm e-commerce allows users to buy and pay online for
+              Langfarm products. <br /> Easy order management with integrated
+              admin page. Support for sales <br /> staff to control inventory,
+              orders, customers, and products.
+            </>
+          }
+          items={[
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-home.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-store.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-blog.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-blog-detail.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-product-detail.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-login.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-orders.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-order-details.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-customers.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-content-home.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-content-editable.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-content-search.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-content-blog.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/langfarm/langfarm-admin-content-blog-details.png",
+            },
+          ]}
         />
-        <Image
-          src="https://framerusercontent.com/images/aV2RPo3qOkvQPUqCW81LmgNyQ.png?scale-down-to=2048"
-          width={500}
-          height={500}
-          alt="Project 1"
-          className="col-span-12 rounded-2xl w-full h-full object-cover md:col-span-6"
-        />
-        <Image
-          src="https://framerusercontent.com/images/aV2RPo3qOkvQPUqCW81LmgNyQ.png?scale-down-to=2048"
-          width={500}
-          height={500}
-          alt="Project 1"
-          className="col-span-12 rounded-2xl w-full h-full object-cover"
-        />
-      </article>
+
+        {/* <ProjectShowCase
+          title={
+            <>
+              I helped Mercu shape their AI Assistant <br /> interface and
+              refreshed the UI & UX
+            </>
+          }
+          description={
+            <>
+              The AI assistant for growth-focused frontline workforces.
+              <br /> Automate your hiring. Scale your onboarding, and make{" "}
+              <br />
+              knowledge and tools available to your employees. Instantly.
+            </>
+          }
+          items={[
+            {
+              type: "image",
+              src: "https://framerusercontent.com/images/xfSKv6TwzOwq0QregjNzIoC30n0.png?scale-down-to=2048",
+            },
+            {
+              type: "image",
+              src: "https://framerusercontent.com/images/xfSKv6TwzOwq0QregjNzIoC30n0.png?scale-down-to=2048",
+            },
+            {
+              type: "image",
+              src: "https://framerusercontent.com/images/xfSKv6TwzOwq0QregjNzIoC30n0.png?scale-down-to=2048",
+            },
+          ]}
+        /> */}
+      </section>
     </section>
   );
 };

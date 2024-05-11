@@ -11,13 +11,6 @@ module.exports = {
   ],
   prefix: "",
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
       width: {
         base: "var(--base-size)",
@@ -83,8 +76,10 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       container: {
+        center: true,
+        padding: "2rem",
         screens: {
-          lg: "1500px",
+          "2xl": "1200px",
         },
       },
     },
@@ -94,9 +89,10 @@ module.exports = {
     plugin(function ({ addComponents }) {
       addComponents({
         ".container-base": {
-          padding: "1rem",
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
           maxWidth: "var(--base-size)",
-          margin: "auto"
+          margin: "auto",
         },
       });
     }),
