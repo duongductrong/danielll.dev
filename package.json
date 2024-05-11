@@ -21,7 +21,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.0.4",
-    "eslint": "9.2.0",
+    "eslint": "8.56.0",
     "eslint-config-next": "14.2.3",
     "gsap": "^3.12.5",
     "locomotive-scroll": "^4.1.4",
