@@ -6,12 +6,12 @@ export interface ThingIDoProps extends ComponentPropsWithoutRef<"section"> {}
 
 const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
   return (
-    <section {...props} className={cn(className)}>
-      <h2 className="text-xl font-semibold leading-normal container-base py-0 mb-10">
+    <section {...props} className={cn("container", className)}>
+      <h2 className="text-3xl font-semibold leading-normal py-0 mb-10">
         Selected works:
       </h2>
 
-      <section className="flex flex-col gap-20 container">
+      <section className="flex flex-col gap-20">
         <ProjectShowCase
           title={
             <>

@@ -1,3 +1,4 @@
+import About from "../_components/customs/about";
 import ThingIDo from "../_components/customs/thing-i-do";
 import Timezone from "../_components/customs/timezone";
 import Welcome from "../_components/customs/welcome";
@@ -10,6 +11,7 @@ const Page = (props: PageProps) => {
       <Welcome className="mt-4" />
       <Timezone className="mt-10" />
       <ThingIDo className="mt-20" />
+      <About className="mt-20" />
     </>
   );
 };
