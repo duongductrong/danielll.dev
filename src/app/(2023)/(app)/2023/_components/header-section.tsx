@@ -23,17 +23,17 @@ const HeaderSection: FC<HeaderSectionProps> = () => {
   return (
     <Container className="relative flex gap-4">
       <h1 className="font-bold tracking-widest text-2xl whitespace-nowrap">
-        <Link href={"/"}>Trong Duong.</Link>
+        <Link href={"/2023"}>Trong Duong.</Link>
       </h1>
       <div className="ml-auto flex items-center gap-6">
         <HeaderNavItem>
-          <Link href="/about-me">
+          <Link href="/2023/about-me">
             <span className="hidden md:inline-block">About me</span>
             <Info className="inline-block md:hidden w-5 h-5" />
           </Link>
         </HeaderNavItem>
         <HeaderNavItem>
-          <Link href="/projects">
+          <Link href="/2023/projects">
             <span className="hidden md:inline-block">Projects</span>
             <Presentation className="inline-block md:hidden w-5 h-5" />
           </Link>
