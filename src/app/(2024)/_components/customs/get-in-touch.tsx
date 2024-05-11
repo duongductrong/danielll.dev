@@ -11,6 +11,22 @@ const GetInTouch = ({ className, ...props }: GetInTouchProps) => {
       <div className="flex flex-wrap gap-3">
         <Link
           className="text-base font-medium"
+          href="https://read.cv/trongduong"
+          target="_blank"
+        >
+          Read.cv
+        </Link>
+
+        <Link
+          className="text-base font-medium"
+          href="/Duong Duc Trong - Software Engineer.pdf"
+          target="_blank"
+        >
+          CV (PDF)
+        </Link>
+
+        <Link
+          className="text-base font-medium"
           href="https://www.linkedin.com/in/duongductrong"
           target="_blank"
         >
@@ -27,26 +43,18 @@ const GetInTouch = ({ className, ...props }: GetInTouchProps) => {
 
         <Link
           className="text-base font-medium"
-          href="https://read.cv/trongduong"
+          href="https://github.com/duongductrong"
           target="_blank"
         >
-          Read.cv
+          Github
         </Link>
 
         <Link
           className="text-base font-medium"
-          href="/Duong Duc Trong - Software Engineer.pdf"
+          href="https://codepen.io/codeEN"
           target="_blank"
         >
-          CV (PDF)
-        </Link>
-        
-        <Link
-          className="text-base font-medium"
-          href="mailto:duongductrong06@gmail.com"
-          target="_blank"
-        >
-          duongductrong06@gmail.com
+          Codepen
         </Link>
       </div>
     </section>
