@@ -21,7 +21,7 @@ const Welcome = ({ className, ...props }: WelcomeProps) => {
         Frontend Engineer.
       </h2>
       <h2 className="text-2xl font-normal flex items-center gap-2 leading-tight">
-        Focused on delivery software development for customer.
+        Focused on delivery Software Application for the customer.
       </h2>
       <p className="text-lg font-light leading-relaxed text-muted-foreground">
         Connect with me for collaboration, freelance gigs, part-time job, or
