@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils/tailwind";
 import { ComponentPropsWithoutRef } from "react";
-import { ProjectShowCase } from "./project-showcase";
+import { ProjectShowCase, ProjectShowCaseItemImage } from "./project-showcase";
 
 export interface ThingIDoProps extends ComponentPropsWithoutRef<"section"> {}
 
@@ -87,36 +87,48 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
           ]}
         />
 
-        {/* <ProjectShowCase
+        <ProjectShowCase
           title={
             <>
-              I helped Mercu shape their AI Assistant <br /> interface and
-              refreshed the UI & UX
+              A dashboard builder platform can drag and drop <br /> charts and
+              table report.
             </>
           }
           description={
             <>
-              The AI assistant for growth-focused frontline workforces.
-              <br /> Automate your hiring. Scale your onboarding, and make{" "}
+              A platform that allows users to create and management the report.
               <br />
-              knowledge and tools available to your employees. Instantly.
+              Easy to use with drag and drop feature. <br />
+              Visualize data with charts and tables.
             </>
           }
           items={[
             {
               type: "image",
-              src: "https://framerusercontent.com/images/xfSKv6TwzOwq0QregjNzIoC30n0.png?scale-down-to=2048",
+              src: "/assets/projects/saj/saj-login.png",
             },
             {
               type: "image",
-              src: "https://framerusercontent.com/images/xfSKv6TwzOwq0QregjNzIoC30n0.png?scale-down-to=2048",
+              src: "/assets/projects/saj/saj-dashboard.png",
             },
             {
               type: "image",
-              src: "https://framerusercontent.com/images/xfSKv6TwzOwq0QregjNzIoC30n0.png?scale-down-to=2048",
+              src: "/assets/projects/saj/saj-dashboard-builder.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/saj/saj-users-management.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/saj/saj-group-management.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/saj/saj-settings-profile.png",
             },
           ]}
-        /> */}
+        />
       </section>
     </section>
   );
