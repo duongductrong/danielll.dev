@@ -133,6 +133,48 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
             },
           ]}
         />
+
+        <ProjectShowCase
+          title={
+            <>
+              A landing page for a company that provides <br /> services in
+              Artificial Intelligence
+            </>
+          }
+          description={
+            <>
+              The landing-page of a company that provides services in Artificial
+              Intelligence. <br />
+              Introduce & promote the company's services.
+            </>
+          }
+          items={[
+            {
+              type: "image",
+              src: "/assets/projects/surumi/surumi-home.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/surumi/surumi-home-2.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/surumi/surumi-about.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/surumi/surumi-products.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/surumi/surumi-news.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/surumi/surumi-contact.png",
+            },
+          ]}
+        />
       </section>
     </section>
   );
