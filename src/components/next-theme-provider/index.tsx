@@ -8,7 +8,7 @@ export interface NextThemeProviderProps
 
 const NextThemeProvider: FC<NextThemeProviderProps> = ({ children }) => {
   return (
-    <ThemeProvider attribute="class" enableSystem>
+    <ThemeProvider attribute="class" forcedTheme="light" enableSystem>
       {children}
     </ThemeProvider>
   );
