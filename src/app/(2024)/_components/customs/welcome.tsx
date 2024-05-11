@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/tailwind";
 import Image from "next/image";
 import { ComponentPropsWithoutRef } from "react";

@@ -40,7 +40,7 @@ export function ProjectShowCase({
           {items?.map((item, index) => (
             <CarouselItem key={index} className="basis-3/4 rounded-md">
               <Image
-                className="w-full rounded-2xl max-h-[600px] object-cover"
+                className="w-full rounded-2xl h-full max-h-[550px] object-cover"
                 alt={item.alt ?? "Project showcase thumbnail"}
                 width={800}
                 height={800}
