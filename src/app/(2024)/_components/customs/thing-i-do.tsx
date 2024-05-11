@@ -137,6 +137,53 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
         <ProjectShowCase
           title={
             <>
+              A Casio store popular in Japan. <br /> I and team helped them
+              build their <br /> a system to manage their store at VietNam.
+            </>
+          }
+          description={
+            <>
+              The casio store allows users to buy and pay online for Casio.{" "}
+              <br />
+              Easy order management with integrated admin page. Support for
+              sales
+            </>
+          }
+          items={[
+            {
+              type: "image",
+              src: "/assets/projects/casio/casio-login.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/casio/casio-signup.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/casio/casio-home.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/casio/casio-product-details.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/casio/casio-products.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/casio/casio-news.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/casio/casio-stores.png",
+            },
+          ]}
+        />
+
+        <ProjectShowCase
+          title={
+            <>
               A landing page for a company that provides <br /> services in
               Artificial Intelligence
             </>

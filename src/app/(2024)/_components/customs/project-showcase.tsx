@@ -42,9 +42,10 @@ export function ProjectShowCase({
               <Image
                 className="w-full rounded-2xl h-full max-h-[550px] object-cover"
                 alt={item.alt ?? "Project showcase thumbnail"}
-                width={800}
-                height={800}
+                width={700}
+                height={700}
                 src={item.src}
+                loading="lazy"
               />
             </CarouselItem>
           ))}
