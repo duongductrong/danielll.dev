@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils/tailwind";
 import { ComponentPropsWithoutRef } from "react";
-import { ProjectShowCase, ProjectShowCaseItemImage } from "./project-showcase";
+import { ProjectShowCase } from "./project-showcase";
 
 export interface ThingIDoProps extends ComponentPropsWithoutRef<"section"> {}
 
@@ -117,15 +117,19 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
             },
             {
               type: "image",
+              src: "/assets/projects/saj/saj-dashboard-api.png",
+            },
+            {
+              type: "image",
+              src: "/assets/projects/saj/saj-dashboard-alert.png",
+            },
+            {
+              type: "image",
               src: "/assets/projects/saj/saj-users-management.png",
             },
             {
               type: "image",
               src: "/assets/projects/saj/saj-group-management.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/saj/saj-settings-profile.png",
             },
           ]}
         />

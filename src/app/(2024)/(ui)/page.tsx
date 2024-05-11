@@ -10,7 +10,7 @@ const Page = (props: PageProps) => {
   return (
     <>
       <Welcome className="mt-4" />
-      <Cta className="mt-6" />
+      <Cta className="mt-10" />
       <Timezone className="mt-10" />
       <ThingIDo className="mt-20" />
       <About className="mt-20" />
