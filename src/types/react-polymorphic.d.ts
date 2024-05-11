@@ -3,28 +3,28 @@
  * Changed by: duongductrong06@gmail.com
  */
 
-/* eslint-disable @typescript-eslint/no-shadow */
+import * as React from "react";
 
-import * as React from "react"
-
-export type Merge<P1 = {}, P2 = {}> = Omit<P1, keyof P2> & P2
+export type Merge<P1 = {}, P2 = {}> = Omit<P1, keyof P2> & P2;
 /**
  * Infers the OwnProps if E is a ForwardRefExoticComponentWithAs
  */
-export type OwnProps<E> = E extends ForwardRefComponent<any, infer P> ? P : {}
+export type OwnProps<E> = E extends ForwardRefComponent<any, infer P> ? P : {};
 /**
  * Infers the JSX.IntrinsicElement if E is a ForwardRefExoticComponentWithAs
  */
-export type IntrinsicElement<E> = E extends ForwardRefComponent<infer I, any> ? I : E
+export type IntrinsicElement<E> = E extends ForwardRefComponent<infer I, any>
+  ? I
+  : E;
 
 type ForwardRefExoticComponent<E, OwnProps> = React.ForwardRefExoticComponent<
   Merge<
     E extends React.ElementType ? React.ComponentPropsWithRef<E> : never,
     OwnProps & {
-      as?: E
+      as?: E;
     }
   >
->
+>;
 export interface ForwardRefComponent<
   IntrinsicElementString,
   OwnProps = {}
@@ -44,24 +44,24 @@ export interface ForwardRefComponent<
   <As = IntrinsicElementString>(
     props: As extends ""
       ? {
-          as: keyof JSX.IntrinsicElements
+          as: keyof JSX.IntrinsicElements;
         }
       : As extends React.ComponentType<infer P>
       ? Merge<
           P,
           OwnProps & {
-            as: As | keyof JSX.IntrinsicElements
+            as: As | keyof JSX.IntrinsicElements;
           }
         >
       : As extends keyof JSX.IntrinsicElements
       ? Merge<
           JSX.IntrinsicElements[As],
           OwnProps & {
-            as: As | keyof JSX.IntrinsicElements
+            as: As | keyof JSX.IntrinsicElements;
           }
         >
       : never
-  ): React.ReactElement | null
+  ): React.ReactElement | null;
 }
 
 // Infer keyof jsx.intrinsicElement exist component: Polymorphic.IntrinsicElement<typeof YourComponent>

@@ -3,7 +3,7 @@
 
 import ThreeDInteractionCard from "@/components/cards/threed-interaction-card";
 import Container from "@/components/container";
-import Smoother from "@/components/motions/smoother";
+import SmootherScrollSection from "@/components/motions/smoother-scroll-section";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
@@ -14,7 +14,7 @@ export interface ProjectListProps {}
 const ProjectList = (props: ProjectListProps) => {
   return (
     <>
-      <Smoother.ScrollSection className="w-full min-h-[calc(50vh-72px)] flex items-center justify-center">
+      <SmootherScrollSection className="w-full min-h-[calc(50vh-72px)] flex items-center justify-center">
         <Container>
           <TextLegend className="mb-12">Portfolio</TextLegend>
           <TextMain className="mb-10">My recent works</TextMain>
@@ -24,9 +24,9 @@ const ProjectList = (props: ProjectListProps) => {
             work.
           </TextDescription>
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      <Smoother.ScrollSection className="py-24">
+      <SmootherScrollSection className="py-24">
         <Container className="flex flex-col gap-32">
           {PAGE_CONTENT_PROJECTS.PROJECTS.map((project) => (
             <ThreeDInteractionCard
@@ -38,7 +38,7 @@ const ProjectList = (props: ProjectListProps) => {
             />
           ))}
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
     </>
   );
 };

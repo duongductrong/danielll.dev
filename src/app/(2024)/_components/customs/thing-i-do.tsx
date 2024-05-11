@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { cn } from "@/lib/utils/tailwind";
 import { ComponentPropsWithoutRef } from "react";
 import { ProjectShowCase } from "./project-showcase";

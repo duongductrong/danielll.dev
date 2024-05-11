@@ -7,8 +7,8 @@ const Smoother = dynamic(() => import("@/components/motions/smoother"), {
 });
 
 export interface SiteLayoutProps extends Pick<HTMLAttributes<any>, "children"> {
-  header?: ReactNode;
-  footer?: ReactNode;
+  header: ReactNode;
+  footer: ReactNode;
 }
 
 const SiteLayout: FC<SiteLayoutProps> = ({ children, footer, header }) => {

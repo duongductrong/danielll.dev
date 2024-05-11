@@ -32,7 +32,7 @@ export interface SmootherProps
 }
 
 export interface SmootherRootProps extends FC<SmootherProps> {
-  ScrollSection: ForwardRefExoticComponent<SmootherScrollSectionProps>;
+  // ScrollSection: ForwardRefExoticComponent<SmootherScrollSectionProps>;
 }
 
 const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
@@ -196,7 +196,5 @@ const Smoother: SmootherRootProps = ({ asChild, options, children }) => {
     </>
   );
 };
-
-Smoother.ScrollSection = SmootherScrollSection;
 
 export default Smoother;

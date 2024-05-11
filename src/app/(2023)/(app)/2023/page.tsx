@@ -4,6 +4,7 @@
 import Button from "@/components/buttons/button";
 import Container from "@/components/container";
 import Smoother from "@/components/motions/smoother";
+import SmootherScrollSection from "@/components/motions/smoother-scroll-section";
 import RotatePersonal from "@/components/rotate-personal";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
@@ -13,7 +14,7 @@ import { PAGE_CONTENT_HOME } from "@/enums/page-content";
 export default function Home() {
   return (
     <>
-      <Smoother.ScrollSection className="py-24 min-h-[calc(100vh-72px)] flex items-center justify-center">
+      <SmootherScrollSection className="py-24 min-h-[calc(100vh-72px)] flex items-center justify-center">
         <Container className="relative">
           <RotatePersonal className="ml-8 md:ml-0 mb-16 md:mb-0 md:absolute bottom-12 right-8" />
           
@@ -33,9 +34,9 @@ export default function Home() {
           </Button>
 
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      <Smoother.ScrollSection className="py-24 min-h-[50vh] flex items-center justify-center">
+      <SmootherScrollSection className="py-24 min-h-[50vh] flex items-center justify-center">
         <Container className="relative">
           <TextLegend className="mb-12">MY EXPERTISE</TextLegend>
           <h2 className="text-4xl mb-12 font-normal leading-normal	">
@@ -43,9 +44,9 @@ export default function Home() {
             comprehensive online solutions <br /> for the many domains.
           </h2>
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      <Smoother.ScrollSection asHorizontalScroll>
+      <SmootherScrollSection asHorizontalScroll>
         <div className="flex gap-12 px-8">
           {PAGE_CONTENT_HOME.CODEPENS.map((codepen) => (
             <a
@@ -64,7 +65,7 @@ export default function Home() {
             </a>
           ))}
         </div>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
     </>
   );
 }

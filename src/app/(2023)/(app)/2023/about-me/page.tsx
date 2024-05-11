@@ -4,7 +4,7 @@
 
 import Button from "@/components/buttons/button";
 import Container from "@/components/container";
-import Smoother from "@/components/motions/smoother";
+import SmootherScrollSection from "@/components/motions/smoother-scroll-section";
 import ReferenceSocialsGroup from "@/components/reference-socials-group";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
@@ -18,7 +18,7 @@ export interface AboutMeProps {}
 const AboutMe = (props: AboutMeProps) => {
   return (
     <>
-      <Smoother.ScrollSection className="w-full py-24 min-h-[calc(80vh-72px)] flex items-center justify-center">
+      <SmootherScrollSection className="w-full py-24 min-h-[calc(80vh-72px)] flex items-center justify-center">
         <Container>
           <TextLegend className="mb-12">About me</TextLegend>
           <TextMain className="mb-10">
@@ -30,9 +30,9 @@ const AboutMe = (props: AboutMeProps) => {
             <br /> and developing high-quality products.
           </TextDescription>
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      <Smoother.ScrollSection
+      <SmootherScrollSection
         className="min-h-[90vh] flex items-center justify-center"
         sectionInnerProps={{ className: "h-full" }}
       >
@@ -77,9 +77,9 @@ const AboutMe = (props: AboutMeProps) => {
             <ReferenceSocialsGroup />
           </div>
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      <Smoother.ScrollSection className="py-24 flex items-center">
+      <SmootherScrollSection className="py-24 flex items-center">
         <Container>
           <TextLegend>My journey</TextLegend>
           <TextMain className="mb-12">Work Experience</TextMain>
@@ -110,9 +110,9 @@ const AboutMe = (props: AboutMeProps) => {
             </div>
           ))}
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      <Smoother.ScrollSection className="py-24 flex items-center">
+      <SmootherScrollSection className="py-24 flex items-center">
         <Container>
           <TextLegend>Skill</TextLegend>
           <TextMain className="mb-12">
@@ -136,9 +136,9 @@ const AboutMe = (props: AboutMeProps) => {
             <div>12</div>
           ))} */}
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      {/* <Smoother.ScrollSection asHorizontalScroll>
+      {/* <SmootherScrollSection asHorizontalScroll>
         <div className="flex">
           <div className="min-w-[500px] h-[500px]"></div>
           <div className="relative min-w-[500px] h-[500px]">
@@ -190,7 +190,7 @@ const AboutMe = (props: AboutMeProps) => {
             </div>
           </div>
         </div>
-      </Smoother.ScrollSection> */}
+      </SmootherScrollSection> */}
     </>
   );
 };

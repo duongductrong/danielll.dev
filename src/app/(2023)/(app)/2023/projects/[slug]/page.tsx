@@ -3,7 +3,7 @@
 
 import Button from "@/components/buttons/button";
 import Container from "@/components/container";
-import Smoother from "@/components/motions/smoother";
+import SmootherScrollSection from "@/components/motions/smoother-scroll-section";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
@@ -23,7 +23,7 @@ const DetailedProject = ({ params }: DetailedProjectProps) => {
 
   return (
     <>
-      <Smoother.ScrollSection className="h-[75vh] flex items-center transform translate-y-[72px] bg-gray-100 dark:bg-[#0045fa]">
+      <SmootherScrollSection className="h-[75vh] flex items-center transform translate-y-[72px] bg-gray-100 dark:bg-[#0045fa]">
         <Container className="grid grid-cols-2 place-items-center gap-4 min-h-[500px]">
           <div className="w-full">
             <TextMain className="mb-4">
@@ -53,9 +53,9 @@ const DetailedProject = ({ params }: DetailedProjectProps) => {
             />
           </div>
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
 
-      <Smoother.ScrollSection className="py-24 min-h-[50vh]">
+      <SmootherScrollSection className="py-24 min-h-[50vh]">
         <Container>
           <TextLegend className="mb-12">The result</TextLegend>
           <TextMain className="mb-20">{detailedProject?.theResult}</TextMain>
@@ -100,7 +100,7 @@ const DetailedProject = ({ params }: DetailedProjectProps) => {
             ))}
           </div>
         </Container>
-      </Smoother.ScrollSection>
+      </SmootherScrollSection>
     </>
   );
 };
