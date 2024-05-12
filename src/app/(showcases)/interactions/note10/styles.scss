@@ -1,0 +1,272 @@
+$bg: #36383b;
+$pen: #36383b;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: $bg;
+}
+
+.container {
+  position: relative;
+  width: 480px;
+  height: 720px;
+  margin: 55px auto 0;
+  background: white;
+  padding: 35px 30px;
+
+  transform: skew(10deg) rotate(-50deg);
+
+  box-shadow: -10px 5px grey, -15px 7px grey, -20px 9px grey, -25px 11px grey,
+    -30px 13px grey, -35px 15px grey, -40px 17px grey, -45px 19px grey,
+    -50px 21px grey, -55px 23px grey;
+  border-radius: 10px;
+
+  .note10-wrapper {
+    position: relative;
+    width: 80%;
+    height: 100%;
+    border: 5px solid rgba($color: grey, $alpha: 0.3);
+    border-radius: 25px;
+    box-shadow: -5px 3px 2px rgba($color: grey, $alpha: 0.7);
+
+    .note10 {
+      width: 100%;
+      height: 100%;
+      border: 4.5px solid rgba($color: black, $alpha: 0.7);
+      border-top-width: 3px;
+      border-right-width: 2px;
+
+      border-radius: 25px;
+      background-image: url(https://i.pinimg.com/originals/06/3b/a9/063ba9d15ca6924a3734536622c9fb44.png);
+      background-size: 480px;
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 14px;
+
+        .left {
+          font-size: 12px;
+        }
+
+        .camera {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          background: black;
+          &::after {
+            content: "";
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba($color: white, $alpha: 0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        .right {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .wifi,
+          .battery {
+            width: 15px;
+            height: 15px;
+            object-fit: contain;
+          }
+          .battery {
+            width: 10px;
+            heigt: 5px;
+            margin-left: 5px;
+            transform: rotate(-90deg);
+          }
+        }
+      }
+
+      .volume,
+      .power {
+        position: absolute;
+        top: 80px;
+        left: -11px;
+        width: 6px;
+        height: 70px;
+        background: rgba($color: black, $alpha: 0.5);
+        border-radius: 15px 0 0 15px;
+      }
+
+      .power {
+        height: 40px;
+        top: 180px;
+      }
+
+      .main {
+      }
+
+      .toolbar {
+        width: 70%;
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+
+  .note10-pen {
+    position: absolute;
+    top: 90px;
+    right: 30px;
+    width: 20px;
+    height: 70%;
+    background: $pen;
+
+    transform: rotate(-30deg) translateX(-150px);
+    border-radius: 50px 50px 20px 20px;
+    box-shadow: inset 4px 0 5px rgba($color: white, $alpha: 0.75),
+      inset -4px 0 5px rgba($color: white, $alpha: 0.45),
+      -5px 5px 5px rgba($color: black, $alpha: 0.35);
+    z-index: 10;
+
+    &::before {
+      content: "";
+      z-index: 5;
+      position: absolute;
+      width: 5px;
+      height: 10px;
+      background: rgba($color: $pen, $alpha: 0.5);
+      left: 50%;
+      transform: translate(-50%, -5px);
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 10px;
+      background: rgba($color: $pen, $alpha: 0.8);
+      bottom: -10px;
+      left: 50%;
+      transform: translate(-50%, -5px);
+      border-radius: 50%;
+    }
+
+    div {
+      position: absolute;
+      width: 9px;
+      height: 20px;
+      background: $pen;
+      bottom: -15px;
+      left: 50%;
+      transform: translate(-50%);
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 15px;
+        background: rgba($color: $pen, $alpha: 1);
+        bottom: -14px;
+        left: 50%;
+        transform: translate(-50%, -5px);
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.bar-icon {
+  display: flex;
+  div {
+    width: 2px;
+    height: 10px;
+    background: black;
+    margin-right: 2px;
+  }
+}
+.home-icon {
+  width: 14px;
+  height: 12px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.back-icon {
+  width: 10px;
+  height: 10px;
+  border-left-width: 1px;
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+  border-color: black;
+  border-style: solid;
+
+  transform: rotate(-45deg);
+}
+
+.google-search {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  transform: translateX(-50%);
+
+  background: white;
+  box-shadow: 1px 1px 3px grey;
+  width: 90%;
+  height: 30px;
+  border-radius: 25px;
+
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 18px;
+    height: 30px;
+    object-fit: contain;
+    margin: 0 10px;
+  }
+  img:nth-child(2) {
+    width: 12px;
+  }
+
+  &::after {
+    content: "Say 'Ok google' !";
+    position: absolute;
+    color: rgba($color: grey, $alpha: 0.4);
+    left: 55%;
+    top: 8px;
+    font-size: 12px;
+    font-family: Arial;
+  }
+}
+
+.app-note {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  img {
+    height: 50px;
+    object-fit: contain;
+    margin: 0 8px;
+  }
+}
