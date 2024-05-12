@@ -6,7 +6,7 @@ export interface GetInTouchProps extends ComponentPropsWithoutRef<"section"> {}
 
 const GetInTouch = ({ className, ...props }: GetInTouchProps) => {
   return (
-    <section {...props} className={cn("container-base", className)}>
+    <section {...props} className={cn("container flex flex-col items-center", className)}>
       <p className="text-xl font-semibold leading-normal mb-4">Get in touch.</p>
       <div className="flex flex-wrap gap-3">
         <Link

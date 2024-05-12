@@ -4,7 +4,7 @@ export interface HeaderProps {}
 
 const Header = (props: HeaderProps) => {
   return (
-    <header className="container-base py-6">
+    <header className="container text-center py-6">
       <div className="relative inline-block">
         <Image
           src="/avatar-small.png"

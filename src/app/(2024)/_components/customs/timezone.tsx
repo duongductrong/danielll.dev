@@ -5,7 +5,7 @@ export interface TimezoneProps extends ComponentPropsWithoutRef<"section"> {}
 
 const Timezone = ({ className, ...props }: TimezoneProps) => {
   return (
-    <section {...props} className={cn("container-base", className)}>
+    <section {...props} className={cn("container text-center", className)}>
       <p className="text-xl font-semibold">Based in HCMC, Vietnam.</p>
       <p className="text-muted-foreground font-light">
         Local time:{" "}

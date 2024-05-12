@@ -10,7 +10,7 @@ const Cta = ({ className, ...props }: CtaProps) => {
   return (
     <section
       {...props}
-      className={cn("container-base flex flex-wrap gap-4", className)}
+      className={cn("container text-center justify-center flex flex-wrap gap-4", className)}
     >
       <Button className="rounded-full">Open to work | Book a call</Button>
       <Button
