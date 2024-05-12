@@ -1,0 +1,395 @@
+/**
+  Creator By: https://github.com/duongductrong
+  Youtube: https://www.youtube.com/channel/UCAo0pPBwnzHHzlXIKyp2Skw
+  design source: https://dribbble.com/shots/15388700-Moods
+*/
+
+$primary1: #EED2C6;
+$primary2: #A5A08F;
+$orange: #F33E05;
+$orange-light: #FF6C44;
+$gray: #A5A08F;
+$dark: #172D1A;
+$violet: #6E5DE0;
+$baseWidth: 400px;
+$crankHeight: 100px;
+
+body {
+  position: relative;
+  padding: 0;
+  margin: 0;
+  
+  background: linear-gradient(to bottom, $primary1 calc(100% - 150px), $primary2 300px);
+  
+  min-height: 100vh;
+}
+
+div.machine {
+  position: absolute;
+  bottom: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  .glass-cage {
+    position: relative;
+    margin: auto;
+    width: $baseWidth - 100px;
+    height: 300px;
+    border-radius: 80% 80%;
+    background: rgba(0, 0, 0, 0.15);
+    transform: translateY(15px);
+    
+    .dot {
+      margin: auto;
+      width: 30px;
+      height: 30px;
+      
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      
+      background: linear-gradient(125deg, $orange 60%, transparent);
+      border-radius: 50%;
+    }
+    
+    .balloons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      
+      background: #FF7B44;
+      box-shadow: 
+        // Left balloon top
+        -45px -15px 0 #44FF99,
+        -50px -45px 0 $dark,
+        -100px 0 0 $orange-light,
+        -90px -8px 0 #9344FF,
+        
+        // Left balloon bottom
+        -30px 15px 0 #448AFF,
+        -50px 20px 0 $violet,
+        -80px 50px 0 #FEB440,
+        -20px 95px 0 $orange-light,
+        -25px 40px 0 #F43E05,
+        -29px 120px 0 $gray,
+        -60px 90px 0 #F43E05,
+        
+        // Right balloon top
+        30px -30px 0 #444AFF,
+        45px -35px 0 $primary1,
+        60px -50px 0 #F43E05,
+        35px -30px 0 #9344FF,
+        80px 0px 0 $primary2,
+        90px -30px 0 black,
+        5px -50px 0 #FDE2CD,
+        
+        // Right balloon bottom
+        45px 80px 0 $dark,
+        40px 100px 0 #444AFF,
+        35px 30px 0 $orange-light,
+        75px 45px 0 #444AFF,
+        95px 45px 0 yellow,
+        5px 80px 0 pink,
+    }
+    
+    &::before {
+      content: "";
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 50px;
+      background: $orange;
+      border-radius: 80px 80px 0 0;
+    }
+    
+    &::after {
+      content: "";
+      position: absolute;
+      width: 60%;
+      height: 30px;
+      border-radius: 25px 25px 0 0;
+      
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $dark;
+    }
+  }
+  
+  .cover-base {
+    position: relative;
+    width: $baseWidth - 140px;
+    height: 40px;
+    border-radius: 40px;
+    margin: auto;
+    background: $orange;
+    z-index: 1;
+  }
+  
+  .base-top {
+    position: relative;
+    width: $baseWidth - 80px; 
+    height: 200px;
+    background: $orange;
+    margin: auto;
+    clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #EED2C6;
+      clip-path: polygon(15% 0, 85% 0, 100% 100%, 0 100%);
+      border-radius: 25px 25px 25px 25px;
+      width: 60%;
+      height: 100%;
+    }
+    
+    .crank {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: $gray;
+      width: 50%;
+      height: 100px;
+      clip-path: polygon(15% 0, 85% 0, 94% 100%, 6% 100%);
+      border-radius: 20px 20px 40px 40px;
+      text-align: center;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      
+      .crank-top {
+        position: absolute;
+        top: 0;
+        display: inline-block;
+        width: 55px;
+        height: 55px;
+        background: $violet;
+        border-radius: 50% 50% 5px 5px;
+        
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 65%;
+          height: 65%;
+          background: $dark;
+          border-radius: 50%;
+          z-index: 10;
+        }
+      }
+      
+      .crank-bottom {
+        position: absolute;
+        bottom: -3px;
+        display: inline-block;
+        width: 65px;
+        height: 65px;
+        background: $violet;
+        border-radius: 100% 100%;
+        
+        &::before {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 65%;
+          height: 65%;
+          background: $dark;
+          border-radius: 50%;
+        }
+        
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 10px;
+          height: 10px;
+          transform: translate(-50%, -50%) rotate(25deg);
+          background: $orange;
+          border-radius: 50%;
+          
+          box-shadow: 0 0 0 6px $orange-light,
+            0 0 3px 7px $orange,
+            -30px 0 0 1px $orange-light,
+            -29px 0 0 1px $orange-light,
+            -28px 0 0 1px $orange-light,
+            -27px 0 0 1px $orange-light,
+            -26px 0 0 1px $orange-light,
+            -25px 0 0 1px $orange-light,
+            -24px 0 0 1px $orange-light,
+            -23px 0 0 1px $orange-light,
+            -22px 0 0 1px $orange-light,
+            -21px 0 0 1px $orange-light,
+            -20px 0 0 1px $orange-light,
+            -19px 0 0 1px $orange-light,
+            -18px 0 0 1px $orange-light,
+            -17px 0 0 1px $orange-light,
+            -16px 0 0 1px $orange-light,
+            -15px 0 0 1px $orange-light,
+            -14px 0 0 1px $orange-light,
+            -13px 0 0 1px $orange-light,
+            -11px 0 0 1px $orange-light,
+            -10px 0 0 1px $orange-light,
+            -09px 0 0 1px $orange-light,
+            -8px 0 0 1px $orange-light,
+            -7px 0 0 1px $orange-light,
+            -6px 0 0 1px $orange-light,
+            -5px 0 0 1px $orange-light,
+            -4px 0 0 1px $orange-light,
+            -3px 0 0 1px $orange-light,
+            -2px 0 0 1px $orange-light,
+            -1px 0 0 1px $orange-light,
+            0 0 0 1px $orange-light,
+            1px 0 0 1px $orange-light,
+            2px 0 0 1px $orange-light,
+            3px 0 0 1px $orange-light,
+            4px 0 0 1px $orange-light,
+            5px 0 0 1px $orange-light,
+            6px 0 0 1px $orange-light,
+            7px 0 0 1px $orange-light,
+            8px 0 0 1px $orange-light,
+            09px 0 0 1px $orange-light,
+            10px 0 0 1px $orange-light,
+            11px 0 0 1px $orange-light,
+            12px 0 0 1px $orange-light,
+            13px 0 0 1px $orange-light,
+            14px 0 0 1px $orange-light,
+            15px 0 0 1px $orange-light,
+            16px 0 0 1px $orange-light,
+            17px 0 0 1px $orange-light,
+            18px 0 0 1px $orange-light,
+            19px 0 0 1px $orange-light,
+            20px 0 0 1px $orange-light,
+            21px 0 0 1px $orange-light,
+            22px 0 0 1px $orange-light,
+            23px 0 0 1px $orange-light,
+            24px 0 0 1px $orange-light,
+            25px 0 0 1px $orange-light,
+            26px 0 0 1px $orange-light,
+            27px 0 0 1px $orange-light,
+            28px 0 0 1px $orange-light,
+            29px 0 0 1px $orange-light,
+            30px 0 0 1px $orange-light,
+        }
+      }
+    }
+    
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 45px;
+      width: 50px;
+      border-radius: 45px 45px 0 0;
+      background: $dark;
+    }
+    
+    .balloon {
+      position: absolute;
+      bottom: 10px;
+      left: 55%;
+      transform: translateX(-50%) rotate(30deg);
+      width: 4px;
+      height: 4px;
+      background: $orange;
+      border-radius: 50%;
+      z-index: 1;
+      box-shadow: 
+        0 -2px 0 2px $orange,
+        -20px -2px 0 2px $orange,
+
+        -18px 12px 0 0.5px $orange,
+        -17px 13px 0 0.5px $orange,
+        -16px 14px 0 0.5px $orange,
+        -15px 15px 0 0.5px $orange,
+        -14px 15px 0 0.5px $orange,
+        -13px 15px 0 0.5px $orange,
+        -12px 15px 0 0.5px $orange,
+        -11px 15px 0 0.5px $orange,
+        -9px 15px 0 0.5px $orange,
+        -8px 15px 0 0.5px $orange,
+        -7px 15px 0 0.5px $orange,
+        -6px 15px 0 0.5px $orange,
+        -5px 15px 0 0.5px $orange,
+        -4px 15px 0 0.5px $orange,
+        -3px 14px 0 0.5px $orange,
+        -2px 13px 0 0.5px $orange,
+        -1px 12px 0 0.5px $orange,
+        -10px 0 0 24px #FFB33E;
+    }
+  }
+  
+  .base-bottom {
+    width: $baseWidth;
+    height: 80px;
+    background: $orange;
+    border-radius: 45px 45px 10px 10px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 40px;
+      background: $gray;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0 0 30px 30px; 
+    }
+  }
+}
+
+.balloon {
+  position: absolute;
+  bottom: 150px;
+  left: 55%;
+  transform: translateX(-50%) rotate(-30deg);
+  width: 4px;
+  height: 4px;
+  background: $orange;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 
+    0 -2px 0 2px $orange,
+    -20px -2px 0 2px $orange,
+
+    -18px 12px 0 0.5px $orange,
+    -17px 13px 0 0.5px $orange,
+    -16px 14px 0 0.5px $orange,
+    -15px 15px 0 0.5px $orange,
+    -14px 15px 0 0.5px $orange,
+    -13px 15px 0 0.5px $orange,
+    -12px 15px 0 0.5px $orange,
+    -11px 15px 0 0.5px $orange,
+    -9px 15px 0 0.5px $orange,
+    -8px 15px 0 0.5px $orange,
+    -7px 15px 0 0.5px $orange,
+    -6px 15px 0 0.5px $orange,
+    -5px 15px 0 0.5px $orange,
+    -4px 15px 0 0.5px $orange,
+    -3px 14px 0 0.5px $orange,
+    -2px 13px 0 0.5px $orange,
+    -1px 12px 0 0.5px $orange,
+    -10px 0 0 24px #FFB33E;
+}

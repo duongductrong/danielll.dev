@@ -1,10 +1,8 @@
-import React from "react";
-
 import "./styles.scss";
 
-const Bedroom3D = () => {
+const BedroomPage = () => {
   return (
-    <div className="bedroom-3d h-[800px]">
+    <div className="bedroom-3d">
       <section className="container">
         <div className="room">
           <div className="surface bottom">
@@ -24,8 +22,8 @@ const Bedroom3D = () => {
           </div>
           <div className="surface top">
             {/* <div className="televison">
-            <div className="telesion-url"></div>
-          </div> */}
+        <div className="telesion-url"></div>
+      </div> */}
             <div className="windows">
               <div className="windows-child">
                 <div className="windows-child-nested"></div>
@@ -68,4 +66,4 @@ const Bedroom3D = () => {
   );
 };
 
-export default Bedroom3D;
+export default BedroomPage;

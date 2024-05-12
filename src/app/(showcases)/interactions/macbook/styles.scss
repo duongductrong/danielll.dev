@@ -1,0 +1,320 @@
+// Design by: Dribble Collect
+// Creator by: duongductrong
+// Github: https://github.com/duongductrong
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+$gray-1: #4C565E; // floor
+$gray-2: #8496A9; // floor mac
+$gray-3: #6E8093; // trackpad, cloudspeaker
+$gray-4: #151B20; // screen
+$dark-1: #1A1D25; // keyboard, main-screen 
+$black-1: #333033; // shadow of floor mac
+$black-2: #0F111D; //touchbar
+$white: #fff;
+
+$macbook-width: 700px; // 700px
+$macbook-height: 500px; // 500px
+
+:root {
+  --rotateY-element: 0deg;
+  --cursor: "pointer";
+  --shadow-floor-y: 1px;
+  --shadow-floor-x: 0px;
+  
+  --rotate-screen-x: 80deg;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+    
+  font-family: "Inter";
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  min-height: 100vh;
+  // background: linear-gradient(to top, $gray-1 50%, transparent);
+  background: #0D0D0D;
+  perspective: 2000px;
+}
+
+.container {
+  transform-style: preserve-3d;
+  
+  // Disabled 360deg
+  // animation: degrees360 300s linear infinite;
+  transform: rotateY(var(--rotateY-element));
+  cursor: var(--cursor);
+  
+  transition: all 300ms linear;
+  
+  @keyframes degrees360 {
+    from {
+      transform: rotateY(0)
+    }
+    
+    to {
+      transform: rotateY(360deg);
+    }
+  }
+}
+
+.box {
+  width: $macbook-width;
+  height: $macbook-height;
+  transform-style: preserve-3d;
+  transform: rotateX(60deg) scale(1);
+  transform-origin: bottom;
+  
+  .macbook {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background: $gray-2;
+    transform-style: preserve-3d;
+    transform-origin: bottom;
+    
+    box-shadow: 
+      calc(var(--shadow-floor-x) * 1) calc(var(--shadow-floor-y) * 1) 0 $black-1,
+      calc(var(--shadow-floor-x) * 2) calc(var(--shadow-floor-y) * 2) 0 $black-1,
+      calc(var(--shadow-floor-x) * 3) calc(var(--shadow-floor-y) * 3) 0 $black-1,
+      calc(var(--shadow-floor-x) * 4) calc(var(--shadow-floor-y) * 4) 0 $black-1,
+      calc(var(--shadow-floor-x) * 5) calc(var(--shadow-floor-y) * 5) 0 $black-1,
+      calc(var(--shadow-floor-x) * 6) calc(var(--shadow-floor-y) * 6) 0 $black-1,
+      calc(var(--shadow-floor-x) * 7) calc(var(--shadow-floor-y) * 7) 0 $black-1,
+      calc(var(--shadow-floor-x) * 8) calc(var(--shadow-floor-y) * 8) 0 $black-1;
+    
+    transition: all 300ms linear;
+    
+    .screen {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      background: $gray-4;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      border-radius: 10px;
+      transform-origin: top;
+      transform: rotateX(var(--rotate-screen-x));
+      transform-style: preserve-3d; // Allow 3d for screen
+      
+      transition: all 600ms linear;
+      
+      .front, .back {
+        width: 100%;
+        height: 100%;
+      }
+      
+      .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: $white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transform: rotateZ(180deg) translateZ(1px);
+        background: $gray-2;
+        border-radius: 10px;
+      }
+      
+      .front {
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        top: 0;
+        left: 0;
+        justify-content: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+        transform: rotateZ(0) rotateX(180deg) translateZ(1px);
+        
+        padding: 6px 6px 20px;
+        
+        .main-screen {
+          border-radius: 10px;
+          background: linear-gradient(45deg, #613A83, #CC187C, #F6153C, #FF5A4C, #FF1D6E, #F5A114, #DCEBFC, #0983C2, #129DDA, #0F6FB9);
+          width: 100%;
+          height: calc(100% - (6px + 20px));
+          
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          .lock {
+            text-align: center;
+            
+            .avatar {
+              width: 30px;
+              height: 30px;
+              border-radius: 50%;
+              background: rgba($color: $white, $alpha: 0.3);
+              padding: 8px;
+              backdrop-filter: blur(10px);
+              margin: auto;
+              
+              img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+              }
+            }
+            
+            input[type='password'] {
+              background: rgba($color: white, $alpha: 0.2);
+              border-radius: 25px;
+              border: 0;
+              outline: 0;
+              padding: 6px 12px;
+              width: 80px;
+              color: $white;
+              font-size: 10px;
+              
+              &::placeholder {
+                color: $white;
+                text-align: center;
+                font-weight: 300;
+                font-size: 8px;
+              }              
+            }
+            
+            .name {
+              font-size: 8px;
+              font-weight: 400;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+    
+    .floor {
+      $gap-content: 4px;
+      $loudspeaker-width: 80px;
+      
+      display: block;
+      position: relative;
+      width: 100%;
+      height: calc(100% - 24px);
+      transform-style: preserve-3d;
+      
+      .interactive {
+        position: relative;
+        display: flex;
+        gap: 0.25rem;
+        padding: 24px $gap-content $gap-content;
+
+        .loudspeaker {
+          width: $loudspeaker-width;
+          background: $gray-3;
+          border-radius: 4px;
+        }
+
+        .main-keys {
+          $max-width-center: $macbook-width - ($gap-content * 2) - ($loudspeaker-width * 2);
+
+          .keyboards {
+            position: relative;
+
+            .row {
+              display: flex;
+              gap: 4px;
+              margin-bottom: 4px;
+              jusity-content: center;
+
+              .touchbar {
+                background: $black-2;
+                width:  $max-width-center;
+                margin: auto;
+                height: 24px;
+                border-radius: 5px;
+              }
+
+              .low-key {
+                height: 24px !important;
+              }
+
+              .key {
+                user-select: none;
+                pointer-events: none;
+                
+                $gap: $gap-content;
+                $keyboardSize: $max-width-center / 15;
+
+                flex: 1;
+                font-size: 10px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                color: $white;
+                width: $keyboardSize;
+                height: $keyboardSize;
+                background-color: $dark-1;
+                border-radius: 4px;
+
+                // 13
+                // 1.5 * 3 : delete, tab, return
+                // 2 * 1 : capslock
+                // 2.5 * 1 : shift
+                // 6: Tab
+
+                &.x1\/5 {
+                  flex: 1.5;
+                }
+
+                &.x2 {
+                  flex: 2;
+                }
+
+                &.x2\/5 {
+                  flex: 2.5;
+                }
+
+                &.x3 {
+                  flex: 3;
+                }
+
+                &.x6 {
+                  flex: 6;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .trackpad {
+        margin: auto;
+        max-width: 300px;
+        height: 240px;
+        width: 100%;
+        border-radius: 4px;
+        background: $gray-3;
+      }
+      
+      .on-sole {
+        transform: translateZ(1px);
+      }
+      
+      .sole {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 105%;
+        background: $gray-3;
+        transform: translateZ(-2px);
+        border-radius: 10px;
+      }
+    }
+  }
+}

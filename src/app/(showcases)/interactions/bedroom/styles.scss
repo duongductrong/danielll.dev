@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-.bedroom-3d {
+:root {
   --body: #09ab9a;
   --turquoise: #2496ad;
   --brown: #86473e;
@@ -10,7 +10,7 @@
   --windows-shadow-inset: #bbcae2;
   --surface-common: #e8a696;
   --surface-top: #c1e6e3;
-  // --surface-shadow-common: #60B1A7;
+  --surface-shadow-common: #60b1a7;
   --surface-shadow-common: #46201b;
   --surface-shadow-light-common: #d9d9d9;
   --surface-top-shadow-x: white;
@@ -65,7 +65,7 @@
     }
   }
 
-  .bedroom-3d {
+  body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
