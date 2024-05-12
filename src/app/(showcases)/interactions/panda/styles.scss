@@ -1,0 +1,88 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #eee;
+}
+
+.panda {
+  position: relative;
+  margin: 120px auto;
+  width: 400px;
+  height: 320px;
+  background: white;
+  border-radius: 200px 200px 150px 150px;
+  box-shadow: 0 8px 0 0 #3e3e3e;
+}
+
+.panda::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  /*   background: black; */
+  border-radius: 50%;
+  box-shadow: -160px -100px 0 25px white, 160px -100px 0 25px white,
+    -100px 4px 0 -20px white, 100px 4px 0 -20px white, -100px 10px 0 -10px black,
+    100px 10px 0 -10px black, -100px 0 0 15px #3e3e3e, 100px 0 0 15px #3e3e3e,
+    0 70px 0 -15px #3e3e3e, -120px 80px 0 0px #f08e8e, 120px 80px 0 0 #f08e8e;
+  animation: pinkChest 5s infinite;
+}
+
+.panda::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 25px;
+  border-radius: 10px 10px 30px 30px;
+  background: #3e3e3e;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*   animation: nostril 6s infinite; */
+}
+
+@keyframes face {
+  0% {
+    width: 50px;
+    border-radius: 50%;
+    height: 50px;
+  }
+  50% {
+    border-radius: 50%;
+    width: 0;
+    height: 0;
+    box-shadow: 0;
+  }
+  100% {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@keyframes pinkChest {
+  0% {
+    box-shadow: -160px -100px 0 25px white, 160px -100px 0 25px white,
+      -100px 4px 0 -20px white, 100px 4px 0 -20px white,
+      -100px 10px 0 -10px black, 100px 10px 0 -10px black,
+      -100px 0 0 15px #3e3e3e, 100px 0 0 15px #3e3e3e, 0 70px 0 -15px #3e3e3e,
+      -120px 80px 0 -30px white, 120px 80px 0 -30px white;
+  }
+  50% {
+    box-shadow: -160px -100px 0 25px white, 160px -100px 0 25px white,
+      -100px 4px 0 -20px white, 100px 4px 0 -20px white,
+      -100px 10px 0 -10px black, 100px 10px 0 -10px black,
+      -100px 0 0 15px #3e3e3e, 100px 0 0 15px #3e3e3e, 0 70px 0 -15px #3e3e3e,
+      -120px 80px 0 0px #f08e8e, 120px 80px 0 0 #f08e8e;
+  }
+  100% {
+    box-shadow: -160px -100px 0 25px white, 160px -100px 0 25px white,
+      -100px 4px 0 -20px white, 100px 4px 0 -20px white,
+      -100px 10px 0 -10px black, 100px 10px 0 -10px black,
+      -100px 0 0 15px #3e3e3e, 100px 0 0 15px #3e3e3e, 0 70px 0 -15px #3e3e3e,
+      -120px 80px 0 0px white, 120px 80px 0 0 white;
+  }
+}
