@@ -53,38 +53,38 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
               type: "image",
               src: "/assets/projects/langfarm/langfarm-admin-login.png",
             },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-orders.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-order-details.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-customers.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-content-home.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-content-editable.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-content-search.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-content-blog.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/langfarm/langfarm-admin-content-blog-details.png",
-            },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-orders.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-order-details.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-customers.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-content-home.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-content-editable.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-content-search.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-content-blog.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/langfarm/langfarm-admin-content-blog-details.png",
+            // },
           ]}
         />
 
