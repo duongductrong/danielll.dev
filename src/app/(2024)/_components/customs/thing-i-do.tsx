@@ -104,10 +104,10 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
             </>
           }
           items={[
-            {
-              type: "image",
-              src: "/assets/projects/saj/saj-login.png",
-            },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/saj/saj-login.png",
+            // },
             {
               type: "image",
               src: "/assets/projects/saj/saj-dashboard.png",
@@ -124,14 +124,14 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
               type: "image",
               src: "/assets/projects/saj/saj-dashboard-alert.png",
             },
-            {
-              type: "image",
-              src: "/assets/projects/saj/saj-users-management.png",
-            },
-            {
-              type: "image",
-              src: "/assets/projects/saj/saj-group-management.png",
-            },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/saj/saj-users-management.png",
+            // },
+            // {
+            //   type: "image",
+            //   src: "/assets/projects/saj/saj-group-management.png",
+            // },
           ]}
         />
 
