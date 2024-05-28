@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/tailwind";
 import Image from "next/image";
 import { ComponentPropsWithoutRef } from "react";
@@ -18,10 +17,10 @@ const Welcome = ({ className, ...props }: WelcomeProps) => {
           className="w-7 h-7 object-contain"
         />
       </h1>
-      <h2 className="text-2xl font-semibold flex items-center gap-2 leading-normal">
+      <h2 className="text-2xl font-semibold flex items-center gap-2 leading-normal mb-2">
         Frontend Engineer.
       </h2>
-      <h2 className="text-2xl font-normal flex items-center gap-2 leading-tight">
+      <h2 className="text-2xl font-normal flex items-center gap-2 leading-tight mb-2">
         Focused on delivery Software Application for the customer.
       </h2>
       <p className="text-lg font-light leading-relaxed text-muted-foreground">

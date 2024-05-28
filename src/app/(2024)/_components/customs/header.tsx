@@ -7,10 +7,10 @@ const Header = (props: HeaderProps) => {
     <header className="container text-center py-6">
       <div className="relative inline-block">
         <Image
-          src="/avatar-small.png"
+          src="/assets/peeps-avatar.png"
           width={80}
           height={80}
-          className="w-20 h-20 object-cover rounded-2xl"
+          className="w-24 h-24 object-cover rounded-2xl"
           alt="Avatar"
         />
 
