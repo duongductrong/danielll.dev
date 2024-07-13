@@ -6,7 +6,13 @@ export interface WelcomeProps extends ComponentPropsWithoutRef<"section"> {}
 
 const Welcome = ({ className, ...props }: WelcomeProps) => {
   return (
-    <section {...props} className={cn("container text-center flex flex-col items-center", className)}>
+    <section
+      {...props}
+      className={cn(
+        "container text-center flex flex-col items-center",
+        className
+      )}
+    >
       <h1 className="text-2xl font-semibold flex items-center gap-2 text-purple-500 leading-normal">
         Trong Duong
         <Image

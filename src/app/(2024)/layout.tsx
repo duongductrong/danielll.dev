@@ -1,7 +1,8 @@
 import NextThemeProvider from "@/components/next-theme-provider";
+import { GeistSans } from "geist/font/sans";
 import { Inter } from "next/font/google";
-import clsx from "clsx";
 
+import { cn } from "@/lib/utils/tailwind";
 import "./_styles/globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -19,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={clsx(inter.className)}>
+      <body className={cn(GeistSans.variable, "font-geist-sans")}>
         <NextThemeProvider>{children}</NextThemeProvider>
       </body>
     </html>

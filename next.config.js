@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  transpilePackages: ["geist"],
+
   images: {
     domains: [
       "res.cloudinary.com",

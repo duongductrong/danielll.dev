@@ -1,7 +1,9 @@
 import plugin from "tailwindcss/plugin";
+import { Config } from "tailwindcss/types/config";
+import { withTV } from "tailwind-variants/transformer";
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+const config = withTV({
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx,mdx}",
@@ -12,6 +14,10 @@ module.exports = {
   prefix: "",
   theme: {
     extend: {
+      fontFamily: {
+        "geist-sans": "var(--font-geist-sans)",
+        "geist-mono": "var(--font-geist-mono)",
+      },
       width: {
         base: "var(--base-size)",
       },
@@ -97,4 +103,6 @@ module.exports = {
       });
     }),
   ],
-};
+} satisfies Config);
+
+export default config;
