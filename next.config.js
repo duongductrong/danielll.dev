@@ -7,6 +7,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "https://res.cloudinary.com",
       "framerusercontent.com",
+      "*",
     ],
   },
 };
