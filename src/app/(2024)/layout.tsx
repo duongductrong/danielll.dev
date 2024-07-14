@@ -1,4 +1,5 @@
 import NextThemeProvider from "@/components/next-theme-provider";
+import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import { Inter } from "next/font/google";
 
@@ -20,7 +21,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(GeistSans.variable, "font-geist-sans")}>
+      <body
+        className={cn(
+          GeistSans.variable,
+          GeistMono.variable,
+          "font-geist-sans"
+        )}
+      >
         <NextThemeProvider>{children}</NextThemeProvider>
       </body>
     </html>
