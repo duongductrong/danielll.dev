@@ -4,8 +4,10 @@
 import { motion } from "framer-motion";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const Labs = () => {
+  const router = useRouter();
   const sayHello = "hello, i am Dan.".split(" ");
 
   return (
@@ -33,10 +35,11 @@ const Labs = () => {
       </div>
 
       <motion.div
+        role="presentation"
         initial={{ opacity: 0, translateX: "-50%", transformOrigin: "bottom" }}
         animate={{ opacity: 1, translateX: "-50%" }}
-        transition={{ duration: 3 }}
-        className="group absolute bottom-1 left-1/2 cursor-pointer flex flex-col items-center"
+        transition={{ duration: 1 }}
+        className="group absolute bottom-1 left-1/2 max-w-[400px] cursor-pointer flex flex-col items-center"
       >
         <p className="group-hover:opacity-100 group-hover:visible invisible opacity-0 text-xs inline-flex items-center gap-1 mr-8 transition-all duration-300 ease-linear">
           visit labs <ArrowRight className="w-3 h-4" />{" "}
@@ -52,7 +55,7 @@ const Labs = () => {
           />
 
           <div className="absolute transform -rotate-45 -top-4 -left-8 text-xs mr-8">
-            <div className="animate-pulse flex flex-col items-center gap-3">
+            <div className="flex flex-col items-center gap-3">
               try hover me? <ArrowDown className="w-3 h-3" />
             </div>
           </div>
@@ -65,6 +68,7 @@ const Labs = () => {
         className="absolute top-[30%] left-[60%] cursor-pointer"
         whileTap={{ opacity: 0.5, scale: 0.8 }}
         whileHover={{ scale: 1.2 }}
+        exit={{ opacity: 0 }}
       >
         <Image
           width={100}
