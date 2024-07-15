@@ -1,12 +1,12 @@
 "use client";
 /* eslint-disable react/no-unescaped-entities */
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowDown, ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const Labs = () => {
-  const sayHello = "hi, im Dan".split(" ");
-  const welcome = "welcome to my home.".split(" ");
+  const sayHello = "hello, i am Dan.".split(" ");
 
   return (
     <div className="font-geist-mono flex items-center justify-center h-lvh w-full bg-[#F7F6F4]">
@@ -30,46 +30,39 @@ const Labs = () => {
             </motion.span>
           ))}
         </motion.h2>
-        <motion.h2
-          initial={{ opacity: 0 }}
-          animate={{
-            opacity: 1,
-          }}
-          className="text-2xl font-semibold text-center max-w-[400px] flex-wrap justify-center -translate-y-8 flex gap-2"
-        >
-          {welcome.map((text, idx, texts) => (
-            <motion.span
-              key={text}
-              className="inline-flex"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: idx / texts.length }}
-            >
-              {text}
-            </motion.span>
-          ))}
-        </motion.h2>
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        initial={{ opacity: 0, translateX: "-50%", transformOrigin: "bottom" }}
+        animate={{ opacity: 1, translateX: "-50%" }}
+        transition={{ duration: 3 }}
+        className="group absolute bottom-1 left-1/2 cursor-pointer flex flex-col items-center"
       >
-        <Image
-          width={400}
-          height={400}
-          className="absolute bottom-4 left-1/2 transform -translate-x-1/2"
-          src="/assets/drawing-tree.png"
-          alt=""
-        />
+        <p className="group-hover:opacity-100 group-hover:visible invisible opacity-0 text-xs inline-flex items-center gap-1 mr-8 transition-all duration-300 ease-linear">
+          visit labs <ArrowRight className="w-3 h-4" />{" "}
+        </p>
+
+        <div className="relative">
+          <Image
+            width={400}
+            height={400}
+            className="size-full"
+            src="/assets/drawing-tree.png"
+            alt=""
+          />
+
+          <div className="absolute transform -rotate-45 -top-4 -left-8 text-xs mr-8">
+            <div className="animate-pulse flex flex-col items-center gap-3">
+              try hover me? <ArrowDown className="w-3 h-3" />
+            </div>
+          </div>
+        </div>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         className="absolute top-[30%] left-[60%] cursor-pointer"
-        // transition={{ duration: 2 }}
         whileTap={{ opacity: 0.5, scale: 0.8 }}
         whileHover={{ scale: 1.2 }}
       >
