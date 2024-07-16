@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Gela Trial 34pt';
+    src: url('GelaTrial-34pt.woff2') format('woff2'),
+        url('GelaTrial-34pt.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gela Trial 46pt';
+    src: url('GelaTrial-46pt.woff2') format('woff2'),
+        url('GelaTrial-46pt.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gela Trial 72pt';
+    src: url('GelaTrial-72pt.woff2') format('woff2'),
+        url('GelaTrial-72pt.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

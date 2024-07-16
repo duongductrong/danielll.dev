@@ -1,6 +1,7 @@
 import NextThemeProvider from "@/components/next-theme-provider";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
+import { Gelatrial } from "@/fonts/gelatrial";
 
 import { cn } from "@/lib/utils/tailwind";
 import "./_styles/globals.scss";
@@ -22,6 +23,7 @@ export default function RootLayout({
         className={cn(
           GeistSans.variable,
           GeistMono.variable,
+          Gelatrial.variable,
           "font-geist-sans"
         )}
       >
