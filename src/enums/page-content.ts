@@ -51,7 +51,55 @@ export const PAGE_CONTENT_ABOUT_ME = {
   ],
 };
 
+type Project = {
+  accessible: "public" | "private";
+  id: string;
+  slug: string;
+  detailedName: string;
+  title: string;
+  referenceSiteUrl: string;
+  description: string;
+};
+
 export const PAGE_CONTENT_PROJECTS = {
+  PARTICIPATED: [
+    {
+      accessible: "public",
+      id: "langfarmstore.com",
+      slug: "langfarm",
+      detailedName: "Langfarm E-Commerce",
+      title: "Langfarm E-Commerce",
+      referenceSiteUrl: "//langfarmstore.com",
+      description: "The e-commerce store",
+    },
+    {
+      accessible: "private",
+      id: "ranhillsaj",
+      slug: "ranhillsaj",
+      detailedName: "",
+      title: "",
+      referenceSiteUrl: "javascript:void(0)",
+      description: "",
+    },
+    {
+      accessible: "public",
+      id: "casio.anhkhue.com",
+      slug: "casio-anhkhue-com",
+      detailedName: "Anh khue Casio",
+      title: "Casio Anh Khue",
+      referenceSiteUrl: "//casio.anhkhue.com",
+      description: "The store sales the watches",
+    },
+    {
+      accessible: "public",
+      id: "surumi.co.jp",
+      slug: "surumi.co.jp",
+      detailedName: "surumi.co.jp",
+      title: "surumi.co.jp",
+      referenceSiteUrl: "//surumi.co.jp",
+      description: "A Landing page introducing AI technology",
+    },
+  ] as Project[],
   PROJECTS: [
     {
       id: "casio.anhkhue.com",
@@ -121,7 +169,7 @@ export const PAGE_CONTENT_PROJECTS = {
       },
     },
   ],
-};
+} as const;
 
 export const PAGE_CONTENT_HOME = {
   CODEPENS: [

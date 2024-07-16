@@ -1,10 +1,11 @@
 "use client";
 
+import { PAGE_CONTENT_PROJECTS } from "@/enums/page-content";
 import { cn } from "@/lib/utils/tailwind";
 import { AnimatePresence, motion, Variants } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Circle, CircleDot } from "lucide-react";
 import Image from "next/image";
-import { MouseEvent, useState } from "react";
+import { useState } from "react";
 
 export interface LabsProps {}
 
@@ -39,22 +40,9 @@ const item: Variants = {
 };
 
 const Labs = (props: LabsProps) => {
-  const [selectedPos, setSelectedPos] = useState({
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-  });
   const [selectedId, setSelectedId] = useState<string | null>("");
 
-  const handlePressProject = (
-    event: MouseEvent<HTMLButtonElement, MouseEvent>,
-    itemId: string
-  ) => {
-    const targetEl = event.target as HTMLElement;
-    const { x, y, width, height } = targetEl.getBoundingClientRect();
-    console.log({ x, y, width, height });
-    setSelectedPos({ x, y, width, height });
+  const handlePressProject = (itemId: string) => {
     setSelectedId(itemId);
   };
 
@@ -93,27 +81,33 @@ const Labs = (props: LabsProps) => {
         </motion.p>
 
         <motion.div variants={item}>
-          <p className="text-sm font-normal text-labs-muted mb-3">PROJECTS</p>
+          <p className="text-sm font-normal text-labs-muted mb-3">
+            SELECTED PARTICIPATE PROJECTS
+          </p>
           <div className="grid grid-cols-2 gap-x-4">
-            {Array(10)
-              .fill(1)
-              .map((_, idx) => (
-                <motion.button
-                  variants={item}
-                  key={idx}
-                  layoutId={idx.toString()}
-                  className="flex items-center justify-between py-2 border-b border-labs-border"
-                  onClick={(e: any) => handlePressProject(e, idx.toString())}
-                >
-                  labs{idx}.supply{" "}
+            {PAGE_CONTENT_PROJECTS.PARTICIPATED.map((project, idx) => (
+              <motion.a
+                variants={item}
+                key={idx}
+                layoutId={idx.toString()}
+                className="flex items-center justify-between py-2 border-b border-labs-border"
+                // onClick={(e: any) => handlePressProject(idx.toString())}
+                href={project.referenceSiteUrl}
+                target="_blank"
+              >
+                {project.id}
+                {project.accessible === "public" ? (
                   <ChevronRight className="size-4 text-labs-muted" />
-                </motion.button>
-              ))}
+                ) : (
+                  <CircleDot className="size-4 text-labs-muted" />
+                )}
+              </motion.a>
+            ))}
           </div>
         </motion.div>
       </motion.div>
 
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {selectedId && (
           <>
             <motion.div className="absolute text-black" layoutId={selectedId}>
@@ -138,7 +132,7 @@ const Labs = (props: LabsProps) => {
             ></motion.div>
           </>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </div>
   );
 };
