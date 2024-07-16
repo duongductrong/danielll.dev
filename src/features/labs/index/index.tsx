@@ -42,7 +42,7 @@ const Labs = (props: LabsProps) => {
     <div
       {...props}
       className={cn(
-        "font-geist-sans flex items-center justify-center",
+        "font-geist-sans flex items-center justify-center px-6 md:px-0",
         "min-h-lvh w-full bg-labs-background text-labs-foreground"
       )}
     >
