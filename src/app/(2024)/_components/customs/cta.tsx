@@ -20,7 +20,7 @@ const Cta = ({ className, ...props }: CtaProps) => {
         href="mailto:duongductrong06@gmail.com"
       >
         <Mail className="w-4 h-4 mr-2" />
-        Send email me
+        Contact me
       </Button>
     </section>
   );

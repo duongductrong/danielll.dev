@@ -24,7 +24,7 @@ const Welcome = ({ className, ...props }: WelcomeProps) => {
         />
       </h1>
       <h2 className="text-2xl font-semibold flex items-center gap-2 leading-normal mb-2">
-        Frontend Engineer.
+        Fullstack Engineer.
       </h2>
       <h2 className="text-2xl font-normal flex items-center gap-2 leading-tight mb-2">
         Focused on delivery Software Application for the customer.
