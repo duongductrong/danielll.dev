@@ -1,12 +1,9 @@
 import NextThemeProvider from "@/components/next-theme-provider";
 import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
-import { Inter } from "next/font/google";
 
 import { cn } from "@/lib/utils/tailwind";
 import "./_styles/globals.scss";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Trong Duong",

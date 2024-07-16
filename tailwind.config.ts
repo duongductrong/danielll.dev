@@ -55,6 +55,15 @@ const config = withTV({
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+
+        labs: {
+          foreground: {
+            DEFAULT: "var(--labs-foreground)",
+          },
+          background: "var(--labs-background)",
+          muted: "var(--labs-muted)",
+          border: "var(--labs-border)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
