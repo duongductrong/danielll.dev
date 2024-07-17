@@ -9,7 +9,7 @@ import RotatePersonal from "@/components/rotate-personal";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
-import { PAGE_CONTENT_HOME } from "@/enums/page-content";
+import { pageContent_HOME } from "@/enums/page-content";
 
 export default function Home() {
   return (
@@ -48,7 +48,7 @@ export default function Home() {
 
       <SmootherScrollSection asHorizontalScroll>
         <div className="flex gap-12 px-8">
-          {PAGE_CONTENT_HOME.CODEPENS.map((codepen) => (
+          {pageContent_HOME.CODEPENS.map((codepen) => (
             <a
               key={codepen.href}
               href={codepen.href}

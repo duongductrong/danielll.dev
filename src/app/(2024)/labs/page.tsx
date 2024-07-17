@@ -1,5 +1,5 @@
-import Labs from "@/features/labs/index";
+import HomePage from "@/features/static/pages/home";
 
-const Page = () => <Labs />;
+const Page = () => <HomePage />;
 
 export default Page;

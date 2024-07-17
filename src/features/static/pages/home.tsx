@@ -1,22 +1,23 @@
 "use client";
 
+import { pageContent } from "@/enums/page-content";
+import { urls } from "@/enums/urls";
 import { cn } from "@/lib/utils/tailwind";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { Container, item } from "./components/container";
-import { GridItems } from "./components/grid-items";
-import { PAGE_CONTENT_PROJECTS } from "@/enums/page-content";
-import { useMemo } from "react";
 import { ArrowDown } from "lucide-react";
+import Image from "next/image";
+import { useMemo } from "react";
+import { GridItems } from "../components/grid-items";
+import { MotionContainer, item } from "../components/motion-container";
 
 const MotionImage = motion(Image);
 
-export interface LabsProps {}
+export interface HomeProps {}
 
-const Labs = (props: LabsProps) => {
-  const participatedProjects = useMemo(
+const HomePage = (props: HomeProps) => {
+  const participatedWorks = useMemo(
     () =>
-      PAGE_CONTENT_PROJECTS.PARTICIPATED.map((item) => ({
+      pageContent.participated.map((item) => ({
         name: item.id,
         accessible: item.accessible === "public",
         referenceUrl: item.referenceSiteUrl,
@@ -26,7 +27,7 @@ const Labs = (props: LabsProps) => {
 
   const labs = useMemo(
     () =>
-      PAGE_CONTENT_PROJECTS.LABS.map((item) => ({
+      pageContent.labs.slice(0, 6).map((item) => ({
         name: item.id,
         accessible: item.accessible === "public",
         referenceUrl: item.referenceSiteUrl,
@@ -38,11 +39,11 @@ const Labs = (props: LabsProps) => {
     <div
       {...props}
       className={cn(
-        "font-geist-sans flex items-center justify-center py-6 px-6 md:px-0",
+        "font-geist-sans flex items-center justify-center py-10 px-6 md:px-0",
         "min-h-dvh w-full bg-labs-background text-labs-foreground"
       )}
     >
-      <Container>
+      <MotionContainer>
         <div className="relative inline-flex">
           <MotionImage
             whileHover={{ scale: 1.2 }}
@@ -78,13 +79,19 @@ const Labs = (props: LabsProps) => {
 
         <GridItems
           variants={item}
-          label="Selected Participate Projects"
+          label="Selected Participate Works"
           className="mb-4"
-          items={participatedProjects}
+          items={participatedWorks}
         />
 
-        <GridItems variants={item} label="Pen Labs" items={labs} />
-      </Container>
+        <GridItems
+          variants={item}
+          label="Pen Labs"
+          viewMoreLabel="See all"
+          viewMoreTo={urls.labs}
+          items={labs}
+        />
+      </MotionContainer>
 
       {/* <AnimatePresence>
         {selectedId && (
@@ -116,4 +123,4 @@ const Labs = (props: LabsProps) => {
   );
 };
 
-export default Labs;
+export default HomePage;

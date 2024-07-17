@@ -1,4 +1,4 @@
-import { Radio3d, RadioPerspective } from "@/features/labs/radio";
+import { Radio3d, RadioPerspective } from "@/features/labs/pages/radio";
 
 const RadioPage = () => {
   return (

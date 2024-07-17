@@ -1,5 +1,8 @@
+import Container from "@/components/container";
 import { motion, Variants } from "framer-motion";
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+
+const MotionContainerNode = motion(Container);
 
 export const container: Variants = {
   initial: {
@@ -32,22 +35,23 @@ export const item: Variants = {
 };
 
 export interface ContainerProps
-  extends ComponentPropsWithoutRef<typeof motion.div> {}
+  extends ComponentPropsWithoutRef<typeof MotionContainerNode> {}
 
-export const Container = forwardRef<ElementRef<"div">, ContainerProps>(
+export const MotionContainer = forwardRef<ElementRef<"div">, ContainerProps>(
   ({ children, ...props }, ref) => {
     return (
-      <motion.div
+      <MotionContainerNode
         {...props}
         ref={ref}
         variants={container}
         initial="initial"
         animate="active"
-        className="max-w-[490px]"
+        variant="xs"
+        noPadding
       >
         {children}
-      </motion.div>
+      </MotionContainerNode>
     );
   }
 );
-Container.displayName = "Container";
+MotionContainer.displayName = "Container";

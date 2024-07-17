@@ -7,7 +7,7 @@ import SmootherScrollSection from "@/components/motions/smoother-scroll-section"
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
-import { PAGE_CONTENT_PROJECTS } from "@/enums/page-content";
+import { pageContent } from "@/enums/page-content";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export interface DetailedProjectProps {
@@ -17,7 +17,7 @@ export interface DetailedProjectProps {
 }
 
 const DetailedProject = ({ params }: DetailedProjectProps) => {
-  const detailedProject = PAGE_CONTENT_PROJECTS.PROJECTS.find(
+  const detailedProject = pageContent.PROJECTS.find(
     (project) => project.slug === params.slug
   );
 

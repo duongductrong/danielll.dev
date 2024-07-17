@@ -3,8 +3,8 @@
 import { cn } from "@/lib/utils/tailwind";
 import { Pause, Play } from "lucide-react";
 import { CSSProperties, PropsWithChildren, useEffect, useState } from "react";
+
 import "./index.scss";
-import { Button } from "@/components/ui/button";
 
 export const Radio3d = () => {
   const [isPlay, setIsPlay] = useState(false);

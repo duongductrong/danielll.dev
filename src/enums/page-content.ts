@@ -1,4 +1,6 @@
-export const PAGE_CONTENT_ABOUT_ME = {
+import { urls } from "./urls";
+
+export const pageContent_ABOUT_ME = {
   WORKS_EXPERIENCE: [
     {
       id: "whammytech",
@@ -61,8 +63,8 @@ type Project = {
   description: string;
 };
 
-export const PAGE_CONTENT_PROJECTS = {
-  PARTICIPATED: [
+export const pageContent = {
+  participated: [
     {
       accessible: "public",
       id: "langfarmstore.com",
@@ -78,7 +80,7 @@ export const PAGE_CONTENT_PROJECTS = {
       slug: "ranhillsaj",
       detailedName: "",
       title: "",
-      referenceSiteUrl: "javascript:void(0)",
+      referenceSiteUrl: urls.workItem.replace("[id]", "ranhillsaj"),
       description: "",
     },
     {
@@ -100,7 +102,7 @@ export const PAGE_CONTENT_PROJECTS = {
       description: "A Landing page introducing AI technology",
     },
   ] as Project[],
-  LABS: [
+  labs: [
     {
       accessible: "public",
       id: "radio.3d",
@@ -109,6 +111,51 @@ export const PAGE_CONTENT_PROJECTS = {
       title: "radio.3d",
       referenceSiteUrl: "/labs/radio",
       description: "radio.3d",
+    },
+    {
+      accessible: "public",
+      id: "bedroom.3d",
+      slug: "bedroom.3d",
+      detailedName: "bedroom.3d",
+      title: "bedroom.3d",
+      referenceSiteUrl: "/labs/bedroom",
+      description: "bedroom.3d",
+    },
+    {
+      accessible: "public",
+      id: "macbook.3d",
+      slug: "macbook.3d",
+      detailedName: "macbook.3d",
+      title: "macbook.3d",
+      referenceSiteUrl: "/labs/macbook",
+      description: "macbook.3d",
+    },
+    {
+      accessible: "public",
+      id: "desk",
+      slug: "desk",
+      detailedName: "desk",
+      title: "desk",
+      referenceSiteUrl: "/labs/desk",
+      description: "desk",
+    },
+    {
+      accessible: "public",
+      id: "lottery-machine",
+      slug: "lottery-machine",
+      detailedName: "lottery-machine",
+      title: "lottery-machine",
+      referenceSiteUrl: "/labs/lottery-machine",
+      description: "lottery-machine",
+    },
+    {
+      accessible: "public",
+      id: "note10",
+      slug: "note10.3d",
+      detailedName: "note10.3d",
+      title: "note10.3d",
+      referenceSiteUrl: "/labs/note10",
+      description: "note10.3d",
     },
   ] as Project[],
   PROJECTS: [
@@ -182,7 +229,7 @@ export const PAGE_CONTENT_PROJECTS = {
   ],
 } as const;
 
-export const PAGE_CONTENT_HOME = {
+export const pageContent_HOME = {
   CODEPENS: [
     {
       href: "https://codepen.io/CodeEN/pen/gOzByzm",

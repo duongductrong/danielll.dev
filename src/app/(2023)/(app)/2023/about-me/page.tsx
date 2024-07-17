@@ -9,7 +9,7 @@ import ReferenceSocialsGroup from "@/components/reference-socials-group";
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
-import { PAGE_CONTENT_ABOUT_ME } from "@/enums/page-content";
+import { pageContent_ABOUT_ME } from "@/enums/page-content";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -84,7 +84,7 @@ const AboutMe = (props: AboutMeProps) => {
           <TextLegend>My journey</TextLegend>
           <TextMain className="mb-12">Work Experience</TextMain>
 
-          {PAGE_CONTENT_ABOUT_ME.WORKS_EXPERIENCE.map((content) => (
+          {pageContent_ABOUT_ME.WORKS_EXPERIENCE.map((content) => (
             <div
               key={content.id}
               className="flex flex-col md:flex-row items-start justify-start mb-20 gap-4"
@@ -132,7 +132,7 @@ const AboutMe = (props: AboutMeProps) => {
             <p className="text-lg font-medium mb-2">Laravel</p>
             <p className="text-lg font-medium mb-2">Problem Solving</p>
           </div>
-          {/* {PAGE_CONTENT_ABOUT_ME.WORKS_EXPERIENCE.map((content) => (
+          {/* {pageContent_ABOUT_ME.WORKS_EXPERIENCE.map((content) => (
             <div>12</div>
           ))} */}
         </Container>

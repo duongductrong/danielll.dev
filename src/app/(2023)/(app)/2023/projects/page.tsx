@@ -7,7 +7,7 @@ import SmootherScrollSection from "@/components/motions/smoother-scroll-section"
 import TextDescription from "@/components/texts/text-description";
 import TextLegend from "@/components/texts/text-legend";
 import TextMain from "@/components/texts/text-main";
-import { PAGE_CONTENT_PROJECTS } from "@/enums/page-content";
+import { pageContent } from "@/enums/page-content";
 
 export interface ProjectListProps {}
 
@@ -28,7 +28,7 @@ const ProjectList = (props: ProjectListProps) => {
 
       <SmootherScrollSection className="py-24">
         <Container className="flex flex-col gap-32">
-          {PAGE_CONTENT_PROJECTS.PROJECTS.map((project) => (
+          {pageContent.PROJECTS.map((project) => (
             <ThreeDInteractionCard
               key={project.id}
               title={project.title}
