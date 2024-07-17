@@ -100,6 +100,17 @@ export const PAGE_CONTENT_PROJECTS = {
       description: "A Landing page introducing AI technology",
     },
   ] as Project[],
+  LABS: [
+    {
+      accessible: "public",
+      id: "radio.3d",
+      slug: "radio.3d",
+      detailedName: "radio.3d",
+      title: "radio.3d",
+      referenceSiteUrl: "/labs/radio",
+      description: "radio.3d",
+    },
+  ] as Project[],
   PROJECTS: [
     {
       id: "casio.anhkhue.com",

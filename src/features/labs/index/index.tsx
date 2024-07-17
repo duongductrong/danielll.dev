@@ -1,111 +1,90 @@
 "use client";
 
-import { PAGE_CONTENT_PROJECTS } from "@/enums/page-content";
 import { cn } from "@/lib/utils/tailwind";
-import { AnimatePresence, motion, Variants } from "framer-motion";
-import { ChevronRight, Circle, CircleDot } from "lucide-react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { Container, item } from "./components/container";
+import { GridItems } from "./components/grid-items";
+import { PAGE_CONTENT_PROJECTS } from "@/enums/page-content";
+import { useMemo } from "react";
+import { ArrowDown } from "lucide-react";
+
+const MotionImage = motion(Image);
 
 export interface LabsProps {}
 
-const container: Variants = {
-  initial: {
-    opacity: 0,
-    y: 5,
-  },
-  active: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      delayChildren: 0.2,
-      staggerChildren: 0.2,
-    },
-  },
-};
-
-const item: Variants = {
-  initial: {
-    opacity: 0,
-    y: 5,
-  },
-  active: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 const Labs = (props: LabsProps) => {
-  const [selectedId, setSelectedId] = useState<string | null>("");
+  const participatedProjects = useMemo(
+    () =>
+      PAGE_CONTENT_PROJECTS.PARTICIPATED.map((item) => ({
+        name: item.id,
+        accessible: item.accessible === "public",
+        referenceUrl: item.referenceSiteUrl,
+      })),
+    []
+  );
 
-  const handlePressProject = (itemId: string) => {
-    setSelectedId(itemId);
-  };
+  const labs = useMemo(
+    () =>
+      PAGE_CONTENT_PROJECTS.LABS.map((item) => ({
+        name: item.id,
+        accessible: item.accessible === "public",
+        referenceUrl: item.referenceSiteUrl,
+      })),
+    []
+  );
 
   return (
     <div
       {...props}
       className={cn(
-        "font-geist-sans flex items-center justify-center px-6 md:px-0",
-        "min-h-lvh w-full bg-labs-background text-labs-foreground"
+        "font-geist-sans flex items-center justify-center py-6 px-6 md:px-0",
+        "min-h-dvh w-full bg-labs-background text-labs-foreground"
       )}
     >
-      <motion.div
-        variants={container}
-        initial="initial"
-        animate="active"
-        className="max-w-[490px]"
-      >
-        <Image
-          src="/assets/peeps-avatar-alpha-transparent.png"
-          width={80}
-          height={80}
-          className="w-10 h-10 object-cover rounded-md mb-4 bg-labs-foreground"
-          alt="Avatar"
-        />
-        <motion.h2 variants={item} className="text-2xl font-bold mb-4">
-          Daniel <span className="text-sm">(Trong Duong)</span>
-        </motion.h2>
+      <Container>
+        <div className="relative inline-flex">
+          <MotionImage
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ scale: 0.9 }}
+            src="/assets/peeps-avatar-alpha-transparent.png"
+            width={80}
+            height={80}
+            className="w-10 h-10 object-cover rounded-md mb-4 bg-labs-foreground cursor-pointer"
+            alt="Avatar"
+          />
+
+          <p
+            className={cn(
+              "text-sm font-geist-mono absolute -top-10 -right-16 whitespace-nowrap transform rotate-[30deg]",
+              "flex items-center flex-col gap-2"
+            )}
+          >
+            about me
+            <ArrowDown className="w-4 h-4 mr-8" />
+          </p>
+        </div>
+        <motion.h1 variants={item} className="text-2xl font-bold mb-4">
+          Daniel <span className="text-sm">Trong Duong</span>
+        </motion.h1>
         <motion.p
           variants={item}
           className="text-2xl font-light text-labs-muted mb-10"
         >
-          A front-end engineer, craft intuitive user interfaces and optimize web
-          performance. I work with modern frameworks to build responsive
-          designs, ensuring seamless experiences across devices while
-          collaborating with cross-functional teams.
+          As a software developer, I build responsive designs, optimize web
+          performance, ensure smooth experiences across devices, and collaborate
+          with cross-functional teams using modern frameworks.
         </motion.p>
 
-        <motion.div variants={item}>
-          <p className="text-sm font-normal text-labs-muted mb-3">
-            SELECTED PARTICIPATE PROJECTS
-          </p>
-          <div className="grid grid-cols-2 gap-x-4">
-            {PAGE_CONTENT_PROJECTS.PARTICIPATED.map((project, idx) => (
-              <motion.a
-                variants={item}
-                key={idx}
-                layoutId={idx.toString()}
-                className="flex items-center justify-between py-2 border-b border-labs-border"
-                // onClick={(e: any) => handlePressProject(idx.toString())}
-                href={project.referenceSiteUrl}
-                target="_blank"
-              >
-                {project.id}
-                {project.accessible === "public" ? (
-                  <ChevronRight className="size-4 text-labs-muted" />
-                ) : (
-                  <CircleDot className="size-4 text-labs-muted" />
-                )}
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
-      </motion.div>
+        <GridItems
+          variants={item}
+          label="Selected Participate Projects"
+          className="mb-4"
+          items={participatedProjects}
+        />
+
+        <GridItems variants={item} label="Pen Labs" items={labs} />
+      </Container>
 
       {/* <AnimatePresence>
         {selectedId && (

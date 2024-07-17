@@ -1,7 +1,5 @@
 import Labs from "@/features/labs/index";
 
-const Page = () => {
-  return <Labs />;
-};
+const Page = () => <Labs />;
 
 export default Page;
