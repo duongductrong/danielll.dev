@@ -11,7 +11,7 @@ const About = ({ className, ...props }: AboutProps) => {
         About me
       </h2>
       <p className="text-base font-normal leading-normal text-muted-foreground">
-        I'm Trong (or Dan), a Frontend Engineer with over 3 years of experience.
+        I'm Trong (or Dan), a Fullstack Engineer with over 3 years of experience.
         Specializing in Web application, Landing page, I craft highly usable
         interfaces and design systems tailored to your needs.
         <br />
