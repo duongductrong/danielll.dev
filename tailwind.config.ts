@@ -59,11 +59,11 @@ const config = withTV({
 
         labs: {
           foreground: {
-            DEFAULT: "var(--labs-foreground)",
+            DEFAULT: "var(--foreground)",
           },
-          background: "var(--labs-background)",
-          muted: "var(--labs-muted)",
-          border: "var(--labs-border)",
+          background: "var(--background)",
+          muted: "var(--muted)",
+          border: "var(--border)",
         },
       },
       borderRadius: {

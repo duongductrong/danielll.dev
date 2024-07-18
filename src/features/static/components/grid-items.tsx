@@ -25,7 +25,7 @@ export const GridItems = forwardRef<
 >(({ variants, label, items, viewMoreTo, viewMoreLabel, ...props }, ref) => {
   return (
     <motion.div {...props} variants={variants} ref={ref}>
-      <p className="flex justify-between items-center gap-4 text-xs font-normal text-labs-muted mb-3 uppercase">
+      <p className="flex justify-between items-center gap-4 text-xs font-normal text-muted mb-3 uppercase">
         {label}
 
         {viewMoreLabel ? (
@@ -41,14 +41,14 @@ export const GridItems = forwardRef<
               variants={variants}
               role="navigation"
               aria-label={item.name}
-              className="flex items-center justify-between py-2 min-h-11 border-b border-labs-border"
+              className="flex items-center justify-between py-2 min-h-11 border-b border-border"
               href={item.referenceUrl}
             >
               {item.name}
               {item.accessible ? (
-                <ChevronRight className="size-4 text-labs-muted" />
+                <ChevronRight className="size-4 text-muted" />
               ) : (
-                <CircleDot className="size-4 text-labs-muted" />
+                <CircleDot className="size-4 text-muted" />
               )}
             </MotionLink>
           );

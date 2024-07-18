@@ -1,5 +1,8 @@
+const prefix = "/v01";
+
 export const urls = {
-  works: "/works",
-  workItem: "/works/[id]",
-  labs: "/labs",
+  works: prefix + "/works",
+  workItem: prefix + "/works/[id]",
+  labs: prefix + "/labs",
+  labView: prefix + "/labs/[id]",
 };

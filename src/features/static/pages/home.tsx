@@ -40,7 +40,7 @@ const HomePage = (props: HomeProps) => {
       {...props}
       className={cn(
         "font-geist-sans flex items-center justify-center py-10 px-6 md:px-0",
-        "min-h-dvh w-full bg-labs-background text-labs-foreground"
+        "min-h-dvh w-full bg-background text-foreground"
       )}
     >
       <MotionContainer>
@@ -51,7 +51,7 @@ const HomePage = (props: HomeProps) => {
             src="/assets/peeps-avatar-alpha-transparent.png"
             width={80}
             height={80}
-            className="w-10 h-10 object-cover rounded-md mb-4 bg-labs-foreground cursor-pointer"
+            className="w-10 h-10 object-cover rounded-md mb-4 bg-foreground cursor-pointer"
             alt="Avatar"
           />
 
@@ -70,7 +70,7 @@ const HomePage = (props: HomeProps) => {
         </motion.h1>
         <motion.p
           variants={item}
-          className="text-2xl font-light text-labs-muted mb-10"
+          className="text-2xl font-light text-muted mb-10"
         >
           As a software developer, I build responsive designs, optimize web
           performance, ensure smooth experiences across devices, and collaborate

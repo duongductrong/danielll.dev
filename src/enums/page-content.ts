@@ -61,6 +61,7 @@ type Project = {
   title: string;
   referenceSiteUrl: string;
   description: string;
+  thumbnail?: string;
 };
 
 export const pageContent = {
@@ -109,8 +110,9 @@ export const pageContent = {
       slug: "radio.3d",
       detailedName: "radio.3d",
       title: "radio.3d",
-      referenceSiteUrl: "/labs/radio",
+      referenceSiteUrl: urls.labView.replace("[id]", "radio"),
       description: "radio.3d",
+      thumbnail: "/assets/thumbnails/radio-3d.png",
     },
     {
       accessible: "public",
@@ -118,8 +120,9 @@ export const pageContent = {
       slug: "bedroom.3d",
       detailedName: "bedroom.3d",
       title: "bedroom.3d",
-      referenceSiteUrl: "/labs/bedroom",
+      referenceSiteUrl: urls.labView.replace("[id]", "bedroom"),
       description: "bedroom.3d",
+      thumbnail: "/assets/thumbnails/bedroom-3d.png",
     },
     {
       accessible: "public",
@@ -127,8 +130,9 @@ export const pageContent = {
       slug: "macbook.3d",
       detailedName: "macbook.3d",
       title: "macbook.3d",
-      referenceSiteUrl: "/labs/macbook",
+      referenceSiteUrl: urls.labView.replace("[id]", "macbook"),
       description: "macbook.3d",
+      thumbnail: "/assets/thumbnails/macbook-3d.png",
     },
     {
       accessible: "public",
@@ -136,8 +140,9 @@ export const pageContent = {
       slug: "desk",
       detailedName: "desk",
       title: "desk",
-      referenceSiteUrl: "/labs/desk",
+      referenceSiteUrl: urls.labView.replace("[id]", "desk"),
       description: "desk",
+      thumbnail: "/assets/thumbnails/desk-3d.png",
     },
     {
       accessible: "public",
@@ -145,17 +150,19 @@ export const pageContent = {
       slug: "lottery-machine",
       detailedName: "lottery-machine",
       title: "lottery-machine",
-      referenceSiteUrl: "/labs/lottery-machine",
+      referenceSiteUrl: urls.labView.replace("[id]", "lottery-machine"),
       description: "lottery-machine",
+      thumbnail: "/assets/thumbnails/lottery-machine.png",
     },
     {
       accessible: "public",
       id: "note10",
-      slug: "note10.3d",
-      detailedName: "note10.3d",
-      title: "note10.3d",
-      referenceSiteUrl: "/labs/note10",
-      description: "note10.3d",
+      slug: "note10",
+      detailedName: "note10",
+      title: "note10",
+      referenceSiteUrl: urls.labView.replace("[id]", "note10"),
+      description: "note10",
+      thumbnail: "/assets/thumbnails/note-10.png",
     },
   ] as Project[],
   PROJECTS: [
