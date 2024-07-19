@@ -49,7 +49,7 @@ const Button = React.forwardRef(
       variant,
       size,
       asChild = false,
-      as: AsComp = "button",
+      component: AsComp = "button",
       ...props
     },
     ref

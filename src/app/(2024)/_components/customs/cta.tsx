@@ -16,7 +16,7 @@ const Cta = ({ className, ...props }: CtaProps) => {
       <Button
         variant="ghost"
         className="rounded-full"
-        as="a"
+        component="a"
         href="mailto:duongductrong06@gmail.com"
       >
         <Mail className="w-4 h-4 mr-2" />
