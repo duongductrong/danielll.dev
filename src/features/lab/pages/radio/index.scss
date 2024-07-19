@@ -42,8 +42,9 @@ $radio-compact-disc-width: 4px;
   height: $radio-height;
   background-color: $color-radio-skin;
 
-  transform: rotateX(-10deg) rotateY(-40deg) translateZ(var(--depth, 50px));
-  transform-origin: left top;
+  transform: rotateX(-10deg) rotateY(calc(-40deg + var(--controls-rotate)))
+    translateZ(var(--depth, 50px));
+  transform-origin: center;
   transform-style: preserve-3d;
 
   transition: all 300ms ease;
@@ -137,6 +138,40 @@ $radio-compact-disc-width: 4px;
         }
       }
     }
+
+    &.left {
+      width: $radio-side-width;
+      height: $radio-height;
+      background-color: $color-radio-skin;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-origin: left;
+      transform: rotateY(90deg);
+    }
+
+    &.bottom {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: $radio-width;
+      height: $radio-side-width;
+      background-color: $color-radio-skin;
+      transform-origin: top;
+      transform: rotateX(-90deg);
+    }
+  }
+
+  .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(-$radio-side-width);
+    transform-style: preserve-3d;
+    top: 0;
+    left: 0;
+    background-color: $color-radio-side-top;
   }
 
   .face {

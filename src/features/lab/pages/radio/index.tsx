@@ -11,6 +11,9 @@ export const Radio3d = () => {
 
   return (
     <div className={cn("radio-3d ", isPlay ? "active" : "")}>
+      <div className="back"></div>
+      <div className="side left"></div>
+      <div className="side bottom"></div>
       <div className="side top">
         <div className="bordered"></div>
       </div>
