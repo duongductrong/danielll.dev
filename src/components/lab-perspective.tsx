@@ -116,7 +116,7 @@ export const LabNavigation = (props: LabNavigationProps) => {
         className="px-2 h-8 gap-2 rounded-md bg-black block items-center justify-center flex text-sm"
       >
         <ArrowLeft className="size-4" />
-        Back to labs
+        Back
       </Link>
     </div>
   );

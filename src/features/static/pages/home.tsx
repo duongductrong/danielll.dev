@@ -21,6 +21,7 @@ const HomePage = (props: HomeProps) => {
         name: item.id,
         accessible: item.accessible === "public",
         referenceUrl: item.referenceSiteUrl,
+        id: item.id
       })),
     []
   );
@@ -31,6 +32,8 @@ const HomePage = (props: HomeProps) => {
         name: item.id,
         accessible: item.accessible === "public",
         referenceUrl: item.referenceSiteUrl,
+        id: item.id,
+        thumbnail: item.thumbnail,
       })),
     []
   );
@@ -93,6 +96,7 @@ const HomePage = (props: HomeProps) => {
           viewMoreLabel="See all"
           viewMoreTo={urls.labs}
           items={labs}
+          preview
         />
       </MotionContainer>
 
