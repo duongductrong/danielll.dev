@@ -3,15 +3,15 @@
 import Container from "@/components/container";
 import { pageContent } from "@/enums/page-content";
 import { cn } from "@/lib/utils/tailwind";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+
+const MotionCard = motion(Link);
 
 export interface LabsViewPageProps {}
 
 const LabsViewPage = (props: LabsViewPageProps) => {
-  const MotionCard = motion(Link);
-
   return (
     <div className="bg-background text-foreground">
       <Container
