@@ -17,7 +17,10 @@ const config = withTV({
       fontFamily: {
         "geist-sans": "var(--font-geist-sans)",
         "geist-mono": "var(--font-geist-mono)",
-        'gelatrial': "var(--font-gelatrial)",
+        gelatrial: "var(--font-gelatrial)",
+      },
+      fontSize: {
+        xxs: "0.625rem",
       },
       width: {
         base: "var(--base-size)",

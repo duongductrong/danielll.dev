@@ -80,7 +80,7 @@ export const pageContent = {
       id: "ranhillsaj",
       slug: "ranhillsaj",
       detailedName: "",
-      title: "",
+      title: "Ranhillsaj",
       referenceSiteUrl: urls.workItem.replace("[id]", "ranhillsaj"),
       description: "",
     },
