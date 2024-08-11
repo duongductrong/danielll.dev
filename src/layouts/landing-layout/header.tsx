@@ -1,13 +1,15 @@
 "use client";
 
 import { urls } from "@/enums/urls";
-import { BotIcon } from "lucide-react";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils/tailwind";
+import { AnimatePresence, motion } from "framer-motion";
+import { BotIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const MotionLink = motion(Link);
+const MotionImage = motion(Image);
 
 export interface LandingHeaderProps {}
 
@@ -30,8 +32,29 @@ export const LandingHeader = (props: LandingHeaderProps) => {
         exit={{ opacity: 0, x: -100 }}
         className="flex items-center gap-4 leading-snug w-full max-w-[20%]"
       >
-        {/* <BrandIcon className="w-6 h-6" /> */}
-        <BotIcon className="w-6 h-6 shrink-0" />
+        {isHome ? (
+          <BotIcon className="w-6 h-6 shrink-0" />
+        ) : (
+          <AnimatePresence>
+            <MotionImage
+              whileHover={{ scale: 1.125 }}
+              whileTap={{ scale: 0.95 }}
+              drag
+              dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
+              transition={{ duration: 0.5 }}
+              src="/assets/peeps-avatar-alpha-transparent.png"
+              width={40}
+              height={40}
+              className={cn(
+                "size-8 object-cover rounded-md cursor-pointer rounded-full grayscale",
+                "border border-foreground/10"
+              )}
+              alt="Avatar"
+              placeholder="blur"
+              blurDataURL="/assets/peeps-avatar-alpha-transparent.png"
+            />
+          </AnimatePresence>
+        )}
         <p className="text-xxs">
           Open for any <br /> collaborations and offers
         </p>

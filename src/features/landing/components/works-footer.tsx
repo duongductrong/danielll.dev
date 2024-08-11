@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React, { ComponentPropsWithoutRef } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils/tailwind";

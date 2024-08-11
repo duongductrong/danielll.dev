@@ -4,7 +4,6 @@ import { urls } from "@/enums/urls";
 import { cn } from "@/lib/utils/tailwind";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
-import { ReactEventHandler, useState } from "react";
 
 const items = [
   {
@@ -50,23 +49,23 @@ const itemVariant: Variants = {
 export interface HomeNavigationProps {}
 
 export const HomeNavigation = (props: HomeNavigationProps) => {
-  const [selectedItemIndex, setSelectedItemIndex] = useState<number>(-1);
+  // const [selectedItemIndex, setSelectedItemIndex] = useState<number>(-1);
 
-  const handleOnMouseEnter = (index: number) => {
-    const func: ReactEventHandler<HTMLAnchorElement> = (ev) => {
-      ev.preventDefault();
+  // const handleOnMouseEnter = (index: number) => {
+  //   const func: ReactEventHandler<HTMLAnchorElement> = (ev) => {
+  //     ev.preventDefault();
 
-      setSelectedItemIndex(index);
-    };
+  //     setSelectedItemIndex(index);
+  //   };
 
-    return func;
-  };
+  //   return func;
+  // };
 
-  const handleOnMouseLeave = () => {
-    setSelectedItemIndex(-1);
-  };
+  // const handleOnMouseLeave = () => {
+  //   setSelectedItemIndex(-1);
+  // };
 
-  const selectedItem = items?.[selectedItemIndex];
+  // const selectedItem = items?.[selectedItemIndex];
 
   return (
     <motion.nav
@@ -118,7 +117,7 @@ export const HomeNavigation = (props: HomeNavigationProps) => {
           <Link
             href={path}
             key={id}
-            className="text-xs z-10 flex flex-col items-start gap-1"
+            className="group text-xs z-10 flex flex-col items-start gap-1 min-w-[50px]"
             // onMouseEnter={handleOnMouseEnter(idx)}
             // onMouseLeave={handleOnMouseLeave}
           >
@@ -135,14 +134,15 @@ export const HomeNavigation = (props: HomeNavigationProps) => {
             </span>
             <p
               className={cn(
-                "inline-block",
-                selectedItem
-                  ? "text-background transition-all duration-300"
-                  : ""
+                "inline-block"
+                // selectedItem
+                //   ? "text-background transition-all duration-300"
+                //   : ""
               )}
             >
               {label}
             </p>
+            <div className="h-[1px] w-0 group-hover:w-full bg-foreground transition-all duration-300"></div>
           </Link>
         );
       })}
