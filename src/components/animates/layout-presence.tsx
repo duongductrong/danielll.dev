@@ -35,8 +35,6 @@ function FrozenRouter(props: { children: React.ReactNode }) {
     segment !== undefined &&
     prevSegment !== undefined;
 
-  console.log("changed", changed, prevContext, context);
-
   return (
     <LayoutRouterContext.Provider value={changed ? prevContext : context}>
       {props.children}
@@ -47,16 +45,7 @@ function FrozenRouter(props: { children: React.ReactNode }) {
 export interface LayoutPresenceProps extends PropsWithChildren {}
 
 export const LayoutPresence = ({ children }: LayoutPresenceProps) => {
-  // const pathname = usePathname();
-  // const [segment, setSegment] = useState(pathname);
-
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setSegment(segment);
-  //   });
-  // }, [segment]);
-
-  const segment = useSelectedLayoutSegment()
+  const segment = useSelectedLayoutSegment();
 
   return (
     <AnimatePresence mode="wait">
