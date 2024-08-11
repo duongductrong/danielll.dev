@@ -23,7 +23,8 @@ export const LandingHeader = (props: LandingHeaderProps) => {
       className={cn(
         "sticky top-0 left-0 py-2 sm:py-5 px-4 md:py-10 md:px-8",
         "flex items-center justify-between overflow-hidden",
-        "z-50 transform-gpu will-change-transform text-foreground transition-all duration-300"
+        "z-50 transform-gpu will-change-transform text-foreground transition-all duration-300",
+        "max-h-[71px] md:max-h-[117px]"
       )}
     >
       <motion.div

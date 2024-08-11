@@ -45,7 +45,7 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
           exit="initial"
           className="text-7xl md:text-[10.58vw] leading-tight xs:leading-normal font-gelatrial text-center overflow-hidden"
         >
-          {"Daniel\nD.".split("").map((char, idx) => (
+          {"Daniel\n.".split("").map((char, idx) => (
             <motion.span
               key={idx}
               className={cn("inline-flex", char.includes("\n") ? "mr-10" : "")}
@@ -72,7 +72,7 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
         <HomeNavigation className="mt-10 md:mt-10" />
       </div>
 
-      <div className="flex items-center justify-between pb-4 px-4 md:pb-32 md:px-32">
+      <div className="flex items-center justify-between pb-4 px-4 md:pb-24 md:px-8 lg:pb-32 lg:px-32">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 1 } }}
@@ -115,7 +115,7 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
           // initial={{ opacity: 0, scale: 0, rotate: 360 }}
           // animate={{ opacity: 1, scale: 1, rotate: 0 }}
           exit={{ opacity: 0, scale: 0, rotate: -360 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.25 }}
           src="/assets/peeps-avatar-alpha-transparent.png"
           width={550}
           height={550}
