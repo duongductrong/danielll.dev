@@ -5,39 +5,23 @@ import { motion, useInView, Variants } from "framer-motion";
 import Link from "next/link";
 import { memo, useRef } from "react";
 import { useLandingMenu } from "./use-landing-menu";
+import { urls } from "@/enums/urls";
 
 const MotionLink = motion(Link);
-
-const variants: Variants = {
-  initial: {
-    opacity: 0,
-    y: 50,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.35, staggerChildren: 0.2 },
-  },
-  exit: {
-    opacity: 0,
-    y: 50,
-    transition: { duration: 0.5 },
-  },
-};
 
 export const LandingMenuList = () => {
   const itemRef = useRef<HTMLElement>(null);
 
   return (
-    <motion.main
-      ref={itemRef}
-      // variants={variants}
-      // initial="initial"
-      // animate="visible"
-      // exit="exit"
-      className="flex flex-col gap-8 items-end"
-    >
-      {pageNavigateItems.map((item, index) => {
+    <motion.main ref={itemRef} className="flex flex-col gap-8 items-end">
+      {[
+        {
+          id: "home",
+          label: "Home",
+          path: urls.landing.home,
+        },
+        ...pageNavigateItems,
+      ].map((item, index) => {
         return <LandingMenuItem key={item.id} item={item} index={index} />;
       })}
     </motion.main>

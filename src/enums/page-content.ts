@@ -286,6 +286,6 @@ export const pageNavigateItems = [
   {
     id: "Contact",
     label: "Contact",
-    path: urls.landing.labs,
+    path: urls.landing.contact,
   },
 ];

@@ -7,9 +7,9 @@ export const urls = {
   labView: prefix + "/labs/[id]",
 
   landing: {
-    home: "/v2",
-    works: "/v2/works",
-    about: "/v2/about",
-    labs: "/v2/labs",
+    home: "/",
+    works: "/works",
+    about: "/about",
+    contact: "/contact",
   },
 };

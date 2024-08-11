@@ -80,7 +80,7 @@ export const LandingMenu = (props: LandingMenuProps) => {
               <p>
                 Github:{" "}
                 <Link href="//github.com/duongductrong">
-                  //github.com/duongductrong06
+                  git:duongductrong06
                 </Link>
               </p>
               <p>Built with ❤️ by Trong Duong {"<Daniel />"}.</p>
