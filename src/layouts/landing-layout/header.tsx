@@ -21,9 +21,9 @@ export const LandingHeader = (props: LandingHeaderProps) => {
   return (
     <header
       className={cn(
-        "sticky top-0 left-0 py-10 px-8",
+        "sticky top-0 left-0 py-2 sm:py-5 px-4 md:py-10 md:px-8",
         "flex items-center justify-between overflow-hidden",
-        "z-50 transform-gpu will-change-transform text-foreground"
+        "z-50 transform-gpu will-change-transform text-foreground transition-all duration-300"
       )}
     >
       <motion.div
@@ -55,8 +55,8 @@ export const LandingHeader = (props: LandingHeaderProps) => {
             />
           </AnimatePresence>
         )}
-        <p className="text-xxs">
-          Open for any <br /> collaborations and offers
+        <p className="text-xxs invisible sm:visible">
+          Open for any <br /> collaborations and freelance.
         </p>
       </motion.div>
 
@@ -77,7 +77,7 @@ export const LandingHeader = (props: LandingHeaderProps) => {
         className="max-w-[20%] w-full text-right text-xxs"
       >
         {isHome ? (
-          "Folio Vol.02"
+          "Folio v1.0"
         ) : (
           <div
             className={cn(

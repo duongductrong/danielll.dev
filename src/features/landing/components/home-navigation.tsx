@@ -4,6 +4,7 @@ import { urls } from "@/enums/urls";
 import { cn } from "@/lib/utils/tailwind";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
+import { ComponentPropsWithoutRef } from "react";
 
 const items = [
   {
@@ -46,9 +47,13 @@ const itemVariant: Variants = {
   },
 };
 
-export interface HomeNavigationProps {}
+export interface HomeNavigationProps
+  extends ComponentPropsWithoutRef<typeof motion.div> {}
 
-export const HomeNavigation = (props: HomeNavigationProps) => {
+export const HomeNavigation = ({
+  className,
+  ...props
+}: HomeNavigationProps) => {
   // const [selectedItemIndex, setSelectedItemIndex] = useState<number>(-1);
 
   // const handleOnMouseEnter = (index: number) => {
@@ -69,12 +74,14 @@ export const HomeNavigation = (props: HomeNavigationProps) => {
 
   return (
     <motion.nav
+      {...props}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className={cn(
         // "fixed top-[55%] left-0 w-full text-center",
-        "flex items-center justify-evenly gap-4 px-8 mt-10"
+        "flex items-center justify-evenly gap-4 px-8",
+        className
       )}
     >
       {/* {selectedItem ? (
@@ -117,7 +124,7 @@ export const HomeNavigation = (props: HomeNavigationProps) => {
           <Link
             href={path}
             key={id}
-            className="group text-xs z-10 flex flex-col items-start gap-1 min-w-[50px]"
+            className="group text-xs z-10 flex flex-col gap-1 min-w-[50px] items-center md:items-start"
             // onMouseEnter={handleOnMouseEnter(idx)}
             // onMouseLeave={handleOnMouseLeave}
           >

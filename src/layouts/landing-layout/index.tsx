@@ -10,8 +10,6 @@ export const LandingLayout = ({ children }: LandingLayoutProps) => {
       <LandingHeader />
       <LandingMain>{children}</LandingMain>
       {/* <LandingFooter /> */}
-
-      {/* <HomeNavigation /> */}
     </>
   );
 };

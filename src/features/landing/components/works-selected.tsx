@@ -20,7 +20,7 @@ export const WorksSelected = (props: WorkSelectedProps) => {
     <motion.section ref={containerRef} className="min-h-[300vh]">
       <motion.div
         ref={layoutRef}
-        className="sticky top-8 left-0 py-8 px-8 flex flex-col gap-8 h-full"
+        className="sticky top-16 left-0 py-8 px-8 flex flex-col gap-8 h-full"
       >
         {pageContent.participated.map((participated, idx) => (
           <WorkSelectedItem
@@ -64,7 +64,7 @@ const WorkSelectedItem = memo(
           } as MotionStyle
         }
         className={cn(
-          "sticky top-8 flex items-center justify-center",
+          "sticky top-16 flex items-center justify-center",
           "shrink-0 h-[calc(100vh-4rem)] w-full rounded-lg group",
           " overflow-hidden",
           isEven

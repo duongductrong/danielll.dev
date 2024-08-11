@@ -69,6 +69,12 @@ const config = withTV({
           border: "var(--border)",
         },
       },
+      screens: {
+        xs: "380px",
+        sm: "445px",
+
+        "lg.next": "1024.68px",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
