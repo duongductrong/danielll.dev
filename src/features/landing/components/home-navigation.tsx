@@ -1,51 +1,33 @@
 "use client";
 
-import { urls } from "@/enums/urls";
+import { pageNavigateItems } from "@/enums/page-content";
 import { cn } from "@/lib/utils/tailwind";
 import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 
-const items = [
-  {
-    id: "about",
-    label: "About",
-    path: urls.landing.about,
-  },
-  {
-    id: "works",
-    label: "Works",
-    path: urls.landing.works,
-  },
-  {
-    id: "labs",
-    label: "Labs",
-    path: urls.landing.labs,
-  },
-];
+// const selectItemVariants: Variants = {
+//   hidden: {
+//     opacity: 0,
+//   },
+//   visible: {
+//     opacity: 0.15,
+//     transition: {
+//       staggerChildren: 0.05,
+//     },
+//   },
+// };
 
-const selectItemVariants: Variants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 0.15,
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const itemVariant: Variants = {
-  hidden: {
-    opacity: 0,
-    y: 50,
-  },
-  visible: {
-    opacity: 1,
-    y: 0,
-  },
-};
+// const itemVariant: Variants = {
+//   hidden: {
+//     opacity: 0,
+//     y: 50,
+//   },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//   },
+// };
 
 export interface HomeNavigationProps
   extends ComponentPropsWithoutRef<typeof motion.div> {}
@@ -118,7 +100,7 @@ export const HomeNavigation = ({
         </motion.div>
       ) : null} */}
 
-      {items.map(({ id, label, path }, idx) => {
+      {pageNavigateItems.map(({ id, label, path }, idx) => {
         const no = idx + 1 < 10 ? `0${idx + 1}` : idx + 1;
         return (
           <Link

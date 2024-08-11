@@ -271,3 +271,21 @@ export const pageContent_HOME = {
     },
   ],
 };
+
+export const pageNavigateItems = [
+  {
+    id: "about",
+    label: "About",
+    path: urls.landing.about,
+  },
+  {
+    id: "works",
+    label: "Works",
+    path: urls.landing.works,
+  },
+  {
+    id: "Contact",
+    label: "Contact",
+    path: urls.landing.labs,
+  },
+];
