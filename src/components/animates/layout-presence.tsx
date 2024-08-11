@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { usePathname, useSelectedLayoutSegment } from "next/navigation";
@@ -47,7 +47,16 @@ function FrozenRouter(props: { children: React.ReactNode }) {
 export interface LayoutPresenceProps extends PropsWithChildren {}
 
 export const LayoutPresence = ({ children }: LayoutPresenceProps) => {
-  const segment = usePathname();
+  // const pathname = usePathname();
+  // const [segment, setSegment] = useState(pathname);
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setSegment(segment);
+  //   });
+  // }, [segment]);
+
+  const segment = useSelectedLayoutSegment()
 
   return (
     <AnimatePresence mode="wait">
