@@ -65,8 +65,8 @@ const WorkSelectedItem = memo(
         }
         className={cn(
           "sticky top-16 flex items-center justify-center",
-          "shrink-0 h-[calc(100vh-4rem)] w-full rounded-lg group",
-          " overflow-hidden",
+          "shrink-0 h-[calc(80lvh-4rem)] lg:h-[calc(100lvh-4rem)] w-full rounded-lg group",
+          "p-4 overflow-hidden",
           isEven
             ? "bg-foreground text-background"
             : "bg-primary text-foreground"
@@ -79,7 +79,7 @@ const WorkSelectedItem = memo(
             width={600}
             height={400}
             className={cn(
-              "grayscale w-[70%] h-[80%] opacity-25 object-cover object-top pointer-events-none",
+              "grayscale w-[70%] h-[80lvh] opacity-25 object-cover object-top pointer-events-none",
               "transform-none will-change-transform group-hover:scale-105 transition-all duration-300"
             )}
           />
@@ -91,7 +91,7 @@ const WorkSelectedItem = memo(
             {participated.description}
           </p>
 
-          <div className="flex justify-evenly items-center">
+          <div className="flex justify-evenly flex-col md:flex-row items-center gap-y-8 md:gap-4">
             <WorkSelectedMark />
             <WorkSelectedViewButton
               className={isEven ? "text-background" : "text-foreground"}

@@ -34,7 +34,7 @@ const WorksHeader = ({ className, ...props }: WorksHeaderProps) => {
     <motion.div
       {...props}
       className={cn(
-        "flex items-center justify-evenly font-medium mt-10",
+        "flex items-center flex-col gap-4 lg:flex-row justify-evenly font-medium mt-10",
         className
       )}
     >

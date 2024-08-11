@@ -22,7 +22,7 @@ export const LandingHeader = (props: LandingHeaderProps) => {
     <header
       className={cn(
         "sticky top-0 left-0 py-2 sm:py-5 px-4 md:py-10 md:px-8",
-        "flex items-center justify-between overflow-hidden",
+        "flex items-center justify-between",
         "z-50 transform-gpu will-change-transform text-foreground transition-all duration-300"
       )}
     >
