@@ -3,12 +3,13 @@
 import { AnimatePresence } from "framer-motion";
 import { PropsWithChildren, useState } from "react";
 
-import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { usePathname, useSelectedLayoutSegment } from "next/navigation";
+import { useSelectedLayoutSegment } from "next/navigation";
 
 import { useContext, useEffect, useRef } from "react";
 
 import { motion } from "framer-motion";
+import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { useDebounce } from "react-use";
 
 function usePreviousValue<T>(value: T): T | undefined {
   const prevValue = useRef<T>();
@@ -46,10 +47,15 @@ export interface LayoutPresenceProps extends PropsWithChildren {}
 
 export const LayoutPresence = ({ children }: LayoutPresenceProps) => {
   const segment = useSelectedLayoutSegment();
+  const [layoutSegment, setLayoutSegment] = useState(segment)
+
+  useDebounce(() => setLayoutSegment(segment), 5, [segment])
+
+  console.log(layoutSegment)
 
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={segment}>
+      <motion.div key={layoutSegment}>
         <FrozenRouter>{children}</FrozenRouter>
       </motion.div>
     </AnimatePresence>
