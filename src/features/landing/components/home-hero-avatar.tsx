@@ -21,7 +21,7 @@ export const HomeHeroAvatar = ({
       )}
     >
       <MotionImage
-        whileHover={{ scale: 1.125 }}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         drag
         dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
