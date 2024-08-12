@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils/tailwind";
 import { motion, Variants } from "framer-motion";
 import { AudioWaveformIcon, BrainIcon } from "lucide-react";
 import Image from "next/image";
+import { HomeHeroAvatar } from "./home-hero-avatar";
 import { HomeNavigation } from "./home-navigation";
 
 const MotionImage = motion(Image);
@@ -43,9 +44,9 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
           initial="initial"
           animate="visible"
           exit="initial"
-          className="text-7xl md:text-[10.58vw] leading-tight xs:leading-normal font-gelatrial text-center overflow-hidden"
+          className="text-7xl md:text-[10.58vw] 4xl:text-[12.16rem] leading-tight xs:leading-normal font-gelatrial text-center overflow-hidden"
         >
-          {"Daniel\n.".split("").map((char, idx) => (
+          {"Daniel.".split("").map((char, idx) => (
             <motion.span
               key={idx}
               className={cn("inline-flex", char.includes("\n") ? "mr-10" : "")}
@@ -70,9 +71,17 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
         </motion.p>
 
         <HomeNavigation className="mt-10 md:mt-10" />
+
+        <HomeHeroAvatar />
       </div>
 
-      <div className="flex items-center justify-between pb-4 px-4 md:pb-24 md:px-8 lg:pb-32 lg:px-32">
+      <div
+        className={cn(
+          "flex items-center gap-4 justify-between",
+          "pb-4 px-4 md:pb-24 md:px-8",
+          "lg.next:pb-32 lg.next:px-32"
+        )}
+      >
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, transition: { delay: 1 } }}
@@ -95,43 +104,11 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
           <AudioWaveformIcon className="w-6 h-6" />
           <p className="uppercase text-xxs text-center font-medium max-w-[250px]">
             Passionate about creating unforgettable and beautiful digital
-            <br className="hidden sm:block" />
+            <br className="hidden xs:block" />
             experiences.
           </p>
         </motion.div>
       </div>
-
-      <motion.div
-        className={cn(
-          "absolute bottom-[13.17vh] md:bottom-4 left-1/2 transform -translate-x-1/2",
-          "select-none rounded-full"
-        )}
-      >
-        <MotionImage
-          whileHover={{ scale: 1.125 }}
-          whileTap={{ scale: 0.95 }}
-          drag
-          dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-          // initial={{ opacity: 0, scale: 0, rotate: 360 }}
-          // animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          exit={{ opacity: 0, scale: 0, rotate: -360 }}
-          transition={{ duration: 0.25 }}
-          src="/assets/peeps-avatar-alpha-transparent.png"
-          width={550}
-          height={550}
-          className={cn(
-            "h-[46vw] w-[35vw]",
-            "xs:h-[32.68vh] xs:w-[47vw]",
-            "md:h-[40.98vh] md:w-[40vw]",
-            "lg.next:h-[14.5vw] lg.next:w-[12vw]",
-            "object-cover rounded-md sm:mb-4 md:mb-44 lg.next:mb-4 cursor-pointer rounded-full grayscale",
-            "border border-foreground/10 bg-foreground lg.next:bg-background"
-          )}
-          alt="Avatar"
-          placeholder="blur"
-          blurDataURL="/assets/peeps-avatar-alpha-transparent.png"
-        />
-      </motion.div>
     </div>
   );
 };

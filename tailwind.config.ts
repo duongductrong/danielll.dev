@@ -72,8 +72,13 @@ const config = withTV({
       screens: {
         xs: "380px",
         sm: "445px",
-
+        md: "768px",
+        lg: "1024px",
         "lg.next": "1024.68px",
+        xl: "1280px",
+        "2xl": "1536px",
+        "3xl": "1660px",
+        "4xl": "1920px",
       },
       borderRadius: {
         lg: "var(--radius)",
