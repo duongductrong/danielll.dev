@@ -1,4 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+<p align="center">
+  <!-- <img src="logo.svg" width="200px" align="center" alt="Zod logo" /> -->
+  <h1 align="center">danielll.dev</h1>
+  <p align="center">
+    ✨ <a href="https://github.com/duongductrong/ts-uni">danielll.dev</a> ✨
+    <br/>
+    Personal website of me
+  </p>
+</p>
+
+<p align="center">
+  <img src="./src/assets/docs/demo.gif" />
+</p>
+
+<p align="center">
+  <a href="https://github.com/duongductrong" rel="nofollow"><img src="https://img.shields.io/badge/created%20by-@duongductrong-4BBAAB.svg" alt="Created by Dan"></a>
+  <a href="https://www.npmjs.com/package/ts-uni" rel="nofollow"><img src="https://img.shields.io/github/stars/duongductrong/ts-uni" alt="stars"></a>
+</p>
 
 ## Getting Started
 
