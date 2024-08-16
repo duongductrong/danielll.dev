@@ -2,9 +2,7 @@
 
 import { cn } from "@/lib/utils/tailwind";
 import { motion } from "framer-motion";
-import Image from "next/image";
-
-const MotionImage = motion(Image);
+import { MotionImage } from "../animates/motion-image";
 
 export const ComingSoon = () => {
   return (

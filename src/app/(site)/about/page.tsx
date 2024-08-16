@@ -1,13 +1,7 @@
-"use client";
-
-import { ComingSoon } from "@/components/blocks/coming-soon";
-import { motion } from "framer-motion";
-import Image from "next/image";
-
-const MotionImage = motion(Image);
+import { AboutView } from "@/features/landing/pages/about-view";
 
 const Page = () => {
-  return <ComingSoon />;
+  return <AboutView />;
 };
 
 export default Page;
