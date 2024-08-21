@@ -20,7 +20,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(GeistMono.variable, GeistSans.variable, Gelatrial.variable)}
+      className={cn(
+        GeistMono.variable,
+        GeistSans.variable,
+        Gelatrial.variable,
+      )}
     >
       <body className="relative">
         <LayoutPresence>

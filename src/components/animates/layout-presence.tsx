@@ -47,11 +47,9 @@ export interface LayoutPresenceProps extends PropsWithChildren {}
 
 export const LayoutPresence = ({ children }: LayoutPresenceProps) => {
   const segment = useSelectedLayoutSegment();
-  const [layoutSegment, setLayoutSegment] = useState(segment)
+  const [layoutSegment, setLayoutSegment] = useState(segment);
 
-  useDebounce(() => setLayoutSegment(segment), 5, [segment])
-
-  console.log(layoutSegment)
+  useDebounce(() => setLayoutSegment(segment), 5, [segment]);
 
   return (
     <AnimatePresence mode="wait">

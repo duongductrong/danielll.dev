@@ -106,7 +106,7 @@ const WorkSelectedItem = memo(
 WorkSelectedItem.displayName = "WorkSelectedItem";
 
 const WorkSelectedMark = () => {
-  return <div className="bg-background size-8 animate-spin-slow" />;
+  return <div className="bg-background size-8 animate-spin-slow will-change-transform" />;
 };
 
 export interface WorkSelectedViewButtonProps
