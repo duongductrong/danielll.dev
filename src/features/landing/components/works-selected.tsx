@@ -10,37 +10,37 @@ import { ComponentPropsWithoutRef, memo, useRef } from "react";
 
 const MotionImage = motion(Image);
 
-export interface WorkSelectedProps {}
+export interface WorkSelectedProps
+  extends ComponentPropsWithoutRef<typeof motion.div> {}
 
-export const WorksSelected = (props: WorkSelectedProps) => {
-  const containerRef = useRef(null);
-  const layoutRef = useRef(null);
-
+export const WorksSelected = ({
+  children,
+  className,
+  ...props
+}: WorkSelectedProps) => {
   return (
-    <motion.section ref={containerRef} className="min-h-[300vh]">
+    <motion.section className="text-center">
       <motion.div
-        ref={layoutRef}
-        className="sticky top-16 left-0 py-8 px-8 flex flex-col gap-8 h-full"
+        {...props}
+        className={cn(
+          "sticky top-16",
+          "left-0 py-8 px-8 flex flex-col gap-8 h-full",
+          className
+        )}
       >
-        {pageContent.participated.map((participated, idx) => (
-          <WorkSelectedItem
-            key={participated.id}
-            participated={participated}
-            index={idx}
-          />
-        ))}
+        {children}
       </motion.div>
     </motion.section>
   );
 };
 
-export interface WorkSelectedItemProps {
+export interface WorksSelectedItemProps {
   index: number;
   participated: (typeof pageContent.participated)[0];
 }
 
-const WorkSelectedItem = memo(
-  ({ participated, index }: WorkSelectedItemProps) => {
+export const WorksSelectedItem = memo(
+  ({ participated, index }: WorksSelectedItemProps) => {
     const itemRef = useRef(null);
 
     const { scrollYProgress } = useScroll({
@@ -103,10 +103,12 @@ const WorkSelectedItem = memo(
   }
 );
 
-WorkSelectedItem.displayName = "WorkSelectedItem";
+WorksSelectedItem.displayName = "WorksSelectedItem";
 
 const WorkSelectedMark = () => {
-  return <div className="bg-background size-8 animate-spin-slow will-change-transform" />;
+  return (
+    <div className="bg-background size-8 animate-spin-slow will-change-transform" />
+  );
 };
 
 export interface WorkSelectedViewButtonProps
