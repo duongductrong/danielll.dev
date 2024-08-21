@@ -66,7 +66,7 @@ const WorkSelectedItem = memo(
         className={cn(
           "sticky top-16 flex items-center justify-center",
           "shrink-0 h-[calc(80lvh-4rem)] lg:h-[calc(100lvh-4rem)] w-full rounded-lg group",
-          "p-4 overflow-hidden",
+          "p-4 overflow-hidden will-change-transform",
           isEven
             ? "bg-foreground text-background"
             : "bg-primary text-foreground"
