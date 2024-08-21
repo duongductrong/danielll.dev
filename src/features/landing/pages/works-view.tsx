@@ -9,7 +9,7 @@ export interface WorksViewProps {}
 
 export const WorksView = (props: WorksViewProps) => {
   return (
-    <ReactLenis root>
+    <ReactLenis className="will-change-transform" root>
       <section className="text-center">
         <WorksHeader className="mb-10" />
         <WorksSelected />

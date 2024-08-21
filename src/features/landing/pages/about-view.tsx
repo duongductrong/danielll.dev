@@ -9,7 +9,7 @@ export interface AboutViewProps {}
 
 export const AboutView = (props: AboutViewProps) => {
   return (
-    <ReactLenis root>
+    <ReactLenis className="will-change-transform" root>
       <AboutHero />
       <AboutIntro />
       <AboutGetInTouch />
