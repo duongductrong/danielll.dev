@@ -22,9 +22,10 @@ export const AboutHero = (props: AboutHeroProps) => {
   const toHideOpacity = useTransform(scrollYProgress, [0, 1], [1, -1]);
 
   const fastYSpring = useSpring(fastY, {
-    damping: 10,
-    stiffness: 50,
+    damping: 25,
+    stiffness: 100,
     mass: 0.5,
+    restDelta: 0.001,
   });
 
   return (

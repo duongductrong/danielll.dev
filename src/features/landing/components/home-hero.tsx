@@ -67,7 +67,7 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
           exit={{ opacity: 0 }}
           className="text-center text-foreground/80 md:mt-0"
         >
-          a software engineer, a tiny thing on this planet.
+          A front-end developer. Passionate about open-source.
         </motion.p>
 
         <HomeNavigation className="mt-10 md:mt-10" />
@@ -90,7 +90,7 @@ export const HomeHero = (props: HomeHeroPieceProps) => {
         >
           <BrainIcon className="w-6 h-6" />
           <p className="uppercase text-xxs text-center font-medium max-w-[250px]">
-            Trong Duong (he/him) aka Dan is an independent developer from Ho Chi
+            Trong Duong (he/him) aka Dan is an frontend developer from Ho Chi
             Minh City, Vietnam.
           </p>
         </motion.div>
