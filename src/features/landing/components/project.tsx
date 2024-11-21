@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { motion, useAnimate } from "motion/react";
 import { nanoid } from "nanoid";
 import Image from "next/image";
+import { ComponentProps } from "react";
 
 const MotionImage = motion(Image);
 
@@ -66,22 +67,44 @@ const Project = ({}: ProjectProps) => {
 
       <motion.div className="flex flex-col items-center">
         {projects.map((project) => (
-          <ProjectItem key={project.id} item={project} />
+          <ProjectItem
+            initial={{ opacity: 0, scaleY: 0.8 }}
+            whileInView={{
+              opacity: 1,
+              scaleY: 1,
+              transition: { type: "spring", damping: 8 },
+            }}
+            whileHover={{
+              scaleX: 1.1,
+              scaleY: 0.95,
+              transition: { type: "spring", damping: 8 },
+            }}
+            key={project.id}
+            item={project}
+          />
         ))}
       </motion.div>
     </motion.section>
   );
 };
 
-export interface ProjectItemProps {
+export interface ProjectItemProps extends ComponentProps<typeof motion.div> {
   item: Project;
 }
 
-export const ProjectItem = ({ item }: ProjectItemProps) => {
+export const ProjectItem = ({
+  item,
+  className,
+  ...props
+}: ProjectItemProps) => {
   const [scope, animate] = useAnimate();
 
   return (
-    <motion.div ref={scope} className="relative text-center inline-block w-fit">
+    <motion.div
+      {...props}
+      ref={scope}
+      className={cn("relative text-center inline-block w-fit", className)}
+    >
       <motion.p
         className={cn(
           "text-headline uppercase font-black tracking-tight text-on-accent/50 cursor-pointer",
