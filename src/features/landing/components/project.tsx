@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
-import { useAnimate } from "motion/react";
+import { motion, useAnimate } from "motion/react";
 import { nanoid } from "nanoid";
 import Image from "next/image";
 
@@ -17,7 +16,7 @@ export interface ProjectProps {}
 const projects: Project[] = [
   {
     id: nanoid(),
-    name: "Lenis.studio",
+    name: "Lenis",
     images: [
       "https://plus.unsplash.com/premium_photo-1682125194375-1493119d0db0?q=80&w=3000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1565791380713-1756b9a05343?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -40,6 +39,15 @@ const projects: Project[] = [
       "https://plus.unsplash.com/premium_photo-1682125172457-db4ee420e7d2?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://plus.unsplash.com/premium_photo-1682125199596-acf7267a347c?q=80&w=2903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://plus.unsplash.com/premium_photo-1682125134530-bc5e20156616?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
+  },
+  {
+    id: nanoid(),
+    name: "edgee",
+    images: [
+      "https://plus.unsplash.com/premium_photo-1682125199596-acf7267a347c?q=80&w=2903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1565791380713-1756b9a05343?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1682125291930-1427e5d80e5b?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
   },
 ];
@@ -143,7 +151,7 @@ export const ProjectItem = ({ item }: ProjectItemProps) => {
           src={item.images[2]}
           width={150}
           height={150}
-          className="size-[9.92vw] pointer-events-none select-none shadow-2xl rounded-2xl origin-center absolute left-1/2 -top-[200%] -translate-x-1/2"
+          className="size-[9.92vw] pointer-events-none select-none shadow-2xl rounded-2xl origin-center absolute left-[35%] -top-[200%]"
           alt={item.name}
           initial={{ opacity: 0, visibility: "hidden" }}
         />
