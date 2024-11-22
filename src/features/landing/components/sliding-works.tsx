@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { ArrowRight } from "lucide-react";
 import {
   BoundingBox,
   motion,
@@ -7,29 +8,34 @@ import {
   useMotionValue,
 } from "motion/react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { slideItemVariants, slideVariants } from "../animate";
 
 const items = [
   {
     image:
-      "https://cdn.sanity.io/images/3vte03iz/production/88c89d0adf606ef4e2e5a06b2d1fe94e8e11ef37-1800x1800.png?auto=format&w=400&h=400",
+      "https://langfarm.com/_next/static/media/open-graph-image.d5bd20e4.png",
     name: "Langfarm",
+    visit: "https://langfarm.com",
   },
   {
     image:
-      "https://cdn.sanity.io/images/3vte03iz/production/c6b80d2852d439cb1eae43d8d9ef5044bab1b3ce-3000x3000.png?auto=format&w=400&h=400",
+      "https://plus.unsplash.com/premium_photo-1682125172457-db4ee420e7d2?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Casio Watches",
+    visit: "https://casio.anhkhue.com",
   },
   {
     image:
-      "https://cdn.sanity.io/images/3vte03iz/production/f52e1a998c6e4b34773ef48ea18f8c9b8472efbc-2989x2989.png?auto=format&w=400&h=400",
+      "https://plus.unsplash.com/premium_photo-1682125134530-bc5e20156616?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Ranhill saj",
+    visit: "#",
   },
   {
     image:
-      "https://cdn.sanity.io/images/3vte03iz/production/8326e452ed0f33067c42aabed5c18dfdd3d3be8f-2048x2048.png?auto=format&w=400&h=400",
+      "https://plus.unsplash.com/premium_photo-1682125139523-92d7def89cd1?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     name: "Edgee",
+    visit: "http://edgee.art",
   },
 ];
 
@@ -110,6 +116,7 @@ export interface SlidingWorkProps {
   item: {
     image: string;
     name: string;
+    visit?: string;
   };
 }
 
@@ -121,10 +128,10 @@ export const SlidingWork = ({ item }: SlidingWorkProps) => {
       variants={slideItemVariants}
       className="shrink-0 flex-col flex items-center"
       onMouseEnter={() => {
-        animate("button", { y: -100 }, { duration: 0.3 });
+        animate("[role=button]", { y: -100 }, { duration: 0.3 });
       }}
       onMouseLeave={() => {
-        animate("button", { y: 0 });
+        animate("[role=button]", { y: 0 });
       }}
     >
       <div className="group overflow-hidden rounded-2xl">
@@ -132,14 +139,22 @@ export const SlidingWork = ({ item }: SlidingWorkProps) => {
           src={item.image}
           width={800}
           height={800}
-          className="min-w-[300px] max-w-[33.068vw] pointer-events-none select-none duration-500 transition-all group-hover:scale-150 group-hover:rotate-[12deg]"
+          className="min-w-[300px] min-h-[300px] h-[33.068vw] w-[33.068vw] pointer-events-none select-none duration-500 transition-all group-hover:scale-150 group-hover:rotate-[12deg]"
           alt="Image"
         />
       </div>
 
-      <button className="bg-on-secondary mt-4 px-6 tracking-tighter py-4 rounded-full text-pretty font-headline leading-none uppercase font-semibold text-on-accent">
+      <Link
+        href={item.visit ?? "#"}
+        role="button"
+        target={item.visit?.startsWith("https://") ? "_blank" : "_self"}
+        className="bg-on-secondary mt-4 px-4 tracking-tighter py-3 rounded-full text-pretty font-headline leading-none uppercase font-semibold text-on-accent flex items-center gap-2"
+      >
         <span className="translate-y-0.5 block">{item.name}</span>
-      </button>
+        <div className="size-8 rounded-full flex items-center justify-center text-on-secondary bg-on-accent">
+          <ArrowRight className="size-4" />
+        </div>
+      </Link>
     </motion.div>
   );
 };

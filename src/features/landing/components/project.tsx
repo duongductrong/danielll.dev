@@ -10,6 +10,7 @@ interface Project {
   id: string;
   name: string;
   images: string[];
+  visit?: string;
 }
 
 export interface ProjectProps {}
@@ -23,6 +24,7 @@ const projects: Project[] = [
       "https://images.unsplash.com/photo-1565791380713-1756b9a05343?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://plus.unsplash.com/premium_photo-1682125139523-92d7def89cd1?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
+    visit: "/",
   },
   {
     id: nanoid(),
@@ -32,6 +34,7 @@ const projects: Project[] = [
       "https://plus.unsplash.com/premium_photo-1682125304342-a49fba491087?q=80&w=2898&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://plus.unsplash.com/premium_photo-1682125291930-1427e5d80e5b?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
+    visit: "https://danielll.dev",
   },
   {
     id: nanoid(),
@@ -41,16 +44,18 @@ const projects: Project[] = [
       "https://plus.unsplash.com/premium_photo-1682125199596-acf7267a347c?q=80&w=2903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://plus.unsplash.com/premium_photo-1682125134530-bc5e20156616?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
+    visit: "https://codestus.com"
   },
-  {
-    id: nanoid(),
-    name: "edgee",
-    images: [
-      "https://plus.unsplash.com/premium_photo-1682125199596-acf7267a347c?q=80&w=2903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://images.unsplash.com/photo-1565791380713-1756b9a05343?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "https://plus.unsplash.com/premium_photo-1682125291930-1427e5d80e5b?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    ],
-  },
+  // {
+  //   id: nanoid(),
+  //   name: "edgee",
+  //   images: [
+  //     "https://plus.unsplash.com/premium_photo-1682125199596-acf7267a347c?q=80&w=2903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://images.unsplash.com/photo-1565791380713-1756b9a05343?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //     "https://plus.unsplash.com/premium_photo-1682125291930-1427e5d80e5b?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  //   ],
+  //   visit: "https://edgee.art"
+  // },
 ];
 
 const Project = ({}: ProjectProps) => {
