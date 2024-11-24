@@ -28,13 +28,7 @@ export default function RootLayout({
           href="/assets/fonts/futura-now-headline/styles.css"
         />
       </head>
-      <body
-        className={cn(
-          sans.variable,
-          "bg-on-primary overflow-hidden",
-          "antialiased"
-        )}
-      >
+      <body className={cn(sans.variable, "bg-on-primary", "antialiased")}>
         <Lenis root>{children}</Lenis>
       </body>
     </html>
