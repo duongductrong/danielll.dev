@@ -1,6 +1,6 @@
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Link2, MoveUpRight } from "lucide-react";
+import { MoveUpRight } from "lucide-react";
 import {
   motion,
   useMotionValueEvent,
@@ -82,7 +82,6 @@ const FeatureWork = ({}: FeatureWorkProps) => {
               category={project.category}
               description={project.description}
               url={project.url}
-              role={project.role}
             />
           );
         })}
@@ -98,7 +97,6 @@ export interface FeatureWorkItemProps {
   category: string;
   description: string;
   url: string;
-  role: string;
 }
 
 export const FeatureWorkItem = ({
@@ -107,7 +105,6 @@ export const FeatureWorkItem = ({
   title,
   description,
   url,
-  role,
 }: FeatureWorkItemProps) => {
   const isMobile = useMedia("(max-width: 1024px)");
   const containerRef = useRef<HTMLDivElement>(null);
