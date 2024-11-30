@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { Text } from "@/components/ui/text";
+import { contacts } from "@/constants/contact";
+import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
+import Link from "next/link";
 
 export interface AboutProps {}
 
@@ -43,6 +46,26 @@ const About = (props: AboutProps) => {
           contributing to innovative projects in a supportive and
           growth-oriented workplace
         </Text>
+
+        <motion.p
+          className={cn(
+            "flex items-center justify-center gap-4 text-center text-xs font-normal text-on-accent mt-8 tracking-widest mb-8 font-bold",
+            "[&>*]:inline-flex [&>*]:items-center [&>*]:gap-1"
+          )}
+        >
+          {contacts.map((contact, index) => {
+            return (
+              <Link
+                key={index.toString()}
+                target="_blank"
+                rel="noopener noreferrer"
+                href={contact.href}
+              >
+                {contact.text}
+              </Link>
+            );
+          })}
+        </motion.p>
       </div>
     </div>
   );

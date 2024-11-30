@@ -21,11 +21,11 @@ const config = {
 
         headline: [
           "clamp(3.75rem, 6.87vw, 6.87vw)",
-          { letterSpacing: "-0.52vw", lineHeight: "1" },
+          { letterSpacing: "-0.1vw", lineHeight: "1" },
         ],
         title: [
           "clamp(2.75rem, 4.5vw, 5vw)",
-          { letterSpacing: "-0.45vw", lineHeight: "1" },
+          { letterSpacing: "-0.1vw", lineHeight: "1" },
         ],
       },
       colors: {

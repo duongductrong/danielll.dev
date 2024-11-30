@@ -1,10 +1,11 @@
 "use client";
 
+import { contacts, email } from "@/constants/contact";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import Pictures from "../components/pictures";
 import Link from "next/link";
-import { Github, Linkedin } from "lucide-react";
+import Pictures from "../components/pictures";
+import { Fragment } from "react";
 
 export interface HeroProps {}
 
@@ -27,9 +28,13 @@ const Hero = ({}: HeroProps) => {
       <motion.p className="font-headline mt-8 text-sm text-center font-semibold uppercase text-on-accent">
         Viet Nam, Ho Chi Minh City
       </motion.p>
-      <motion.p className="text-center text-[0.5625rem] font-normal uppercase text-on-secondary tracking-widest">
-        duongductrong06@gmail.com
-      </motion.p>
+      <Link
+        href="mailto:duongductrong06@gmail.com"
+        rel="noopener noreferrer"
+        className="text-center text-[0.5625rem] font-normal uppercase text-on-secondary tracking-widest"
+      >
+        {email}
+      </Link>
 
       <div className="w-full h-full flex justify-center items-center flex-col my-auto">
         <motion.div className="text-center">
@@ -72,41 +77,22 @@ const Hero = ({}: HeroProps) => {
         Get in touch by
       </motion.p>
       <motion.p className="text-center text-[0.5625rem] font-normal uppercase text-on-accent mb-11 tracking-widest mb-8">
-        <Link
-          target="_blank"
-          className="inline-flex items-center gap-1"
-          rel="noopener noreferrer"
-          href="https://www.linkedin.com/in/duongductrong/"
-        >
-          LinkedIn
-        </Link>
-        ,{" "}
-        <Link
-          target="_blank"
-          className="inline-flex items-center gap-1"
-          rel="noopener noreferrer"
-          href="https://github.com/duongductrong"
-        >
-          Github
-        </Link>
-        ,{" "}
-        <Link
-          target="_blank"
-          className="inline-flex items-center gap-1"
-          rel="noopener noreferrer"
-          href="https://danielll.dev"
-        >
-          Website
-        </Link>
-        ,{" "}
-        <Link
-          target="_blank"
-          className="inline-flex items-center gap-1"
-          rel="noopener noreferrer"
-          href="/assets/documents/Fullstack Developer - Duong Duc Trong - 2000.pdf"
-        >
-          Resume PDF
-        </Link>
+        {contacts.map((contact, index, items) => {
+          const isLatest = index >= items.length - 1;
+          return (
+            <Fragment key={contact.text}>
+              <Link
+                target="_blank"
+                className="inline-flex items-center gap-1"
+                rel="noopener noreferrer"
+                href={contact.href}
+              >
+                {contact.text}
+              </Link>
+              {!isLatest ? <span className="mr-1">,</span> : null}
+            </Fragment>
+          );
+        })}
       </motion.p>
     </motion.section>
   );
