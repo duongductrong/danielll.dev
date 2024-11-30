@@ -1,8 +1,9 @@
 "use client";
 
 import Hero from "@/features/landing/components/hero";
-import FeatureWork from "@/features/landing/components/feature-work";
-import Project from "@/features/landing/components/project";
+import About from "../components/about";
+import FeatureWork from "../components/feature-work";
+import Project from "../components/project";
 
 export interface HomeProps {}
 
@@ -10,7 +11,9 @@ const Home = () => {
   return (
     <>
       <Hero />
+      <About />
       <FeatureWork />
+      {/* <FeatureWork /> */}
       <Project />
     </>
   );

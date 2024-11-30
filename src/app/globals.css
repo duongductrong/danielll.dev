@@ -34,9 +34,9 @@ body {
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
 
-    --on-primary: 139 52% 45%;
-    --on-accent: 73 100% 50%;
-    --on-secondary: 138 100% 16%;
+    --on-primary: 0 0% 100%;
+    --on-accent: 0 0% 21%;
+    --on-secondary: 0 0% 79%;
   }
   .dark {
     --background: 240 10% 3.9%;

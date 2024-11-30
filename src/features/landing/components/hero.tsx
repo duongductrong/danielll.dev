@@ -3,6 +3,8 @@
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
 import Pictures from "../components/pictures";
+import Link from "next/link";
+import { Github, Linkedin } from "lucide-react";
 
 export interface HeroProps {}
 
@@ -70,7 +72,41 @@ const Hero = ({}: HeroProps) => {
         Get in touch by
       </motion.p>
       <motion.p className="text-center text-[0.5625rem] font-normal uppercase text-on-accent mb-11 tracking-widest mb-8">
-        LinkedIn, Github, Dribbble, Resume, PDF
+        <Link
+          target="_blank"
+          className="inline-flex items-center gap-1"
+          rel="noopener noreferrer"
+          href="https://www.linkedin.com/in/duongductrong/"
+        >
+          LinkedIn
+        </Link>
+        ,{" "}
+        <Link
+          target="_blank"
+          className="inline-flex items-center gap-1"
+          rel="noopener noreferrer"
+          href="https://github.com/duongductrong"
+        >
+          Github
+        </Link>
+        ,{" "}
+        <Link
+          target="_blank"
+          className="inline-flex items-center gap-1"
+          rel="noopener noreferrer"
+          href="https://danielll.dev"
+        >
+          Website
+        </Link>
+        ,{" "}
+        <Link
+          target="_blank"
+          className="inline-flex items-center gap-1"
+          rel="noopener noreferrer"
+          href="/assets/documents/Fullstack Developer - Duong Duc Trong - 2000.pdf"
+        >
+          Resume PDF
+        </Link>
       </motion.p>
     </motion.section>
   );

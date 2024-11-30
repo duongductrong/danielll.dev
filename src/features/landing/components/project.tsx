@@ -1,3 +1,4 @@
+import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
 import { motion, useAnimate } from "motion/react";
 import { nanoid } from "nanoid";
@@ -44,7 +45,7 @@ const projects: Project[] = [
       "https://plus.unsplash.com/premium_photo-1682125199596-acf7267a347c?q=80&w=2903&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://plus.unsplash.com/premium_photo-1682125134530-bc5e20156616?q=80&w=2980&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
-    visit: "https://codestus.com"
+    visit: "https://codestus.com",
   },
   // {
   //   id: nanoid(),
@@ -62,12 +63,20 @@ const Project = ({}: ProjectProps) => {
   return (
     <motion.section className="min-h-screen flex flex-col justify-center w-full py-8">
       <div className="mb-11 flex flex-col gap-2">
-        <motion.h2 className="text-title font-headline uppercase font-bold text-on-accent text-center">
+        <Text
+          as={motion.h2}
+          variant="title"
+          className="uppercase text-on-accent text-center"
+        >
           More projects
-        </motion.h2>
-        <motion.p className="text-base font-headline font-medium text-center text-on-accent">
+        </Text>
+        <Text
+          as={motion.p}
+          variant="subtitle"
+          className="text-center text-on-accent"
+        >
           Take a scroll, stay a while
-        </motion.p>
+        </Text>
       </div>
 
       <motion.div className="flex flex-col items-center">
@@ -80,8 +89,8 @@ const Project = ({}: ProjectProps) => {
               transition: { type: "spring", damping: 8 },
             }}
             whileHover={{
-              scaleX: 1.1,
-              scaleY: 0.95,
+              scaleX: 1.05,
+              scaleY: 1,
               transition: { type: "spring", damping: 8 },
             }}
             key={project.id}
@@ -108,81 +117,14 @@ export const ProjectItem = ({
     <motion.div
       {...props}
       ref={scope}
-      className={cn("relative text-center inline-block w-fit", className)}
+      className={cn("relative text-left inline-block w-fit", className)}
     >
       <motion.p
         className={cn(
-          "text-headline uppercase font-black tracking-tight text-on-accent/50 cursor-pointer",
-          "hover:text-on-accent transition-all duration-300"
+          "text-lg font-bold uppercase font-headline tracking-tight text-on-accent cursor-pointer"
         )}
-        onMouseEnter={() => {
-          const childItems = [
-            ...scope.current.querySelectorAll("img"),
-          ] as HTMLElement[];
-
-          childItems.forEach((child) => {
-            const offsetY = Math.random() * 10 > 5 ? 1 : -1;
-            const offsetX = Math.random() * 10 > 5 ? 1 : -1;
-            const offsetR = Math.random() * 10 > 5 ? 1 : -1;
-            const y = Math.random() * 30 * offsetY;
-            const x = Math.random() * 10 * offsetX;
-            const rotate = Math.random() * 30 * offsetR;
-            animate(
-              child,
-              {
-                opacity: 1,
-                visibility: "visible",
-                transform: `translate(${x}px,${y}px) rotate(${rotate}deg) scale(1)`,
-                transformOrigin: "center",
-              },
-              {
-                type: "spring",
-                damping: 10,
-              }
-            );
-          });
-        }}
-        onMouseLeave={() =>
-          animate("img", {
-            opacity: 0,
-            visibility: "hidden",
-            rotate: `0deg`,
-            transform: `translate(0px,0px) rotate(0deg) scale(0)`,
-            transformOrigin: "center",
-          })
-        }
       >
         {item.name}
-
-        {/* Left */}
-        <MotionImage
-          src={item.images[0]}
-          width={150}
-          height={150}
-          className="size-[9.92vw] pointer-events-none select-none shadow-2xl rounded-2xl origin-center absolute -left-[35%] -top-[40%]"
-          alt={item.name}
-          initial={{ opacity: 0, visibility: "hidden" }}
-        />
-
-        {/* Right */}
-        <MotionImage
-          src={item.images[1]}
-          width={150}
-          height={150}
-          className="size-[9.92vw] pointer-events-none select-none shadow-2xl rounded-2xl origin-center absolute -right-[35%] -top-[60%]"
-          alt={item.name}
-          initial={{ opacity: 0, visibility: "hidden" }}
-        />
-
-        {/* Center */}
-        <MotionImage
-          src={item.images[2]}
-          width={150}
-          height={150}
-          className="size-[9.92vw] pointer-events-none select-none shadow-2xl rounded-2xl origin-center absolute left-[35%] -top-[200%]"
-          alt={item.name}
-          initial={{ opacity: 0, visibility: "hidden" }}
-        />
       </motion.p>
     </motion.div>
   );
