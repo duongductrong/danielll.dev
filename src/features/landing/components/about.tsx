@@ -32,7 +32,7 @@ const About = (props: AboutProps) => {
           as={motion.p}
           className="text-center text-on-accent leading-8 max-w-[600px] mx-auto"
         >
-          With <b>4+ years of expertise</b> in developing & integrating web
+          With <b>4+ years of experience</b> in developing & integrating web
           applications, excel in crafting dynamic and visually stunning web
           pages.
         </Text>

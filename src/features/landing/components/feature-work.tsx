@@ -24,6 +24,7 @@ export const projects = [
       "A popular e-commerce platform specializing in local farm products.",
     url: "https://langfarm.com",
     role: "FullStack Developer",
+    ogImage: "/assets/images/premium_photo-1682125191965-80aef56da033.avif",
   },
   {
     no: "02",
@@ -32,6 +33,7 @@ export const projects = [
     description: "A dashboard to visualize sensor reports for RanhillSAJ.",
     url: "#",
     role: "Frontend Developer",
+    ogImage: "/assets/images/premium_photo-1682125191965-80aef56da033.avif",
   },
   {
     no: "03",
@@ -40,6 +42,16 @@ export const projects = [
     description: "A small e-commerce platform for Casio Watch Anh Khue.",
     url: "https://casio.anhkhue.com",
     role: "FullStack Developer",
+    ogImage: "/assets/images/premium_photo-1682125191965-80aef56da033.avif",
+  },
+  {
+    no: "04",
+    title: "Edgee art",
+    category: "studio",
+    description: "A studio website for Edgeea Art.",
+    url: "https://edgee.art",
+    role: "FullStack Developer",
+    ogImage: "/assets/images/edgee-art-og-image.webp",
   },
 ];
 
@@ -82,6 +94,7 @@ const FeatureWork = ({}: FeatureWorkProps) => {
               category={project.category}
               description={project.description}
               url={project.url}
+              ogImage={project.ogImage}
             />
           );
         })}
@@ -97,6 +110,7 @@ export interface FeatureWorkItemProps {
   category: string;
   description: string;
   url: string;
+  ogImage: string;
 }
 
 export const FeatureWorkItem = ({
@@ -105,6 +119,7 @@ export const FeatureWorkItem = ({
   title,
   description,
   url,
+  ogImage,
 }: FeatureWorkItemProps) => {
   const isMobile = useMedia("(max-width: 1024px)");
   const containerRef = useRef<HTMLDivElement>(null);
@@ -205,7 +220,7 @@ export const FeatureWorkItem = ({
         className="lg:w-[16.53vw] lg:h-[23.14vw] absolute bottom-0 left-1/2 rounded-md overflow-hidden"
       >
         <Image
-          src="/assets/images/premium_photo-1682125191965-80aef56da033.avif"
+          src={ogImage}
           alt="Thumbnail"
           width={400}
           height={400}

@@ -10,6 +10,7 @@ export const expertises = [
     name: "Libraries / Frameworks",
     items: [
       "React.js",
+      "React Native",
       "Vue.js",
       "Next.js",
       "Nuxt.js",
@@ -22,11 +23,11 @@ export const expertises = [
   },
   {
     name: "Databases",
-    items: ["PostgreSQL", "MySQL", "MongoDB"],
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis"],
   },
   {
     name: "Others",
-    items: ["Git", "Agile", "Docker", "Vscode"],
+    items: ["Git", "Agile", "Docker", "Vscode", "AWS S3"],
   },
 ];
 
