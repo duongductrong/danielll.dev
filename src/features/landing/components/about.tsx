@@ -49,7 +49,7 @@ const About = (props: AboutProps) => {
 
         <motion.p
           className={cn(
-            "flex items-center justify-center gap-4 text-center text-xs font-normal text-on-accent mt-8 tracking-widest mb-8 font-bold",
+            "flex flex-wrap items-center justify-center gap-4 text-center text-xs font-normal text-on-accent mt-8 tracking-widest mb-8 font-bold",
             "[&>*]:inline-flex [&>*]:items-center [&>*]:gap-1"
           )}
         >

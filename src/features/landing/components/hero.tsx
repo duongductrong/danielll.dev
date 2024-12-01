@@ -76,7 +76,7 @@ const Hero = ({}: HeroProps) => {
       <motion.p className="font-headline text-sm text-center font-semibold uppercase text-on-accent mt-auto">
         Get in touch by
       </motion.p>
-      <motion.p className="text-center text-[0.5625rem] font-normal uppercase text-on-accent mb-11 tracking-widest mb-8">
+      <motion.p className="text-center flex-wrap text-[0.5625rem] font-normal uppercase text-on-accent mb-11 tracking-widest mb-8">
         {contacts.map((contact, index, items) => {
           const isLatest = index >= items.length - 1;
           return (
