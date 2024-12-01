@@ -14,8 +14,16 @@ export const contacts = [
     href: "https://github.com/duongductrong",
   },
   {
-    text: "Website",
+    text: "Portfolio",
     href: "https://danielll.dev",
+  },
+  {
+    text: "My Blog",
+    href: "https://codestus.com",
+  },
+  {
+    text: "Twitter (X)",
+    href: "https://x.com/duongductrong_",
   },
   {
     text: "Resume PDF",
