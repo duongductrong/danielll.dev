@@ -8,9 +8,9 @@ export const textVariants = tv(
     variants: {
       variant: {
         headline: "text-headline font-headline font-bold",
-        title: "text-title font-headline font-bold",
-        subtitle: "text-base font-headline font-medium ",
-        body: "text-base font-normal",
+        subtitle: "text-base font-headline font-medium",
+        title: "text-2xl font-bold",
+        body: "text-sm font-normal",
       },
     },
     defaultVariants: {

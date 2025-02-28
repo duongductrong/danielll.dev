@@ -1,5 +1,5 @@
-import Home from "@/features/landing/screens/home";
+import FrontStage from "@/features/frontstage/ui";
 
 export default function Page() {
-  return <Home />;
+  return <FrontStage />;
 }

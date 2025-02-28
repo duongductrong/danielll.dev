@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
-import type { Config } from "tailwindcss";
 import { withTV } from "tailwind-variants/transformer";
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
@@ -14,19 +14,10 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
-        headline: ["Futura Now Headline"],
+        doto: ["var(--font-doto)", "ui-sans-serif", "system-ui"],
       },
       fontSize: {
-        xxs: "0.625rem",
-
-        headline: [
-          "clamp(3.75rem, 6.87vw, 6.87vw)",
-          { letterSpacing: "-0.1vw", lineHeight: "1" },
-        ],
-        title: [
-          "clamp(2.75rem, 4.5vw, 5vw)",
-          { letterSpacing: "-0.1vw", lineHeight: "1" },
-        ],
+        body: "0.875rem",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -81,6 +72,9 @@ const config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+      },
+      boxShadow: {
+        button: "inset 0 1px #737373, 0 0 0 1px #2C2D2E",
       },
     },
   },

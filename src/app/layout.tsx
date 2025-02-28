@@ -2,12 +2,18 @@
 import { cn } from "@/lib/utils";
 import { Lenis } from "lenis/react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Doto, Figtree } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "@/components/ui/theme-provider";
 
-const sans = Inter({
+const sans = Figtree({
   variable: "--font-sans",
-  subsets: ["latin", "vietnamese"],
+  subsets: ["latin"],
+});
+
+const doto = Doto({
+  variable: "--font-doto",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -21,15 +27,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link
-          rel="stylesheet"
-          href="/assets/fonts/futura-now-headline/styles.css"
-        />
-      </head>
-      <body className={cn(sans.variable, "bg-on-primary", "antialiased")}>
-        <Lenis root>{children}</Lenis>
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={cn(
+          sans.variable,
+          doto.variable,
+          "bg-background",
+          "antialiased",
+          "font-sans"
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          forcedTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Lenis root>{children}</Lenis>
+        </ThemeProvider>
       </body>
     </html>
   );
