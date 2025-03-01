@@ -6,6 +6,8 @@ import { Doto, Figtree } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { Suspense } from "react";
+import { Loader2 } from "lucide-react";
 
 const sans = Figtree({
   variable: "--font-sans",
@@ -46,7 +48,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NuqsAdapter>
-            <Lenis root>{children}</Lenis>
+            <Lenis root>
+              <Suspense
+                fallback={
+                  <div className="bg-background w-full h-screen grid place-items-center">
+                    <Loader2 className="size-4 text-foreground animate-spin" />
+                  </div>
+                }
+              >
+                {children}
+              </Suspense>
+            </Lenis>
           </NuqsAdapter>
         </ThemeProvider>
       </body>
