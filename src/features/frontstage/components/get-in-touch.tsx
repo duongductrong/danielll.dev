@@ -24,7 +24,7 @@ const GetInTouch = ({ className, ...props }: GetInTouchProps) => {
       <div className="flex items-center gap-3">
         <Button
           as={Link}
-          href="https://www.facebook.com/duongductrong"
+          href="https://danielll.dev"
           target="_blank"
         >
           <CodeXml className="size-3 mr-1" />

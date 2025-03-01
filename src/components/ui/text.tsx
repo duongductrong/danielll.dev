@@ -11,6 +11,7 @@ export const textVariants = tv(
         subtitle: "text-base font-headline font-medium",
         title: "text-2xl font-bold",
         body: "text-sm font-normal",
+        caption: "text-xs font-normal",
       },
     },
     defaultVariants: {

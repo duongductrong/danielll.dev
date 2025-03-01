@@ -15,7 +15,7 @@ const CallToAction = ({ className, ...props }: CallToActionProps) => {
         <SaveItemsIcon className="size-4 mr-1" />
         Available for new opportunities
       </Button>
-      <Text variant="body" className="text-muted uppercase">
+      <Text variant="caption" className="text-muted uppercase">
         Or
       </Text>
       <Button as={Link} href="mailto:duongductrong06@gmail.com">
