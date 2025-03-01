@@ -6,6 +6,7 @@ import GetInTouch from "../components/get-in-touch";
 import Header from "../components/header";
 import MyProjects from "../components/my-projects";
 import SelfTalk from "../components/self-talk";
+import Footer from "../components/footer";
 
 export interface FrontStageProps {}
 
@@ -18,6 +19,7 @@ const FrontStage = (props: FrontStageProps) => {
       <Contribution className="mt-10" />
       <GetInTouch className="mt-6" />
       <MyProjects className="mt-10" />
+      <Footer className="mt-10" />
     </Container>
   );
 };
