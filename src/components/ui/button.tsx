@@ -13,7 +13,15 @@ export const buttonVariants = tv(
     variants: {
       variant: {
         default:
-          "text-foreground bg-accent/50 hover:bg-accent active:bg-accent/80 shadow-button ",
+          "text-foreground bg-accent/50 hover:bg-accent active:bg-accent/80 shadow-button",
+        outline:
+          "text-foreground hover:bg-accent active:bg-accent/80 shadow-button",
+        ghost:
+          "text-foreground hover:bg-accent active:bg-accent/80 hover:shadow-button",
+      },
+      size: {
+        default: "",
+        icon: "size-4 rounded-sm",
       },
     },
     defaultVariants: {
@@ -28,18 +36,18 @@ export type ButtonVariants = VariantProps<typeof buttonVariants>;
 export interface ButtonProps extends ButtonVariants {}
 
 export const Button = forwardRef(
-  ({ children, as = "p", variant, className, ...props }, ref) => {
-    const Comp = as ?? "p";
+  ({ children, as = "button", variant, size, className, ...props }, ref) => {
+    const Comp = as ?? "button";
     return (
       <Comp
         {...props}
-        className={cn(buttonVariants({ variant, className }))}
+        className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
       >
         {children}
       </Comp>
     );
   }
-) as ForwardRefComponent<"p", ButtonProps>;
+) as ForwardRefComponent<"button", ButtonProps>;
 
 Button.displayName = "button";

@@ -21,12 +21,8 @@ const GetInTouch = ({ className, ...props }: GetInTouchProps) => {
         You can check these links if you wish to
       </Text>
 
-      <div className="flex items-center gap-3">
-        <Button
-          as={Link}
-          href="https://danielll.dev"
-          target="_blank"
-        >
+      <div className="flex items-center flex-wrap gap-3 [&>*]:shrink-0">
+        <Button as={Link} href="https://codestus.com" target="_blank">
           <CodeXml className="size-3 mr-1" />
           <span>My blog</span>
         </Button>
@@ -48,19 +44,19 @@ const GetInTouch = ({ className, ...props }: GetInTouchProps) => {
         </Button>
         <Button
           as={Link}
-          href="https://twitter.com/duongductrong_"
-          target="_blank"
-        >
-          <Twitter className="size-3 mr-1" />
-          Twitter
-        </Button>
-        <Button
-          as={Link}
           href="https://www.linkedin.com/in/duongductrong"
           target="_blank"
         >
           <Linkedin className="size-3 mr-1" />
           LinkedIn
+        </Button>
+        <Button
+          as={Link}
+          href="https://twitter.com/duongductrong_"
+          target="_blank"
+        >
+          <Twitter className="size-3 mr-1" />
+          Twitter
         </Button>
         <Button
           as={Link}

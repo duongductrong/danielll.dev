@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Doto, Figtree } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const sans = Figtree({
   variable: "--font-sans",
@@ -44,7 +45,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Lenis root>{children}</Lenis>
+          <NuqsAdapter>
+            <Lenis root>{children}</Lenis>
+          </NuqsAdapter>
         </ThemeProvider>
       </body>
     </html>

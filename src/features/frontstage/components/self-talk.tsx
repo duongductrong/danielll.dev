@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { ComponentProps } from "react";
 
 export interface SelfTalkProps extends ComponentProps<"section"> {}
@@ -10,7 +11,7 @@ const SelfTalk = ({ className, ...props }: SelfTalkProps) => {
     <section
       {...props}
       className={cn(
-        "text-muted-foreground flex flex-col gap-2 [&_span[data-highlight]]:text-foreground",
+        "text-muted-foreground flex flex-col gap-2 [&_*[data-highlight]]:text-foreground",
         className
       )}
     >
@@ -19,8 +20,15 @@ const SelfTalk = ({ className, ...props }: SelfTalkProps) => {
         anything else? — I&rsquo;m not just a developer,
       </Text>
       <Text as="p" className="">
-        I&rsquo;m a <span data-highlight>Blogger</span>. And if that
-        wasn&rsquo;t enough, guess what?
+        I&rsquo;m a{" "}
+        <Link
+          href="https://codestus.com"
+          className="underline underline-offset-4"
+          data-highlight
+        >
+          Blogger
+        </Link>
+        . And if that wasn&rsquo;t enough, guess what?
       </Text>
       <Text as="p">
         maybe <span data-highlight>Freelancer</span>? Oh yeah, I&rsquo;ve got
