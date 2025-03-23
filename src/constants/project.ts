@@ -41,14 +41,13 @@ export const projects = [
   },
   {
     no: "05",
-    title: "Screenify",
-    category: "Screen Recording",
-    description: "Screenify - Open source screen recording & editor video.",
-    url: "https://github.com/duongductrong/screenify",
+    title: "Shadcn/docs",
+    category: "docs",
+    description: "Shadcn/docs - Open source documentation for Shadcn/ui.",
+    url: "https://shadcn-docs.vercel.app",
     role: "Engineer",
-    // ogImage: "/assets/images/screenify-og-image.webp",
-    ogImage: null,
-    status: "coming-soon",
+    ogImage: "/assets/images/shadcn-docs-og-image.png",
+    status: "released",
   },
 ];
 
@@ -76,8 +75,8 @@ export const openSources = [
   },
   {
     no: "04",
-    title: "Screenify",
-    description: "Screenify - Open source screen recording & editor video.",
-    url: "https://github.com/duongductrong/screenify",
+    title: "Shadcn/docs",
+    description: "Shadcn/docs - Open source documentation for Shadcn/ui.",
+    url: "https://shadcn-docs.vercel.app",
   },
 ];
