@@ -23,26 +23,44 @@ const projects: Project[] = [
     ),
     description: (
       <>
-        Langfarm e-commerce allows users to buy and pay online for
-        Langfarm products. <br /> Easy order management with integrated
-        admin page. Support for sales <br /> staff to control inventory,
-        orders, customers, and products.
+        Langfarm e-commerce allows users to buy and pay online for Langfarm
+        products. <br /> Easy order management with integrated admin page.
+        Support for sales <br /> staff to control inventory, orders, customers,
+        and products.
       </>
     ),
     items: [
-      { type: "image" as const, src: "/assets/projects/langfarm/langfarm-home.png" },
-      { type: "image" as const, src: "/assets/projects/langfarm/langfarm-store.png" },
-      { type: "image" as const, src: "/assets/projects/langfarm/langfarm-blog.png" },
-      { type: "image" as const, src: "/assets/projects/langfarm/langfarm-blog-detail.png" },
-      { type: "image" as const, src: "/assets/projects/langfarm/langfarm-product-detail.png" },
-      { type: "image" as const, src: "/assets/projects/langfarm/langfarm-admin-login.png" },
+      {
+        type: "image" as const,
+        src: "/assets/projects/langfarm/langfarm-home.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/langfarm/langfarm-store.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/langfarm/langfarm-blog.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/langfarm/langfarm-blog-detail.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/langfarm/langfarm-product-detail.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/langfarm/langfarm-admin-login.png",
+      },
     ],
   },
   {
     title: (
       <>
-        A dashboard builder platform can drag and drop <br /> charts and
-        table report.
+        A dashboard builder platform can drag and drop <br /> charts and table
+        report.
       </>
     ),
     description: (
@@ -55,41 +73,95 @@ const projects: Project[] = [
     ),
     items: [
       { type: "image" as const, src: "/assets/projects/saj/saj-dashboard.png" },
-      { type: "image" as const, src: "/assets/projects/saj/saj-dashboard-builder.png" },
-      { type: "image" as const, src: "/assets/projects/saj/saj-dashboard-api.png" },
-      { type: "image" as const, src: "/assets/projects/saj/saj-dashboard-alert.png" },
+      {
+        type: "image" as const,
+        src: "/assets/projects/saj/saj-dashboard-builder.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/saj/saj-dashboard-api.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/saj/saj-dashboard-alert.png",
+      },
     ],
   },
   {
     title: (
       <>
-        A Casio store popular in Japan. <br /> I and team helped them
-        build their <br /> a system to manage their store at VietNam.
+        A Casio store popular in Japan. <br /> I and team helped them build
+        their <br /> a system to manage their store at VietNam.
       </>
     ),
     description: (
       <>
-        The casio store allows users to buy and pay online for Casio.{" "}
-        <br />
-        Easy order management with integrated admin page. Support for
-        sales
+        The casio store allows users to buy and pay online for Casio. <br />
+        Easy order management with integrated admin page. Support for sales
       </>
     ),
     items: [
       { type: "image" as const, src: "/assets/projects/casio/casio-login.png" },
-      { type: "image" as const, src: "/assets/projects/casio/casio-signup.png" },
+      {
+        type: "image" as const,
+        src: "/assets/projects/casio/casio-signup.png",
+      },
       { type: "image" as const, src: "/assets/projects/casio/casio-home.png" },
-      { type: "image" as const, src: "/assets/projects/casio/casio-product-details.png" },
-      { type: "image" as const, src: "/assets/projects/casio/casio-products.png" },
+      {
+        type: "image" as const,
+        src: "/assets/projects/casio/casio-product-details.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/casio/casio-products.png",
+      },
       { type: "image" as const, src: "/assets/projects/casio/casio-news.png" },
-      { type: "image" as const, src: "/assets/projects/casio/casio-stores.png" },
+      {
+        type: "image" as const,
+        src: "/assets/projects/casio/casio-stores.png",
+      },
+    ],
+  },
+  {
+    title: <>A studio website for Edgee Art.</>,
+    description: (
+      <>
+        A studio website for Edgee Art. <br />
+        Introduce & promote the company's services.
+      </>
+    ),
+    items: [
+      {
+        type: "image" as const,
+        src: "/assets/projects/edgee/edgee-art-home.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/edgee/edgee-art-home-2.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/edgee/edgee-art-home-3.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/edgee/edgee-art-studio.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/edgee/edgee-art-work.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/edgee/edgee-art-talk.png",
+      },
     ],
   },
   {
     title: (
       <>
-        A landing page for a company that provides <br /> services in
-        Artificial Intelligence
+        A landing page for a company that provides <br /> services in Artificial
+        Intelligence
       </>
     ),
     description: (
@@ -100,12 +172,30 @@ const projects: Project[] = [
       </>
     ),
     items: [
-      { type: "image" as const, src: "/assets/projects/surumi/surumi-home.png" },
-      { type: "image" as const, src: "/assets/projects/surumi/surumi-home-2.png" },
-      { type: "image" as const, src: "/assets/projects/surumi/surumi-about.png" },
-      { type: "image" as const, src: "/assets/projects/surumi/surumi-products.png" },
-      { type: "image" as const, src: "/assets/projects/surumi/surumi-news.png" },
-      { type: "image" as const, src: "/assets/projects/surumi/surumi-contact.png" },
+      {
+        type: "image" as const,
+        src: "/assets/projects/surumi/surumi-home.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/surumi/surumi-home-2.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/surumi/surumi-about.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/surumi/surumi-products.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/surumi/surumi-news.png",
+      },
+      {
+        type: "image" as const,
+        src: "/assets/projects/surumi/surumi-contact.png",
+      },
     ],
   },
 ];
