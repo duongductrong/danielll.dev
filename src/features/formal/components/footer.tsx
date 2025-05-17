@@ -13,7 +13,7 @@ const Footer = (props: FooterProps) => {
         height={28}
         className="w-7 h-7 object-contain"
       />
-      <p>Copyright by me {new Date().getFullYear()}</p>
+      <p>Copyright by Trong Duong {new Date().getFullYear()}</p>
     </footer>
   );
 };

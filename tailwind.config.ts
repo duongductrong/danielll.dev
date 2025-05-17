@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import { withTV } from "tailwind-variants/transformer";
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 
 const config = {
   darkMode: ["class"],
@@ -12,6 +13,13 @@ const config = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: "2rem",
+        screens: {
+          "2xl": "1200px",
+        },
+      },
       fontFamily: {
         sans: ["var(--font-sans)", "ui-sans-serif", "system-ui"],
         doto: ["var(--font-doto)", "ui-sans-serif", "system-ui"],
@@ -78,7 +86,19 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    plugin(function ({ addComponents }) {
+      addComponents({
+        ".container-base": {
+          paddingLeft: "2rem",
+          paddingRight: "2rem",
+          maxWidth: "var(--base-size)",
+          margin: "auto",
+        },
+      });
+    }),
+  ],
 } satisfies Config;
 
 export default withTV(config);

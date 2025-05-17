@@ -1,5 +1,5 @@
-import FrontStage from "@/features/frontstage/ui";
+import Formal from "@/features/formal/ui";
 
 export default function Page() {
-  return <FrontStage />;
+  return <Formal />;
 }

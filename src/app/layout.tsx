@@ -2,14 +2,15 @@
 import { cn } from "@/lib/utils";
 import { Lenis } from "lenis/react";
 import type { Metadata } from "next";
-import { Doto, Figtree } from "next/font/google";
-import "./globals.css";
+import { Doto, Geist } from "next/font/google";
+// import { Figtree } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { Loader2 } from "lucide-react";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Suspense } from "react";
-import { Loader2 } from "lucide-react";
+import "./globals.css";
 
-const sans = Figtree({
+const sans = Geist({
   variable: "--font-sans",
   subsets: ["latin"],
 });
