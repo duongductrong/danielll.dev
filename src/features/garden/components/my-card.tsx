@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRef, useState } from "react";
 import { useEvent } from "react-use";
+import { motion } from "motion/react";
 
 const MyCard = () => {
   const cardRef = useRef<HTMLDivElement>(null);
@@ -13,20 +14,24 @@ const MyCard = () => {
   useEvent("mousemove", (e) => {
     if (!cardRef.current) return;
 
+    const cardRect = cardRef.current.getBoundingClientRect();
+
     const [screenCenterX, screenCenterY] = [
-      window.innerWidth / 2,
+      cardRect.left + cardRect.width / 2,
       window.innerHeight / 2,
     ];
 
     const [mouseX, mouseY] = [e.clientX, e.clientY];
 
     const [mouseOffsetX, mouseOffsetY] = [
-      (mouseX - screenCenterX) / 20,
+      (mouseX - screenCenterX) / 30,
       ((mouseY - screenCenterY) / 20) * -1,
     ];
 
     cardRef.current?.style.setProperty("--tilt-x", `${mouseOffsetX}deg`);
     cardRef.current?.style.setProperty("--tilt-y", `${mouseOffsetY}deg`);
+    cardRef.current.style.transform =
+      "rotateX(var(--tilt-y)) rotateY(var(--tilt-x))";
   });
 
   return (
@@ -35,23 +40,37 @@ const MyCard = () => {
         style={{ perspective: "1000px" }}
         className={cn(
           "absolute -translate-x-1/2 -translate-y-1/2",
-          isCenter ? "top-1/2 left-1/2" : "top-[30%] left-[90vw] scale-[0.6]"
+          isCenter ? "top-1/2 left-1/2" : "top-[30%] left-[88vw] scale-[0.6]"
         )}
       >
-        <section
+        <motion.div
           ref={cardRef}
           className={cn(
-            "relative w-[300px] h-[400px] rounded-2xl p-4",
+            "relative w-[300px] h-[400px] rounded-2xl p-4 cursor-grab",
             "border-4 border-border bg-background flex flex-col gap-3",
-            "shadow-2xl shadow-black/10 transition-all duration-300 ease-linear"
+            "shadow-2xl shadow-black/10 transition-all duration-300 ease-linear pointer-events-auto"
           )}
+          onPointerDown={(event) =>
+            event.currentTarget.classList.add("cursor-grabbing")
+          }
+          onPointerUp={(event) =>
+            event.currentTarget.classList.remove("cursor-grabbing")
+          }
           style={{
             transform: "rotateX(var(--tilt-y)) rotateY(var(--tilt-x))",
+          }}
+          drag
+          dragElastic={1}
+          dragConstraints={{
+            bottom: 100,
+            left: 0,
+            right: 0,
+            top: 100,
           }}
         >
           <div
             className={cn(
-              "absolute top-0 left-1/2 -translate-x-1/2 h-[50vh] w-1 bg-secondary",
+              "absolute top-0 left-1/2 -translate-x-1/2 h-[300vh] w-1 bg-secondary",
               "rounded-b-2xl -translate-y-full"
             )}
           />
@@ -90,7 +109,7 @@ const MyCard = () => {
               Software Engineer
             </p>
           </div>
-        </section>
+        </motion.div>
       </div>
     </div>
   );
