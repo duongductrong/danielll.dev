@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import About from "../components/about";
 import Cta from "../components/cta";
 import Footer from "../components/footer";
 import GetInTouch from "../components/get-in-touch";

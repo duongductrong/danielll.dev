@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowRight, Mail } from "lucide-react";
 import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 
@@ -12,21 +10,32 @@ const Cta = ({ className, ...props }: CtaProps) => {
       {...props}
       className={cn(
         "container text-center justify-center flex flex-wrap gap-4",
+        "text-sm font-semibold",
         className
       )}
     >
-      <Button className="rounded-full" as={Link} href="https://linkedin.com/in/duongductrong">
-        Connect with me <ArrowRight className="size-4" />
-      </Button>
-      <Button
-        variant="ghost"
-        className="rounded-full"
-        as="a"
-        href="mailto:duongductrong06@gmail.com"
-      >
-        <Mail className="w-4 h-4 mr-2" />
-        Contact me
-      </Button>
+      <div className="flex flex-col items-center w-full gap-2">
+        <div className="flex flex-wrap justify-center gap-4 mt-2">
+          <Link
+            href="https://github.com/duongductrong"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full"
+            aria-label="Followers"
+          >
+            {40} Followers
+          </Link>
+          <Link
+            href="https://github.com/duongductrong?tab=repositories"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full"
+            aria-label="Public Repositories"
+          >
+            {37} Repos
+          </Link>
+        </div>
+      </div>
     </section>
   );
 };

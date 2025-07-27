@@ -8,7 +8,7 @@ const Header = (props: HeaderProps) => {
     <header className="container text-center py-6">
       <div className="relative inline-block">
         <Image
-          src="/assets/peeps-avatar.png"
+          src="https://avatars.githubusercontent.com/u/39333905?v=4"
           width={80}
           height={80}
           className="w-24 h-24 object-cover rounded-2xl"
