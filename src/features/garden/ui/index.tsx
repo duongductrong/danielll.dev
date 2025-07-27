@@ -7,9 +7,9 @@ import ThingIDo from "../components/thing-i-do";
 import Timezone from "../components/timezone";
 import Welcome from "../components/welcome";
 
-export interface FormalProps {}
+export interface GardenProps {}
 
-const Formal = (props: FormalProps) => {
+const Garden = (props: GardenProps) => {
   return (
     <>
       <Header />
@@ -24,4 +24,4 @@ const Formal = (props: FormalProps) => {
   );
 };
 
-export default Formal;
+export default Garden;
