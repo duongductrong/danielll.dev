@@ -15,12 +15,7 @@ export type Project = {
 // Store all project data in a variable
 const projects: Project[] = [
   {
-    title: (
-      <>
-        I helped Langfarm build their UX/UI and <br /> integrate features
-        for their brand.
-      </>
-    ),
+    title: <>Langfarm</>,
     description: (
       <>
         Langfarm e-commerce allows users to buy and pay online for Langfarm
@@ -57,12 +52,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: (
-      <>
-        A dashboard builder platform can drag and drop <br /> charts and table
-        report.
-      </>
-    ),
+    title: <>Ranhil SAJ</>,
     description: (
       <>
         A platform that allows users to create and management the report.
@@ -88,12 +78,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: (
-      <>
-        A Casio store popular in Japan. <br /> I and team helped them build
-        their <br /> a system to manage their store at VietNam.
-      </>
-    ),
+    title: <>Anh Khue Casio</>,
     description: (
       <>
         The casio store allows users to buy and pay online for Casio. <br />
@@ -123,7 +108,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: <>A studio website for Edgee Art.</>,
+    title: <>Edgee Art.</>,
     description: (
       <>
         A studio website for Edgee Art. <br />
@@ -158,12 +143,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: (
-      <>
-        A landing page for a company that provides <br /> services in Artificial
-        Intelligence
-      </>
-    ),
+    title: <>Surumi</>,
     description: (
       <>
         The landing-page of a company that provides services in Artificial
@@ -204,7 +184,7 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
   return (
     <section {...props} className={cn("container", className)}>
       <h2 className="text-3xl font-semibold leading-normal py-0 mb-10">
-        Selected works:
+        🔧 Selected works
       </h2>
 
       <section className="flex flex-col gap-20">
