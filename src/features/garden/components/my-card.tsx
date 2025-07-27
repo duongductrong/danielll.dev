@@ -30,7 +30,7 @@ const MyCard = () => {
   });
 
   return (
-    <div className="fixed top-0 left-0 w-full h-screen hidden md:block">
+    <div className="fixed top-0 left-0 w-full h-screen hidden md:block pointer-events-none">
       <div
         style={{ perspective: "1000px" }}
         className={cn(
