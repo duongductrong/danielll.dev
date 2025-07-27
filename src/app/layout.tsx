@@ -21,8 +21,8 @@ const doto = Doto({
 });
 
 export const metadata: Metadata = {
-  title: "Daniel. T",
-  description: "Daniel. T",
+  title: "Trong Duong - Software Engineer",
+  description: "Trong Duong - Software Engineer",
 };
 
 export default function RootLayout({
