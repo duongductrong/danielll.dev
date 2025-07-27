@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-css-tags */
+import "@ant-design/v5-patch-for-react-19";
+
 import { cn } from "@/lib/utils";
 import { Lenis } from "lenis/react";
 import type { Metadata } from "next";
