@@ -20,7 +20,7 @@ const Cta = ({ className, ...props }: CtaProps) => {
             href="https://github.com/duongductrong"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full"
+            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full border border-border"
             aria-label="Followers"
           >
             {40} Followers
@@ -29,7 +29,7 @@ const Cta = ({ className, ...props }: CtaProps) => {
             href="https://github.com/duongductrong?tab=repositories"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full"
+            className="px-3 py-1 bg-gray-100 dark:bg-gray-800 rounded-full border border-border"
             aria-label="Public Repositories"
           >
             {37} Repos
