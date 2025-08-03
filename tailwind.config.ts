@@ -87,6 +87,7 @@ const config = {
     },
   },
   plugins: [
+    require("@tailwindcss/typography"),
     require("tailwindcss-animate"),
     plugin(function ({ addComponents }) {
       addComponents({

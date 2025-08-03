@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import Cta from "../components/cta";
 import Footer from "../components/footer";
 import GetInTouch from "../components/get-in-touch";
 import Header from "../components/header";
@@ -15,7 +14,7 @@ const Garden = (props: GardenProps) => {
     <>
       <Header />
       <Welcome className="mt-4" />
-      <Cta className="mt-10" />
+      {/* <Cta className="mt-10" /> */}
       <Timezone className="mt-10" />
       <GetInTouch className="mt-8" />
       <ThingIDo className="mt-20" />
