@@ -5,7 +5,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { ReactNode } from "react";
 
 export interface ProjectShowCaseItemImage {
@@ -18,18 +20,33 @@ export type ProjectShowCaseItem = ProjectShowCaseItemImage;
 
 export interface ProjectShowCaseProps {
   title: string | ReactNode;
+  href?: string | null;
   description?: ReactNode;
   items?: ProjectShowCaseItem[];
 }
 
 export function ProjectShowCase({
   title,
+  href,
   description,
   items,
 }: ProjectShowCaseProps) {
   return (
     <section>
-      <h2 className="text-2xl mb-4 font-medium leading-normal">{title}</h2>
+      <h2 className="text-2xl mb-4 font-semibold leading-normal flex items-end">
+        {title}
+        {href ? (
+          <Link
+            href={href}
+            className="text-sm leading-normal text-primary text-lg uppercase inline-block ml-2"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit site"
+          >
+            <ArrowUpRight className="size-8" />
+          </Link>
+        ) : null}
+      </h2>
       <Carousel
         opts={{
           align: "start",

@@ -10,6 +10,7 @@ export type Project = {
   title: React.ReactNode;
   description: React.ReactNode;
   items: ProjectShowCaseItemImage[];
+  website?: string | null;
 };
 
 // Store all project data in a variable
@@ -24,6 +25,7 @@ const projects: Project[] = [
         and products.
       </>
     ),
+    website: "https://langfarm.com",
     items: [
       {
         type: "image" as const,
@@ -53,6 +55,7 @@ const projects: Project[] = [
   },
   {
     title: <>Ranhil SAJ</>,
+    website: null,
     description: (
       <>
         A platform that allows users to create and management the report.
@@ -79,6 +82,7 @@ const projects: Project[] = [
   },
   {
     title: <>Anh Khue Casio</>,
+    website: "https://casio.anhkhue.com",
     description: (
       <>
         The casio store allows users to buy and pay online for Casio. <br />
@@ -109,6 +113,7 @@ const projects: Project[] = [
   },
   {
     title: <>Edgee Art.</>,
+    website: "https://edgee.art",
     description: (
       <>
         A studio website for Edgee Art. <br />
@@ -144,6 +149,7 @@ const projects: Project[] = [
   },
   {
     title: <>Surumi</>,
+    website: null,
     description: (
       <>
         The landing-page of a company that provides services in Artificial
@@ -194,6 +200,7 @@ const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
             title={project.title}
             description={project.description}
             items={project.items}
+            href={project.website}
           />
         ))}
       </section>
