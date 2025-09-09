@@ -5,8 +5,8 @@ import {
   CodePenContent,
   CodePenTitle,
 } from "@/features/craft/components/codepen";
-import { CodeSpot } from "@/features/craft/components/codespot";
-import { registryPreviewComponents } from "@/features/craft/registry";
+import { PreviewTabs } from "@/features/craft/components/preview-tabs";
+import { registryPreviewComponents, registrySourceCode } from "@/features/craft/registry";
 import { MDXContent } from "@content-collections/mdx/react";
 import { allPens } from "content-collections";
 import { notFound, useRouter } from "next/navigation";
@@ -38,12 +38,20 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
           code={pen.mdx}
           components={{
             Preview: ({ component }: { component: string }) => {
-              const Comp =
+              const Component =
                 registryPreviewComponents[
                   component as keyof typeof registryPreviewComponents
                 ];
+              
+              const sourceCode = registrySourceCode[component as keyof typeof registrySourceCode];
 
-              return <CodeSpot>{Comp ? <Comp /> : null}</CodeSpot>;
+              return Component ? (
+                <PreviewTabs 
+                  component={Component} 
+                  code={sourceCode}
+                  filename={`${component}.tsx`}
+                />
+              ) : null;
             },
           }}
         />

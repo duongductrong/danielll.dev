@@ -1,0 +1,47 @@
+---
+title: "Loading Spinners Collection"
+summary: "A collection of different loading spinner animations using Framer Motion"
+date: 2024-12-15
+author: "Trong Duong"
+---
+
+Three different types of loading animations that you can use in your applications.
+
+<Preview component="loadingSpinner" />
+
+## Spinner Types
+
+### 1. Rotating Circle
+Classic spinning border animation with a transparent section that creates the spinning effect.
+
+### 2. Bouncing Dots
+Three dots bouncing in sequence with staggered delays for a wave-like effect.
+
+### 3. Pulsing Circle
+Circle that scales in and out continuously for a breathing effect.
+
+## Animation Details
+
+Each spinner uses different Framer Motion properties:
+
+**Rotating Circle:**
+- `animate={{ rotate: 360 }}`
+- `transition={{ duration: 1, repeat: Infinity, ease: "linear" }}`
+
+**Bouncing Dots:**
+- `animate={{ y: [-10, 0, -10] }}`
+- `transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.2 }}`
+
+**Pulsing Circle:**
+- `animate={{ scale: [1, 1.2, 1] }}`
+- `transition={{ duration: 1, repeat: Infinity }}`
+
+## Customization
+
+All spinners can be easily customized with different:
+- Colors (change `bg-purple-600` and `border-purple-600`)
+- Sizes (adjust `w-8 h-8` classes)
+- Animation speeds (modify `duration` values)
+- Spacing (change `space-x-8` and `space-x-2`)
+
+Choose the spinner that best fits your application's design language!
