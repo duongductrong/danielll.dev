@@ -7,7 +7,7 @@ const containerVariants = tv(
     base: "",
     variants: {
       variant: {
-        default: "mx-auto max-w-2xl px-4",
+        default: "container",
       },
     },
     defaultVariants: {

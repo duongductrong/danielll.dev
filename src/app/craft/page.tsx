@@ -4,13 +4,29 @@ import Container from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { allPens } from "content-collections";
-import { Search, Calendar, User, ExternalLink, Code2, Palette, Zap, Sparkles } from "lucide-react";
+import {
+  Search,
+  Calendar,
+  User,
+  ExternalLink,
+  Code2,
+  Palette,
+  Zap,
+  Sparkles,
+} from "lucide-react";
 import Link from "next/link";
 import { useState, useMemo } from "react";
 import { motion } from "motion/react";
+import Image from "next/image";
 
 const categories = [
   { id: "all", label: "All", icon: Code2 },
@@ -25,12 +41,13 @@ const Page = () => {
 
   const filteredPens = useMemo(() => {
     return allPens.filter((pen) => {
-      const matchesSearch = pen.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          pen.summary.toLowerCase().includes(searchQuery.toLowerCase());
-      
+      const matchesSearch =
+        pen.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        pen.summary.toLowerCase().includes(searchQuery.toLowerCase());
+
       // For now, we'll show all pens regardless of category since we don't have categories in the schema yet
       const matchesCategory = selectedCategory === "all";
-      
+
       return matchesSearch && matchesCategory;
     });
   }, [searchQuery, selectedCategory]);
@@ -39,21 +56,21 @@ const Page = () => {
     <Container className="py-24">
       {/* Header */}
       <div className="text-center mb-12">
-        <motion.h1 
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl font-bold mb-4 bg-gradient-to-r from-zinc-900 to-zinc-600 bg-clip-text text-transparent"
         >
           ✨ Craft
         </motion.h1>
-        <motion.p 
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
           className="text-lg text-muted-foreground max-w-2xl mx-auto"
         >
-          Interactive components, experiments, and code snippets. 
-          A playground where ideas come to life.
+          Interactive components, experiments, and code snippets. A playground
+          where ideas come to life.
         </motion.p>
       </div>
 
@@ -69,12 +86,20 @@ const Page = () => {
           />
         </div>
 
-        <Tabs value={selectedCategory} onValueChange={setSelectedCategory} className="w-full">
+        <Tabs
+          value={selectedCategory}
+          onValueChange={setSelectedCategory}
+          className="w-full"
+        >
           <TabsList className="grid w-full grid-cols-4 max-w-md mx-auto">
             {categories.map((category) => {
               const Icon = category.icon;
               return (
-                <TabsTrigger key={category.id} value={category.id} className="flex items-center gap-2">
+                <TabsTrigger
+                  key={category.id}
+                  value={category.id}
+                  className="flex items-center gap-2"
+                >
                   <Icon className="size-4" />
                   <span className="hidden sm:inline">{category.label}</span>
                 </TabsTrigger>
@@ -85,7 +110,7 @@ const Page = () => {
       </div>
 
       {/* Pens Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
         {filteredPens.map((pen, index) => (
           <motion.div
             key={pen._meta.path}
@@ -93,76 +118,51 @@ const Page = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-            <Card className="group hover:shadow-lg transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-600">
-              <CardHeader>
-                <div className="flex items-start justify-between">
-                  <CardTitle className="text-lg group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
-                    {pen.title}
-                  </CardTitle>
-                  <Badge variant="secondary" className="ml-2">
-                    New
-                  </Badge>
-                </div>
-                <CardDescription className="text-sm">
-                  {pen.summary}
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent>
-                <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="size-4" />
+            <Link href={`/craft/${pen._meta.path}`}>
+              <Card className="p-4 shadow-none">
+                <Image
+                  src="/oklch-colors-dark-new.avif"
+                  alt={pen.title}
+                  width={600}
+                  height={600}
+                  className="w-full border border-border rounded-lg"
+                />
+
+                <CardHeader className="px-0 py-2"></CardHeader>
+
+                <CardContent className="p-0">
+                  <div className="flex items-start justify-between">
+                    <CardTitle className="text-lg group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
+                      {pen.title}
+                    </CardTitle>
+                    <Badge variant="secondary" className="ml-2">
+                      New
+                    </Badge>
+                  </div>
+                  <p className="text-muted-foreground">
                     {pen.date.toLocaleDateString("en-US", {
                       year: "numeric",
-                      month: "short",
+                      month: "long",
                     })}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <User className="size-4" />
-                    {pen.author}
-                  </div>
-                </div>
-                
-                <Link href={`/craft/${pen._meta.path}`}>
-                  <Button className="w-full group-hover:bg-zinc-900 group-hover:text-zinc-50 dark:group-hover:bg-zinc-50 dark:group-hover:text-zinc-900 transition-colors">
-                    <ExternalLink className="size-4 mr-2" />
-                    View Pen
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
+                  </p>
+                </CardContent>
+              </Card>
+            </Link>
           </motion.div>
         ))}
       </div>
 
-      {/* Empty State */}
       {filteredPens.length === 0 && (
         <div className="text-center py-12">
           <Code2 className="size-12 text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-semibold mb-2">No pens found</h3>
           <p className="text-muted-foreground">
-            {searchQuery ? "Try adjusting your search query" : "No pens available yet"}
+            {searchQuery
+              ? "Try adjusting your search query"
+              : "No pens available yet"}
           </p>
         </div>
       )}
-
-      {/* Stats */}
-      <div className="mt-16 pt-8 border-t">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-          <div>
-            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">{allPens.length}</h3>
-            <p className="text-muted-foreground">Total Pens</p>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">4</h3>
-            <p className="text-muted-foreground">Categories</p>
-          </div>
-          <div>
-            <h3 className="text-2xl font-bold text-zinc-900 dark:text-zinc-100">∞</h3>
-            <p className="text-muted-foreground">Possibilities</p>
-          </div>
-        </div>
-      </div>
     </Container>
   );
 };
