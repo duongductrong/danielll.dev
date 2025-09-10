@@ -1,18 +1,14 @@
 import dynamic from "next/dynamic";
 
 const HelloWorld = dynamic(() => import("./blocks/hello-world"));
-const AnimatedButton = dynamic(() => import("./blocks/animated-button"));
 const GradientCard = dynamic(() => import("./blocks/gradient-card"));
 const LoadingSpinner = dynamic(() => import("./blocks/loading-spinner"));
-const InteractiveForm = dynamic(() => import("./blocks/interactive-form"));
 const ZincShowcase = dynamic(() => import("./blocks/zinc-showcase"));
 
 export const registryPreviewComponents = {
   helloWorld: HelloWorld,
-  animatedButton: AnimatedButton,
   gradientCard: GradientCard,
   loadingSpinner: LoadingSpinner,
-  interactiveForm: InteractiveForm,
   zincShowcase: ZincShowcase,
 };
 
@@ -23,7 +19,7 @@ export const registrySourceCode: Record<string, string> = {
 };
 
 export default HelloWorld;`,
-  
+
   animatedButton: `"use client";
 
 import { Button } from "@/components/ui/button";
@@ -319,5 +315,5 @@ const ZincShowcase = () => {
   );
 };
 
-export default ZincShowcase;`
+export default ZincShowcase;`,
 };
