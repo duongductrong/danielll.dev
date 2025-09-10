@@ -1,12 +1,11 @@
 "use client";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CodeSpot } from "./codespot";
-import { CodeBlock } from "./code-block";
-import { Eye, Code, Smartphone, Monitor } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Code, Eye } from "lucide-react";
+import { useState } from "react";
+import { CodeBlock } from "./code-block";
+import { CodeSpot } from "./codespot";
 
 export interface PreviewTabsProps {
   component: React.ComponentType;
