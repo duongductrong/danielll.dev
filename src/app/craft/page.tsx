@@ -54,8 +54,7 @@ const Page = () => {
 
   return (
     <Container className="py-24">
-      {/* Header */}
-      <div className="text-center mb-12">
+      {/* <div className="text-center mb-12">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,10 +71,9 @@ const Page = () => {
           Interactive components, experiments, and code snippets. A playground
           where ideas come to life.
         </motion.p>
-      </div>
+      </div> */}
 
-      {/* Search and Filters */}
-      <div className="mb-8 space-y-4">
+      {/* <div className="mb-8 space-y-4">
         <div className="relative max-w-md mx-auto">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground size-4" />
           <Input
@@ -107,7 +105,7 @@ const Page = () => {
             })}
           </TabsList>
         </Tabs>
-      </div>
+      </div> */}
 
       {/* Pens Grid */}
       <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
