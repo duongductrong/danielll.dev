@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:registry": "node scripts/generate-registry.js",
+    "watch:registry": "tsx scripts/watch-registry.ts",
+    "prebuild": "npm run generate:registry"
   },
   "dependencies": {
     "@ant-design/nextjs-registry": "^1.1.0",
