@@ -22,10 +22,10 @@ const Welcome = ({ className, ...props }: WelcomeProps) => {
           <span className="text-[#04C967]">pay</span>
         </span>
       </h2>
-      <h2 className="text-base font-normal flex items-start gap-2 leading-tight text-muted-foreground mb-2">
+      <h2 className="text-base flex items-start gap-2 leading-tight text-muted-foreground mb-2">
         Passionate about building software that makes a difference.
       </h2>
-      <p className="text-base font-light text-muted-foreground">
+      <p className="text-base text-muted-foreground">
         Connect with me for collaboration, freelance gigs, part-time job, or
         just say hi.
       </p>
