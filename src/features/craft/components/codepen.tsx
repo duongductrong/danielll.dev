@@ -43,7 +43,7 @@ export const CodePenTitle = ({
         {onBack ? (
           <button
             onClick={onBack}
-            className="absolute top-1/2 -translate-y-1/2 -left-10"
+            className="absolute top-1/2 -translate-y-1/2 -left-10 cursor-pointer"
           >
             <ArrowLeftIcon className="size-4" />
           </button>

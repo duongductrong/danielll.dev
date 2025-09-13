@@ -35,6 +35,7 @@ const pens = defineCollection({
     date: z.coerce.date(),
     author: z.string(),
     thumbnail: z.string(),
+    icon: z.string().optional(),
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document);

@@ -19,9 +19,6 @@ export const PreviewTabs = ({
   filename = "component.tsx",
 }: PreviewTabsProps) => {
   const [activeTab, setActiveTab] = useState("preview");
-  const [previewMode, setPreviewMode] = useState<"desktop" | "mobile">(
-    "desktop"
-  );
 
   return (
     <div className="w-full">
@@ -42,20 +39,8 @@ export const PreviewTabs = ({
         {activeTab === "preview" && (
           <div className="mt-4 space-y-4">
             <div
-              className={cn(
-                "relative",
-                "mx-auto transition-all duration-300",
-                previewMode === "mobile" ? "max-w-sm" : "max-w-4xl"
-              )}
+              className={cn("relative", "mx-auto transition-all duration-300")}
             >
-              {/* <div className="flex gap-2 absolute -bottom-6 left-1/2 -translate-x-1/2">
-                <span role="button" onClick={() => setPreviewMode("desktop")}>
-                  <Monitor className="size-4 mr-2" />
-                </span>
-                <span role="button" onClick={() => setPreviewMode("mobile")}>
-                  <Smartphone className="size-4 mr-2" />
-                </span>
-              </div> */}
               <CodeSpot>
                 <Component />
               </CodeSpot>

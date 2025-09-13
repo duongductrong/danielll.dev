@@ -101,6 +101,7 @@ const Page = () => {
                 title={pen.title}
                 date={pen.date.toISOString()}
                 thumbnail={pen.thumbnail}
+                icon={pen?.icon}
               />
             </Link>
           </motion.div>

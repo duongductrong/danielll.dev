@@ -5,6 +5,7 @@ import { Text } from "@/components/ui/text";
 import { PenCard } from "@/features/folio/components/pen-card";
 import { cn } from "@/lib/utils";
 import { allPens } from "content-collections";
+import { sortBy } from "lodash-es";
 import { Code2 } from "lucide-react";
 import Link from "next/link";
 import { ComponentProps } from "react";
@@ -23,12 +24,13 @@ const PenGrid = ({ className, ...props }: PenGridProps) => {
         </Text>
       </div>
       <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
-        {allPens.map((pen) => (
+        {sortBy(allPens, "date").reverse().map((pen) => (
           <Link key={pen._meta.path} href={`/craft/${pen._meta.path}`}>
             <PenCard
               title={pen.title}
               date={pen.date.toISOString()}
               thumbnail={pen.thumbnail}
+              icon={pen.icon}
             />
           </Link>
         ))}

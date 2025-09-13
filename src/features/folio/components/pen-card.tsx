@@ -1,14 +1,64 @@
+"use client";
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { format } from "date-fns";
-import { Atom, Fingerprint } from "lucide-react";
+import { Atom, MoveUpRight } from "lucide-react";
+import { Suspense, lazy } from "react";
+
+// Dynamic icon component that handles async imports
+const DynamicIcon = ({
+  iconName,
+  className,
+}: {
+  iconName: string;
+  className?: string;
+}) => {
+  // Create a lazy component for the specific icon
+  const IconComponent = lazy(async () => {
+    try {
+      const iconModule = await import("lucide-react");
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const Icon = (iconModule as any)[iconName];
+
+      if (!Icon) {
+        console.warn(`Icon "${iconName}" not found in lucide-react`);
+        return {
+          default: ({ className: cls }: { className?: string }) => (
+            <Atom className={cls} />
+          ),
+        };
+      }
+
+      return {
+        default: ({ className: cls }: { className?: string }) => (
+          <Icon className={cls} />
+        ),
+      };
+    } catch (error) {
+      console.error(`Failed to load icon "${iconName}":`, error);
+      return {
+        default: ({ className: cls }: { className?: string }) => (
+          <Atom className={cls} />
+        ),
+      };
+    }
+  });
+
+  return (
+    <Suspense fallback={<Atom className={className} />}>
+      <IconComponent className={className} />
+    </Suspense>
+  );
+};
 
 export interface PenCardProps {
   title: string;
   date: string;
   thumbnail?: string;
+  icon?: string;
 }
 
-export const PenCard = ({ title, date }: PenCardProps) => {
+export const PenCard = ({ title, date, icon }: PenCardProps) => {
   return (
     <Card className="p-1.5 shadow-none hover:translate-y-[-5px] transition-all duration-300">
       {/* <Image
@@ -27,8 +77,12 @@ export const PenCard = ({ title, date }: PenCardProps) => {
           <span className="w-full border-t border-dashed border-border" />
           <span className="w-full border-b border-dashed border-border" />
         </div>
-        <div className="shadow-bg bg-preview-bg shadow-custom flex size-14 shrink-0 items-center justify-center rounded-xl border border-border bg-gray-200 shadow-none">
-          <Atom className="size-4" />
+        <div className="shadow-bg bg-preview-bg shadow-custom flex size-10 shrink-0 items-center justify-center rounded-xl border border-border bg-gray-200 shadow-none">
+          {icon ? (
+            <DynamicIcon iconName={icon} className="size-4" />
+          ) : (
+            <Atom className="size-4" />
+          )}
         </div>
       </div>
 
@@ -40,7 +94,7 @@ export const PenCard = ({ title, date }: PenCardProps) => {
             {title}
           </CardTitle>
 
-          <Fingerprint className="text-muted-foreground size-4" />
+          <MoveUpRight className="text-muted-foreground size-4" />
         </div>
         <p className="text-muted-foreground text-base">
           {format(date, "MMMM d, yyyy")}

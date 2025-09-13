@@ -11,8 +11,8 @@ export default function Page() {
       <Header className="mb-4 mt-10" />
       <Welcome className="mb-4" />
       <Timezone className="mb-4" />
-      <GetInTouch className="mb-10" />
-      <PenGrid className="mb-10" />
+      <GetInTouch className="mb-20" />
+      <PenGrid className="mb-20" />
       <MyCard />
     </>
   );
