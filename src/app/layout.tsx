@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Lenis } from "lenis/react";
 import type { Metadata } from "next";
 import { Doto, Geist } from "next/font/google";
-// import { Figtree } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Loader2 } from "lucide-react";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
@@ -19,6 +19,11 @@ const sans = Geist({
 
 const doto = Doto({
   variable: "--font-doto",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
@@ -38,6 +43,7 @@ export default function RootLayout({
         className={cn(
           sans.variable,
           doto.variable,
+          inter.variable,
           "bg-background",
           "antialiased",
           "font-sans"

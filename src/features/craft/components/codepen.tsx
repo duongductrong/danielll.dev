@@ -1,5 +1,6 @@
+import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ArrowLeftIcon } from "lucide-react";
+import { CornerUpLeft } from "lucide-react";
 import { ComponentProps } from "react";
 
 export interface CodePenProps extends ComponentProps<"main"> {}
@@ -33,24 +34,24 @@ export const CodePenTitle = ({
       {...props}
       className={cn("mb-10 max-w-2xl mx-auto px-6 md:px-0", className)}
     >
-      {date ? (
-        <p className="text-sm text-muted-foreground mb-3">{date}</p>
-      ) : null}
+      {date ? <p className="text-muted-foreground mb-3">{date}</p> : null}
 
       <div className="relative mb-2">
         <h2 className="text-lg font-bold">{title}</h2>
 
         {onBack ? (
-          <button
+          <Button
+            size="icon"
+            variant="ghost"
             onClick={onBack}
-            className="absolute top-1/2 -translate-y-1/2 -left-10 cursor-pointer"
+            className="absolute top-1/2 -translate-y-1/2 -left-12 cursor-pointer rounded-full"
           >
-            <ArrowLeftIcon className="size-4" />
-          </button>
+            <CornerUpLeft className="size-4" />
+          </Button>
         ) : null}
       </div>
 
-      <p className="text-sm text-muted-foreground">{summary}</p>
+      <p className="text-muted-foreground">{summary}</p>
     </div>
   );
 };
@@ -64,7 +65,7 @@ export const CodePenContent = ({
     <article
       {...props}
       className={cn(
-        "prose prose dark:prose-invert max-w-full mx-auto px-6 md:px-0",
+        "prose text-foreground dark:prose-invert max-w-full mx-auto px-6 md:px-0",
         "[&>*]:max-w-2xl [&>*]:mx-auto",
         "[&>[data-slot=code-spot]]:max-w-4xl",
         "[&>[data-slot=code-spot]]:my-10",
