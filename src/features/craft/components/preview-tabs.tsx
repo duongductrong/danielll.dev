@@ -37,7 +37,7 @@ export const PreviewTabs = ({
         </div>
 
         {activeTab === "preview" && (
-          <div className="mt-4 space-y-4">
+          <div className="space-y-4 mt-2">
             <div
               className={cn("relative", "mx-auto transition-all duration-300")}
             >
@@ -49,7 +49,7 @@ export const PreviewTabs = ({
         )}
 
         {activeTab === "code" && (
-          <div className="mt-6">
+          <div className="mt-2">
             {code ? (
               <CodeBlock code={code} filename={filename} language="tsx" />
             ) : (
