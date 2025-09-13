@@ -4,17 +4,54 @@
 import dynamic from "next/dynamic";
 
 // Dynamic imports for all blocks
+const GlowingBorder = dynamic(() => import("./blocks/glowing-border"));
 const HelloWorld = dynamic(() => import("./blocks/hello-world"));
 const LoadingSpinner = dynamic(() => import("./blocks/loading-spinner"));
 
 // Registry of preview components
 export const registryPreviewComponents = {
+  glowingBorder: GlowingBorder,
   helloWorld: HelloWorld,
   loadingSpinner: LoadingSpinner,
 };
 
 // Registry of source code for code viewer
 export const registrySourceCode: Record<string, string> = {
+  glowingBorder: `import { cn } from "@/lib/utils";
+import { DatabaseZap } from "lucide-react";
+
+function GlowingBorder() {
+  return (
+    <div className="flex flex-col items-center">
+      <div
+        className={cn(
+          "overflow-hidden relative p-0.5 inline-block",
+          "before:absolute rounded-xl",
+          "before:top-[-50%] before:left-[-50%]",
+          "before:m-[-1px]",
+          "before:w-full before:h-full before:bg-red-500",
+          "before:[background:conic-gradient(from_10deg,transparent_20%,#4EAFFE_50%,transparent_20%)]",
+          "before:animate-spin before:w-[200%] before:h-[200%]",
+          "before:duration-1000"
+        )}
+      >
+        <div className="relative border-2 border-border bg-[#F5F5F5] dark:bg-[#171717] p-4 rounded-xl grid place-items-center size-16">
+          <DatabaseZap className="size-6 text-muted-foreground" />
+        </div>
+      </div>
+
+      <h2 className="text-sm text-muted-foreground mt-4 mb-0">
+        Waiting for connection to database...
+      </h2>
+      <p className="text-xs text-muted-foreground mt-2">
+        This may take a few seconds...
+      </p>
+    </div>
+  );
+}
+
+export default GlowingBorder;
+`,
   helloWorld: `const HelloWorld = () => {
   return <div>Hello, world! 🌍</div>;
 };
@@ -67,6 +104,11 @@ export default LoadingSpinner;
 
 // Export block metadata
 export const registryMetadata = {
+  glowingBorder: {
+    name: "glowing-border",
+    filename: "glowing-border.tsx",
+    component: "GlowingBorder",
+  },
   helloWorld: {
     name: "hello-world",
     filename: "hello-world.tsx",
@@ -81,6 +123,7 @@ export const registryMetadata = {
 
 // Export available block keys
 export const availableBlocks = [
+  "glowingBorder",
   "helloWorld",
   "loadingSpinner",
 ] as const;

@@ -5,6 +5,7 @@ import {
   CodePenContent,
   CodePenTitle,
 } from "@/features/craft/components/codepen";
+import { CodeSpot, CodeSpotProps } from "@/features/craft/components/codespot";
 import { PreviewTabs } from "@/features/craft/components/preview-tabs";
 import {
   registryPreviewComponents,
@@ -56,6 +57,9 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
                   filename={`${component}.tsx`}
                 />
               ) : null;
+            },
+            CodeSpot: ({ children, ...props }: CodeSpotProps) => {
+              return <CodeSpot {...props}>{children}</CodeSpot>;
             },
           }}
         />

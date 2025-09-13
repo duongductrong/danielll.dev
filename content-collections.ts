@@ -34,7 +34,7 @@ const pens = defineCollection({
     summary: z.string(),
     date: z.coerce.date(),
     author: z.string(),
-    thumbnail: z.string(),
+    thumbnail: z.string().optional(),
     icon: z.string().optional(),
   }),
   transform: async (document, context) => {
