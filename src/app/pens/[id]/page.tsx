@@ -6,9 +6,13 @@ import {
   CodePenTitle,
 } from "@/features/craft/components/codepen";
 import { PreviewTabs } from "@/features/craft/components/preview-tabs";
-import { registryPreviewComponents, registrySourceCode } from "@/features/craft/registry";
+import {
+  registryPreviewComponents,
+  registrySourceCode,
+} from "@/features/craft/registry";
 import { MDXContent } from "@content-collections/mdx/react";
 import { allPens } from "content-collections";
+import { format } from "date-fns";
 import { notFound, useRouter } from "next/navigation";
 import { use } from "react";
 
@@ -27,10 +31,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
         onBack={() => router.back()}
         title={pen.title}
         summary={pen.summary}
-        date={pen.date.toLocaleDateString("vi-VN", {
-          year: "numeric",
-          month: "long",
-        })}
+        date={format(pen.date.toISOString(), "MMMM d, yyyy")}
       />
       <CodePenContent>
         <MDXContent
@@ -42,12 +43,15 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
                 registryPreviewComponents[
                   component as keyof typeof registryPreviewComponents
                 ];
-              
-              const sourceCode = registrySourceCode[component as keyof typeof registrySourceCode];
+
+              const sourceCode =
+                registrySourceCode[
+                  component as keyof typeof registrySourceCode
+                ];
 
               return Component ? (
-                <PreviewTabs 
-                  component={Component} 
+                <PreviewTabs
+                  component={Component}
                   code={sourceCode}
                   filename={`${component}.tsx`}
                 />
