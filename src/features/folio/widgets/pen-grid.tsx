@@ -25,7 +25,7 @@ const PenGrid = ({ className, ...props }: PenGridProps) => {
       </div>
       <div className="grid grid-cols-2 gap-6 max-w-2xl mx-auto">
         {sortBy(allPens, "date").reverse().map((pen) => (
-          <Link key={pen._meta.path} href={`/craft/${pen._meta.path}`}>
+          <Link key={pen._meta.path} href={`/pens/${pen._meta.path}`}>
             <PenCard
               title={pen.title}
               date={pen.date.toISOString()}

@@ -27,7 +27,7 @@ const Page = ({ params }: { params: Promise<{ id: string }> }) => {
         onBack={() => router.back()}
         title={pen.title}
         summary={pen.summary}
-        date={pen.date.toLocaleDateString("en-US", {
+        date={pen.date.toLocaleDateString("vi-VN", {
           year: "numeric",
           month: "long",
         })}
