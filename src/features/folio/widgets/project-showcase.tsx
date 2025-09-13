@@ -71,7 +71,7 @@ export function ProjectShowCase({
         <CarouselPrevious className="left-12" />
         <CarouselNext className="right-12" />
       </Carousel>
-      <p className="text-sm mt-4 text-muted-foreground font-light leading-normal">
+      <p className="mt-4 text-muted-foreground font-light leading-normal">
         {description}
       </p>
     </section>
