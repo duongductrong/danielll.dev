@@ -40,7 +40,7 @@ export const PreviewTabs = ({
         </div>
 
         {activeTab === "preview" && (
-          <div className="mt-6 space-y-4">
+          <div className="mt-4 space-y-4">
             <div
               className={cn(
                 "relative",

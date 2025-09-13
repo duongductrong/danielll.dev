@@ -56,7 +56,7 @@ export const CodeBlock = ({
 
       {/* Code Content */}
       <div className="relative">
-        <pre className="overflow-x-auto p-4 text-sm [&_*]:text-foreground bg-transparent">
+        <pre className="overflow-x-auto p-4 text-sm [&_*]:text-foreground">
           <code className="language-tsx">
             {showLineNumbers
               ? code.split("\n").map((line, index) => (

@@ -64,7 +64,7 @@ export const CodePenContent = ({
     <article
       {...props}
       className={cn(
-        "prose prose max-w-full mx-auto px-6 md:px-0",
+        "prose prose dark:prose-invert max-w-full mx-auto px-6 md:px-0",
         "[&>*]:max-w-2xl [&>*]:mx-auto",
         "[&>[data-slot=code-spot]]:max-w-4xl",
         "[&>[data-slot=code-spot]]:my-10",

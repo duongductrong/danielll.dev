@@ -10,7 +10,7 @@ export const textVariants = tv(
         headline: "text-headline font-headline font-bold",
         subtitle: "text-base font-headline font-medium",
         title: "text-2xl font-bold",
-        body: "text-sm font-normal",
+        body: "text-base font-normal",
         caption: "text-xs font-normal",
       },
     },

@@ -1,17 +1,19 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { ComponentPropsWithoutRef } from "react";
 
-export interface HeaderProps {}
+export interface HeaderProps extends ComponentPropsWithoutRef<"header"> {}
 
 const Header = (props: HeaderProps) => {
   return (
-    <header className="container">
+    <header {...props} className={cn("container", props.className)}>
       <div className="relative inline-block">
         <Image
           src="https://avatars.githubusercontent.com/u/39333905?v=4"
           width={80}
           height={80}
-          className="size-24 object-cover rounded-2xl"
+          className="size-16 object-cover rounded-2xl"
           alt="Avatar"
         />
 

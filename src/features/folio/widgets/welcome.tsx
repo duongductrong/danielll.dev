@@ -18,7 +18,7 @@ const Welcome = ({ className, ...props }: WelcomeProps) => {
       <h2 className="text-base font-semibold flex items-start gap-2 leading-normal mb-2">
         Software Engineer @Zalopay
       </h2>
-      <h2 className="text-base font-normal flex items-start gap-2 leading-tight mb-2">
+      <h2 className="text-base font-normal flex items-start gap-2 leading-tight text-muted-foreground mb-2">
         Passionate about building software that makes a difference.
       </h2>
       <p className="text-base font-light leading-relaxed text-muted-foreground">

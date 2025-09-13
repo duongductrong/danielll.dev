@@ -1,32 +1,12 @@
 "use client";
 
 import Container from "@/components/ui/container";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Badge } from "@/components/ui/badge";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { PenCard } from "@/features/folio/components/pen-card";
 import { allPens } from "content-collections";
-import {
-  Search,
-  Calendar,
-  User,
-  ExternalLink,
-  Code2,
-  Palette,
-  Zap,
-  Sparkles,
-} from "lucide-react";
-import Link from "next/link";
-import { useState, useMemo } from "react";
+import { Code2, Palette, Sparkles, Zap } from "lucide-react";
 import { motion } from "motion/react";
-import Image from "next/image";
+import Link from "next/link";
+import { useMemo, useState } from "react";
 
 const categories = [
   { id: "all", label: "All", icon: Code2 },
@@ -53,7 +33,7 @@ const Page = () => {
   }, [searchQuery, selectedCategory]);
 
   return (
-    <Container className="py-24">
+    <Container>
       {/* <div className="text-center mb-12">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
@@ -117,34 +97,11 @@ const Page = () => {
             transition={{ delay: index * 0.1 }}
           >
             <Link href={`/craft/${pen._meta.path}`}>
-              <Card className="p-4 shadow-none">
-                <Image
-                  src="/oklch-colors-dark-new.avif"
-                  alt={pen.title}
-                  width={600}
-                  height={600}
-                  className="w-full border border-border rounded-lg"
-                />
-
-                <CardHeader className="px-0 py-2"></CardHeader>
-
-                <CardContent className="p-0">
-                  <div className="flex items-start justify-between">
-                    <CardTitle className="text-lg group-hover:text-zinc-900 dark:group-hover:text-zinc-100 transition-colors">
-                      {pen.title}
-                    </CardTitle>
-                    <Badge variant="secondary" className="ml-2">
-                      New
-                    </Badge>
-                  </div>
-                  <p className="text-muted-foreground">
-                    {pen.date.toLocaleDateString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                    })}
-                  </p>
-                </CardContent>
-              </Card>
+              <PenCard
+                title={pen.title}
+                date={pen.date.toISOString()}
+                thumbnail={pen.thumbnail}
+              />
             </Link>
           </motion.div>
         ))}
