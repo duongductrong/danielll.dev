@@ -21,7 +21,7 @@ function GlowingBorder() {
         </div>
       </div>
 
-      <h2 className="text-sm text-zinc-500 mt-4 mb-0">
+      <h2 className="text-sm text-zinc-700 dark:text-zinc-300 mt-4 mb-0">
         Waiting for connection to database...
       </h2>
       <p className="text-xs text-zinc-500 mt-2">
