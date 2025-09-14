@@ -29,16 +29,16 @@ To implement the glowing border effect, I used the `conic-gradient` CSS property
 
 ```css
 background: conic-gradient(
-  from_10deg,
-  transparent_20%,
-  #4EAFFE_50%,
-  transparent_20%
+  from 10deg,
+  transparent 20%,
+  #4EAFFE 50%,
+  transparent 20%
 );
 ```
 
 The `from 10deg` is the starting angle of the gradient. The `transparent 20%` is the color of the transparent part of the gradient. The `#4EAFFE 50%` is the color of the part of the gradient that is not transparent. The `transparent 20%` is the color of the transparent part of the gradient.
 
-And the `w-[200%] h-[200%]` class is used to make the gradient larger than the container.
+And the `width: 200%` and `height: 200%` class is used to make the gradient larger than the container.
 
 export function GlowingBorderPart1() {
   return (
