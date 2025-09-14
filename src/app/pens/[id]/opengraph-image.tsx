@@ -110,7 +110,7 @@ export default async function Image({ params }: { params: { id: string } }) {
             color: "rgb(255, 255, 255, 0.3)",
           }}
         >
-          Made by Trong Duong with ❤️
+          Made by Trong Duong
         </div>
       </div>
     ),
