@@ -16,7 +16,7 @@ Start with the basic structure of the component.
 export function GlowingBorderPart0() {
   return (
     <div className="relative border-2 border-zinc-200 dark:border-zinc-700 bg-[#F5F5F5] dark:bg-[#171717] p-4 rounded-xl grid place-items-center size-16">
-      <DatabaseZap className="size-6 text-zinc-500 dark:text-zinc-700" />
+      <DatabaseZap className="size-6 text-zinc-500" />
     </div>
   );
 }
@@ -31,7 +31,7 @@ To implement the glowing border effect, I used the `conic-gradient` CSS property
 background: conic-gradient(
   from 10deg,
   transparent 20%,
-  #4EAFFE 50%,
+  #4eaffe 50%,
   transparent 20%
 );
 ```
@@ -58,7 +58,7 @@ export function GlowingBorderPart1() {
       )}
     >
       <div className="border-2 border-zinc-200 dark:border-zinc-700 bg-[#F5F5F5] dark:bg-[#171717] p-4 rounded-xl grid place-items-center size-16">
-        <DatabaseZap className="size-6 text-zinc-500 dark:text-zinc-700" />
+        <DatabaseZap className="size-6 text-zinc-500" />
       </div>
     </div>
   );
@@ -88,7 +88,7 @@ export function GlowingBorderPart2() {
       )}
     >
       <div className="relative border-2 border-zinc-200 dark:border-zinc-700 bg-[#F5F5F5] dark:bg-[#171717] p-4 rounded-xl grid place-items-center size-16">
-        <DatabaseZap className="size-6 text-zinc-500 dark:text-zinc-700" />
+        <DatabaseZap className="size-6 text-zinc-500" />
       </div>
     </div>
   );

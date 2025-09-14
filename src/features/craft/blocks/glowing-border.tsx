@@ -17,14 +17,14 @@ function GlowingBorder() {
         )}
       >
         <div className="relative border-2 border-zinc-200 dark:border-zinc-700 bg-[#F5F5F5] dark:bg-[#171717] p-4 rounded-xl grid place-items-center size-16">
-          <DatabaseZap className="size-6 text-zinc-500 dark:text-zinc-700" />
+          <DatabaseZap className="size-6 text-zinc-500" />
         </div>
       </div>
 
-      <h2 className="text-sm text-zinc-500 dark:text-zinc-700 mt-4 mb-0">
+      <h2 className="text-sm text-zinc-500 mt-4 mb-0">
         Waiting for connection to database...
       </h2>
-      <p className="text-xs text-zinc-500 dark:text-zinc-700 mt-2">
+      <p className="text-xs text-zinc-500 mt-2">
         This may take a few seconds...
       </p>
     </div>
