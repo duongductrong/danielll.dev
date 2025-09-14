@@ -8,7 +8,7 @@ const Welcome = ({ className, ...props }: WelcomeProps) => {
     <section
       {...props}
       className={cn(
-        "container text-center flex flex-col items-start",
+        "container text-left flex flex-col items-start",
         className
       )}
     >
