@@ -5,14 +5,13 @@ import { jsx, jsxs } from "react/jsx-runtime";
 import type { BundledLanguage } from "shiki/bundle/web";
 import { codeToHast } from "shiki/bundle/web";
 
-export async function highlight(
-  code: string,
-  lang: BundledLanguage,
-  theme: string
-) {
+export async function highlight(code: string, lang: BundledLanguage) {
   const out = await codeToHast(code, {
     lang,
-    theme: theme || "github-dark",
+    themes: {
+      dark: "github-dark",
+      light: "github-light",
+    },
   });
 
   return toJsxRuntime(out, {

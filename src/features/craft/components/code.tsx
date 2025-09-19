@@ -21,11 +21,9 @@ export function Code({
   const [nodes, setNodes] = useState(initial);
 
   useLayoutEffect(() => {
-    void highlight(
-      code || children || "",
-      lang as BundledLanguage,
-      theme === "dark" ? "github-dark" : "github-light"
-    ).then(setNodes);
+    void highlight(code || children || "", lang as BundledLanguage).then(
+      setNodes
+    );
   }, [code, lang, children, theme]);
 
   return (
