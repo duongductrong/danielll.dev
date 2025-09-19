@@ -5,23 +5,18 @@ import { ThemeProvider } from "@/components/ui/theme-provider";
 import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
 import type { Metadata } from "next";
-import { Doto, Geist, Inter } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Suspense } from "react";
 import "./globals.css";
 
-const sans = Geist({
-  variable: "--font-sans",
-  subsets: ["latin"],
-});
-
-const doto = Doto({
-  variable: "--font-doto",
-  subsets: ["latin"],
-});
-
 const inter = Inter({
   variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -39,9 +34,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          sans.variable,
-          doto.variable,
           inter.variable,
+          jetbrainsMono.variable,
           "bg-background",
           "antialiased",
           "font-sans"

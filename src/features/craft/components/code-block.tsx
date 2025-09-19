@@ -63,6 +63,7 @@ export const CodeBlock = ({
       <div
         className={cn(
           "relative",
+          "[&_.shiki]:font-jetbrains-mono",
           "[&_.shiki]:!bg-preview-bg",
           "[&_.shiki]:!m-0",
           "max-h-[400px] overflow-y-auto"
