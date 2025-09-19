@@ -20,6 +20,8 @@ export const PreviewTabs = ({
 }: PreviewTabsProps) => {
   const [activeTab, setActiveTab] = useState("preview");
 
+  console.log("code", code);
+
   return (
     <div className="w-full">
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">

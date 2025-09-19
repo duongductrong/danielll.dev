@@ -1,13 +1,13 @@
 "use client";
 
 import { CodePenContent } from "@/features/craft/components/codepen";
-import { MDXContent } from "@content-collections/mdx/react";
 import { CodeSpot, CodeSpotProps } from "@/features/craft/components/codespot";
 import { PreviewTabs } from "@/features/craft/components/preview-tabs";
 import {
   registryPreviewComponents,
   registrySourceCode,
 } from "@/features/craft/registry";
+import { MDXContent } from "@content-collections/mdx/react";
 import { Pen } from "content-collections";
 
 export interface PenContentProps {

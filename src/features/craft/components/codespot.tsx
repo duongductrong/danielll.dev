@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Atom } from "lucide-react";
+import { Atom, Loader } from "lucide-react";
 import { ComponentProps, ReactNode, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -16,7 +16,7 @@ export const CodeSpot = ({ className, children, ...props }: CodeSpotProps) => {
         fallback={
           <div className="rounded-lg border border border-preview-border bg-preview-bg p-4 text-sm text-sm text-center min-h-14 h-20 flex items-center justify-center">
             <div className="flex items-center flex-col">
-              <Atom className="size-6 animate-spin text-center" />
+              <Loader className="size-6 animate-spin text-center" />
               <span className="inline-block mt-1">Loading</span>
             </div>
           </div>
