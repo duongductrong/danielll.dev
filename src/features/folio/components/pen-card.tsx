@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { Atom, MoveUpRight } from "lucide-react";
 import Image from "next/image";
@@ -59,15 +60,15 @@ export interface PenCardProps {
   icon?: string;
 }
 
-export const PenCard = ({ title, date, icon }: PenCardProps) => {
+export const PenCard = ({ title, date, icon, thumbnail }: PenCardProps) => {
   return (
-    <Card className="p-1.5 shadow-none hover:translate-y-[-5px] transition-all duration-300">
-      {!icon ? (
+    <Card className="p-1.5 shadow-none hover:translate-y-[-5px] transition-all duration-300 bg-preview-bg">
+      {thumbnail ? (
         <Image
-          src={"/pens/glowing-border/opengraph-image"}
+          src={thumbnail}
           alt={title}
           width={600}
-          height={600}
+          height={400}
           className="w-full border border-border rounded-lg h-[156px] object-cover"
         />
       ) : (
@@ -80,12 +81,19 @@ export const PenCard = ({ title, date, icon }: PenCardProps) => {
             <span className="w-full border-t border-dashed border-border" />
             <span className="w-full border-b border-dashed border-border" />
           </div>
-          <div className="shadow-bg bg-preview-bg shadow-custom flex size-10 shrink-0 items-center justify-center rounded-xl border border-border bg-gray-200 shadow-none">
+          <div
+            className={cn(
+              "shadow-bg bg-preview-bg shadow-custom flex shrink-0 items-center justify-center",
+              "rounded-xl border border-border shadow-none",
+              "px-4 py-1 flex items-center gap-2"
+            )}
+          >
             {icon ? (
               <DynamicIcon iconName={icon} className="size-4" />
             ) : (
               <Atom className="size-4" />
             )}
+            {title}
           </div>
         </div>
       )}
