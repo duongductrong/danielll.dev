@@ -1,13 +1,11 @@
 /* eslint-disable @next/next/no-css-tags */
 import "@ant-design/v5-patch-for-react-19";
 
-import { cn } from "@/lib/utils";
-import { Lenis } from "lenis/react";
-import type { Metadata } from "next";
-import { Doto, Geist } from "next/font/google";
-import { Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
+import { cn } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
+import type { Metadata } from "next";
+import { Doto, Geist, Inter } from "next/font/google";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Suspense } from "react";
 import "./globals.css";
@@ -57,17 +55,17 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NuqsAdapter>
-            <Lenis root>
-              <Suspense
-                fallback={
-                  <div className="bg-background w-full h-screen grid place-items-center">
-                    <Loader2 className="size-4 text-foreground animate-spin" />
-                  </div>
-                }
-              >
-                {children}
-              </Suspense>
-            </Lenis>
+            {/* <Lenis root> */}
+            <Suspense
+              fallback={
+                <div className="bg-background w-full h-screen grid place-items-center">
+                  <Loader2 className="size-4 text-foreground animate-spin" />
+                </div>
+              }
+            >
+              {children}
+            </Suspense>
+            {/* </Lenis> */}
           </NuqsAdapter>
         </ThemeProvider>
       </body>
