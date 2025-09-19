@@ -5,9 +5,12 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import { ComponentPropsWithoutRef } from "react";
 
-const Flashlight = dynamic(() => import("../components/flashlight"), {
-  ssr: false,
-});
+const ThemeAppearance = dynamic(
+  () => import("../components/theme-appearance"),
+  {
+    ssr: false,
+  }
+);
 
 export interface HeaderProps extends ComponentPropsWithoutRef<"header"> {}
 
@@ -29,7 +32,7 @@ const Header = (props: HeaderProps) => {
         <div className="bg-green-500 w-4 h-4 rounded-full absolute -bottom-1 -right-1 border-4 border-white" />
       </div>
 
-      <Flashlight />
+      <ThemeAppearance />
     </header>
   );
 };

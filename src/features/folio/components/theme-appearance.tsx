@@ -4,12 +4,13 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Monitor, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import dynamic from "next/dynamic";
 import { ComponentPropsWithoutRef } from "react";
 
-export interface FlashlightProps
+export interface ThemeAppearanceProps
   extends ComponentPropsWithoutRef<typeof Tabs> {}
 
-const Flashlight = (props: FlashlightProps) => {
+const ThemeAppearance = (props: ThemeAppearanceProps) => {
   const { setTheme, theme } = useTheme();
   console.log("theme", theme);
   return (
@@ -33,4 +34,4 @@ const Flashlight = (props: FlashlightProps) => {
   );
 };
 
-export default Flashlight;
+export default ThemeAppearance;

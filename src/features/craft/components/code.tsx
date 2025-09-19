@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import { JSX, useLayoutEffect, useState } from "react";
 import { BundledLanguage } from "shiki/bundle/web";
 import { highlight } from "./highlight";
+import { useTheme } from "next-themes";
 
 export function Code({
   initial,
@@ -16,13 +17,16 @@ export function Code({
   initial?: JSX.Element;
   lang: string;
 }) {
+  const { theme } = useTheme();
   const [nodes, setNodes] = useState(initial);
 
   useLayoutEffect(() => {
-    void highlight(code || children || "", lang as BundledLanguage).then(
-      setNodes
-    );
-  }, [code, lang, children]);
+    void highlight(
+      code || children || "",
+      lang as BundledLanguage,
+      theme === "dark" ? "github-dark" : "github-light"
+    ).then(setNodes);
+  }, [code, lang, children, theme]);
 
   return (
     nodes ?? (

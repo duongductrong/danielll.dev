@@ -3,7 +3,15 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CornerUpLeft } from "lucide-react";
+import dynamic from "next/dynamic";
 import { ComponentProps } from "react";
+
+const ThemeAppearance = dynamic(
+  () => import("@/features/folio/components/theme-appearance"),
+  {
+    ssr: false,
+  }
+);
 
 export interface CodePenProps extends ComponentProps<"main"> {}
 
@@ -36,22 +44,25 @@ export const CodePenTitle = ({
       {...props}
       className={cn("mb-10 max-w-2xl mx-auto px-6 md:px-0", className)}
     >
-      {date ? <p className="text-muted-foreground mb-3">{date}</p> : null}
-
-      <div className="relative mb-2">
-        <h2 className="text-lg font-bold">{title}</h2>
-
+      <div className="relative flex items-center mb-12">
         {onBack ? (
           <Button
             size="icon"
-            variant="ghost"
+            variant="accent"
             onClick={onBack}
-            className="absolute top-1/2 -translate-y-1/2 -left-12 cursor-pointer rounded-full"
+            className="cursor-pointer rounded-full group"
           >
-            <CornerUpLeft className="size-4" />
+            <CornerUpLeft className="size-4 text-muted-foreground group-hover:text-foreground" />
           </Button>
         ) : null}
+
+        <ThemeAppearance className="ml-auto" />
       </div>
+
+      {date ? (
+        <p className="text-muted-foreground mb-1 text-xs">{date}</p>
+      ) : null}
+      <h2 className="text-xl font-bold mb-2">{title}</h2>
 
       <p className="text-muted-foreground">{summary}</p>
     </div>
@@ -67,7 +78,7 @@ export const CodePenContent = ({
     <article
       {...props}
       className={cn(
-        "prose text-foreground dark:prose-invert max-w-full mx-auto px-6 md:px-0",
+        "prose text-paragraph dark:prose-invert max-w-full mx-auto px-6 md:px-0",
         "[&>*]:max-w-2xl [&>*]:mx-auto",
         "[&>[data-slot=code-spot]]:max-w-2xl",
         "[&>[data-slot=code-spot]]:my-10",
