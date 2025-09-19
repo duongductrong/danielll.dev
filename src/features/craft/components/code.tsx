@@ -21,7 +21,7 @@ export function Code({
   const [nodes, setNodes] = useState(initial);
 
   useLayoutEffect(() => {
-    void highlight(code || children || "", lang as BundledLanguage).then(
+    void highlight(code || children || "", lang as BundledLanguage, theme).then(
       setNodes
     );
   }, [code, lang, children, theme]);
