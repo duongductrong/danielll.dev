@@ -71,8 +71,8 @@ function VoiceChatInteraction() {
             {visibleUsers.map((user) => (
               <MotionAvatar
                 key={user.name}
-                className="ring-2 ring-background border-2 border-background cursor-pointer"
                 layoutId={`vci-avatar-${user.name}`}
+                className="ring-2 ring-background border-2 border-background cursor-pointer"
                 layout
               >
                 <AvatarImage src={user.avatar} alt={user.name} />
@@ -104,13 +104,12 @@ function VoiceChatInteraction() {
                 <XIcon className="size-4 absolute top-1/2 right-4 -translate-y-1/2 text-muted-foreground cursor-pointer" />
               </button>
             </header>
-            <motion.article className="bg-background grid grid-cols-4 gap-4 px-4 py-6">
+            <motion.article className="bg-background grid grid-cols-4 gap-4 px-4 py-6 overflow-hidden">
               {users.map((user) => {
                 return (
                   <motion.div
                     key={user.name}
                     className="flex justify-center flex-col items-center gap-2"
-                    layout
                   >
                     <MotionAvatar layoutId={`vci-avatar-${user.name}`} layout>
                       <AvatarImage src={user.avatar} alt={user.name} />

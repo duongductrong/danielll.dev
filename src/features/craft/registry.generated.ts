@@ -153,17 +153,15 @@ const users = [
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face",
   },
 ];
-
-const MotionAvatar = motion.create(Avatar);
-const MotionAvatarImage = motion.create(AvatarImage);
+const visibleUsers = users.slice(0, slice);
+const hideUserCounted = users.length - slice;
 
 function VoiceChatInteraction() {
   const [open, setOpen] = useState(false);
-  const hiddenUserCount = users.length - slice;
 
   return (
     <motion.div layout>
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {!open && (
           <motion.div
             className={cn(
@@ -174,13 +172,14 @@ function VoiceChatInteraction() {
             role="button"
             onClick={() => setOpen(!open)}
           >
-            {users.slice(0, slice).map((user) => (
+            {visibleUsers.map((user) => (
               <MotionAvatar
                 key={user.name}
-                className="ring-2 ring-background border-2 border-background cursor-pointer"
                 layoutId={\`vci-avatar-\${user.name}\`}
+                className="ring-2 ring-background border-2 border-background cursor-pointer"
+                layout
               >
-                <MotionAvatarImage src={user.avatar} alt={user.name} />
+                <AvatarImage src={user.avatar} alt={user.name} />
                 <AvatarFallback>
                   {user.name
                     .split(" ")
@@ -190,9 +189,9 @@ function VoiceChatInteraction() {
               </MotionAvatar>
             ))}
 
-            {hiddenUserCount > 0 && (
+            {hideUserCounted > 0 && (
               <MotionAvatar layout>
-                <AvatarFallback>+{hiddenUserCount}</AvatarFallback>
+                <AvatarFallback>+{hideUserCounted}</AvatarFallback>
               </MotionAvatar>
             )}
           </motion.div>
@@ -209,24 +208,25 @@ function VoiceChatInteraction() {
                 <XIcon className="size-4 absolute top-1/2 right-4 -translate-y-1/2 text-muted-foreground cursor-pointer" />
               </button>
             </header>
-            <motion.article className="bg-background grid grid-cols-4 gap-4 px-4 py-6">
-              {users.map((user) => (
-                <motion.div
-                  key={user.name}
-                  className="flex justify-center flex-col items-center gap-2"
-                  layout
-                >
-                  <MotionAvatar layoutId={\`vci-avatar-\${user.name}\`}>
-                    <MotionAvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback>
-                      {user.name.slice(0, 2).toUpperCase()}
-                    </AvatarFallback>
-                  </MotionAvatar>
-                  <motion.p className="text-xs text-center">
-                    {user.name}
-                  </motion.p>
-                </motion.div>
-              ))}
+            <motion.article className="bg-background grid grid-cols-4 gap-4 px-4 py-6 overflow-hidden">
+              {users.map((user) => {
+                return (
+                  <motion.div
+                    key={user.name}
+                    className="flex justify-center flex-col items-center gap-2"
+                  >
+                    <MotionAvatar layoutId={\`vci-avatar-\${user.name}\`} layout>
+                      <AvatarImage src={user.avatar} alt={user.name} />
+                      <AvatarFallback>
+                        {user.name.slice(0, 2).toUpperCase()}
+                      </AvatarFallback>
+                    </MotionAvatar>
+                    <motion.p className="text-xs text-center">
+                      {user.name}
+                    </motion.p>
+                  </motion.div>
+                );
+              })}
             </motion.article>
             <footer className="flex flex-col gap-2 px-4 pb-4 text-center overflow-hidden">
               <Button>Join now</Button>
@@ -240,6 +240,8 @@ function VoiceChatInteraction() {
     </motion.div>
   );
 }
+
+const MotionAvatar = motion(Avatar);
 
 export default VoiceChatInteraction;
 `,
