@@ -15,6 +15,7 @@ export async function highlight(
     themes: {
       dark: "github-dark",
       light: "github-light",
+      system: "github-dark",
     },
     defaultColor: theme,
   });
