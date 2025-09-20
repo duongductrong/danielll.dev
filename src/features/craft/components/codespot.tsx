@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { Atom, Loader } from "lucide-react";
+import { Loader } from "lucide-react";
 import { ComponentProps, ReactNode, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 
@@ -28,7 +28,9 @@ export const CodeSpot = ({ className, children, ...props }: CodeSpotProps) => {
           className={cn(
             className,
             "border border-preview-border bg-preview-bg rounded-lg min-h-64",
-            "flex items-center justify-center text-sm p-2"
+            "flex items-center justify-center text-sm px-6 py-10",
+            "not-prose",
+            className
           )}
         >
           {children}

@@ -79,6 +79,7 @@ export const CodePenContent = ({
       {...props}
       className={cn(
         "prose text-paragraph dark:prose-invert max-w-full mx-auto px-6 md:px-0",
+        "[&_[data-slot=code-spot]_img]:m-0",
         "[&>*]:max-w-2xl [&>*]:mx-auto",
         "[&>[data-slot=code-spot]]:max-w-2xl",
         "[&>[data-slot=code-spot]]:my-10",

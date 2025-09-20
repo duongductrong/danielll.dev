@@ -11,12 +11,14 @@ export interface PreviewTabsProps {
   component: React.ComponentType;
   code?: string;
   filename?: string;
+  className?: string;
 }
 
 export const PreviewTabs = ({
   component: Component,
   code,
   filename = "component.tsx",
+  className,
 }: PreviewTabsProps) => {
   const [activeTab, setActiveTab] = useState("preview");
 
@@ -41,7 +43,7 @@ export const PreviewTabs = ({
             <div
               className={cn("relative", "mx-auto transition-all duration-300")}
             >
-              <CodeSpot>
+              <CodeSpot className={className}>
                 <Component />
               </CodeSpot>
             </div>

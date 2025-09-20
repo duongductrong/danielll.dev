@@ -12,6 +12,7 @@ import { Pen } from "content-collections";
 
 export interface PenContentProps {
   pen: Pen;
+  className?: string;
 }
 
 const PenContent = ({ pen }: PenContentProps) => {
@@ -21,7 +22,13 @@ const PenContent = ({ pen }: PenContentProps) => {
         key={pen._meta.path}
         code={pen.mdx}
         components={{
-          Preview: ({ component }: { component: string }) => {
+          Preview: ({
+            component,
+            className,
+          }: {
+            component: string;
+            className?: string;
+          }) => {
             const Component =
               registryPreviewComponents[
                 component as keyof typeof registryPreviewComponents
@@ -35,6 +42,7 @@ const PenContent = ({ pen }: PenContentProps) => {
                 component={Component}
                 code={sourceCode}
                 filename={`${component}.tsx`}
+                className={className}
               />
             ) : null;
           },

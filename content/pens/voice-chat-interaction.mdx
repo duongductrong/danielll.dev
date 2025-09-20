@@ -1,0 +1,91 @@
+---
+title: "Voice Chat Interaction"
+summary: "A voice chat interaction component that allows you to chat with a voice assistant."
+date: 2025-09-20T00:18:31.608Z
+author: "Trong Duong"
+icon: Hand
+---
+
+<Preview component="voiceChatInteraction" className="min-h-[450px]" />
+
+Start with creating motion variants of your UI components using Framer Motion's `motion.create()` function.
+
+```tsx
+const MotionAvatar = motion.create(Avatar);
+const MotionAvatarImage = motion.create(AvatarImage);
+```
+
+This allows us to use all the motion capabilities while maintaining the original component's styling and functionality.
+
+The magic happens with Framer Motion's layout animations. Each avatar gets a unique `layoutId` that connects its collapsed and expanded states:
+
+```tsx
+// In collapsed state
+<MotionAvatar layoutId={`vci-avatar-${user.name}`}>
+  <MotionAvatarImage src={user.avatar} alt={user.name} />
+</MotionAvatar>
+
+// In expanded state  
+<MotionAvatar layoutId={`vci-avatar-${user.name}`}>
+  <MotionAvatarImage src={user.avatar} alt={user.name} />
+</MotionAvatar>
+```
+
+When Framer Motion sees the same `layoutId` in different positions, it automatically animates the element between those positions.
+
+The main container also uses a shared `layoutId` to create the morphing effect:
+
+```tsx
+// Collapsed container
+<motion.div
+  layoutId="vci-container"
+  className="w-fit p-2 rounded-full border border-border flex items-center"
+>
+
+// Expanded container
+<motion.article
+  layoutId="vci-container" 
+  className="bg-background grid grid-cols-4 gap-4 px-4 py-6"
+>
+```
+
+The `layout` prop tells Framer Motion to animate any layout changes automatically:
+
+```tsx
+<motion.div layout>
+  {/* Content that might change size/position */}
+</motion.div>
+```
+
+This handles things like text reflow, size changes, and position adjustments without any manual animation code.
+
+Framer Motion's layout animations use the FLIP technique (First, Last, Invert, Play):
+
+1. **First**: Record the initial position/size
+2. **Last**: Record the final position/size  
+3. **Invert**: Apply a transform to make it look like it's still in the first position
+4. **Play**: Animate back to the natural position
+
+This creates incredibly smooth transitions because the browser's layout engine handles the heavy lifting.
+
+When transitioning from the horizontal stack to the grid layout, multiple things happen simultaneously:
+
+- Position changes: Avatars move to new grid positions
+- Size changes: Container expands from compact to full width
+- Layout changes: Flex to grid layout transformation
+- Content changes: Names appear, additional UI elements fade in
+
+Framer Motion coordinates all these changes to feel like a single, cohesive animation.
+
+Motion automatically promotes animated elements to their own compositor layer, avoiding expensive repaints and ensuring smooth 60fps animations.
+
+```tsx
+// GPU-accelerated transforms happen automatically
+<motion.div layoutId="vci-container">
+```
+
+Framer Motion also automatically respects the user's `prefers-reduced-motion` setting, disabling animations for users who prefer less motion.
+
+<Preview component="voiceChatInteraction" />
+
+Finally, we get a buttery-smooth interface that feels magical to use, while being built with simple, maintainable code.
