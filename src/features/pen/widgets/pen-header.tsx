@@ -13,7 +13,7 @@ const PenHeader = ({ pen }: PenHeaderProps) => {
   const router = useRouter();
   return (
     <CodePenTitle
-      onBack={() => router.back()}
+      onBack={() => router.push("/", { scroll: true })}
       title={pen.title}
       summary={pen.summary}
       date={format(pen.date.toISOString(), "MMMM d, yyyy")}

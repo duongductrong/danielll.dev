@@ -7,12 +7,15 @@ import { Check, Code, Copy } from "lucide-react";
 import dynamic from "next/dynamic";
 import { useState } from "react";
 
-const CodeBox = dynamic(() => import("./code").then((mod) => mod.Code), {
-  ssr: false,
-  loading: () => (
-    <div className="h-[350px] w-full flex items-center justify-center bg-preview-bg" />
-  ),
-});
+const CodeBlockCore = dynamic(
+  () => import("@/components/ui/codeblock").then((mod) => mod.CodeBlock),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="h-[350px] w-full flex items-center justify-center bg-preview-bg" />
+    ),
+  }
+);
 
 export interface CodeBlockProps {
   code: string;
@@ -69,21 +72,7 @@ export const CodeBlock = ({
           "max-h-[400px] overflow-y-auto"
         )}
       >
-        <CodeBox lang={language}>{code}</CodeBox>
-        {/* <div className="overflow-x-auto p-4 text-sm [&_*]:text-foreground bg-transparent mt-0">
-          <code className="language-tsx">
-            {showLineNumbers
-            ? code.split("\n").map((line, index) => (
-              <div key={index} className="flex">
-              <span className="select-none text-muted-foreground mr-4 w-8 text-right shrink-0">
-              {index + 1}
-              </span>
-              <span>{line}</span>
-              </div>
-              ))
-              : code}
-              </code>
-        </div> */}
+        <CodeBlockCore lang={language}>{code}</CodeBlockCore>{" "}
       </div>
     </div>
   );

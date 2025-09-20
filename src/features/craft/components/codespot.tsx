@@ -14,7 +14,7 @@ export const CodeSpot = ({ className, children, ...props }: CodeSpotProps) => {
     <ErrorBoundary FallbackComponent={CodeSpotError}>
       <Suspense
         fallback={
-          <div className="rounded-lg border border border-preview-border bg-preview-bg p-4 text-sm text-sm text-center min-h-14 h-20 flex items-center justify-center">
+          <div className={cn("rounded-lg border border border-preview-border bg-preview-bg p-4 text-sm text-sm text-center min-h-14 h-[350px] flex items-center justify-center")}>
             <div className="flex items-center flex-col">
               <Loader className="size-6 animate-spin text-center" />
               <span className="inline-block mt-1">Loading</span>

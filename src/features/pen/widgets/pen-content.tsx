@@ -1,5 +1,6 @@
 "use client";
 
+import { CodeBlock } from "@/components/ui/codeblock";
 import { CodePenContent } from "@/features/craft/components/codepen";
 import { CodeSpot, CodeSpotProps } from "@/features/craft/components/codespot";
 import { PreviewTabs } from "@/features/craft/components/preview-tabs";
@@ -9,6 +10,7 @@ import {
 } from "@/features/craft/registry";
 import { MDXContent } from "@content-collections/mdx/react";
 import { Pen } from "content-collections";
+import { ComponentProps } from "react";
 
 export interface PenContentProps {
   pen: Pen;
@@ -48,6 +50,16 @@ const PenContent = ({ pen }: PenContentProps) => {
           },
           CodeSpot: ({ children, ...props }: CodeSpotProps) => {
             return <CodeSpot {...props}>{children}</CodeSpot>;
+          },
+          pre: ({ ...props }: ComponentProps<"pre">) => {
+            const children = (
+              props?.children as any
+            )?.props?.children.toString();
+            return (
+              <CodeBlock initial={children} lang="tsx">
+                {children}
+              </CodeBlock>
+            );
           },
         }}
       />
