@@ -1,9 +1,11 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { XIcon } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { useState } from "react";
-import { motion } from "motion/react";
 
 const slice = 5;
 const users = [
@@ -57,84 +59,80 @@ function VoiceChatInteraction() {
 
   return (
     <motion.div layout>
-      {!open && (
-        <motion.div
-          layoutId="vci-container"
-          className={cn(
-            "w-fit p-2 rounded-full border border-border",
-            "flex items-center overflow-hidden",
-            "flex -space-x-2 shadow-sm bg-background"
-          )}
-          role="button"
-          onClick={() => setOpen(!open)}
-        >
-          {users.slice(0, slice).map((user) => (
-            <MotionAvatar
-              key={user.name}
-              className="ring-2 ring-background border-2 border-background cursor-pointer"
-              layoutId={`vci-avatar-${user.name}`}
-            >
-              <MotionAvatarImage src={user.avatar} alt={user.name} />
-              <AvatarFallback>
-                {user.name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")}
-              </AvatarFallback>
-            </MotionAvatar>
-          ))}
-
-          {hiddenUserCount > 0 && (
-            <MotionAvatar layoutId={`vci-avatar-${hiddenUserCount}`}>
-              <AvatarFallback>+{hiddenUserCount}</AvatarFallback>
-            </MotionAvatar>
-          )}
-        </motion.div>
-      )}
-
-      {open && (
-        <motion.section
-          // layoutId="vci-container"
-          className="w-[300px] min-h-[300px] rounded-2xl bg-background border border-border overflow-hidden"
-        >
-          <header className="relative text-center bg-secondary px-4 py-2 border-b border-border">
-            <span className="text-muted-foreground font-medium">
-              Voice Chat
-            </span>
-
-            <button type="button" onClick={() => setOpen(false)}>
-              <XIcon className="size-4 absolute top-1/2 right-4 -translate-y-1/2 text-muted-foreground cursor-pointer" />
-            </button>
-          </header>
-          <motion.article
-            layoutId="vci-container"
-            className="bg-background grid grid-cols-4 gap-4 px-4 py-6"
+      <AnimatePresence>
+        {!open && (
+          <motion.div
+            className={cn(
+              "w-fit p-2 rounded-full border border-border",
+              "flex items-center",
+              "flex -space-x-2 shadow-sm bg-background"
+            )}
+            role="button"
+            onClick={() => setOpen(!open)}
           >
-            {users.map((user) => (
-              <div
+            {users.slice(0, slice).map((user) => (
+              <MotionAvatar
                 key={user.name}
-                className="flex justify-center flex-col items-center gap-2"
+                className="ring-2 ring-background border-2 border-background cursor-pointer"
+                layoutId={`vci-avatar-${user.name}`}
               >
-                <MotionAvatar layoutId={`vci-avatar-${user.name}`}>
-                  <MotionAvatarImage src={user.avatar} alt={user.name} />
-                  <AvatarFallback>
-                    {user.name.slice(0, 2).toUpperCase()}
-                  </AvatarFallback>
-                </MotionAvatar>
-                <motion.p layout className="text-xs text-center">
-                  {user.name}
-                </motion.p>
-              </div>
+                <MotionAvatarImage src={user.avatar} alt={user.name} />
+                <AvatarFallback>
+                  {user.name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </MotionAvatar>
             ))}
-          </motion.article>
-          <footer className="flex flex-col gap-2 px-4 pb-4 text-center">
-            <Button>Join now</Button>
-            <p className="text-xs text-muted-foreground">
-              Mic will be muted initially
-            </p>
-          </footer>
-        </motion.section>
-      )}
+
+            {hiddenUserCount > 0 && (
+              <MotionAvatar layout>
+                <AvatarFallback>+{hiddenUserCount}</AvatarFallback>
+              </MotionAvatar>
+            )}
+          </motion.div>
+        )}
+
+        {open && (
+          <motion.section className="w-[300px] min-h-[300px] rounded-2xl bg-background border border-border">
+            <header className="relative text-center bg-secondary px-4 py-2 border-b border-border rounded-t-2xl">
+              <span className="text-muted-foreground font-medium">
+                Voice Chat
+              </span>
+
+              <button type="button" onClick={() => setOpen(false)}>
+                <XIcon className="size-4 absolute top-1/2 right-4 -translate-y-1/2 text-muted-foreground cursor-pointer" />
+              </button>
+            </header>
+            <motion.article className="bg-background grid grid-cols-4 gap-4 px-4 py-6">
+              {users.map((user) => (
+                <motion.div
+                  key={user.name}
+                  className="flex justify-center flex-col items-center gap-2"
+                  layout
+                >
+                  <MotionAvatar layoutId={`vci-avatar-${user.name}`}>
+                    <MotionAvatarImage src={user.avatar} alt={user.name} />
+                    <AvatarFallback>
+                      {user.name.slice(0, 2).toUpperCase()}
+                    </AvatarFallback>
+                  </MotionAvatar>
+                  <motion.p className="text-xs text-center">
+                    {user.name}
+                  </motion.p>
+                </motion.div>
+              ))}
+            </motion.article>
+            <footer className="flex flex-col gap-2 px-4 pb-4 text-center overflow-hidden">
+              <Button>Join now</Button>
+              <p className="text-xs text-muted-foreground">
+                Mic will be muted initially
+              </p>
+            </footer>
+          </motion.section>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
