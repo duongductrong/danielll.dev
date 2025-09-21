@@ -7,22 +7,19 @@ const Welcome = ({ className, ...props }: WelcomeProps) => {
   return (
     <section
       {...props}
-      className={cn(
-        "container text-left flex flex-col items-start",
-        className
-      )}
+      className={cn("container text-left flex flex-col items-start", className)}
     >
-      <h1 className="text-base font-bold flex items-start gap-2 text-purple-500 leading-normal">
-        Trong Duong
+      <h1 className="text-lg font-bold flex items-start gap-2 leading-normal mb-2">
+        Hi, I&apos;m Trong Duong
       </h1>
-      <h2 className="text-base font-semibold flex items-center gap-2 leading-normal mb-2">
-        Software Engineer at{" "}
-        <span className="inline-flex p-px px-2 bg-gray-100 rounded-md cursor-pointer text-sm">
+      <h2 className="text-base items-center leading-normal mb-2">
+        <span className="text-muted-foreground">A Software Engineer at</span> <b className="font-bold">Zalopay</b>
+        {/* <span className="inline-flex p-px px-2 bg-gray-100 rounded-md cursor-pointer text-sm">
           <span className="text-[#0032C2]">Zalo</span>
           <span className="text-[#04C967]">pay</span>
-        </span>
+        </span> */}
       </h2>
-      <h2 className="text-base flex items-start gap-2 leading-tight text-muted-foreground mb-2">
+      <h2 className="text-base flex items-sstart gap-2 leading-tight text-muted-foreground mb-2">
         Passionate about building software that makes a difference.
       </h2>
       <p className="text-base text-muted-foreground">
