@@ -9,11 +9,10 @@ thumbnail: /pens/previews/voice-chat-interaction.webp
 
 <Preview component="voiceChatInteraction" className="min-h-[450px]" />
 
-Start with creating motion variants of your UI components using Framer Motion's `motion.create()` function.
+Start with creating motion variants of your UI components using Framer Motion's `motion()` function.
 
 ```tsx
-const MotionAvatar = motion.create(Avatar);
-const MotionAvatarImage = motion.create(AvatarImage);
+const MotionAvatar = motion(Avatar);
 ```
 
 This allows us to use all the motion capabilities while maintaining the original component's styling and functionality.
@@ -22,32 +21,82 @@ The magic happens with Framer Motion's layout animations. Each avatar gets a uni
 
 ```tsx
 // In collapsed state
-<MotionAvatar layoutId={`vci-avatar-${user.name}`}>
-  <MotionAvatarImage src={user.avatar} alt={user.name} />
+<MotionAvatar
+  layoutId={`vci-avatar-${user.name}`}
+  className="ring-2 ring-background border-2 border-background cursor-pointer"
+  layout
+>
+  <AvatarImage src={user.avatar} alt={user.name} />
+  <AvatarFallback>
+    {user.name.split(" ").map((n) => n[0]).join("")}
+  </AvatarFallback>
 </MotionAvatar>
 
 // In expanded state  
-<MotionAvatar layoutId={`vci-avatar-${user.name}`}>
-  <MotionAvatarImage src={user.avatar} alt={user.name} />
+<MotionAvatar layoutId={`vci-avatar-${user.name}`} layout>
+  <AvatarImage src={user.avatar} alt={user.name} />
+  <AvatarFallback>
+    {user.name.slice(0, 2).toUpperCase()}
+  </AvatarFallback>
 </MotionAvatar>
 ```
 
 When Framer Motion sees the same `layoutId` in different positions, it automatically animates the element between those positions.
 
-The main container also uses a shared `layoutId` to create the morphing effect:
+The component includes several key features:
+
+**User Overflow Handling**: When there are more users than can be displayed in the collapsed state, it shows a count:
 
 ```tsx
-// Collapsed container
-<motion.div
-  layoutId="vci-container"
-  className="w-fit p-2 rounded-full border border-border flex items-center"
->
+const slice = 5;
+const visibleUsers = users.slice(0, slice);
+const hideUserCounted = users.length - slice;
 
-// Expanded container
-<motion.article
-  layoutId="vci-container" 
-  className="bg-background grid grid-cols-4 gap-4 px-4 py-6"
->
+{hideUserCounted > 0 && (
+  <MotionAvatar layout>
+    <AvatarFallback>+{hideUserCounted}</AvatarFallback>
+  </MotionAvatar>
+)}
+```
+
+**Different Avatar Fallback Logic**: The collapsed and expanded states show different fallback text formats - initials vs. first two characters:
+
+```tsx
+// Collapsed: Shows initials (e.g., "CN" for "Charlotte Nova")
+<AvatarFallback>
+  {user.name.split(" ").map((n) => n[0]).join("")}
+</AvatarFallback>
+
+// Expanded: Shows first two characters (e.g., "CH" for "Charlotte Nova")  
+<AvatarFallback>
+  {user.name.slice(0, 2).toUpperCase()}
+</AvatarFallback>
+```
+
+The component uses `AnimatePresence` to handle the transition between collapsed and expanded states:
+
+```tsx
+<AnimatePresence mode="wait">
+  {!open && (
+    <motion.div
+      className={cn(
+        "w-fit p-2 rounded-full border border-border",
+        "flex items-center",
+        "flex -space-x-2 shadow-sm bg-background"
+      )}
+      role="button"
+      onClick={() => setOpen(!open)}
+    >
+      {/* Collapsed state content */}
+    </motion.div>
+  )}
+
+  {open && (
+    <motion.section className="w-[300px] min-h-[300px] rounded-2xl bg-background border border-border">
+      {/* Expanded state content */}
+    </motion.section>
+  )}
+</AnimatePresence>
 ```
 
 The `layout` prop tells Framer Motion to animate any layout changes automatically:
@@ -82,7 +131,14 @@ Motion automatically promotes animated elements to their own compositor layer, a
 
 ```tsx
 // GPU-accelerated transforms happen automatically
-<motion.div layoutId="vci-container">
+<motion.div layout>
+  <MotionAvatar layoutId={`vci-avatar-${user.name}`} layout>
+    <AvatarImage src={user.avatar} alt={user.name} />
+    <AvatarFallback>
+      {user.name.slice(0, 2).toUpperCase()}
+    </AvatarFallback>
+  </MotionAvatar>
+</motion.div>
 ```
 
 Framer Motion also automatically respects the user's `prefers-reduced-motion` setting, disabling animations for users who prefer less motion.
