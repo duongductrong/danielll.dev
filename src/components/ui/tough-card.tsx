@@ -1,11 +1,18 @@
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import { ComponentProps, ReactNode } from "react";
 
 export interface ToughCardProps extends ComponentProps<"div"> {}
 
 export const ToughCard = ({ className, ...props }: ToughCardProps) => {
-  return <div className={cn("border border-border", className)} {...props} />;
+  return (
+    <div
+      className={cn(
+        "border border-border hover:bg-card transition-colors cursor-pointer",
+        className
+      )}
+      {...props}
+    />
+  );
 };
 
 export interface ToughCardContentProps extends ComponentProps<"div"> {}

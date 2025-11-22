@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { ArrowRight } from "lucide-react";
 import { ComponentProps } from "react";
-import WelcomeIdentifyCard from "../components/welcome-identify-card";
+import IdentifyCard from "../components/identify-card";
 
 export interface WarmWelcomeProps extends ComponentProps<"section"> {}
 
@@ -42,7 +42,7 @@ export const WarmWelcome = ({
               my current projects, my past works, play with some of my
               experiments, learn more about me or read some of my essays and
               notes — your choice.
-              <WelcomeIdentifyCard className="absolute top-full left-1/2 -translate-x-1/2" />
+              <IdentifyCard className="absolute top-full left-1/2 -translate-x-1/2" />
             </div>
 
             <div data-slot="welcome-moodboard-card"></div>

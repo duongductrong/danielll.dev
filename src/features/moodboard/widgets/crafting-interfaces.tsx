@@ -96,7 +96,7 @@ export const CraftingInterfaces = ({
         </ToughCard>
       </div>
 
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-12 -translate-y-24">
         <ToughCard className="self-start">
           <ToughCardHeader
             leftLabel="E-Commerce"

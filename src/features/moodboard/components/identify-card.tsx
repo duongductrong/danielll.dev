@@ -2,12 +2,12 @@ import { cn } from "@/lib/utils";
 import { PlugZap } from "lucide-react";
 import { ComponentProps } from "react";
 
-export interface WelcomeIdentifyCardProps extends ComponentProps<"div"> {}
+export interface IdentifyCardProps extends ComponentProps<"div"> {}
 
-const WelcomeIdentifyCard = ({
+const IdentifyCard = ({
   className,
   ...props
-}: WelcomeIdentifyCardProps) => {
+}: IdentifyCardProps) => {
   return (
     <div
       className={cn(
@@ -83,4 +83,4 @@ const WelcomeIdentifyCard = ({
   );
 };
 
-export default WelcomeIdentifyCard;
+export default IdentifyCard;
