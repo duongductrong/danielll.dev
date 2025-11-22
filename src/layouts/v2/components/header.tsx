@@ -7,7 +7,7 @@ const Header = (props: HeaderProps) => {
   return (
     <header
       {...props}
-      className={cn("flex h-12 w-full border-b border-border mb-14", props.className)}
+      className={cn("flex h-12 w-full border-b border-border mb-14 sticky top-0 bg-background z-10", props.className)}
     >
       <div className="flex items-center justify-center">
         <h2 className="text-sm text-foreground font-bold">

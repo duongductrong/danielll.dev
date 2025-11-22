@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
   ToughCard,
   ToughCardContent,
@@ -8,6 +9,7 @@ import {
 } from "@/components/ui/tough-card";
 import { cn } from "@/lib/utils";
 import { Barcode, Target, Zap } from "lucide-react";
+import Link from "next/link";
 import { ComponentProps } from "react";
 
 export interface CraftingInterfacesProps extends ComponentProps<"section"> {}
@@ -74,6 +76,12 @@ export const CraftingInterfaces = ({
             high-fidelity prototypes, by partnering closely with engineers,
             research, and design peers.
           </p>
+
+          <Link href="/projects">
+            <Button variant="secondary" className="mt-4 w-full" size="lg">
+              View All Projects
+            </Button>
+          </Link>
         </div>
         <ToughCard className="self-start">
           <ToughCardHeader

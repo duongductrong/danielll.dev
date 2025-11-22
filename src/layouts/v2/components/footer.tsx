@@ -8,7 +8,7 @@ const Footer = ({ className, ...props }: FooterProps) => {
     <footer
       {...props}
       className={cn(
-        "flex flex-col border-t border-border pt-10 mt-14 pb-8",
+        "flex flex-col border-t border-border pt-10 mt-20 pb-8",
         className
       )}
     >
