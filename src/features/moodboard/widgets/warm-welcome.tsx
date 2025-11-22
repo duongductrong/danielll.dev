@@ -4,12 +4,12 @@ import { ArrowRight } from "lucide-react";
 import { ComponentProps } from "react";
 import WelcomeIdentifyCard from "../components/welcome-identify-card";
 
-export interface WelcomeMoodBoardProps extends ComponentProps<"section"> {}
+export interface WarmWelcomeProps extends ComponentProps<"section"> {}
 
-export const WelcomeMoodBoard = ({
+export const WarmWelcome = ({
   className,
   ...props
-}: WelcomeMoodBoardProps) => {
+}: WarmWelcomeProps) => {
   return (
     <section {...props} data-slot="welcome-moodboard" className={cn(className)}>
       <div className={cn("border border-border")}>

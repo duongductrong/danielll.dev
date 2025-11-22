@@ -1,0 +1,164 @@
+import {
+  ToughCard,
+  ToughCardContent,
+  ToughCardDescription,
+  ToughCardHeader,
+  ToughCardIcon,
+  ToughCardTitle,
+} from "@/components/ui/tough-card";
+import { cn } from "@/lib/utils";
+import { Barcode, Target, Zap } from "lucide-react";
+import { ComponentProps } from "react";
+
+export interface CraftingInterfacesProps extends ComponentProps<"section"> {}
+
+export const CraftingInterfaces = ({
+  className,
+  ...props
+}: CraftingInterfacesProps) => {
+  return (
+    <section
+      {...props}
+      data-slot="crafting-interfaces"
+      className={cn(
+        "grid grid-cols-[1fr_24rem_1fr] gap-12 -translate-y-[15rem] items-start",
+        className
+      )}
+    >
+      <div className="flex flex-col gap-12">
+        <ToughCard className="self-start">
+          <ToughCardHeader
+            leftLabel="Product Launch"
+            rightLabel="JUN. 2025"
+            leftIcon={<Zap className="size-4" />}
+          />
+          <ToughCardIcon>
+            <Target className="size-20" />
+          </ToughCardIcon>
+          <ToughCardContent>
+            <ToughCardTitle>Introducing Lightning Notes</ToughCardTitle>
+            <ToughCardDescription>
+              A revolutionary note-taking experience designed for speed and
+              clarity. Capture ideas instantly with keyboard shortcuts, organize
+              with smart tags, and sync seamlessly across all your devices.
+              Built for creators who think fast.
+            </ToughCardDescription>
+          </ToughCardContent>
+        </ToughCard>
+        <ToughCard className="self-start">
+          <ToughCardHeader
+            leftLabel="Design System"
+            rightLabel="MAR. 2025"
+            leftIcon={<Barcode className="size-4" />}
+          />
+          <ToughCardIcon>
+            <Barcode className="size-20" />
+          </ToughCardIcon>
+          <ToughCardContent>
+            <ToughCardTitle>Component Library Evolution</ToughCardTitle>
+            <ToughCardDescription>
+              Building a comprehensive design system that scales across
+              platforms. Featuring accessible components, consistent patterns,
+              and detailed documentation. Empowering teams to ship faster while
+              maintaining quality and brand consistency.
+            </ToughCardDescription>
+          </ToughCardContent>
+        </ToughCard>
+      </div>
+
+      <div className="flex flex-col gap-12">
+        <div className="min-h-[calc(15rem-3rem)]"></div>
+        <div className="flex flex-col gap-2 items-center text-center">
+          <h2 className="text-4xl font-bold font-dm-serif-display mb-3">
+            Crafting interfaces, products, and systems.
+          </h2>
+          <p className="text-base text-paragraph">
+            I build intuitive and polished experiences, from concepts to
+            high-fidelity prototypes, by partnering closely with engineers,
+            research, and design peers.
+          </p>
+        </div>
+        <ToughCard className="self-start">
+          <ToughCardHeader
+            leftLabel="Mobile App"
+            rightLabel="SEP. 2024"
+            leftIcon={<Target className="size-4" />}
+          />
+          <ToughCardIcon>
+            <Zap className="size-20" />
+          </ToughCardIcon>
+          <ToughCardContent>
+            <ToughCardTitle>Fitness Tracker Reimagined</ToughCardTitle>
+            <ToughCardDescription>
+              A fresh approach to health tracking that focuses on sustainable
+              habits. Track workouts, nutrition, and wellness goals with
+              beautiful visualizations. Designed to motivate without
+              overwhelming, helping users build lasting healthy routines.
+            </ToughCardDescription>
+          </ToughCardContent>
+        </ToughCard>
+
+        <ToughCard className="self-start">
+          <ToughCardHeader
+            leftLabel="Web Platform"
+            rightLabel="DEC. 2024"
+            leftIcon={<Barcode className="size-4" />}
+          />
+          <ToughCardIcon>
+            <Target className="size-20" />
+          </ToughCardIcon>
+          <ToughCardContent>
+            <ToughCardTitle>Collaborative Workspace Hub</ToughCardTitle>
+            <ToughCardDescription>
+              A unified platform for remote teams to collaborate effectively.
+              Real-time editing, smart notifications, and integrated video
+              calls. Streamlining workflows and reducing context switching for
+              distributed teams working on complex projects.
+            </ToughCardDescription>
+          </ToughCardContent>
+        </ToughCard>
+      </div>
+
+      <div className="flex flex-col gap-12">
+        <ToughCard className="self-start">
+          <ToughCardHeader
+            leftLabel="E-Commerce"
+            rightLabel="APR. 2025"
+            leftIcon={<Zap className="size-4" />}
+          />
+          <ToughCardIcon>
+            <Barcode className="size-20" />
+          </ToughCardIcon>
+          <ToughCardContent>
+            <ToughCardTitle>Smart Shopping Experience</ToughCardTitle>
+            <ToughCardDescription>
+              Reimagining online retail with personalized recommendations and
+              seamless checkout flows. AI-powered search, virtual try-on, and
+              one-click purchasing. Creating delightful shopping journeys that
+              convert browsers into loyal customers.
+            </ToughCardDescription>
+          </ToughCardContent>
+        </ToughCard>
+        <ToughCard className="self-start">
+          <ToughCardHeader
+            leftLabel="Analytics"
+            rightLabel="JAN. 2025"
+            leftIcon={<Target className="size-4" />}
+          />
+          <ToughCardIcon>
+            <Zap className="size-20" />
+          </ToughCardIcon>
+          <ToughCardContent>
+            <ToughCardTitle>Data Visualization Suite</ToughCardTitle>
+            <ToughCardDescription>
+              Transforming complex data into actionable insights through
+              intuitive dashboards. Interactive charts, real-time updates, and
+              customizable reports. Empowering decision-makers with clear,
+              beautiful data storytelling.
+            </ToughCardDescription>
+          </ToughCardContent>
+        </ToughCard>
+      </div>
+    </section>
+  );
+};
