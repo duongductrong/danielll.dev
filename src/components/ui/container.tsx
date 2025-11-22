@@ -8,6 +8,7 @@ const containerVariants = tv(
     variants: {
       variant: {
         default: "container",
+        v2: "max-w-[1248px] mx-auto px-4",
       },
     },
     defaultVariants: {
@@ -23,7 +24,7 @@ export interface ContainerProps
 
 const Container = ({
   children,
-  variant,
+  variant = "default",
   className,
   ...props
 }: ContainerProps) => {
