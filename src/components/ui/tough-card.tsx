@@ -35,7 +35,7 @@ export const ToughCardHeader = ({
   return (
     <div
       className={cn(
-        "flex justify-between items-center px-6 pt-6",
+        "flex justify-between items-center px-6 pt-6 pb-6",
         className
       )}
       {...props}
@@ -102,7 +102,7 @@ export const ToughCardIcon = ({
 
   return (
     <div
-      className={cn("flex items-center justify-center py-8", className)}
+      className={cn("flex items-center justify-center pb-4", className)}
       {...props}
     >
       {children}

@@ -32,9 +32,6 @@ export const CraftingInterfaces = ({
             rightLabel="JUN. 2025"
             leftIcon={<Zap className="size-4" />}
           />
-          <ToughCardIcon>
-            <Target className="size-20" />
-          </ToughCardIcon>
           <ToughCardContent>
             <ToughCardTitle>Introducing Lightning Notes</ToughCardTitle>
             <ToughCardDescription>
@@ -104,9 +101,6 @@ export const CraftingInterfaces = ({
             rightLabel="DEC. 2024"
             leftIcon={<Barcode className="size-4" />}
           />
-          <ToughCardIcon>
-            <Target className="size-20" />
-          </ToughCardIcon>
           <ToughCardContent>
             <ToughCardTitle>Collaborative Workspace Hub</ToughCardTitle>
             <ToughCardDescription>
@@ -145,9 +139,6 @@ export const CraftingInterfaces = ({
             rightLabel="JAN. 2025"
             leftIcon={<Target className="size-4" />}
           />
-          <ToughCardIcon>
-            <Zap className="size-20" />
-          </ToughCardIcon>
           <ToughCardContent>
             <ToughCardTitle>Data Visualization Suite</ToughCardTitle>
             <ToughCardDescription>
