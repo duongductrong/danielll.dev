@@ -7,8 +7,8 @@ type Props = {};
 const Page = (props: Props) => {
   return (
     <AppLayoutV2>
-      <WarmWelcome className="mb-[70vh]" />
-      <CraftingInterfaces className="mb-[70vh]" />
+      <WarmWelcome />
+      <CraftingInterfaces className="mt-[35vh]" />
     </AppLayoutV2>
   );
 };

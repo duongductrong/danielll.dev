@@ -21,7 +21,7 @@ export const CraftingInterfaces = ({
       {...props}
       data-slot="crafting-interfaces"
       className={cn(
-        "grid grid-cols-[1fr_24rem_1fr] gap-12 -translate-y-[15rem] items-start",
+        "grid grid-cols-[1fr_24rem_1fr] gap-12 items-start",
         className
       )}
     >
@@ -64,7 +64,7 @@ export const CraftingInterfaces = ({
       </div>
 
       <div className="flex flex-col gap-12">
-        <div className="min-h-[calc(15rem-3rem)]"></div>
+        <div className="min-h-[calc(21rem-3rem)]"></div>
         <div className="flex flex-col gap-2 items-center text-center">
           <h2 className="text-4xl font-bold font-dm-serif-display mb-3">
             Crafting interfaces, products, and systems.
@@ -91,23 +91,6 @@ export const CraftingInterfaces = ({
               habits. Track workouts, nutrition, and wellness goals with
               beautiful visualizations. Designed to motivate without
               overwhelming, helping users build lasting healthy routines.
-            </ToughCardDescription>
-          </ToughCardContent>
-        </ToughCard>
-
-        <ToughCard className="self-start">
-          <ToughCardHeader
-            leftLabel="Web Platform"
-            rightLabel="DEC. 2024"
-            leftIcon={<Barcode className="size-4" />}
-          />
-          <ToughCardContent>
-            <ToughCardTitle>Collaborative Workspace Hub</ToughCardTitle>
-            <ToughCardDescription>
-              A unified platform for remote teams to collaborate effectively.
-              Real-time editing, smart notifications, and integrated video
-              calls. Streamlining workflows and reducing context switching for
-              distributed teams working on complex projects.
             </ToughCardDescription>
           </ToughCardContent>
         </ToughCard>
