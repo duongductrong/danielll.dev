@@ -36,14 +36,14 @@ export const WarmWelcome = ({
             <h2 className="text-[clamp(2rem,11.2vw,7rem)] font-bold font-dm-serif-display mb-4 text-center absolute -top-[25%] w-full leading-[1]">
               Welcome to <br /> The world
             </h2>
-            <p className="text-paragraph leading-relaxed mt-36 p-8 text-center">
+            <div className="text-paragraph leading-relaxed mt-36 p-8 text-center">
               Virtual greetings to you stranger, I&apos;m Trong Duong and this
               is my personal space on the Internet. Here you can browse through
               my current projects, my past works, play with some of my
               experiments, learn more about me or read some of my essays and
               notes — your choice.
               <WelcomeIdentifyCard className="absolute top-full left-1/2 -translate-x-1/2" />
-            </p>
+            </div>
 
             <div data-slot="welcome-moodboard-card"></div>
           </div>
