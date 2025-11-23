@@ -63,12 +63,11 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
                 );
               })}
             </div>
-            <div className="text-paragraph p-6 text-center leading-relaxed sm:mt-[clamp(1rem,16vw,9rem)] sm:p-8">
-              Virtual greetings to you stranger, I&apos;m Trong Duong and this
-              is my personal space on the Internet. Here you can browse through
-              my current projects, my past works, play with some of my
-              experiments, learn more about me or read some of my essays and
-              notes — your choice.
+            <div className="text-paragraph p-6 text-center leading-relaxed sm:mt-[clamp(1rem,16vw,9rem)] sm:py-8 sm:p-14">
+              Greetings, I&apos;m Trong Duong and this is my personal space on
+              the Internet. Here you can browse through my current projects, my
+              past works, play with some of my experiments, learn more about me
+              or read some of my essays and notes — your choice.
               <IdentifyCard
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
