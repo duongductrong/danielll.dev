@@ -27,7 +27,7 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
           <ArrowRight className="ml-2 size-4" />
         </div>
 
-        <div className="relative flex min-h-[600px] items-center justify-center p-4">
+        <div className="relative flex min-h-[720px] items-center justify-center p-4">
           <AnimatedGridPattern duration={1.2} />
 
           <div className="absolute top-9">
