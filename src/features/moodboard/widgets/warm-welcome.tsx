@@ -30,7 +30,7 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
           />
 
           <div className="bg-background border-border relative min-h-[300px] w-full max-w-[800px] border">
-            <h2 className="font-dm-serif-display mt-8 mb-4 w-full text-center text-5xl xs:text-6xl leading-[1] font-bold sm:absolute sm:-top-[clamp(25%,10%,25%)] sm:mt-0 sm:text-[clamp(5rem,12.75vw,7rem)]">
+            <h2 className="font-dm-serif-display xs:text-6xl mt-8 mb-4 w-full text-center text-5xl leading-[1] font-bold sm:absolute sm:-top-[clamp(25%,10%,25%)] sm:mt-0 sm:text-[clamp(5rem,12.75vw,7rem)]">
               Welcome to <br /> The world
             </h2>
             <div className="text-paragraph p-6 text-center leading-relaxed sm:mt-[clamp(1rem,16vw,9rem)] sm:p-8">
@@ -51,7 +51,12 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
           {format(new Date(), "EEEE, MMMM d, yyyy")}
         </p>
         <p className="text-paragraph text-xs uppercase">
-          {format(new Date(), "h:mm a zzz")}
+          {format(
+            new Date(
+              new Date().toLocaleString("en-US", { timeZone: "Asia/Ho_Chi_Minh" }),
+            ),
+            "h:mm a 'GMT+7'",
+          )}
         </p>
       </div>
     </section>
