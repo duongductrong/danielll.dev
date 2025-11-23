@@ -61,22 +61,22 @@ const FeatureWork = ({}: FeatureWorkProps) => {
   return (
     <motion.section
       className={cn(
-        "min-h-[80vh] lg:min-h-[115vh] flex flex-col justify-center w-full pt-24",
-        "bg-black rounded-3xl max-w-[95%] mx-auto"
+        "flex min-h-[80vh] w-full flex-col justify-center pt-24 lg:min-h-[115vh]",
+        "mx-auto max-w-[95%] rounded-3xl bg-black",
       )}
     >
       <motion.header className="mb-11 flex flex-col gap-2">
         <Text
           as={motion.h2}
           variant="title"
-          className="uppercase text-on-primary text-center"
+          className="text-on-primary text-center uppercase"
         >
           Feature work
         </Text>
         <Text
           as={motion.p}
           variant="subtitle"
-          className="text-center text-on-secondary"
+          className="text-on-secondary text-center"
         >
           Selected works recently working and notable projects.
         </Text>
@@ -151,16 +151,16 @@ export const FeatureWorkItem = ({
       ref={containerRef}
       className={cn(
         "sticky top-[-50%] min-h-screen",
-        "flex flex-col gap-20 bg-primary pt-40 px-[6.34vw] overflow-hidden",
-        isOdd ? "bg-black rounded-3xl" : "bg-on-primary"
+        "bg-primary flex flex-col gap-20 overflow-hidden px-[6.34vw] pt-40",
+        isOdd ? "rounded-3xl bg-black" : "bg-on-primary",
       )}
     >
       <Text
         as={motion.p}
         variant="body"
         className={cn(
-          "tracking-widest mb-4",
-          isOdd ? "text-on-primary" : "text-on-accent"
+          "mb-4 tracking-widest",
+          isOdd ? "text-on-primary" : "text-on-accent",
         )}
       >
         ({no})
@@ -169,8 +169,8 @@ export const FeatureWorkItem = ({
         as={motion.h2}
         variant="headline"
         className={cn(
-          "uppercase text-on-secondary text-center",
-          isOdd ? "text-on-primary" : "text-on-accent"
+          "text-on-secondary text-center uppercase",
+          isOdd ? "text-on-primary" : "text-on-accent",
         )}
         style={{
           y: textYSpring,
@@ -180,12 +180,12 @@ export const FeatureWorkItem = ({
       </Text>
       <div className="flex flex-col items-center lg:flex-row lg:justify-between">
         <Text
-          as={MotionLink}
+          as={MotionLink as any}
           target="_blank"
           variant="title"
           className={cn(
-            "uppercase text-left tracking-normal italic flex items-center",
-            isOdd ? "text-on-primary" : "text-on-accent"
+            "flex items-center text-left tracking-normal uppercase italic",
+            isOdd ? "text-on-primary" : "text-on-accent",
           )}
           href={url}
           style={
@@ -204,7 +204,7 @@ export const FeatureWorkItem = ({
           variant="body"
           className={cn(
             "max-w-[300px] text-center lg:text-left",
-            isOdd ? "text-on-primary" : "text-on-accent"
+            isOdd ? "text-on-primary" : "text-on-accent",
           )}
         >
           {description}
@@ -217,14 +217,14 @@ export const FeatureWorkItem = ({
           x: "-50%",
           rotate,
         }}
-        className="lg:w-[16.53vw] lg:h-[23.14vw] absolute bottom-0 left-1/2 rounded-md overflow-hidden"
+        className="absolute bottom-0 left-1/2 overflow-hidden rounded-md lg:h-[23.14vw] lg:w-[16.53vw]"
       >
         <Image
           src={ogImage}
           alt="Thumbnail"
           width={400}
           height={400}
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
         />
       </motion.div>
     </div>
