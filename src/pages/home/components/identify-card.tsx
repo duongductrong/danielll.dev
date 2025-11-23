@@ -34,7 +34,7 @@ const IdentifyCard = ({ className, ...props }: IdentifyCardProps) => {
             CURRENT POSITION
           </p>
           <h3 className="font-title text-xl font-medium">
-            Senior Front-End Developer
+            Software Engineer
           </h3>
         </div>
 
