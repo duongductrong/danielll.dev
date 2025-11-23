@@ -7,7 +7,7 @@ import { ComponentProps } from "react";
 
 export interface IdentifyCardProps extends ComponentProps<typeof motion.div> {}
 
-const IdentifyCard = ({ className, ...props }: IdentifyCardProps) => {
+export const IdentifyCard = ({ className, ...props }: IdentifyCardProps) => {
   return (
     <motion.div
       {...props}
@@ -33,9 +33,7 @@ const IdentifyCard = ({ className, ...props }: IdentifyCardProps) => {
           <p className="mb-1 text-sm font-medium tracking-wide opacity-70">
             CURRENT POSITION
           </p>
-          <h3 className="font-title text-xl font-medium">
-            Software Engineer
-          </h3>
+          <h3 className="font-title text-xl font-medium">Software Engineer</h3>
         </div>
 
         <div className="border-border mb-6 border-b pb-3">
@@ -80,5 +78,3 @@ const IdentifyCard = ({ className, ...props }: IdentifyCardProps) => {
     </motion.div>
   );
 };
-
-export default IdentifyCard;

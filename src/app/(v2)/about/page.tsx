@@ -1,21 +1,21 @@
 import {
-  PageSection,
   PageSectionDescription,
   PageSectionHeader,
-  PageSectionTitle,
+  PageSectionRoot,
+  PageSectionTitle
 } from "@/components/widgets/page-section";
 
 const Page = () => {
   return (
-    <PageSection>
+    <PageSectionRoot>
       <PageSectionHeader>
-        <PageSectionTitle>About me</PageSectionTitle>
+        <PageSectionTitle>About my journey</PageSectionTitle>
         <PageSectionDescription>
           Learn more about my background, experience, and what I&apos;m
           passionate about.
         </PageSectionDescription>
       </PageSectionHeader>
-    </PageSection>
+    </PageSectionRoot>
   );
 };
 

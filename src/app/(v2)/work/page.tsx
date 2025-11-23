@@ -1,5 +1,7 @@
+import { ThunderIcon } from "@/components/icons/thunder-icon";
 import {
   PageSection,
+  PageSectionContent,
   PageSectionDescription,
   PageSectionHeader,
   PageSectionTitle,
@@ -15,6 +17,12 @@ const Page = () => {
           of contributions, and insights into my role and creative inspirations.
         </PageSectionDescription>
       </PageSectionHeader>
+
+      <PageSectionContent>
+        <div className="grid place-items-center h-[60vh]">
+          <ThunderIcon className="text-foreground size-64" />
+        </div>
+      </PageSectionContent>
     </PageSection>
   );
 };

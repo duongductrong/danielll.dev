@@ -1,18 +1,17 @@
 import { cn } from "@/lib/utils";
 import { ComponentProps } from "react";
-import Container from "../ui/container";
 
-export interface PageSectionProps extends ComponentProps<typeof Container> {}
+export interface PageSectionProps extends ComponentProps<"section"> {}
 
-export const PageSection = ({
+export const PageSectionRoot = ({
   children,
   className,
   ...props
 }: PageSectionProps) => {
   return (
-    <Container variant="v2" {...props} className={cn(className)}>
+    <section {...props} className={cn(className)}>
       {children}
-    </Container>
+    </section>
   );
 };
 
@@ -57,3 +56,23 @@ export const PageSectionDescription = ({
     </p>
   );
 };
+
+export interface PageSectionContentProps extends ComponentProps<"div"> {}
+
+export const PageSectionContent = ({
+  children,
+  className,
+  ...props
+}: PageSectionContentProps) => {
+  return (
+    <div {...props} className={cn("flex flex-col gap-6", className)}>
+      {children}
+    </div>
+  );
+};
+
+export const PageSection = Object.assign(PageSectionRoot, {
+  Header: PageSectionHeader,
+  Title: PageSectionTitle,
+  Description: PageSectionDescription,
+});

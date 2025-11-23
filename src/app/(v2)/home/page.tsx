@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { CraftingInterfaces, Manifesto, WarmWelcome } from "@/pages/home";
-import IdentifyCard from "@/pages/home/components/identify-card";
+import {
+  CraftingInterfaces,
+  IdentifyCard,
+  Manifesto,
+  WarmWelcome,
+} from "@/ui/home";
 
 type Props = {};
 

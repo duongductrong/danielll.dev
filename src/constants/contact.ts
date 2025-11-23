@@ -14,10 +14,6 @@ export const contacts = [
     href: "https://github.com/duongductrong",
   },
   {
-    text: "Portfolio",
-    href: "https://danielll.dev",
-  },
-  {
     text: "My Blog",
     href: "https://codestus.com",
   },
@@ -26,7 +22,11 @@ export const contacts = [
     href: "https://x.com/duongductrong_",
   },
   {
+    text: "Instagram",
+    href: "https://www.instagram.com/_duongductrong/",
+  },
+  {
     text: "Resume PDF",
-    href: "/assets/documents/Fullstack Developer - Duong Duc Trong - 2000.pdf",
+    href: "/assets/documents/Frontend Developer - Duong Duc Trong - 2000.pdf",
   },
 ];

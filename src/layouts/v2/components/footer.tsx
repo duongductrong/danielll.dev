@@ -1,4 +1,7 @@
+import { contacts, email } from "@/constants/contact";
+import { URLS } from "@/constants/url";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 
 export interface FooterProps extends ComponentPropsWithoutRef<"footer"> {}
@@ -15,27 +18,64 @@ const Footer = ({ className, ...props }: FooterProps) => {
       <div className="mb-14 flex flex-wrap gap-10">
         <div className="flex flex-col gap-2">
           <h2 className="text-foreground text-sm font-bold">Trong Duong</h2>
-          <small className="font-medium text-sm">Software Engineer at ZaloPay</small>
+          <small className="font-medium text-sm">
+            Software Engineer at ZaloPay
+          </small>
         </div>
 
         <div className="flex w-full flex-1 flex-wrap gap-8 sm:justify-end">
           <div className="min-w-[10rem]">
             <h2 className="text-foreground mb-2 text-sm font-bold">Me</h2>
             <ul className="flex flex-col gap-1">
-              <li className="text-foreground text-sm">About</li>
-              <li className="text-foreground text-sm">Moodboard</li>
-              <li className="text-foreground text-sm">Writing</li>
-              <li className="text-foreground text-sm">Contact</li>
+              <li>
+                <Link
+                  href={URLS.ABOUT}
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                >
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={URLS.HOME}
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                >
+                  Moodboard
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={URLS.WRITING}
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                >
+                  Writing
+                </Link>
+              </li>
+              <li>
+                <a
+                  href={`mailto:${email}`}
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
           <div className="min-w-[10rem]">
             <h2 className="text-foreground mb-2 text-sm font-bold">Projects</h2>
             <ul className="flex flex-col gap-1">
-              <li className="text-foreground text-sm">Now</li>
-              <li className="text-foreground text-sm">Work</li>
-              <li className="text-foreground text-sm">Track Record</li>
-              <li className="text-foreground text-sm">Feed</li>
+              <li className="text-muted-foreground text-sm">Now</li>
+              <li>
+                <Link
+                  href={URLS.WORK}
+                  className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                >
+                  Work
+                </Link>
+              </li>
+              <li className="text-muted-foreground text-sm">Track Record</li>
+              <li className="text-muted-foreground text-sm">Feed</li>
             </ul>
           </div>
 
@@ -44,12 +84,20 @@ const Footer = ({ className, ...props }: FooterProps) => {
               Elsewhere
             </h2>
             <ul className="flex flex-col gap-1">
-              <li className="text-foreground text-sm">Bluesky</li>
-              <li className="text-foreground text-sm">Twitter</li>
-              <li className="text-foreground text-sm">Read.cv</li>
-              <li className="text-foreground text-sm">GitHub</li>
-              <li className="text-foreground text-sm">Figma</li>
-              <li className="text-foreground text-sm">Layers</li>
+              {contacts
+                .filter((c) => c.text !== "Email")
+                .map((contact) => (
+                  <li key={contact.text}>
+                    <a
+                      href={contact.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground text-sm transition-colors"
+                    >
+                      {contact.text}
+                    </a>
+                  </li>
+                ))}
             </ul>
           </div>
         </div>
