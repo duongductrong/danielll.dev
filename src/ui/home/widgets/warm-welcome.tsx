@@ -29,7 +29,7 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
           <AnimatedGridPattern duration={1.2} />
 
           <div className="absolute top-9">
-            <ThunderIcon className="text-accent size-32" />
+            <ThunderIcon className="text-accent [&_path]:fill-background size-32" />
           </div>
 
           <MoodBoard.Content>
