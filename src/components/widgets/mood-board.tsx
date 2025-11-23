@@ -17,15 +17,18 @@ const MoodBoardRoot = forwardRef(({ className, children, ...props }, ref) => {
 }) as ForwardRefComponent<"div", MoodBoardProps>;
 MoodBoardRoot.displayName = "MoodBoard";
 
-export interface MoodBoardContentProps extends ComponentProps<"div"> {}
+export interface MoodBoardContentProps extends ComponentProps<"div"> {
+  overflowHidden?: boolean;
+}
 
 const MoodBoardContent = forwardRef(
-  ({ className, children, ...props }, ref) => {
+  ({ className, children, overflowHidden = false, ...props }, ref) => {
     return (
       <div
         ref={ref}
         className={cn(
           "relative flex min-h-[720px] items-center justify-center p-4",
+          overflowHidden && "overflow-hidden",
           className,
         )}
         {...props}
@@ -59,6 +62,27 @@ const MoodBoardCard = forwardRef<HTMLDivElement, MoodBoardCardProps>(
   },
 );
 MoodBoardCard.displayName = "MoodBoardCard";
+
+export interface MoodBoardItemProps extends HTMLMotionProps<"div"> {}
+
+const MoodBoardItem = forwardRef<HTMLDivElement, MoodBoardItemProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <motion.div
+        ref={ref}
+        drag
+        dragMomentum={false}
+        whileDrag={{ scale: 1.05, zIndex: 50, cursor: "grabbing" }}
+        whileHover={{ scale: 1.02, zIndex: 40, cursor: "grab" }}
+        className={cn("bg-background border-border absolute border", className)}
+        {...props}
+      >
+        {children}
+      </motion.div>
+    );
+  },
+);
+MoodBoardItem.displayName = "MoodBoardItem";
 
 const SHADOW_TEXT_COUNT = 8;
 
@@ -248,6 +272,7 @@ export const MoodBoardGrid = ({
 export const MoodBoard = Object.assign(MoodBoardRoot, {
   Content: MoodBoardContent,
   Card: MoodBoardCard,
+  Item: MoodBoardItem,
   Title: MoodBoardTitle,
   Description: MoodBoardDescription,
   Header: MoodBoardHeader,
