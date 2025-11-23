@@ -1,6 +1,6 @@
 "use client";
 
-import Container from "@/components/ui/container";
+import { Container } from "@/components/ui/container";
 import { Text } from "@/components/ui/text";
 import { PenCard } from "@/features/folio/components/pen-card";
 import { cn } from "@/lib/utils";

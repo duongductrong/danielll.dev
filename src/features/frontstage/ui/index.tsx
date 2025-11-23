@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import Container from "@/components/ui/container";
+import { Container } from "@/components/ui/container";
 import CallToAction from "../components/call-to-action";
 import Contribution from "../components/contribution";
 import GetInTouch from "../components/get-in-touch";
