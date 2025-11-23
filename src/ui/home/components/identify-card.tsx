@@ -19,7 +19,7 @@ export const IdentifyCard = ({ className, ...props }: IdentifyCardProps) => {
     >
       <div className="text-foreground relative p-4">
         <h2 className="border-border mb-8 flex min-h-14 w-full items-center justify-center border py-4 text-5xl font-black tracking-wider uppercase">
-          INTRO
+          Warning
         </h2>
 
         <div className="border-border mb-6 border-b pb-3">

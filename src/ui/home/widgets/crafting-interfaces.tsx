@@ -34,36 +34,36 @@ export const CraftingInterfaces = ({
       <div className="order-2 flex flex-col gap-12 lg:order-1">
         <ToughCard className="self-start">
           <ToughCardHeader
-            leftLabel="Product Launch"
-            rightLabel="JUN. 2025"
+            leftLabel="Open Source"
+            rightLabel="2024"
             leftIcon={<Zap className="size-4" />}
           />
           <ToughCardContent>
-            <ToughCardTitle>Introducing Lightning Notes</ToughCardTitle>
+            <ToughCardTitle>Hookform Field</ToughCardTitle>
             <ToughCardDescription>
-              A revolutionary note-taking experience designed for speed and
-              clarity. Capture ideas instantly with keyboard shortcuts, organize
-              with smart tags, and sync seamlessly across all your devices.
-              Built for creators who think fast.
+              A powerful React Hook Form wrapper that simplifies form field
+              management with built-in validation, error handling, and seamless
+              integration. Designed to reduce boilerplate and improve developer
+              experience when building complex forms.
             </ToughCardDescription>
           </ToughCardContent>
         </ToughCard>
         <ToughCard className="self-start">
           <ToughCardHeader
-            leftLabel="Design System"
-            rightLabel="MAR. 2025"
+            leftLabel="Open Source"
+            rightLabel="2024"
             leftIcon={<Barcode className="size-4" />}
           />
           <ToughCardIcon>
             <Barcode className="size-20" />
           </ToughCardIcon>
           <ToughCardContent>
-            <ToughCardTitle>Component Library Evolution</ToughCardTitle>
+            <ToughCardTitle>Shadcn Docs</ToughCardTitle>
             <ToughCardDescription>
-              Building a comprehensive design system that scales across
-              platforms. Featuring accessible components, consistent patterns,
-              and detailed documentation. Empowering teams to ship faster while
-              maintaining quality and brand consistency.
+              A comprehensive documentation template built with Shadcn UI
+              components. Features beautiful typography, responsive layouts, and
+              accessible navigation. Perfect for creating professional
+              documentation sites with minimal setup and maximum flexibility.
             </ToughCardDescription>
           </ToughCardContent>
         </ToughCard>
@@ -81,7 +81,7 @@ export const CraftingInterfaces = ({
             research, and design peers.
           </p>
 
-          <Link href="/projects">
+          <Link href="/work">
             <Button variant="secondary" className="mt-4 w-full" size="lg">
               View All Projects
             </Button>
@@ -89,20 +89,20 @@ export const CraftingInterfaces = ({
         </div>
         <ToughCard className="self-start">
           <ToughCardHeader
-            leftLabel="Mobile App"
-            rightLabel="SEP. 2024"
+            leftLabel="Open Source"
+            rightLabel="2024"
             leftIcon={<Target className="size-4" />}
           />
           <ToughCardIcon>
             <ThunderIcon className="size-20" />
           </ToughCardIcon>
           <ToughCardContent>
-            <ToughCardTitle>Fitness Tracker Reimagined</ToughCardTitle>
+            <ToughCardTitle>Tiptap Extensions</ToughCardTitle>
             <ToughCardDescription>
-              A fresh approach to health tracking that focuses on sustainable
-              habits. Track workouts, nutrition, and wellness goals with
-              beautiful visualizations. Designed to motivate without
-              overwhelming, helping users build lasting healthy routines.
+              Custom extensions and utilities for Tiptap editor, enhancing rich
+              text editing capabilities. Includes advanced formatting options,
+              collaborative features, and seamless integration patterns for
+              modern web applications.
             </ToughCardDescription>
           </ToughCardContent>
         </ToughCard>
@@ -111,36 +111,36 @@ export const CraftingInterfaces = ({
       <div className="order-1 flex flex-col gap-12 lg:order-3 lg:-translate-y-24">
         <ToughCard className="self-start">
           <ToughCardHeader
-            leftLabel="E-Commerce"
-            rightLabel="APR. 2025"
+            leftLabel="Project"
+            rightLabel="2024"
             leftIcon={<Zap className="size-4" />}
           />
           <ToughCardIcon>
             <Barcode className="size-20" />
           </ToughCardIcon>
           <ToughCardContent>
-            <ToughCardTitle>Smart Shopping Experience</ToughCardTitle>
+            <ToughCardTitle>SAJ Dashboard System</ToughCardTitle>
             <ToughCardDescription>
-              Reimagining online retail with personalized recommendations and
-              seamless checkout flows. AI-powered search, virtual try-on, and
-              one-click purchasing. Creating delightful shopping journeys that
-              convert browsers into loyal customers.
+              A comprehensive dashboard builder with API integration and alert
+              management. Features drag-and-drop interface, real-time data
+              visualization, and customizable widgets. Built for scalability and
+              ease of use in enterprise environments.
             </ToughCardDescription>
           </ToughCardContent>
         </ToughCard>
         <ToughCard className="self-start">
           <ToughCardHeader
-            leftLabel="Analytics"
-            rightLabel="JAN. 2025"
+            leftLabel="Project"
+            rightLabel="2024"
             leftIcon={<Target className="size-4" />}
           />
           <ToughCardContent>
-            <ToughCardTitle>Data Visualization Suite</ToughCardTitle>
+            <ToughCardTitle>Edgee Art Studio</ToughCardTitle>
             <ToughCardDescription>
-              Transforming complex data into actionable insights through
-              intuitive dashboards. Interactive charts, real-time updates, and
-              customizable reports. Empowering decision-makers with clear,
-              beautiful data storytelling.
+              A modern studio website showcasing creative services and portfolio
+              work. Features smooth animations, responsive design, and intuitive
+              navigation. Built to promote and highlight the company&apos;s artistic
+              capabilities and client success stories.
             </ToughCardDescription>
           </ToughCardContent>
         </ToughCard>
