@@ -7,6 +7,7 @@ import { motion } from "motion/react";
 import { ComponentProps } from "react";
 import { AnimatedGridPattern } from "../components/animated-grid-pattern";
 import IdentifyCard from "../components/identify-card";
+import { ThunderIcon } from "@/components/icons/thunder-icon";
 
 export interface WarmWelcomeProps extends ComponentProps<"section"> {}
 
@@ -28,6 +29,10 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
 
         <div className="relative flex min-h-[600px] items-center justify-center p-4">
           <AnimatedGridPattern duration={1.2} />
+
+          <div className="absolute top-9">
+            <ThunderIcon className="text-accent size-32" />
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
