@@ -11,6 +11,8 @@
 }
 
 @theme inline {
+  --breakpoint-xs: 35rem;
+
   --font-sans: var(--font-inter);
   --font-jetbrains-mono: var(--font-jetbrains-mono);
   --font-dm-serif-display: var(--font-dm-serif-display);

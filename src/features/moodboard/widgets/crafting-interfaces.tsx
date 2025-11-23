@@ -23,11 +23,11 @@ export const CraftingInterfaces = ({
       {...props}
       data-slot="crafting-interfaces"
       className={cn(
-        "grid grid-cols-[1fr_24rem_1fr] gap-12 items-start",
+        "grid lg:grid-cols-[1fr_24rem_1fr] gap-12 items-start",
         className
       )}
     >
-      <div className="flex flex-col gap-12">
+      <div className="flex flex-col gap-12 order-2 lg:order-1">
         <ToughCard className="self-start">
           <ToughCardHeader
             leftLabel="Product Launch"
@@ -65,8 +65,8 @@ export const CraftingInterfaces = ({
         </ToughCard>
       </div>
 
-      <div className="flex flex-col gap-12">
-        <div className="min-h-[calc(21rem-3rem)]"></div>
+      <div className="flex flex-col gap-12 order-1 lg:order-2">
+        <div className="min-h-[calc(21rem-3rem)] hidden lg:block"></div>
         <div className="flex flex-col gap-2 items-center text-center">
           <h2 className="text-4xl font-bold font-dm-serif-display mb-3">
             Crafting interfaces, products, and systems.
@@ -104,7 +104,7 @@ export const CraftingInterfaces = ({
         </ToughCard>
       </div>
 
-      <div className="flex flex-col gap-12 -translate-y-24">
+      <div className="flex flex-col gap-12 lg:-translate-y-24 order-1 lg:order-3">
         <ToughCard className="self-start">
           <ToughCardHeader
             leftLabel="E-Commerce"

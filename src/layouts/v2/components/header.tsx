@@ -7,19 +7,22 @@ const Header = (props: HeaderProps) => {
   return (
     <header
       {...props}
-      className={cn("flex h-12 w-full border-b border-border mb-14 sticky top-0 bg-background z-10", props.className)}
+      className={cn(
+        "border-border bg-background sticky top-0 z-10 mb-14 flex h-12 w-full border-b",
+        props.className,
+      )}
     >
       <div className="flex items-center justify-center">
-        <h2 className="text-sm text-foreground font-bold">
-          Trong Duong <b className="font-medium ml-3">Software Engineer</b>{" "}
+        <h2 className="text-foreground text-sm font-bold">
+          Trong Duong <b className="ml-3 font-medium">Software Engineer</b>{" "}
         </h2>
       </div>
 
-      <ul className="flex items-center justify-center ml-auto gap-2">
-        <li className="text-sm text-foreground font-medium px-2">Work</li>
-        <li className="text-sm text-foreground font-medium px-2">About</li>
-        <li className="text-sm text-foreground font-medium px-2">Writing</li>
-        <li className="text-sm text-foreground font-medium px-2">Contact</li>
+      <ul className="ml-auto hidden items-center justify-center gap-2 sm:flex">
+        <li className="text-foreground px-2 text-sm font-medium">Work</li>
+        <li className="text-foreground px-2 text-sm font-medium">About</li>
+        <li className="text-foreground px-2 text-sm font-medium">Writing</li>
+        <li className="text-foreground px-2 text-sm font-medium">Contact</li>
       </ul>
     </header>
   );

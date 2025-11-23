@@ -10,19 +10,22 @@ export const Manifesto = ({ className, ...props }: ManifestoProps) => {
     <section
       {...props}
       data-slot="manifesto"
-      className={cn("bg-card border border-border py-24", className)}
+      className={cn(
+        "bg-card border-border border px-8 py-24 sm:px-12 lg:px-24",
+        className,
+      )}
     >
-      <article className="max-w-3xl mx-auto pt-8 border-t border-border">
-        <h2 className="font-bold mb-10 flex items-center">
-          <Bookmark className="size-4 mr-2" />
+      <article className="border-border mx-auto max-w-3xl border-t pt-8">
+        <h2 className="mb-10 flex items-center font-bold">
+          <Bookmark className="mr-2 size-4" />
           Manifesto
         </h2>
 
-        <h2 className="text-6xl font-bold font-dm-serif-display mb-8">
+        <h2 className="xs:text-6xl font-dm-serif-display mb-8 text-5xl font-bold">
           Who am I, what kind of stuff I do, and why?
         </h2>
 
-        <div className="text-paragraph prose max-w-full mb-12">
+        <div className="text-paragraph prose mb-12 max-w-full">
           I&apos;m a frontend developer and designer passionate about crafting
           exceptional digital experiences. My journey in web development began
           with a fascination for how interfaces can transform the way people
@@ -54,34 +57,54 @@ export const Manifesto = ({ className, ...props }: ManifestoProps) => {
           creators and push the boundaries of what&apos;s possible on the web.
         </div>
 
-        <div className="border-t border-border pt-8">
-          <h2 className="font-bold mb-2 flex items-center">
+        <div className="border-border border-t pt-8">
+          <h2 className="mb-2 flex items-center font-bold">
             Continue your travel
           </h2>
-          <p className="text-paragraph mb-8">Some suggestions for your next destination</p>
+          <p className="text-paragraph mb-8">
+            Some suggestions for your next destination
+          </p>
 
-          <div className="grid grid-cols-2 gap-6 mt-4">
-            <Link href="/now" className="flex items-center justify-start gap-2 font-dm-serif-display text-4xl">
+          <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <Link
+              href="/now"
+              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+            >
               <span className="font-medium">Now</span>
               <ArrowRight className="size-6" />
             </Link>
-            <Link href="/feed" className="flex items-center justify-start gap-2 font-dm-serif-display text-4xl">
+            <Link
+              href="/feed"
+              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+            >
               <span className="font-medium">Feed</span>
               <ArrowRight className="size-6" />
             </Link>
-            <Link href="/writing" className="flex items-center justify-start gap-2 font-dm-serif-display text-4xl">
+            <Link
+              href="/writing"
+              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+            >
               <span className="font-medium">Writing</span>
               <ArrowRight className="size-6" />
             </Link>
-            <Link href="/track-record" className="flex items-center justify-start gap-2 font-dm-serif-display text-4xl">
+            <Link
+              href="/track-record"
+              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+            >
               <span className="font-medium">Track Record</span>
               <ArrowRight className="size-6" />
             </Link>
-            <Link href="/about" className="flex items-center justify-start gap-2 font-dm-serif-display text-4xl">
+            <Link
+              href="/about"
+              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+            >
               <span className="font-medium">About</span>
               <ArrowRight className="size-6" />
             </Link>
-            <Link href="/changelog" className="flex items-center justify-start gap-2 font-dm-serif-display text-4xl">
+            <Link
+              href="/changelog"
+              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+            >
               <span className="font-medium">Changelog</span>
               <ArrowRight className="size-6" />
             </Link>
