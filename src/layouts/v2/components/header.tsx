@@ -1,4 +1,6 @@
+import { URLS } from "@/constants/url";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import { ComponentPropsWithoutRef } from "react";
 import Menu from "./menu";
 
@@ -9,14 +11,17 @@ const Header = (props: HeaderProps) => {
     <header
       {...props}
       className={cn(
-        "border-border bg-background sticky top-0 z-10 mb-8 sm:mb-14 flex h-12 w-full border-b",
+        "border-border bg-background sticky top-0 z-10 mb-8 flex h-12 w-full border-b sm:mb-14",
         props.className,
       )}
     >
       <div className="flex items-center justify-center">
-        <h2 className="text-foreground text-sm font-bold">
-          Trong Duong <b className="ml-3 font-medium">Software Engineer</b>{" "}
-        </h2>
+        <Link href={URLS.HOME}>
+          <h2 className="text-foreground text-sm font-bold">
+            Trong Duong{" "}
+            <b className="ml-3 font-medium">Software Engineer</b>{" "}
+          </h2>
+        </Link>
       </div>
 
       <Menu />

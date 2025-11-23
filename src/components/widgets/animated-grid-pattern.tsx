@@ -14,7 +14,6 @@ export const AnimatedGridPattern = ({
 
   return (
     <>
-      {/* Vertical Lines - Appears first */}
       <motion.div
         initial={{
           clipPath: "inset(50% 50% 50% 50%)",
@@ -36,7 +35,6 @@ export const AnimatedGridPattern = ({
         )}
       />
 
-      {/* Horizontal Lines - Appears second */}
       <motion.div
         initial={{
           clipPath: "inset(50% 50% 50% 50%)",

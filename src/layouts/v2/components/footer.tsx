@@ -15,7 +15,7 @@ const Footer = ({ className, ...props }: FooterProps) => {
       <div className="mb-14 flex flex-wrap gap-10">
         <div className="flex flex-col gap-2">
           <h2 className="text-foreground text-sm font-bold">Trong Duong</h2>
-          <small className="font-medium">Software Engineer at ZaloPay</small>
+          <small className="font-medium text-sm">Software Engineer at ZaloPay</small>
         </div>
 
         <div className="flex w-full flex-1 flex-wrap gap-8 sm:justify-end">

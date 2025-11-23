@@ -1,5 +1,6 @@
 "use client";
 
+import { URLS } from "@/constants/url";
 import { cn } from "@/lib/utils";
 import { Portal } from "@radix-ui/react-portal";
 import { ArrowRight, MenuIcon } from "lucide-react";
@@ -13,19 +14,20 @@ export interface MenuProps extends ComponentProps<"ul"> {}
 const MENU_ITEMS = [
   {
     label: "Work",
-    href: "/work",
+    href: URLS.WORK,
   },
   {
     label: "About",
+    href: URLS.ABOUT,
   },
   {
     label: "Writing",
-    href: "/writing",
+    href: URLS.WRITING,
   },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
+  // {
+  //   label: "Contact",
+  //   href: URLS.CONTACT,
+  // },
 ];
 
 const Menu = ({ className, ...props }: MenuProps) => {

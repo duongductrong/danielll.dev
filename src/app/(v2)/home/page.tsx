@@ -1,14 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { CraftingInterfaces, WarmWelcome } from "@/features/moodboard";
-import IdentifyCard from "@/features/moodboard/components/identify-card";
-import { Manifesto } from "@/features/moodboard/widgets/manifesto";
-import { AppLayoutV2 } from "@/layouts/v2";
+import { CraftingInterfaces, Manifesto, WarmWelcome } from "@/pages/home";
+import IdentifyCard from "@/pages/home/components/identify-card";
 
 type Props = {};
 
 const Page = (props: Props) => {
   return (
-    <AppLayoutV2>
+    <>
       <WarmWelcome />
       <IdentifyCard className="my-10 lg:hidden" />
       <CraftingInterfaces
@@ -23,7 +21,7 @@ const Page = (props: Props) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       />
-    </AppLayoutV2>
+    </>
   );
 };
 
