@@ -1,13 +1,16 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { ArrowRight, Bookmark } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { ComponentProps } from "react";
 
-export interface ManifestoProps extends ComponentProps<"section"> {}
+export interface ManifestoProps extends ComponentProps<typeof motion.section> {}
 
 export const Manifesto = ({ className, ...props }: ManifestoProps) => {
   return (
-    <section
+    <motion.section
       {...props}
       data-slot="manifesto"
       className={cn(
@@ -21,7 +24,7 @@ export const Manifesto = ({ className, ...props }: ManifestoProps) => {
           Manifesto
         </h2>
 
-        <h2 className="xs:text-6xl font-dm-serif-display mb-8 text-5xl font-bold">
+        <h2 className="xs:text-6xl font-title mb-8 text-5xl font-bold">
           Who am I, what kind of stuff I do, and why?
         </h2>
 
@@ -68,42 +71,42 @@ export const Manifesto = ({ className, ...props }: ManifestoProps) => {
           <div className="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <Link
               href="/now"
-              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+              className="font-title flex items-center justify-start gap-2 text-4xl"
             >
               <span className="font-medium">Now</span>
               <ArrowRight className="size-6" />
             </Link>
             <Link
               href="/feed"
-              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+              className="font-title flex items-center justify-start gap-2 text-4xl"
             >
               <span className="font-medium">Feed</span>
               <ArrowRight className="size-6" />
             </Link>
             <Link
               href="/writing"
-              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+              className="font-title flex items-center justify-start gap-2 text-4xl"
             >
               <span className="font-medium">Writing</span>
               <ArrowRight className="size-6" />
             </Link>
             <Link
               href="/track-record"
-              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+              className="font-title flex items-center justify-start gap-2 text-4xl"
             >
               <span className="font-medium">Track Record</span>
               <ArrowRight className="size-6" />
             </Link>
             <Link
               href="/about"
-              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+              className="font-title flex items-center justify-start gap-2 text-4xl"
             >
               <span className="font-medium">About</span>
               <ArrowRight className="size-6" />
             </Link>
             <Link
               href="/changelog"
-              className="font-dm-serif-display flex items-center justify-start gap-2 text-4xl"
+              className="font-title flex items-center justify-start gap-2 text-4xl"
             >
               <span className="font-medium">Changelog</span>
               <ArrowRight className="size-6" />
@@ -111,6 +114,6 @@ export const Manifesto = ({ className, ...props }: ManifestoProps) => {
           </div>
         </div>
       </article>
-    </section>
+    </motion.section>
   );
 };

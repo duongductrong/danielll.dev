@@ -1,70 +1,68 @@
+"use client";
+
+import { ThunderIcon } from "@/components/icons/thunder-icon";
 import { cn } from "@/lib/utils";
-import { PlugZap } from "lucide-react";
+import { motion } from "motion/react";
 import { ComponentProps } from "react";
 
-export interface IdentifyCardProps extends ComponentProps<"div"> {}
+export interface IdentifyCardProps extends ComponentProps<typeof motion.div> {}
 
-const IdentifyCard = ({
-  className,
-  ...props
-}: IdentifyCardProps) => {
+const IdentifyCard = ({ className, ...props }: IdentifyCardProps) => {
   return (
-    <div
-      className={cn(
-        "w-full max-w-sm mx-auto bg-card border border-border overflow-hidden",
-        "text-left",
-        className
-      )}
+    <motion.div
       {...props}
+      className={cn(
+        "bg-card border-border mx-auto w-full max-w-sm overflow-hidden border",
+        "text-left",
+        className,
+      )}
     >
-      <div className="relative text-foreground p-4">
-        <h2 className="w-full min-h-14 border border-border flex items-center justify-center mb-8 uppercase text-5xl font-black tracking-wider py-4">
+      <div className="text-foreground relative p-4">
+        <h2 className="border-border mb-8 flex min-h-14 w-full items-center justify-center border py-4 text-5xl font-black tracking-wider uppercase">
           INTRO
         </h2>
 
-        <div className="mb-6 border-b border-border pb-3">
-          <p className="text-sm font-medium opacity-70 mb-1 tracking-wide">
+        <div className="border-border mb-6 border-b pb-3">
+          <p className="mb-1 text-sm font-medium tracking-wide opacity-70">
             IDENTITY
           </p>
-          <h2 className="text-xl font-dm-serif-display font-medium">
-            Duong Duc Trong
-          </h2>
+          <h2 className="font-title text-xl font-medium">Duong Duc Trong</h2>
         </div>
 
-        <div className="mb-6 border-b border-border pb-3">
-          <p className="text-sm font-medium opacity-70 mb-1 tracking-wide">
+        <div className="border-border mb-6 border-b pb-3">
+          <p className="mb-1 text-sm font-medium tracking-wide opacity-70">
             CURRENT POSITION
           </p>
-          <h3 className="text-xl font-dm-serif-display font-medium">
+          <h3 className="font-title text-xl font-medium">
             Senior Front-End Developer
           </h3>
         </div>
 
-        <div className="mb-6 border-b border-border pb-3">
-          <p className="text-sm font-medium opacity-70 mb-1 tracking-wide">
+        <div className="border-border mb-6 border-b pb-3">
+          <p className="mb-1 text-sm font-medium tracking-wide opacity-70">
             FOCUS
           </p>
-          <h3 className="text-xl font-dm-serif-display font-medium">
+          <h3 className="font-title text-xl font-medium">
             React & Next.js Expert
           </h3>
         </div>
 
-        <div className="border-b border-border pb-3">
-          <p className="text-sm font-medium opacity-70 mb-1 tracking-wide">
+        <div className="border-border border-b pb-3">
+          <p className="mb-1 text-sm font-medium tracking-wide opacity-70">
             LOCATION
           </p>
-          <h3 className="text-xl font-dm-serif-display font-medium">
+          <h3 className="font-title text-xl font-medium">
             Ho Chi Minh City, Vietnam
           </h3>
         </div>
       </div>
 
       <div className="text-foreground p-6 text-center">
-        <div className="grid place-items-center mb-10">
-          <PlugZap className="size-32" />
+        <div className="mb-10 grid place-items-center">
+          <ThunderIcon className="size-24" />
         </div>
 
-        <h2 className="text-3xl font-bold font-dm-serif-display mb-4 tracking-wider">
+        <h2 className="font-title mb-4 text-3xl font-bold tracking-wider">
           DANGER
         </h2>
 
@@ -73,13 +71,13 @@ const IdentifyCard = ({
           <p className="tracking-wide">ELECTRICAL SHOCK HAZARD</p>
         </div>
 
-        <div className="mt-6 pt-4 border-t border-border">
-          <p className="text-xs font-mono opacity-60 tracking-wider">
+        <div className="border-border mt-6 border-t pt-4">
+          <p className="font-mono text-xs tracking-wider opacity-60">
             LF-11235813-21345892-150242392
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

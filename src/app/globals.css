@@ -15,7 +15,7 @@
 
   --font-sans: var(--font-inter);
   --font-jetbrains-mono: var(--font-jetbrains-mono);
-  --font-dm-serif-display: var(--font-dm-serif-display);
+  --font-title: var(--font-title);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);

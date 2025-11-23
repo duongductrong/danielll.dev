@@ -100,7 +100,7 @@ const Menu = ({ className, ...props }: MenuProps) => {
                           mass: 0.5,
                         }}
                         key={`menu-item-${index}`}
-                        className="text-foreground font-dm-serif-display w-full px-2 text-4xl font-medium"
+                        className="text-foreground font-title w-full px-2 text-4xl font-medium"
                       >
                         <Link
                           href={item.href ?? ""}

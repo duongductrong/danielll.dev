@@ -55,7 +55,7 @@ const Footer = ({ className, ...props }: FooterProps) => {
         </div>
       </div>
 
-      <h2 className="text-foreground font-dm-serif-display flex w-full justify-center text-[clamp(2rem,14vw,11.5rem)]">
+      <h2 className="text-foreground font-title flex w-full justify-center text-[clamp(2rem,13vw,11rem)]">
         Thunderstorm
       </h2>
 
@@ -65,14 +65,14 @@ const Footer = ({ className, ...props }: FooterProps) => {
         </p>
 
         <div className="flex items-center justify-center">
-          <div className="h-1 w-10 sm:w-12 bg-gray-800"></div>
-          <div className="h-1 w-10 sm:w-12 bg-gray-600"></div>
-          <div className="h-1 w-10 sm:w-12 bg-gray-400"></div>
-          <div className="h-1 w-10 sm:w-12 bg-yellow-500"></div>
-          <div className="h-1 w-10 sm:w-12 bg-orange-500"></div>
-          <div className="h-1 w-10 sm:w-12 bg-red-600"></div>
-          <div className="h-1 w-10 sm:w-12 bg-blue-600"></div>
-          <div className="h-1 w-10 sm:w-12 bg-blue-800"></div>
+          <div className="h-1 w-10 bg-gray-800 sm:w-12"></div>
+          <div className="h-1 w-10 bg-gray-600 sm:w-12"></div>
+          <div className="h-1 w-10 bg-gray-400 sm:w-12"></div>
+          <div className="h-1 w-10 bg-yellow-500 sm:w-12"></div>
+          <div className="h-1 w-10 bg-orange-500 sm:w-12"></div>
+          <div className="h-1 w-10 bg-red-600 sm:w-12"></div>
+          <div className="h-1 w-10 bg-blue-600 sm:w-12"></div>
+          <div className="h-1 w-10 bg-blue-800 sm:w-12"></div>
         </div>
       </div>
     </footer>

@@ -75,7 +75,7 @@ export const ToughCardTitle = ({
 }: ToughCardTitleProps) => {
   return (
     <h3
-      className={cn("text-2xl font-bold font-dm-serif-display mb-3", className)}
+      className={cn("text-2xl font-bold font-title mb-3", className)}
       {...props}
     />
   );

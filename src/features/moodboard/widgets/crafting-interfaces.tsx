@@ -1,3 +1,6 @@
+"use client";
+
+import { ThunderIcon } from "@/components/icons/thunder-icon";
 import { Button } from "@/components/ui/button";
 import {
   ToughCard,
@@ -9,25 +12,26 @@ import {
 } from "@/components/ui/tough-card";
 import { cn } from "@/lib/utils";
 import { Barcode, Target, Zap } from "lucide-react";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { ComponentProps } from "react";
 
-export interface CraftingInterfacesProps extends ComponentProps<"section"> {}
+export interface CraftingInterfacesProps extends ComponentProps<typeof motion.section> {}
 
 export const CraftingInterfaces = ({
   className,
   ...props
 }: CraftingInterfacesProps) => {
   return (
-    <section
+    <motion.section
       {...props}
       data-slot="crafting-interfaces"
       className={cn(
-        "grid lg:grid-cols-[1fr_24rem_1fr] gap-12 items-start",
-        className
+        "grid items-start gap-12 lg:grid-cols-[1fr_24rem_1fr]",
+        className,
       )}
     >
-      <div className="flex flex-col gap-12 order-2 lg:order-1">
+      <div className="order-2 flex flex-col gap-12 lg:order-1">
         <ToughCard className="self-start">
           <ToughCardHeader
             leftLabel="Product Launch"
@@ -65,13 +69,13 @@ export const CraftingInterfaces = ({
         </ToughCard>
       </div>
 
-      <div className="flex flex-col gap-12 order-1 lg:order-2">
-        <div className="min-h-[calc(21rem-3rem)] hidden lg:block"></div>
-        <div className="flex flex-col gap-2 items-center text-center">
-          <h2 className="text-4xl font-bold font-dm-serif-display mb-3">
+      <div className="order-1 flex flex-col gap-12 lg:order-2">
+        <div className="hidden min-h-[calc(21rem-3rem)] lg:block"></div>
+        <div className="flex flex-col items-center gap-2 text-center">
+          <h2 className="font-title mb-3 text-4xl font-bold">
             Crafting interfaces, products, and systems.
           </h2>
-          <p className="text-base text-paragraph">
+          <p className="text-paragraph text-base">
             I build intuitive and polished experiences, from concepts to
             high-fidelity prototypes, by partnering closely with engineers,
             research, and design peers.
@@ -90,7 +94,7 @@ export const CraftingInterfaces = ({
             leftIcon={<Target className="size-4" />}
           />
           <ToughCardIcon>
-            <Zap className="size-20" />
+            <ThunderIcon className="size-20" />
           </ToughCardIcon>
           <ToughCardContent>
             <ToughCardTitle>Fitness Tracker Reimagined</ToughCardTitle>
@@ -104,7 +108,7 @@ export const CraftingInterfaces = ({
         </ToughCard>
       </div>
 
-      <div className="flex flex-col gap-12 lg:-translate-y-24 order-1 lg:order-3">
+      <div className="order-1 flex flex-col gap-12 lg:order-3 lg:-translate-y-24">
         <ToughCard className="self-start">
           <ToughCardHeader
             leftLabel="E-Commerce"
@@ -141,6 +145,6 @@ export const CraftingInterfaces = ({
           </ToughCardContent>
         </ToughCard>
       </div>
-    </section>
+    </motion.section>
   );
 };
