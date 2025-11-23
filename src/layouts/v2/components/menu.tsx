@@ -3,7 +3,7 @@
 import { URLS } from "@/constants/url";
 import { cn } from "@/lib/utils";
 import { Portal } from "@radix-ui/react-portal";
-import { ArrowRight, MenuIcon } from "lucide-react";
+import { ArrowRight, MenuIcon, XIcon } from "lucide-react";
 import { AnimatePresence, motion, Variants } from "motion/react";
 import Link from "next/link";
 import { ComponentProps, useEffect, useState } from "react";
@@ -39,6 +39,12 @@ const Menu = ({ className, ...props }: MenuProps) => {
     setIsOpen(!isMobile);
   }, [isMobile]);
 
+  useEffect(() => {
+    if (isMobile) {
+      document.body.style.overflow = isOpen ? "hidden" : "auto";
+    }
+  }, [isOpen, isMobile]);
+
   return (
     <>
       <ul
@@ -64,7 +70,11 @@ const Menu = ({ className, ...props }: MenuProps) => {
         className="ml-auto block cursor-pointer sm:hidden"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <MenuIcon className="size-6" />
+        {isOpen ? (
+          <XIcon className="size-6" />
+        ) : (
+          <MenuIcon className="size-6" />
+        )}
       </button>
 
       {isMobile ? (

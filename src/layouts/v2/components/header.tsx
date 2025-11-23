@@ -11,7 +11,7 @@ const Header = (props: HeaderProps) => {
     <header
       {...props}
       className={cn(
-        "border-border bg-background sticky top-0 z-10 mb-8 flex h-12 w-full border-b sm:mb-14",
+        "border-border bg-background sticky top-0 z-10 mb-8 flex h-12 w-full border-b sm:mb-14 z-50",
         props.className,
       )}
     >
