@@ -1,7 +1,7 @@
 export const URLS = {
-  HOME: "/home",
+  HOME: "/",
   WORK: "/work",
   ABOUT: "/about",
   WRITING: "/writing",
   CONTACT: "/contact",
-}
+};
