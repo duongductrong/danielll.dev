@@ -36,7 +36,7 @@ export const Manifesto = ({ className, ...props }: ManifestoProps) => {
           React, Next.js, TypeScript, and modern UI frameworks, always striving
           to bridge the gap between beautiful design and robust engineering.{" "}
           <br /> <br />
-          For me, development is more than writing code—it&apos;s about
+          For me, development is more than writing code it&apos;s about
           understanding problems deeply and creating solutions that truly serve
           users. I believe in the power of listening, learning, and iterating.
           Every project teaches me something new, and I approach each challenge
@@ -52,11 +52,11 @@ export const Manifesto = ({ className, ...props }: ManifestoProps) => {
           This space is a reflection of my growth as a developer and creator.
           Through continuous learning and hands-on experience, I&apos;ve
           developed principles that guide every project I undertake. These
-          values—quality, accessibility, performance, and user-centricity—are at
+          values quality, accessibility, performance, and user-centricity are at
           the core of everything I build. <br /> <br />
           Welcome to my digital home. This is where I share my work, document my
           experiments, and explore new ideas. It&apos;s more than a
-          portfolio—it&apos;s a living space where I connect with fellow
+          portfolio it&apos;s a living space where I connect with fellow
           creators and push the boundaries of what&apos;s possible on the web.
         </div>
 
