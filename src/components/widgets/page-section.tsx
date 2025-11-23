@@ -23,7 +23,7 @@ export const PageSectionHeader = ({
   ...props
 }: PageSectionHeaderProps) => {
   return (
-    <header {...props} className={cn("mb-8 flex flex-col gap-6", className)}>
+    <header {...props} className={cn("mb-20 flex flex-col gap-6", className)}>
       {children}
     </header>
   );

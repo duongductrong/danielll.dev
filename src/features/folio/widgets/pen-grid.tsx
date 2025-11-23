@@ -10,36 +10,48 @@ import { Code2 } from "lucide-react";
 import Link from "next/link";
 import { ComponentProps } from "react";
 
-export interface PenGridProps extends ComponentProps<"div"> {}
+export interface PenGridProps extends ComponentProps<"div"> {
+  container?: boolean;
+}
 
-const PenGrid = ({ className, ...props }: PenGridProps) => {
+const PenGrid = ({ className, container = true, ...props }: PenGridProps) => {
   return (
-    <Container {...props} className={cn("w-full max-w-2xl", className)}>
+    <Container
+      {...props}
+      className={cn(container ? "max-w-2xl" : null, "w-full", className)}
+    >
       <div className="mb-4">
         <Text as="h2" variant="headline">
           Work
         </Text>
-        <Text as="p" variant="body" className="mb-4 text-muted-foreground">
+        <Text as="p" variant="body" className="text-muted-foreground mb-4">
           Some of my works.
         </Text>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
-        {sortBy(allPens, "date").reverse().map((pen) => (
-          <Link key={pen._meta.path} href={`/pens/${pen._meta.path}`}>
-            <PenCard
-              title={pen.title}
-              date={pen.date.toISOString()}
-              thumbnail={pen.thumbnail}
-              icon={pen.icon}
-            />
-          </Link>
-        ))}
+      <div
+        className={cn(
+          "mx-auto grid grid-cols-1 gap-6 sm:grid-cols-2",
+          container ? "max-w-2xl" : "w-full",
+        )}
+      >
+        {sortBy(allPens, "date")
+          .reverse()
+          .map((pen) => (
+            <Link key={pen._meta.path} href={`/pens/${pen._meta.path}`}>
+              <PenCard
+                title={pen.title}
+                date={pen.date.toISOString()}
+                thumbnail={pen.thumbnail}
+                icon={pen.icon}
+              />
+            </Link>
+          ))}
       </div>
 
       {allPens.length === 0 && (
-        <div className="text-center py-12">
-          <Code2 className="size-12 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No pens found</h3>
+        <div className="py-12 text-center">
+          <Code2 className="text-muted-foreground mx-auto mb-4 size-12" />
+          <h3 className="mb-2 text-lg font-semibold">No pens found</h3>
           <p className="text-muted-foreground">No pens available yet</p>
         </div>
       )}

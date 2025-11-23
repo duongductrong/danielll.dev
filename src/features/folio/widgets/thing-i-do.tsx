@@ -1,10 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
+import { Text } from "@/components/ui/text";
 import { cn } from "@/lib/utils";
 import { ComponentPropsWithoutRef } from "react";
 import { ProjectShowCase, ProjectShowCaseItemImage } from "./project-showcase";
-import { Text } from "@/components/ui/text";
 
-export interface ThingIDoProps extends ComponentPropsWithoutRef<"section"> {}
+export interface ThingIDoProps extends ComponentPropsWithoutRef<"section"> {
+  showHeadline?: boolean;
+  container?: boolean;
+}
 
 // Define a type for project data
 export type Project = {
@@ -185,15 +188,27 @@ const projects: Project[] = [
   },
 ];
 
-const ThingIDo = ({ className, ...props }: ThingIDoProps) => {
+const ThingIDo = ({
+  className,
+  showHeadline = true,
+  container,
+  ...props
+}: ThingIDoProps) => {
   return (
-    <section {...props} className={cn("container", className)}>
-      <Text as="h2" variant="headline">
-        Projects
-      </Text>
-      <Text as="p" variant="body" className="mb-4 text-muted-foreground">
-        Some of my projects that I have worked on as a software engineer.
-      </Text>
+    <section
+      {...props}
+      className={cn(container ? "container" : null, className)}
+    >
+      {showHeadline ? (
+        <>
+          <Text as="h2" variant="headline">
+            Projects
+          </Text>
+          <Text as="p" variant="body" className="text-muted-foreground mb-4">
+            Some of my projects that I have worked on as a software engineer.
+          </Text>
+        </>
+      ) : null}
 
       <section className="flex flex-col gap-10">
         {projects.map((project, idx) => (

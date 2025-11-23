@@ -1,5 +1,7 @@
+import { Construction } from "@/components/widgets/construction";
 import {
   PageSection,
+  PageSectionContent,
   PageSectionDescription,
   PageSectionHeader,
   PageSectionTitle,
@@ -15,6 +17,10 @@ const Page = () => {
           and insights on a variety of topics.
         </PageSectionDescription>
       </PageSectionHeader>
+
+      <PageSectionContent>
+        <Construction />
+      </PageSectionContent>
     </PageSection>
   );
 };

@@ -1,4 +1,3 @@
-import { ThunderIcon } from "@/components/icons/thunder-icon";
 import {
   PageSection,
   PageSectionContent,
@@ -6,6 +5,7 @@ import {
   PageSectionHeader,
   PageSectionTitle,
 } from "@/components/widgets/page-section";
+import ThingIDo from "@/features/folio/widgets/thing-i-do";
 
 const Page = () => {
   return (
@@ -19,9 +19,7 @@ const Page = () => {
       </PageSectionHeader>
 
       <PageSectionContent>
-        <div className="grid place-items-center h-[60vh]">
-          <ThunderIcon className="text-foreground size-64" />
-        </div>
+        <ThingIDo container={false} showHeadline={false} />
       </PageSectionContent>
     </PageSection>
   );
