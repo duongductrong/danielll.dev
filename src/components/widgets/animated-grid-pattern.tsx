@@ -30,7 +30,7 @@ export const AnimatedGridPattern = ({
         className={cn(
           "pointer-events-none absolute inset-0 h-full w-full",
           "[background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px)]",
-          "[background-size:30px_30px] [background-position:-1px_-1px]",
+          "[background-size:27px_27px] [background-position:-1px_-1px]",
           className,
         )}
       />
@@ -51,7 +51,7 @@ export const AnimatedGridPattern = ({
         className={cn(
           "pointer-events-none absolute inset-0 h-full w-full",
           "[background-image:linear-gradient(to_bottom,var(--border)_1px,transparent_1px)]",
-          "[background-size:30px_30px] [background-position:-1px_-1px]",
+          "[background-size:27px_27px] [background-position:-1px_-1px]",
           className,
         )}
       />
