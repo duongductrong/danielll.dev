@@ -10,6 +10,8 @@ import IdentifyCard from "../components/identify-card";
 
 export interface WarmWelcomeProps extends ComponentProps<"section"> {}
 
+const SHADOW_TEXT_COUNT = 8;
+
 export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
   return (
     <section {...props} data-slot="welcome-moodboard" className={cn(className)}>
@@ -33,9 +35,29 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="bg-background border-border relative min-h-[300px] w-full max-w-[800px] border"
           >
-            <h2 className="font-title xs:text-6xl mt-8 mb-4 w-full text-center text-5xl leading-[1] font-bold sm:absolute sm:-top-[clamp(25%,10%,25%)] sm:mt-0 sm:text-[clamp(5rem,12.75vw,7rem)]">
-              Welcome to <br /> The world
-            </h2>
+            <div className="font-title xs:text-6xl mt-8 mb-4 w-full text-center text-5xl leading-[1] font-bold sm:absolute sm:-top-[clamp(25%,10%,25%)] sm:mt-0 sm:text-[clamp(5rem,12.75vw,7rem)]">
+              <span className="z-10">Welcome to</span> <br />{" "}
+              <span className="relative z-10">The world</span>
+              {Array.from({ length: SHADOW_TEXT_COUNT }).map((_, index) => {
+                const opacity = 40 - index * SHADOW_TEXT_COUNT;
+                return (
+                  <span
+                    key={`shadow-text-${index}`}
+                    className={cn(
+                      "text-transparent [-webkit-text-stroke-width:1px]",
+                      "absolute left-1/2 z-0 w-full -translate-x-1/2",
+                      "pointer-events-none hidden sm:block",
+                    )}
+                    style={{
+                      top: `calc(50% + ${index * SHADOW_TEXT_COUNT}%)`,
+                      WebkitTextStrokeColor: `hsl(0 0% 50% / ${opacity}%)`,
+                    }}
+                  >
+                    The world
+                  </span>
+                );
+              })}
+            </div>
             <div className="text-paragraph p-6 text-center leading-relaxed sm:mt-[clamp(1rem,16vw,9rem)] sm:p-8">
               Virtual greetings to you stranger, I&apos;m Trong Duong and this
               is my personal space on the Internet. Here you can browse through

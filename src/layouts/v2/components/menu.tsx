@@ -46,9 +46,9 @@ const Menu = ({ className, ...props }: MenuProps) => {
           className,
         )}
       >
-        {MENU_ITEMS.map((item) => (
+        {MENU_ITEMS.map((item, index) => (
           <li
-            key={item.href}
+            key={`menu-item-${index}`}
             className="text-foreground px-2 text-sm font-medium"
           >
             <Link href={item.href ?? ""} className="block w-full">
