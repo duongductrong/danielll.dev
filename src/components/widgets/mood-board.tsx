@@ -6,31 +6,40 @@ import { HTMLMotionProps, motion } from "motion/react";
 import { ComponentProps, forwardRef } from "react";
 import { tv, type VariantProps } from "tailwind-variants";
 
-// --- MoodBoard Root ---
-
 export interface MoodBoardProps extends ComponentProps<"div"> {}
 
 const MoodBoardRoot = forwardRef(({ className, children, ...props }, ref) => {
   return (
-    <div
-      ref={ref}
-      className={cn(
-        "relative flex min-h-[720px] items-center justify-center p-4",
-        className,
-      )}
-      {...props}
-    >
+    <div ref={ref} className={cn("border-border border", className)} {...props}>
       {children}
     </div>
   );
 }) as ForwardRefComponent<"div", MoodBoardProps>;
 MoodBoardRoot.displayName = "MoodBoard";
 
-// --- MoodBoard Content ---
+export interface MoodBoardContentProps extends ComponentProps<"div"> {}
 
-export interface MoodBoardContentProps extends HTMLMotionProps<"div"> {}
+const MoodBoardContent = forwardRef(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "relative flex min-h-[720px] items-center justify-center p-4",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
+) as ForwardRefComponent<"div", MoodBoardContentProps>;
+MoodBoardContent.displayName = "MoodBoardContent";
 
-const MoodBoardContent = forwardRef<HTMLDivElement, MoodBoardContentProps>(
+export interface MoodBoardCardProps extends HTMLMotionProps<"div"> {}
+
+const MoodBoardCard = forwardRef<HTMLDivElement, MoodBoardCardProps>(
   ({ className, children, ...props }, ref) => {
     return (
       <motion.div
@@ -49,9 +58,7 @@ const MoodBoardContent = forwardRef<HTMLDivElement, MoodBoardContentProps>(
     );
   },
 );
-MoodBoardContent.displayName = "MoodBoardContent";
-
-// --- MoodBoard Title ---
+MoodBoardCard.displayName = "MoodBoardCard";
 
 const SHADOW_TEXT_COUNT = 8;
 
@@ -161,8 +168,88 @@ const MoodBoardDescription = forwardRef(
 
 MoodBoardDescription.displayName = "MoodBoardDescription";
 
+export interface MoodBoardHeaderProps extends ComponentProps<"div"> {}
+
+const MoodBoardHeader = forwardRef<HTMLDivElement, MoodBoardHeaderProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "border-border flex min-h-14 items-center justify-center border-b px-4 py-2",
+          className,
+        )}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  },
+);
+
+MoodBoardHeader.displayName = "MoodBoardHeader";
+
+export const MoodBoardGrid = ({
+  className,
+  duration = 1.2,
+}: {
+  className?: string;
+  duration?: number;
+}) => {
+  const ease = "easeInOut";
+
+  return (
+    <>
+      <motion.div
+        initial={{
+          clipPath: "inset(50% 50% 50% 50%)",
+          opacity: 1,
+        }}
+        animate={{
+          clipPath: "inset(0% 0% 0% 0%)",
+          opacity: 1,
+        }}
+        transition={{
+          duration: duration,
+          ease,
+        }}
+        className={cn(
+          "pointer-events-none absolute inset-0 h-full w-full",
+          "[background-image:linear-gradient(to_right,var(--border)_1px,transparent_1px)]",
+          "[background-size:27px_27px] [background-position:-1px_-1px]",
+          className,
+        )}
+      />
+
+      <motion.div
+        initial={{
+          clipPath: "inset(50% 50% 50% 50%)",
+          opacity: 1,
+        }}
+        animate={{
+          clipPath: "inset(0% 0% 0% 0%)",
+          opacity: 1,
+        }}
+        transition={{
+          duration: duration / 1.5,
+          ease,
+        }}
+        className={cn(
+          "pointer-events-none absolute inset-0 h-full w-full",
+          "[background-image:linear-gradient(to_bottom,var(--border)_1px,transparent_1px)]",
+          "[background-size:27px_27px] [background-position:-1px_-1px]",
+          className,
+        )}
+      />
+    </>
+  );
+};
+
 export const MoodBoard = Object.assign(MoodBoardRoot, {
   Content: MoodBoardContent,
+  Card: MoodBoardCard,
   Title: MoodBoardTitle,
   Description: MoodBoardDescription,
+  Header: MoodBoardHeader,
+  Grid: MoodBoardGrid,
 });

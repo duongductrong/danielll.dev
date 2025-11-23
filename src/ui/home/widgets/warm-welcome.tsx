@@ -1,7 +1,6 @@
 "use client";
 
 import { ThunderIcon } from "@/components/icons/thunder-icon";
-import { AnimatedGridPattern } from "@/components/widgets/animated-grid-pattern";
 import { MoodBoard } from "@/components/widgets/mood-board";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
@@ -14,8 +13,8 @@ export interface WarmWelcomeProps extends ComponentProps<"section"> {}
 export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
   return (
     <section {...props} data-slot="welcome-MoodBoard" className={cn(className)}>
-      <div className={cn("border-border border")}>
-        <div className="border-border flex min-h-14 items-center justify-center border-b px-4 py-2">
+      <MoodBoard>
+        <MoodBoard.Header>
           <span className="mr-4 text-sm font-bold tracking-wide uppercase">
             NEW
           </span>
@@ -23,16 +22,16 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
             Introducing Inside Thunderstorm
           </span>
           <ArrowRight className="ml-2 size-4" />
-        </div>
+        </MoodBoard.Header>
 
-        <MoodBoard>
-          <AnimatedGridPattern duration={1.2} />
+        <MoodBoard.Content>
+          <MoodBoard.Grid duration={1.2} />
 
           <div className="absolute top-9">
             <ThunderIcon className="text-accent [&_path]:fill-background size-32" />
           </div>
 
-          <MoodBoard.Content>
+          <MoodBoard.Card>
             <MoodBoard.Title
               primaryText="The world"
               secondaryText="Welcome to"
@@ -52,9 +51,10 @@ export const WarmWelcome = ({ className, ...props }: WarmWelcomeProps) => {
             </MoodBoard.Description>
 
             <div data-slot="welcome-MoodBoard-card"></div>
-          </MoodBoard.Content>
-        </MoodBoard>
-      </div>
+          </MoodBoard.Card>
+        </MoodBoard.Content>
+      </MoodBoard>
+
       <div className="border-border flex h-12 items-center justify-between border-b tracking-wider">
         <p className="text-paragraph text-xs uppercase">
           {format(new Date(), "EEEE, MMMM d, yyyy")}

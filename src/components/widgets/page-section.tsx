@@ -1,17 +1,33 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import { ComponentProps } from "react";
+import { Container } from "../ui/container";
 
-export interface PageSectionProps extends ComponentProps<"section"> {}
+export interface PageSectionProps extends ComponentProps<typeof Container> {
+  display?: "default" | "fluid";
+}
 
 export const PageSectionRoot = ({
   children,
   className,
+  display = "default",
   ...props
 }: PageSectionProps) => {
   return (
-    <section {...props} className={cn(className)}>
+    <Container
+      {...props}
+      as="section"
+      variant={display === "default" ? "default" : "fluid"}
+      className={cn(
+        "[&_[data-slot='page-section-header']]:max-w-[1248px]",
+        "[&_[data-slot='page-section-header']]:mx-auto",
+        className,
+      )}
+      data-slot="page-section"
+    >
       {children}
-    </section>
+    </Container>
   );
 };
 
@@ -23,7 +39,11 @@ export const PageSectionHeader = ({
   ...props
 }: PageSectionHeaderProps) => {
   return (
-    <header {...props} className={cn("mb-20 flex flex-col gap-6", className)}>
+    <header
+      {...props}
+      className={cn("mb-20 flex flex-col gap-6", className)}
+      data-slot="page-section-header"
+    >
       {children}
     </header>
   );
@@ -37,7 +57,11 @@ export const PageSectionTitle = ({
   ...props
 }: PageSectionTitleProps) => {
   return (
-    <h2 {...props} className={cn("font-title text-5xl font-bold", className)}>
+    <h2
+      {...props}
+      className={cn("font-title text-5xl font-bold", className)}
+      data-slot="page-section-title"
+    >
       {children}
     </h2>
   );
@@ -51,7 +75,11 @@ export const PageSectionDescription = ({
   ...props
 }: PageSectionDescriptionProps) => {
   return (
-    <p {...props} className={cn("text-paragraph max-w-xl text-xl", className)}>
+    <p
+      {...props}
+      className={cn("text-paragraph max-w-xl text-xl", className)}
+      data-slot="page-section-description"
+    >
       {children}
     </p>
   );
@@ -65,7 +93,11 @@ export const PageSectionContent = ({
   ...props
 }: PageSectionContentProps) => {
   return (
-    <div {...props} className={cn("flex flex-col gap-6", className)}>
+    <div
+      {...props}
+      className={cn("flex flex-col gap-6", className)}
+      data-slot="page-section-content"
+    >
       {children}
     </div>
   );

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { PageSection } from "@/components/widgets/page-section";
 import {
   CraftingInterfaces,
   IdentifyCard,
@@ -10,7 +11,7 @@ type Props = {};
 
 const Page = (props: Props) => {
   return (
-    <>
+    <PageSection>
       <WarmWelcome />
       <IdentifyCard className="my-10 lg:hidden" />
       <CraftingInterfaces
@@ -25,7 +26,7 @@ const Page = (props: Props) => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       />
-    </>
+    </PageSection>
   );
 };
 

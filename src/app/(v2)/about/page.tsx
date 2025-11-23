@@ -1,15 +1,17 @@
-import { Construction } from "@/components/widgets/construction";
+"use client";
+
+import { MoodBoard } from "@/components/widgets/mood-board";
 import {
+  PageSection,
   PageSectionContent,
   PageSectionDescription,
   PageSectionHeader,
-  PageSectionRoot,
   PageSectionTitle,
 } from "@/components/widgets/page-section";
 
 const Page = () => {
   return (
-    <PageSectionRoot>
+    <PageSection display="fluid">
       <PageSectionHeader>
         <PageSectionTitle>About my journey</PageSectionTitle>
         <PageSectionDescription>
@@ -18,10 +20,14 @@ const Page = () => {
         </PageSectionDescription>
       </PageSectionHeader>
 
-      <PageSectionContent>
-        <Construction />
+      <PageSectionContent className="lg:px-12">
+        <MoodBoard>
+          <MoodBoard.Content>
+            <MoodBoard.Grid duration={1.2} />
+          </MoodBoard.Content>
+        </MoodBoard>
       </PageSectionContent>
-    </PageSectionRoot>
+    </PageSection>
   );
 };
 
