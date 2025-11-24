@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { MoodBoard } from "@/components/widgets/mood-board";
@@ -8,8 +9,9 @@ import {
   PageSectionHeader,
   PageSectionTitle,
 } from "@/components/widgets/page-section";
+import { useElementSize } from "@/hooks";
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const MOODBOARD_IMAGES = [
   {
@@ -45,17 +47,23 @@ type MoodItem = (typeof MOODBOARD_IMAGES)[0] & {
 };
 
 const Page = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const [items, setItems] = useState<MoodItem[]>([]);
 
+  const [containerRef, containerSize] = useElementSize<HTMLDivElement>();
+
   useEffect(() => {
+    if (!containerSize.width || !containerSize.height) return;
+
+    const maxX = containerSize.width / 2 - 100;
+    const maxY = containerSize.height / 2 - 100;
+
     const newItems = MOODBOARD_IMAGES.map((item) => ({
       ...item,
-      x: Math.random() * 400 - 200, // Random X between -200 and 200
-      y: Math.random() * 400 - 200, // Random Y between -200 and 200
+      x: Math.random() * maxX * 2 - maxX,
+      y: Math.random() * maxY * 2 - maxY,
     }));
     setItems(newItems);
-  }, []);
+  }, [containerRef.current]);
 
   return (
     <PageSection display="fluid">
