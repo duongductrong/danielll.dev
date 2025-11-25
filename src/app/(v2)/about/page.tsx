@@ -86,7 +86,13 @@ const Page = () => {
                 drag
                 dragConstraints={containerRef}
                 dragElastic={0.1}
-                dragMomentum={false}
+                dragMomentum={true}
+                dragTransition={{
+                  bounceStiffness: 300,
+                  bounceDamping: 20,
+                  power: 0.2,
+                  timeConstant: 200,
+                }}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{
                   opacity: 1,
