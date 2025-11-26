@@ -10,7 +10,7 @@ import { Code2 } from "lucide-react";
 import Link from "next/link";
 import { ComponentProps } from "react";
 
-export interface PenGridProps extends ComponentProps<"div"> {
+export interface PenGridProps extends ComponentProps<typeof Container> {
   container?: boolean;
 }
 

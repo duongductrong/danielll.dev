@@ -9,15 +9,15 @@ export interface HeaderProps extends ComponentPropsWithoutRef<"header"> {}
 
 const Header = (props: HeaderProps) => {
   return (
-    <Container as="header">
+    <Container as="header" className="sticky top-0 z-50">
       <div
         {...props}
         className={cn(
-          "border-border bg-background sticky top-0 z-10 z-50 mb-8 flex h-12 w-full border-b sm:mb-14",
+          "border-border bg-background mb-8 flex h-12 w-full border-b sm:mb-14",
           props.className,
         )}
       >
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center pl-4">
           <Link href={URLS.HOME}>
             <h2 className="text-foreground text-sm font-bold">
               Trong Duong{" "}
@@ -26,7 +26,7 @@ const Header = (props: HeaderProps) => {
           </Link>
         </div>
 
-        <Menu />
+        <Menu className="pr-4" />
       </div>
     </Container>
   );
