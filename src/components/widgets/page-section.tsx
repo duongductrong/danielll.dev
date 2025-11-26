@@ -24,10 +24,12 @@ export const PageSectionRoot = forwardRef(
         as={as}
         variant={display === "default" ? "default" : "fluid"}
         className={cn(
-          "[&_[data-slot='page-section-header']]:max-w-[1248px]",
-          "[&_[data-slot='page-section-header']]:mx-auto",
+          "[&[data-display='fluid']_[data-slot='page-section-header']]:max-w-[1248px]",
+          "[&[data-display='fluid']_[data-slot='page-section-header']]:mx-auto",
+          "[&[data-display='fluid']_[data-slot='page-section-header']]:px-4",
           className,
         )}
+        data-display={display}
         data-slot="page-section"
       >
         {children}
