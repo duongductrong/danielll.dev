@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { ForwardRefComponent } from "@/types/react-polymorphic";
-import { ComponentProps, forwardRef } from "react";
+import { forwardRef } from "react";
 import { tv, VariantProps } from "tailwind-variants";
 
 const containerVariants = tv(
@@ -22,12 +22,11 @@ const containerVariants = tv(
 );
 
 export interface ContainerProps
-  extends ComponentProps<"div">,
-    VariantProps<typeof containerVariants> {}
+  extends VariantProps<typeof containerVariants> {}
 
 export const Container = forwardRef(
-  ({ children, variant = "default", className, as = "div", ...props }, ref) => {
-    const Comp = as ?? "div";
+  ({ children, variant = "default", className, ...props }, ref) => {
+    const Comp = props.as ?? "div";
 
     return (
       <Comp

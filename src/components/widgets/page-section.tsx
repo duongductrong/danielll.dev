@@ -1,51 +1,75 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { ComponentProps } from "react";
-import { Container } from "../ui/container";
+import { ForwardRefComponent } from "@/types/react-polymorphic";
+import {
+  ComponentProps,
+  createContext,
+  forwardRef,
+  useContext,
+  useMemo,
+} from "react";
+import { Container, ContainerProps } from "../ui/container";
 
-export interface PageSectionProps extends ComponentProps<typeof Container> {
+export interface PageSectionProps extends ContainerProps {
   display?: "default" | "fluid";
 }
 
-export const PageSectionRoot = ({
-  children,
-  className,
-  display = "default",
-  ...props
-}: PageSectionProps) => {
-  return (
-    <Container
-      {...props}
-      as="section"
-      variant={display === "default" ? "default" : "fluid"}
-      className={cn(
-        "[&_[data-slot='page-section-header']]:max-w-[1248px]",
-        "[&_[data-slot='page-section-header']]:mx-auto",
-        className,
-      )}
-      data-slot="page-section"
-    >
-      {children}
-    </Container>
-  );
+export const PageSectionRoot = forwardRef(
+  ({ children, className, display = "default", as = "div", ...props }, ref) => {
+    return (
+      <Container
+        {...props}
+        ref={ref}
+        as={as}
+        variant={display === "default" ? "default" : "fluid"}
+        className={cn(
+          "[&_[data-slot='page-section-header']]:max-w-[1248px]",
+          "[&_[data-slot='page-section-header']]:mx-auto",
+          className,
+        )}
+        data-slot="page-section"
+      >
+        {children}
+      </Container>
+    );
+  },
+) as ForwardRefComponent<"div", PageSectionProps>;
+PageSectionRoot.displayName = "PageSectionRoot";
+
+type PageSectionHeaderContextType = {
+  variant?: "headline" | "title";
 };
 
-export interface PageSectionHeaderProps extends ComponentProps<"header"> {}
+const PageSectionHeaderContext = createContext<PageSectionHeaderContextType>({
+  variant: "headline",
+});
+
+export interface PageSectionHeaderProps
+  extends ComponentProps<"header">,
+    PageSectionHeaderContextType {}
 
 export const PageSectionHeader = ({
   children,
+  variant = "headline",
   className,
   ...props
 }: PageSectionHeaderProps) => {
+  const value = useMemo(() => ({ variant }), [variant]);
   return (
-    <header
-      {...props}
-      className={cn("mb-20 flex flex-col gap-6", className)}
-      data-slot="page-section-header"
-    >
-      {children}
-    </header>
+    <PageSectionHeaderContext.Provider value={value}>
+      <header
+        {...props}
+        className={cn(
+          "mb-20 flex flex-col data-[variant=headline]:gap-6 data-[variant=title]:gap-4",
+          className,
+        )}
+        data-slot="page-section-header"
+        data-variant={variant}
+      >
+        {children}
+      </header>
+    </PageSectionHeaderContext.Provider>
   );
 };
 
@@ -56,11 +80,18 @@ export const PageSectionTitle = ({
   className,
   ...props
 }: PageSectionTitleProps) => {
+  const { variant } = useContext(PageSectionHeaderContext);
   return (
     <h2
       {...props}
-      className={cn("font-title text-5xl font-bold", className)}
+      className={cn(
+        "font-title font-bold",
+        "data-[variant=headline]:text-5xl",
+        "data-[variant=title]:text-3xl",
+        className,
+      )}
       data-slot="page-section-title"
+      data-variant={variant}
     >
       {children}
     </h2>
@@ -74,11 +105,19 @@ export const PageSectionDescription = ({
   className,
   ...props
 }: PageSectionDescriptionProps) => {
+  const { variant } = useContext(PageSectionHeaderContext);
+
   return (
     <p
       {...props}
-      className={cn("text-paragraph max-w-xl text-xl", className)}
+      className={cn(
+        "text-paragraph max-w-xl",
+        "data-[variant=headline]:text-xl",
+        "data-[variant=title]:text-base",
+        className,
+      )}
       data-slot="page-section-description"
+      data-variant={variant}
     >
       {children}
     </p>
@@ -104,6 +143,7 @@ export const PageSectionContent = ({
 };
 
 export const PageSection = Object.assign(PageSectionRoot, {
+  Root: PageSectionRoot,
   Header: PageSectionHeader,
   Title: PageSectionTitle,
   Description: PageSectionDescription,

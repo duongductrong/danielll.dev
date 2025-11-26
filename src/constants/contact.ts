@@ -26,7 +26,7 @@ export const contacts = [
     href: "https://www.instagram.com/_duongductrong/",
   },
   {
-    text: "Resume PDF",
+    text: "Resume",
     href: "/assets/documents/Frontend Developer - Duong Duc Trong - 2000.pdf",
   },
 ];
