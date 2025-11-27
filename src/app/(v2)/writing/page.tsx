@@ -43,7 +43,7 @@ const generateMockPosts = (
 };
 
 const Page = () => {
-  const mockPosts = generateMockPosts(5);
+  const mockPosts = generateMockPosts(0);
 
   const posts = mockPosts;
 
