@@ -11,8 +11,10 @@ import {
 } from "@/components/widgets/page-section";
 import { contacts } from "@/constants/contact";
 import { useElementSize } from "@/hooks";
-import { Circle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { ArrowUpRight, Circle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const MOODBOARD_IMAGES = [
@@ -20,26 +22,31 @@ const MOODBOARD_IMAGES = [
     id: 1,
     src: "https://cdn.dribbble.com/userupload/11906450/file/original-4552488e1e26f38d5c0f14ff3cdfcf09.jpg?resize=1504x1128&vertical=center",
     alt: "Abstract Fluid Art",
+    href: "/",
   },
   {
     id: 2,
     src: "https://cdn.dribbble.com/userupload/45027551/file/b6e66789095ff07891fdcba133b3405c.jpg?resize=1504x1128&vertical=center",
     alt: "Minimal Interior",
+    href: "/",
   },
   {
     id: 3,
     src: "https://cdn.dribbble.com/userupload/43653165/file/original-86d0aaf6704fbcc47336e0271728b602.png?resize=1504x1128&vertical=center",
     alt: "Texture Detail",
+    href: "/",
   },
   {
     id: 4,
     src: "https://cdn.dribbble.com/userupload/43178545/file/original-9351d41c5d58e4d1225fd365f3020f0c.png?resize=1504x1128&vertical=center",
     alt: "Minimal Plant",
+    href: "/",
   },
   {
     id: 5,
     src: "https://cdn.dribbble.com/userupload/18422813/file/original-7b48eea7aa3b619612a6ad5c38f2771e.png?resize=1504x1128&vertical=center",
     alt: "Abstract Shapes",
+    href: "",
   },
 ];
 
@@ -109,9 +116,9 @@ const Page = () => {
                     stiffness: 260,
                     damping: 20,
                   }}
-                  className="w-48 sm:w-64"
+                  className="hover:border-primary group w-48 border border-transparent sm:w-64"
                 >
-                  <div className="relative w-full overflow-hidden">
+                  <div className="relative w-full">
                     <Image
                       src={item.src}
                       alt={item.alt}
@@ -119,6 +126,29 @@ const Page = () => {
                       height={200}
                       className="pointer-events-none h-full w-full object-cover"
                     />
+
+                    <div
+                      className={cn(
+                        "bg-primary text-background absolute top-full -left-px flex items-center px-2",
+                        "uppercase opacity-0 transition-all duration-300 group-hover:opacity-100",
+                        "h-0 group-hover:h-6",
+                      )}
+                    >
+                      <p className="text-xs font-medium">{item.alt}</p>
+                    </div>
+
+                    <Link
+                      href={item.href}
+                      className={cn(
+                        "bg-primary text-background absolute top-0 right-0 grid size-8",
+                        "place-items-center opacity-0 transition-all duration-300 group-hover:opacity-100",
+                        "origin-top-right scale-0 group-hover:scale-100",
+                      )}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ArrowUpRight className="size-5" />
+                    </Link>
                   </div>
                 </MoodBoard.Item>
               ))}
@@ -163,7 +193,7 @@ const Page = () => {
                 href={contact.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground inline-flex items-center gap-1 text-sm"
+                className="hover:text-foreground inline-flex items-center gap-1"
               >
                 <Circle className="mr-1 size-2" />
                 {contact.text}
