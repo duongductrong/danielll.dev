@@ -5,7 +5,7 @@ import {
   PageSectionHeader,
   PageSectionTitle,
 } from "@/components/widgets/page-section";
-import ThingIDo from "@/features/folio/widgets/thing-i-do";
+import ThingIDo from "@/screens/work/thing-i-do";
 
 const Page = () => {
   return (

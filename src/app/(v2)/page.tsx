@@ -5,7 +5,7 @@ import {
   IdentifyCard,
   Manifesto,
   WarmWelcome,
-} from "@/ui/home";
+} from "@/screens/home";
 
 type Props = {};
 
