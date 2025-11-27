@@ -117,6 +117,8 @@ const Menu = ({ className, ...props }: MenuProps) => {
                         <Link
                           href={item.href ?? ""}
                           className="flex w-full items-center justify-between"
+                          onClick={() => setIsOpen(false)}
+                          scroll={false}
                         >
                           {item.label}
                           <ArrowRight className="size-6" />
