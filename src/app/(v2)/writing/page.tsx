@@ -5,8 +5,16 @@ import {
   PageSectionHeader,
   PageSectionTitle,
 } from "@/components/widgets/page-section";
+import {
+  Empty,
+  EmptyDescription,
+  EmptyHeader,
+  EmptyMedia,
+  EmptyTitle,
+} from "@/components/ui/empty";
 import { ArticleCard, Post } from "@/screens/writing/components/article-card";
 import { FeaturedArticleCard } from "@/screens/writing/components/featured-article-card";
+import { PenTool } from "lucide-react";
 // import { allPosts } from "content-collections";
 
 // Mock data generation
@@ -35,7 +43,7 @@ const generateMockPosts = (
 };
 
 const Page = () => {
-  const mockPosts = generateMockPosts(12);
+  const mockPosts = generateMockPosts(5);
 
   const posts = mockPosts;
 
@@ -54,36 +62,50 @@ const Page = () => {
       </PageSectionHeader>
 
       <PageSectionContent className="space-y-12">
-        {/* Featured Section */}
-        <section className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight">Latest Stories</h2>
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-            {/* Main Featured Article (Left/Top, Large) */}
-            <div className="lg:col-span-2">
-              <FeaturedArticleCard post={mainPost} className="h-full" />
-            </div>
+        {posts.length > 0 ? (
+          <>
+            <section className="space-y-6">
+              <h2 className="text-2xl font-bold tracking-tight">
+                Latest Stories
+              </h2>
+              <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
+                <div className="lg:col-span-2">
+                  <FeaturedArticleCard post={mainPost} className="h-full" />
+                </div>
 
-            {/* Sub-featured Articles (Right/Bottom, Stacked) */}
-            <div className="flex flex-col gap-6 lg:gap-8">
-              {subFeaturedPosts.map((post) => (
-                <ArticleCard key={post._meta.path} post={post} />
-              ))}
-            </div>
-          </div>
-        </section>
+                <div className="flex flex-col gap-6 lg:gap-8">
+                  {subFeaturedPosts.map((post) => (
+                    <ArticleCard key={post._meta.path} post={post} />
+                  ))}
+                </div>
+              </div>
+            </section>
 
-        {/* Archive Section */}
-        {remainingPosts.length > 0 && (
-          <section className="space-y-6">
-            <h2 className="text-muted-foreground text-xl font-bold tracking-tight">
-              Archive
-            </h2>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {remainingPosts.map((post) => (
-                <ArticleCard key={post._meta.path} post={post} />
-              ))}
-            </div>
-          </section>
+            {remainingPosts.length > 0 && (
+              <section className="space-y-6">
+                <h2 className="text-muted-foreground text-xl font-bold tracking-tight">
+                  Archive
+                </h2>
+                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                  {remainingPosts.map((post) => (
+                    <ArticleCard key={post._meta.path} post={post} />
+                  ))}
+                </div>
+              </section>
+            )}
+          </>
+        ) : (
+          <Empty className="min-h-[400px]">
+            <EmptyHeader>
+              <EmptyMedia variant="icon">
+                <PenTool />
+              </EmptyMedia>
+              <EmptyTitle>No stories yet</EmptyTitle>
+              <EmptyDescription>
+                I&apos;m working on something great. Check back soon!
+              </EmptyDescription>
+            </EmptyHeader>
+          </Empty>
         )}
       </PageSectionContent>
     </PageSection>
