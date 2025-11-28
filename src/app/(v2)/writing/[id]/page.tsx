@@ -238,14 +238,6 @@ export default async function Page({
             <MDXContent code={post!.mdx} components={mdxComponents} />
           )}
         </div>
-
-        <footer className="border-border mt-32 border-t pt-12">
-          <div className="flex flex-col gap-4 text-center sm:text-left">
-            <p className="text-muted-foreground font-serif text-2xl italic">
-              Thanks for reading.
-            </p>
-          </div>
-        </footer>
       </div>
     </article>
   );
