@@ -3,15 +3,55 @@ import { cn } from "@/lib/utils";
 import { MDXContent } from "@content-collections/mdx/react";
 import { allPosts } from "content-collections";
 import { format } from "date-fns";
-import { ArrowLeft, ArrowUpRight, Clock, Sparkles } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowUpRight,
+  Clock,
+  Sparkles,
+  Terminal,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CopyButton } from "./copy-button";
 
 const calculateReadingTime = (content: string): number => {
   const wordsPerMinute = 200;
   const words = content.split(/\s+/).length;
   return Math.ceil(words / wordsPerMinute);
+};
+
+const getLanguageLabel = (className?: string): string | null => {
+  if (!className) return null;
+  const match = className.match(/language-(\w+)/);
+  if (!match) return null;
+
+  const langMap: Record<string, string> = {
+    js: "JavaScript",
+    javascript: "JavaScript",
+    ts: "TypeScript",
+    typescript: "TypeScript",
+    tsx: "TSX",
+    jsx: "JSX",
+    css: "CSS",
+    html: "HTML",
+    json: "JSON",
+    bash: "Bash",
+    shell: "Shell",
+    sh: "Shell",
+    python: "Python",
+    py: "Python",
+    go: "Go",
+    rust: "Rust",
+    sql: "SQL",
+    yaml: "YAML",
+    yml: "YAML",
+    markdown: "Markdown",
+    md: "Markdown",
+    toml: "TOML",
+  };
+
+  return langMap[match[1]] || match[1].toUpperCase();
 };
 
 const mdxComponents = {
@@ -98,23 +138,102 @@ const mdxComponents = {
   li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
     <li className={cn("leading-relaxed", className)} {...props} />
   ),
-  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className={cn(
-        "group border-border/50 relative my-10 overflow-x-auto rounded-xl border bg-zinc-950 p-5 text-sm dark:bg-zinc-900/50",
-        className,
-      )}
-      {...props}
-    />
-  ),
+  figure: ({
+    className,
+    "data-rehype-pretty-code-figure": isCodeFigure,
+    ...props
+  }: React.HTMLAttributes<HTMLElement> & {
+    "data-rehype-pretty-code-figure"?: string;
+  }) => {
+    if (isCodeFigure !== undefined) {
+      return (
+        <figure
+          className={cn("group/code relative my-8", className)}
+          data-rehype-pretty-code-figure=""
+          {...props}
+        />
+      );
+    }
+    return <figure className={className} {...props} />;
+  },
+  figcaption: ({
+    className,
+    "data-rehype-pretty-code-title": isCodeTitle,
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLElement> & {
+    "data-rehype-pretty-code-title"?: string;
+  }) => {
+    if (isCodeTitle !== undefined) {
+      return (
+        <figcaption
+          className={cn(
+            "border-border/50 text-muted-foreground flex items-center gap-2 rounded-t-xl border border-b-0 bg-zinc-100 px-4 py-2.5 font-mono text-xs dark:bg-zinc-900",
+            className,
+          )}
+          data-rehype-pretty-code-title=""
+          {...props}
+        >
+          <Terminal className="size-3.5" />
+          {children}
+        </figcaption>
+      );
+    }
+    return (
+      <figcaption className={className} {...props}>
+        {children}
+      </figcaption>
+    );
+  },
+  pre: ({
+    className,
+    children,
+    ...props
+  }: React.HTMLAttributes<HTMLPreElement>) => {
+    const codeElement = children as React.ReactElement<{
+      className?: string;
+      children?: string;
+    }>;
+    const codeClassName = codeElement?.props?.className;
+    const language = getLanguageLabel(codeClassName);
+    const codeContent =
+      typeof codeElement?.props?.children === "string"
+        ? codeElement.props.children
+        : "";
+
+    return (
+      <div className="group/code relative">
+        <div className="absolute top-3 right-3 z-10 flex items-center gap-2 opacity-0 transition-opacity group-hover/code:opacity-100">
+          {language && (
+            <span className="rounded-md bg-zinc-700/50 px-2 py-1 font-mono text-[10px] font-medium tracking-wider text-zinc-400 uppercase">
+              {language}
+            </span>
+          )}
+          <CopyButton text={codeContent} />
+        </div>
+        <pre
+          className={cn(
+            "border-border/50 overflow-x-auto rounded-xl border bg-zinc-950 p-2 text-sm leading-relaxed dark:bg-zinc-900/80",
+            "group-has-[figcaption]/code:rounded-t-none group-has-[figcaption]/code:border-t-0",
+            "[&>code]:p-3",
+            className,
+          )}
+          {...props}
+        >
+          {children}
+        </pre>
+      </div>
+    );
+  },
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
-    const isInline = !className?.includes("language-");
+    const isInline =
+      !className?.includes("language-") && !className?.includes("shiki");
     return (
       <code
         className={cn(
           isInline
             ? "border-border/50 bg-muted/50 text-foreground rounded-md border px-1.5 py-0.5 font-mono text-[0.9em]"
-            : "font-mono text-zinc-100",
+            : "block font-mono [&>span]:leading-relaxed",
           className,
         )}
         {...props}
@@ -249,21 +368,6 @@ export default async function Page({
               {post.summary}
             </p>
           </div>
-
-          {/* <div className="border-border flex items-center gap-4 border-t pt-6">
-            <div className="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-zinc-200 to-zinc-300 font-serif text-sm font-bold text-zinc-700 dark:from-zinc-700 dark:to-zinc-800 dark:text-zinc-300">
-              {post.author
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
-            </div>
-            <div>
-              <p className="text-foreground text-sm font-medium">
-                {post.author}
-              </p>
-              <p className="text-muted-foreground text-xs">Author</p>
-            </div>
-          </div> */}
         </header>
 
         {post.thumbnail ? (

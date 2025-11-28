@@ -148,3 +148,62 @@
     color: var(--background);
   }
 }
+
+/* Shiki Dual Theme Support */
+html:not(.dark) .shiki,
+html:not(.dark) .shiki span {
+  color: var(--shiki-light) !important;
+  background-color: transparent !important;
+}
+
+html.dark .shiki,
+html.dark .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: transparent !important;
+}
+
+/* Code block styling */
+pre.shiki {
+  background-color: transparent !important;
+}
+
+pre.shiki code {
+  display: block;
+  width: fit-content;
+  min-width: 100%;
+}
+
+pre.shiki .line {
+  display: inline-block;
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 -1rem;
+}
+
+pre.shiki .line.highlighted {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+pre.shiki .line.diff.add {
+  background-color: rgba(16, 185, 129, 0.15);
+}
+
+pre.shiki .line.diff.remove {
+  background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Line numbers (optional, when enabled) */
+pre.shiki code {
+  counter-reset: line;
+}
+
+pre.shiki code[data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1.5rem;
+  margin-right: 1.5rem;
+  text-align: right;
+  color: rgba(115, 138, 148, 0.4);
+  font-size: 0.75rem;
+}

@@ -1,9 +1,15 @@
 import { defineCollection, defineConfig } from "@content-collections/core";
 import { compileMDX } from "@content-collections/mdx";
+import rehypeShiki from "@shikijs/rehype";
 import { z } from "zod";
 
-// for more information on configuration, visit:
-// https://www.content-collections.dev/docs/configuration
+const shikiOptions = {
+  themes: {
+    light: "github-light-default",
+    dark: "vesper",
+  },
+  defaultColor: false,
+};
 
 const posts = defineCollection({
   name: "posts",
@@ -17,7 +23,9 @@ const posts = defineCollection({
     thumbnail: z.string().optional(),
   }),
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const mdx = await compileMDX(context, document, {
+      rehypePlugins: [[rehypeShiki, shikiOptions]],
+    });
 
     return {
       ...document,
@@ -39,7 +47,9 @@ const pens = defineCollection({
     icon: z.string().optional(),
   }),
   transform: async (document, context) => {
-    const mdx = await compileMDX(context, document);
+    const mdx = await compileMDX(context, document, {
+      rehypePlugins: [[rehypeShiki, shikiOptions]],
+    });
 
     return {
       ...document,
