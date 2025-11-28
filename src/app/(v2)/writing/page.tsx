@@ -12,44 +12,21 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
-import { ArticleCard, Post } from "@/screens/writing/components/article-card";
+import { ArticleCard } from "@/screens/writing/components/article-card";
 import { FeaturedArticleCard } from "@/screens/writing/components/featured-article-card";
 import { PenTool } from "lucide-react";
-// import { allPosts } from "content-collections";
-
-// Mock data generation
-const MOCK_THUMBNAILS = [
-  "/assets/projects/langfarm/langfarm-home.png",
-  "/assets/projects/edgee/edgee-art-home.png",
-  "/assets/projects/casio/casio-home.png",
-];
-
-const generateMockPosts = (
-  count: number,
-): (Post & { thumbnail?: string })[] => {
-  return Array.from({ length: count }).map((_, i) => ({
-    title: `The Future of UI Design: Trends to Watch in ${2025 + i}`,
-    summary:
-      "Exploring the upcoming trends in user interface design, from glassmorphism to neomorphism and beyond. How these styles impact user experience and accessibility.",
-    date: new Date(Date.now() - i * 86400000 * 14).toISOString(),
-    author: "Duong Duc Trong",
-    _meta: {
-      path: `mock-post-${i}`,
-      filePath: `content/posts/mock-post-${i}.mdx`,
-      fileName: `mock-post-${i}.mdx`,
-    },
-    thumbnail: i === 0 ? MOCK_THUMBNAILS[0] : undefined, // Only the first one has a thumbnail
-  }));
-};
+import { allPosts } from "content-collections";
 
 const Page = () => {
-  const mockPosts = generateMockPosts(0);
-
-  const posts = mockPosts;
+  const posts = allPosts.sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
 
   const mainPost = posts[0];
-  const subFeaturedPosts = posts.slice(1, 3);
-  const remainingPosts = posts.slice(3);
+  const subFeaturedPosts = posts.slice(1, 4);
+  const remainingPosts = posts.slice(4);
+
+  const hasMultiplePosts = posts.length > 1;
 
   return (
     <PageSection>
@@ -61,31 +38,52 @@ const Page = () => {
         </PageSectionDescription>
       </PageSectionHeader>
 
-      <PageSectionContent className="space-y-12">
+      <PageSectionContent className="space-y-16">
         {posts.length > 0 ? (
           <>
-            <section className="space-y-6">
-              <h2 className="text-2xl font-bold tracking-tight">
-                Latest Stories
-              </h2>
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-                <div className="lg:col-span-2">
-                  <FeaturedArticleCard post={mainPost} className="h-full" />
-                </div>
-
-                <div className="flex flex-col gap-6 lg:gap-8">
-                  {subFeaturedPosts.map((post) => (
-                    <ArticleCard key={post._meta.path} post={post} />
-                  ))}
-                </div>
+            <section className="space-y-8">
+              <div className="flex items-center gap-4">
+                <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                  Latest Stories
+                </h2>
+                <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
               </div>
+
+              {hasMultiplePosts ? (
+                <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+                  <div className="lg:col-span-7">
+                    <FeaturedArticleCard post={mainPost} className="h-full" />
+                  </div>
+
+                  <div className="flex flex-col gap-6 lg:col-span-5">
+                    <div className="mb-2 hidden lg:block">
+                      <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground/60">
+                        More reads
+                      </span>
+                    </div>
+                    {subFeaturedPosts.map((post) => (
+                      <ArticleCard
+                        key={post._meta.path}
+                        post={post}
+                        variant="horizontal"
+                      />
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <FeaturedArticleCard post={mainPost} className="max-w-2xl" />
+              )}
             </section>
 
             {remainingPosts.length > 0 && (
-              <section className="space-y-6">
-                <h2 className="text-muted-foreground text-xl font-bold tracking-tight">
-                  Archive
-                </h2>
+              <section className="space-y-8">
+                <div className="flex items-center gap-4">
+                  <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                    Archive
+                  </h2>
+                  <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+                </div>
+
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
                   {remainingPosts.map((post) => (
                     <ArticleCard key={post._meta.path} post={post} />

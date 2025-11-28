@@ -14,6 +14,7 @@ const posts = defineCollection({
     summary: z.string(),
     date: z.coerce.date(),
     author: z.string(),
+    thumbnail: z.string().optional(),
   }),
   transform: async (document, context) => {
     const mdx = await compileMDX(context, document);

@@ -1,11 +1,18 @@
+import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
 import { MDXContent } from "@content-collections/mdx/react";
 import { allPosts } from "content-collections";
 import { format } from "date-fns";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Clock, Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+const calculateReadingTime = (content: string): number => {
+  const wordsPerMinute = 200;
+  const words = content.split(/\s+/).length;
+  return Math.ceil(words / wordsPerMinute);
+};
 
 const mdxComponents = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -20,7 +27,7 @@ const mdxComponents = {
   h2: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h2
       className={cn(
-        "text-paragraph mt-16 mb-6 scroll-m-20 font-serif text-2xl font-medium tracking-tight first:mt-0",
+        "group text-foreground relative mt-20 mb-6 scroll-m-20 font-serif text-2xl font-semibold tracking-tight first:mt-0 md:text-3xl",
         className,
       )}
       {...props}
@@ -29,7 +36,7 @@ const mdxComponents = {
   h3: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
     <h3
       className={cn(
-        "text-paragraph mt-12 mb-4 scroll-m-20 font-serif text-xl font-medium tracking-tight",
+        "text-foreground mt-14 mb-4 scroll-m-20 font-serif text-xl font-semibold tracking-tight",
         className,
       )}
       {...props}
@@ -38,7 +45,7 @@ const mdxComponents = {
   p: ({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) => (
     <p
       className={cn(
-        "text-paragraph mb-8 text-lg leading-relaxed font-light",
+        "text-paragraph [&:first-of-type]:first-letter:text-foreground mb-7 text-lg leading-[1.85] [&:first-of-type]:first-letter:float-left [&:first-of-type]:first-letter:mr-3 [&:first-of-type]:first-letter:font-serif [&:first-of-type]:first-letter:text-6xl [&:first-of-type]:first-letter:leading-none [&:first-of-type]:first-letter:font-bold",
         className,
       )}
       {...props}
@@ -50,7 +57,7 @@ const mdxComponents = {
   }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
     <a
       className={cn(
-        "decoration-muted-foreground/30 hover:decoration-primary text-foreground font-medium underline underline-offset-4 transition-colors",
+        "text-foreground decoration-primary/40 hover:decoration-primary font-medium underline decoration-2 underline-offset-4 transition-colors",
         className,
       )}
       {...props}
@@ -62,7 +69,9 @@ const mdxComponents = {
   }: React.BlockquoteHTMLAttributes<HTMLQuoteElement>) => (
     <blockquote
       className={cn(
-        "border-primary/40 text-muted-foreground/70 my-12 mt-6 border-l-2 pl-6 text-xl italic",
+        "relative my-12 py-8 pr-4 pl-8 md:pl-12",
+        "before:from-primary/60 before:via-primary/30 before:absolute before:top-0 before:left-0 before:h-full before:w-1 before:rounded-full before:bg-gradient-to-b before:to-transparent",
+        "text-muted-foreground/80 text-xl leading-relaxed italic md:text-2xl",
         className,
       )}
       {...props}
@@ -71,90 +80,118 @@ const mdxComponents = {
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
     <ul
       className={cn(
-        "text-muted-foreground/80 my-6 ml-6 list-disc [&>li]:mt-2",
+        "text-paragraph [&>li]:before:bg-primary/50 my-8 space-y-3 pl-4 [&>li]:relative [&>li]:pl-6 [&>li]:before:absolute [&>li]:before:top-[0.6em] [&>li]:before:left-0 [&>li]:before:size-1.5 [&>li]:before:rounded-full",
         className,
       )}
       {...props}
     />
   ),
+  ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
+    <ol
+      className={cn(
+        "text-paragraph marker:text-muted-foreground my-8 list-decimal space-y-3 pl-8 marker:font-mono",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
+    <li className={cn("leading-relaxed", className)} {...props} />
+  ),
+  pre: ({ className, ...props }: React.HTMLAttributes<HTMLPreElement>) => (
+    <pre
+      className={cn(
+        "group border-border/50 relative my-10 overflow-x-auto rounded-xl border bg-zinc-950 p-5 text-sm dark:bg-zinc-900/50",
+        className,
+      )}
+      {...props}
+    />
+  ),
+  code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => {
+    const isInline = !className?.includes("language-");
+    return (
+      <code
+        className={cn(
+          isInline
+            ? "border-border/50 bg-muted/50 text-foreground rounded-md border px-1.5 py-0.5 font-mono text-[0.9em]"
+            : "font-mono text-zinc-100",
+          className,
+        )}
+        {...props}
+      />
+    );
+  },
   img: ({
     className,
     alt,
     ...props
   }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
+    <span className="border-border/30 my-12 block overflow-hidden rounded-xl border shadow-xl">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img className={cn("w-full", className)} alt={alt} {...props} />
+    </span>
+  ),
+  hr: ({ className, ...props }: React.HTMLAttributes<HTMLHRElement>) => (
+    <hr
       className={cn(
-        "border-border/50 bg-muted/50 my-12 w-full rounded-md border",
+        "via-border my-16 h-px border-0 bg-gradient-to-r from-transparent to-transparent",
         className,
       )}
-      alt={alt}
       {...props}
     />
   ),
+  strong: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <strong
+      className={cn("text-foreground font-semibold", className)}
+      {...props}
+    />
+  ),
+  em: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
+    <em className={cn("text-foreground/90 italic", className)} {...props} />
+  ),
 };
 
-const MockContent = () => (
-  <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-    <mdxComponents.p>
-      There’s a silence in the creative process that rarely gets talked about.
-      It’s not the blockage of writer’s block, nor the emptiness of a blank
-      canvas. It’s the pause—the moment where the idea exists, suspended, before
-      it touches the ground.
-    </mdxComponents.p>
+const ArticleHero = ({ title }: { title: string }) => {
+  const words = title.split(" ");
+  const highlightWord = words.find((w) => w.length > 4) || words[0];
 
-    <mdxComponents.p>
-      I’ve spent the last three months chasing this specific kind of silence. We
-      often mistake noise for progress: the slack notifications, the commits,
-      the pixel-pushing. But the real work happens in the quiet. It happens when
-      you step away from the screen and let the problem dissolve into the
-      background of your mind.
-    </mdxComponents.p>
+  return (
+    <div className="relative mb-16 overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(120,119,198,0.15),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_70%,rgba(255,200,87,0.08),transparent_50%)]" />
 
-    <mdxComponents.h2>The Architecture of Thought</mdxComponents.h2>
+      <div className="absolute inset-0 opacity-[0.02]">
+        <div
+          className="h-full w-full"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+      </div>
 
-    <mdxComponents.p>
-      When we started designing the new interface, we were obsessed with
-      &quot;cleanliness.&quot; We stripped away borders, flattened shadows, and
-      used so much white space it felt like a hospital. We thought we were being
-      minimalists. We were just being empty.
-    </mdxComponents.p>
+      <div className="absolute top-8 left-8">
+        <Sparkles className="size-5 text-amber-400/50" />
+      </div>
+      <div className="absolute right-12 bottom-12">
+        <div className="size-20 rounded-full border border-white/5" />
+      </div>
+      <div className="absolute top-1/4 right-1/4">
+        <div className="size-2 rounded-full bg-violet-400/30" />
+      </div>
+      <div className="absolute bottom-1/3 left-1/4">
+        <div className="size-1.5 rounded-full bg-amber-400/30" />
+      </div>
 
-    <mdxComponents.blockquote>
-      &quot;True minimalism isn&apos;t the absence of detail, but the perfect
-      hierarchy of it.&quot;
-    </mdxComponents.blockquote>
+      <div className="relative flex aspect-[21/9] items-center justify-center px-8">
+        <span className="text-center font-mono text-[6rem] leading-none font-black tracking-tighter text-white/[0.04] uppercase sm:text-[8rem] md:text-[10rem] lg:text-[12rem]">
+          {highlightWord.slice(0, 8)}
+        </span>
+      </div>
 
-    <mdxComponents.p>
-      We had to go back to the drawing board. Literally. I took out my
-      sketchbook—a heavy, A4 moleskine that smells like graphite and coffee—and
-      started drawing boxes. Not UI components, just boxes. Structures. I wanted
-      to understand how information <em>feels</em> when it&apos;s stacked.
-    </mdxComponents.p>
-
-    <mdxComponents.h2>Designing for the Night</mdxComponents.h2>
-
-    <mdxComponents.p>
-      Most of my users are developers. They work at night. They live in
-      terminals and dark mode IDEs. Why was I designing a tool that felt like a
-      fluorescent-lit office? I shifted the palette. Deep charcoals, soft
-      obsidians, and text that glows rather than shines.
-    </mdxComponents.p>
-
-    <mdxComponents.p>
-      The result wasn&apos;t just &quot;Dark Mode.&quot; It was a mood. A
-      cinematic quality that made the data feel important, almost narrative.
-      Every chart became a scene; every dashboard a storyboard.
-    </mdxComponents.p>
-
-    <mdxComponents.p>
-      This is what I mean by the &quot;cinematic&quot; web. It&apos;s not about
-      video backgrounds or WebGL effects. It&apos;s about lighting, pacing, and
-      atmosphere. It&apos;s about treating the user&apos;s screen not as a
-      document, but as a theater.
-    </mdxComponents.p>
-  </div>
-);
+      <div className="absolute right-0 bottom-0 left-0 h-32 bg-gradient-to-t from-zinc-900 to-transparent dark:from-zinc-950" />
+    </div>
+  );
+};
 
 export default async function Page({
   params,
@@ -163,82 +200,139 @@ export default async function Page({
 }) {
   const { id } = await params;
 
-  // Try to find the real post
   const post = allPosts.find((p) => p._meta.path === id);
-  const isMock = id.startsWith("mock-post");
 
-  // Mock post data for design review if ID is a mock ID
-  const displayPost = isMock
-    ? {
-        title: "The Architecture of Silence",
-        date: new Date().toISOString(),
-        author: "Duong Duc Trong",
-        summary: "A journey into the quiet moments of design.",
-        thumbnail: "/assets/projects/edgee/edgee-art-home.png", // Using an existing asset as hero
-      }
-    : {
-        ...post,
-        thumbnail: undefined,
-      };
-
-  if (!displayPost) {
+  if (!post) {
     notFound();
   }
 
+  const readingTime = calculateReadingTime(post.mdx);
+  const relatedPosts = allPosts
+    .filter((p) => p._meta.path !== id)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 3);
+
   return (
-    <article className="bg-background text-foreground selection:bg-primary selection:text-primary-foreground min-h-screen">
-      <div className="mx-auto max-w-5xl px-6 py-24 md:py-32">
-        <div className="mb-16">
+    <article className="bg-background text-foreground min-h-screen">
+      <Container className="px-6 pt-12 pb-24 md:pt-16">
+        <nav className="mx-auto mb-12 flex max-w-3xl items-center justify-between">
           <Link
             href="/writing"
             className="group text-muted-foreground hover:text-foreground inline-flex items-center gap-2 text-sm font-medium transition-colors"
           >
             <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
-            <span>Index</span>
+            <span>All Articles</span>
           </Link>
-        </div>
+        </nav>
 
-        <header className="mx-auto mb-20 w-full max-w-[65ch] space-y-8 text-center sm:text-left">
+        <header className="mx-auto mb-12 max-w-3xl space-y-8">
           <div className="space-y-6">
-            <h1 className="text-foreground font-serif text-4xl leading-tight font-bold tracking-tight sm:text-5xl md:text-6xl lg:leading-[1.1]">
-              {displayPost.title}
+            <div className="text-muted-foreground flex flex-wrap items-center gap-4 text-xs font-medium tracking-[0.2em] uppercase">
+              <time dateTime={new Date(post.date).toISOString()}>
+                {format(new Date(post.date), "MMMM d, yyyy")}
+              </time>
+              <span
+                className="bg-muted-foreground/50 h-1 w-1 rounded-full"
+                aria-hidden="true"
+              />
+              <span className="inline-flex items-center gap-1.5">
+                <Clock className="size-3" />
+                {readingTime} min read
+              </span>
+            </div>
+
+            <h1 className="text-foreground font-serif text-4xl leading-[1.15] font-bold tracking-tight sm:text-5xl md:text-5xl">
+              {post.title}
             </h1>
 
-            <div className="text-muted-foreground flex flex-wrap items-center justify-center gap-6 text-xs font-medium tracking-[0.2em] uppercase sm:justify-start">
-              <span>{format(new Date(), "MMMM d, yyyy")}</span>
-              <span className="bg-border h-px w-8" aria-hidden="true" />
-              <span>{displayPost.author}</span>
-              <span className="bg-border h-px w-8" aria-hidden="true" />
-              <span>Article</span>
-            </div>
+            <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed md:text-xl">
+              {post.summary}
+            </p>
           </div>
+
+          {/* <div className="border-border flex items-center gap-4 border-t pt-6">
+            <div className="flex size-10 items-center justify-center rounded-full bg-gradient-to-br from-zinc-200 to-zinc-300 font-serif text-sm font-bold text-zinc-700 dark:from-zinc-700 dark:to-zinc-800 dark:text-zinc-300">
+              {post.author
+                .split(" ")
+                .map((n) => n[0])
+                .join("")}
+            </div>
+            <div>
+              <p className="text-foreground text-sm font-medium">
+                {post.author}
+              </p>
+              <p className="text-muted-foreground text-xs">Author</p>
+            </div>
+          </div> */}
         </header>
 
-        {(displayPost.thumbnail || isMock) && (
-          <div className="bg-muted ring-border relative mb-24 overflow-hidden rounded-sm shadow-2xl ring-1">
+        {post.thumbnail ? (
+          <div className="border-border/30 relative mb-16 overflow-hidden rounded-2xl border shadow-2xl">
             <div className="aspect-video w-full">
               <Image
-                src={
-                  displayPost.thumbnail ||
-                  "/assets/projects/edgee/edgee-art-home.png"
-                }
-                alt={displayPost.title ?? ""}
+                src={post.thumbnail}
+                alt={post.title}
                 fill
-                className="object-cover opacity-90 transition-all duration-1000 hover:scale-105 hover:opacity-100"
+                className="object-cover"
                 priority
               />
             </div>
           </div>
+        ) : (
+          <ArticleHero title={post.title} />
         )}
 
-        <div className="prose text-paragraph prose-lg md:prose-xl prose-stone dark:prose-invert mx-auto">
-          {isMock ? (
-            <MockContent />
-          ) : (
-            <MDXContent code={post!.mdx} components={mdxComponents} />
-          )}
+        <div className="prose-article mx-auto max-w-3xl">
+          <MDXContent code={post.mdx} components={mdxComponents} />
         </div>
-      </div>
+
+        <footer className="mt-24 space-y-16">
+          <div className="flex items-center gap-4">
+            <div className="via-border h-px flex-1 bg-gradient-to-r from-transparent to-transparent" />
+            <span className="text-muted-foreground text-xs font-medium tracking-widest uppercase">
+              End of Article
+            </span>
+            <div className="via-border h-px flex-1 bg-gradient-to-r from-transparent to-transparent" />
+          </div>
+
+          {relatedPosts.length > 0 && (
+            <section className="mx-auto max-w-3xl space-y-8">
+              <h2 className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">
+                Continue Reading
+              </h2>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {relatedPosts.map((relatedPost) => (
+                  <Link
+                    key={relatedPost._meta.path}
+                    href={`/writing/${relatedPost._meta.path}`}
+                    className="group border-border bg-card hover:border-foreground/20 rounded-xl border p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                  >
+                    <div className="mb-3 flex items-center justify-between">
+                      <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
+                        {format(new Date(relatedPost.date), "MMM d")}
+                      </span>
+                      <ArrowUpRight className="text-muted-foreground group-hover:text-foreground size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    </div>
+                    <h3 className="text-foreground group-hover:text-primary line-clamp-2 font-serif text-lg leading-snug font-medium transition-colors">
+                      {relatedPost.title}
+                    </h3>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
+
+          <div className="flex justify-center">
+            <Link
+              href="/writing"
+              className="group border-border bg-card text-foreground hover:border-foreground/20 hover:bg-accent inline-flex items-center gap-2 rounded-full border px-6 py-3 text-sm font-medium transition-all"
+            >
+              <ArrowLeft className="size-4 transition-transform group-hover:-translate-x-1" />
+              Back to All Articles
+            </Link>
+          </div>
+        </footer>
+      </Container>
     </article>
   );
 }
