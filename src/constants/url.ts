@@ -4,4 +4,5 @@ export const URLS = {
   ABOUT: "/about",
   WRITING: "/writing",
   CONTACT: "/contact",
+  FEED: "/feed",
 };

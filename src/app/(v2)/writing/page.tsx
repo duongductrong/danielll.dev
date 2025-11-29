@@ -1,10 +1,5 @@
-import {
-  PageSection,
-  PageSectionContent,
-  PageSectionDescription,
-  PageSectionHeader,
-  PageSectionTitle,
-} from "@/components/widgets/page-section";
+"use client";
+
 import {
   Empty,
   EmptyDescription,
@@ -12,14 +7,22 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@/components/ui/empty";
+import {
+  PageSection,
+  PageSectionContent,
+  PageSectionDescription,
+  PageSectionHeader,
+  PageSectionTitle,
+} from "@/components/widgets/page-section";
 import { ArticleCard } from "@/screens/writing/components/article-card";
 import { FeaturedArticleCard } from "@/screens/writing/components/featured-article-card";
-import { PenTool } from "lucide-react";
 import { allPosts } from "content-collections";
+import { PenTool } from "lucide-react";
+import { motion } from "motion/react";
 
 const Page = () => {
   const posts = allPosts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 
   const mainPost = posts[0];
@@ -43,10 +46,10 @@ const Page = () => {
           <>
             <section className="space-y-8">
               <div className="flex items-center gap-4">
-                <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+                <h2 className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">
                   Latest Stories
                 </h2>
-                <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+                <div className="from-border h-px flex-1 bg-gradient-to-r to-transparent" />
               </div>
 
               {hasMultiplePosts ? (
@@ -57,7 +60,7 @@ const Page = () => {
 
                   <div className="flex flex-col gap-6 lg:col-span-5">
                     <div className="mb-2 hidden lg:block">
-                      <span className="text-xs font-medium uppercase tracking-widest text-muted-foreground/60">
+                      <span className="text-muted-foreground/60 text-xs font-medium tracking-widest uppercase">
                         More reads
                       </span>
                     </div>
@@ -76,17 +79,26 @@ const Page = () => {
             </section>
 
             {remainingPosts.length > 0 && (
-              <section className="space-y-8">
-                <div className="flex items-center gap-4">
-                  <h2 className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">
+              <section>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  className="mb-8 flex items-center gap-4"
+                >
+                  <h2 className="text-muted-foreground text-sm font-semibold tracking-widest uppercase">
                     Archive
                   </h2>
-                  <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
-                </div>
+                  <div className="from-border h-px flex-1 bg-gradient-to-r to-transparent" />
+                </motion.div>
 
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="divide-border space-y-0 divide-y">
                   {remainingPosts.map((post) => (
-                    <ArticleCard key={post._meta.path} post={post} />
+                    <ArticleCard
+                      key={post._meta.path}
+                      post={post}
+                      variant="horizontal"
+                    />
                   ))}
                 </div>
               </section>

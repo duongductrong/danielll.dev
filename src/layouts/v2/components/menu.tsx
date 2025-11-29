@@ -21,13 +21,13 @@ const MENU_ITEMS = [
     href: URLS.ABOUT,
   },
   {
+    label: "Feed",
+    href: URLS.FEED,
+  },
+  {
     label: "Writing",
     href: URLS.WRITING,
   },
-  // {
-  //   label: "Contact",
-  //   href: URLS.CONTACT,
-  // },
 ];
 
 const Menu = ({ className, ...props }: MenuProps) => {
