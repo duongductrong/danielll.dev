@@ -8,16 +8,16 @@ import {
   PageSectionTitle,
 } from "@/components/widgets/page-section";
 import { FeedGrid, FeedPost } from "@/screens/feed";
-import { allPosts } from "content-collections";
+import { allFeeds } from "content-collections";
 
-const sortPostsByDateDesc = <T extends FeedPost>(posts: T[]): T[] => {
-  return [...posts].sort(
+const sortFeedsByDateDesc = <T extends FeedPost>(feeds: T[]): T[] => {
+  return [...feeds].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 };
 
 const FeedPage = () => {
-  const posts = sortPostsByDateDesc(allPosts);
+  const feeds = sortFeedsByDateDesc(allFeeds);
 
   return (
     <PageSection>
@@ -30,7 +30,7 @@ const FeedPage = () => {
         </PageSectionDescription>
       </PageSectionHeader>
       <PageSectionContent>
-        <FeedGrid posts={posts} />
+        <FeedGrid posts={feeds} />
       </PageSectionContent>
     </PageSection>
   );

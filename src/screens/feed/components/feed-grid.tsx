@@ -7,6 +7,7 @@ export type FeedPost = {
   title: string;
   date: Date | string;
   thumbnail?: string;
+  link?: string;
   _meta: {
     path: string;
   };
@@ -29,7 +30,7 @@ export const FeedGrid = ({ posts }: FeedGridProps) => {
           title={post.title}
           date={new Date(post.date)}
           thumbnail={post.thumbnail}
-          href={`/writing/${post._meta.path}`}
+          href={post.link || `/feed/${post._meta.path}`}
           index={index}
         />
       ))}

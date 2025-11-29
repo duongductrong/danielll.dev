@@ -34,6 +34,18 @@ const posts = defineCollection({
   },
 });
 
+const feeds = defineCollection({
+  name: "feeds",
+  directory: "content/feeds",
+  include: "*.mdx",
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    thumbnail: z.string().optional(),
+    link: z.string().optional(),
+  }),
+});
+
 const pens = defineCollection({
   name: "pens",
   directory: "content/pens",
@@ -59,5 +71,5 @@ const pens = defineCollection({
 });
 
 export default defineConfig({
-  collections: [posts, pens],
+  collections: [posts, pens, feeds],
 });
