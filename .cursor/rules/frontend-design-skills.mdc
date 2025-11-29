@@ -30,8 +30,8 @@ Focus on:
 - Color & Theme: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes. Draw from IDE themes and cultural aesthetics for inspiration.
 - Motion: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (animation-delay) creates more delight than scattered micro-interactions.
 - Backgrounds: Create atmosphere and depth rather than defaulting to solid colors. Layer CSS gradients, use geometric patterns, or add contextual effects that match the overall aesthetic.
-- Library UI: You must be able to use shadcn/ui components and customize them to your liking.
-- Design new components: When you design a component, you must be design it following the style of Composition a Compound Component pattern, using Context API if needed.
+- UI: Use latest shadcn/ui + Tailwind, customize as needed, keep the UI clean and consistent.
+- Coding: Design components as compound components (composition). Use React Context only when children need shared state.
 
 Avoid generic AI-generated aesthetics:
 
