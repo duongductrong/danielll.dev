@@ -58,12 +58,7 @@ const Page = () => {
                     <FeaturedArticleCard post={mainPost} className="h-full" />
                   </div>
 
-                  <div className="flex flex-col gap-6 lg:col-span-5">
-                    <div className="mb-2 hidden lg:block">
-                      <span className="text-muted-foreground/60 text-xs font-medium tracking-widest uppercase">
-                        More reads
-                      </span>
-                    </div>
+                  <div className="flex flex-col gap-2 lg:col-span-5">
                     {subFeaturedPosts.map((post) => (
                       <ArticleCard
                         key={post._meta.path}

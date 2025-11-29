@@ -4,5 +4,6 @@ alwaysApply: true
 
 - Avoid adding unnecessary comments to the code.
 - Use descriptive variable and function/const names. Also, event functions should be named with a “handle” prefix, like “handleClick” for onClick and “handleKeyDown” for onKeyDown.
-- Separate the logic of the component into smaller functions/hooks/components, and use the composition pattern to combine them.
+- Separate the logic of the component into smaller functions / utils / hooks / components, and use the composition pattern to combine them.
+- Use the composition pattern to combine smaller functions / utils / hooks / components into a larger component.
 - Use consts instead of functions, for example, “const toggle = () =>”. Also, define a type if possible.

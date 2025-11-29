@@ -6,7 +6,7 @@ import {
   ArticleMedia,
   ArticleNavigation,
   mdxComponents,
-} from "@/screens/writing/components/article-detail";
+} from "@/screens/writing";
 import { MDXContent } from "@content-collections/mdx/react";
 import { allPosts } from "content-collections";
 import { notFound } from "next/navigation";
@@ -31,8 +31,8 @@ export default async function Page({
     .slice(0, 3);
 
   return (
-    <article className="min-h-screen bg-background text-foreground">
-      <Container className="px-6 pb-24 pt-12 md:pt-16">
+    <article className="bg-background text-foreground min-h-screen">
+      <Container className="px-6 pt-12 pb-24 md:pt-16">
         <ArticleNavigation />
 
         <ArticleHeader

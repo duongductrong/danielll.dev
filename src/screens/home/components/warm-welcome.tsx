@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { ArrowRight } from "lucide-react";
 import { ComponentProps } from "react";
-import { IdentifyCard } from "../components/identify-card";
+import { IdentifyCard } from "./identify-card";
 
 export interface WarmWelcomeProps extends ComponentProps<"section"> {}
 

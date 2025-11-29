@@ -78,7 +78,7 @@ export const ArticleCard = ({
         href={`/writing/${post._meta.path}`}
         className="group focus-visible:ring-ring flex outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
       >
-        <article className="flex w-full items-start gap-6 py-6 transition-colors">
+        <article className="flex w-full items-start gap-6 py-5 transition-colors">
           <div className="flex-1 space-y-2">
             <div className="flex items-center gap-3">
               <span className="text-muted-foreground text-xs font-medium tracking-wider uppercase">
