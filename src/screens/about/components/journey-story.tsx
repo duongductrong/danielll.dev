@@ -17,7 +17,8 @@ export const JourneyStory = ({ className, ...props }: JourneyStoryProps) => {
       </p>
 
       <h2 className="font-title mb-8 text-4xl">
-        I'm a software engineer and maker with a focus on developer experience.
+        I&apos;m a software engineer and maker with a focus on developer
+        experience.
       </h2>
 
       <p className="text-paragraph mb-4 text-lg">
@@ -41,4 +42,3 @@ export const JourneyStory = ({ className, ...props }: JourneyStoryProps) => {
     </article>
   );
 };
-
