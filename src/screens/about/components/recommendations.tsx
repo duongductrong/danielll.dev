@@ -15,6 +15,7 @@ export const Recommendations = ({
 }: RecommendationsProps) => {
   return (
     <PageSection
+      as="article"
       {...props}
       className={cn(className)}
       data-slot="recommendations"
@@ -30,4 +31,3 @@ export const Recommendations = ({
     </PageSection>
   );
 };
-
