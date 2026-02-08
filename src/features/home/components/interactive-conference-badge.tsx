@@ -227,7 +227,7 @@ export function InteractiveConferenceBadge({
   return (
     <div
       ref={containerRef}
-      className={className}
+      className={cn(className, "select-none")}
       style={{ perspective: 800 }}
       onTouchMove={handleTouchMove}
       onTouchEnd={() => {
@@ -242,7 +242,7 @@ export function InteractiveConferenceBadge({
           rotateX: lanyardRotateX,
           transformOrigin: "top center",
         }}
-        className="will-change-transform"
+        className="will-change-transform select-none"
       >
         <motion.div
           drag
@@ -296,7 +296,7 @@ export function InteractiveConferenceBadge({
           className={cn(
             "absolute top-24 left-0 z-10 h-[80%] w-full bg-amber-400/0 will-change-transform",
             "after:absolute after:size-14 after:bg-amber-400/0",
-            "after:-top-56 after:left-1/2 after:-translate-x-1/2 after:h-full"
+            "after:-top-56 after:left-1/2 after:h-full after:-translate-x-1/2",
           )}
           whileDrag={{ cursor: "grabbing" }}
         />
