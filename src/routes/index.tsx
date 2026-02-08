@@ -6,7 +6,7 @@ export const Route = createFileRoute('/')({ component: HomePage })
 export function HomePage() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-start bg-background overflow-hidden">
-      <div className="w-full max-w-[70vw] sm:max-w-[380px] px-4 mt-[min(20vh,160px)]">
+      <div className="w-full max-w-[70vw] sm:max-w-[50vw] md:max-w-[40vw] lg:max-w-[30vw] xl:max-w-[25vw] 2xl:max-w-[21.25vw] px-4 mt-[min(20vh,160px)]">
         <InteractiveConferenceBadge className="w-full h-auto" />
       </div>
 
