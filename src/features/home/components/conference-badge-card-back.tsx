@@ -53,7 +53,7 @@ export const ConferenceBadgeCardBack = memo(
           <linearGradient id="border-depth-back" x1="1" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#555" />
             <stop offset="30%" stopColor="#3a3a3a" />
-            <stop offset="70%" stopColor="#1a1a1a" />
+            <stop offset="70%" style={{ stopColor: 'var(--badge-card-surface, #1a1a1a)' }} />
             <stop offset="100%" stopColor="#0d0d0d" />
           </linearGradient>
 
@@ -77,7 +77,7 @@ export const ConferenceBadgeCardBack = memo(
             patternUnits="userSpaceOnUse"
           >
             <rect width="20" height="20" fill="none" />
-            <circle cx="10" cy="10" r="0.5" fill="#222" opacity="0.5" />
+            <circle cx="10" cy="10" r="0.5" style={{ fill: 'var(--badge-card-border-inner, #222)' }} opacity="0.5" />
           </pattern>
         </defs>
 
@@ -89,7 +89,7 @@ export const ConferenceBadgeCardBack = memo(
         >
           <path
             d="M 145,-600 L 215,-600 L 213,-62 L 161,-62 Z"
-            fill="#101010"
+            style={{ fill: 'var(--badge-card-strap-back, #101010)' }}
             transform="rotate(-3, 190, -62)"
           />
           <line
@@ -119,7 +119,7 @@ export const ConferenceBadgeCardBack = memo(
         >
           <path
             d="M 155,-600 L 225,-600 L 218,-62 L 162,-62 Z"
-            fill="#1a1a1a"
+            style={{ fill: 'var(--badge-card-strap, #1a1a1a)' }}
             transform="rotate(1, 190, -62)"
           />
           <line
@@ -127,7 +127,7 @@ export const ConferenceBadgeCardBack = memo(
             y1="-600"
             x2="174"
             y2="-62"
-            stroke="#1f1f1f"
+            style={{ stroke: 'var(--badge-card-strap-detail, #1f1f1f)' }}
             strokeWidth="0.5"
             opacity="0.5"
             transform="rotate(1, 190, -62)"
@@ -137,7 +137,7 @@ export const ConferenceBadgeCardBack = memo(
             y1="-600"
             x2="201"
             y2="-62"
-            stroke="#1f1f1f"
+            style={{ stroke: 'var(--badge-card-strap-detail, #1f1f1f)' }}
             strokeWidth="0.5"
             opacity="0.4"
             transform="rotate(1, 190, -62)"
@@ -147,7 +147,7 @@ export const ConferenceBadgeCardBack = memo(
             y1="-600"
             x2="165"
             y2="-62"
-            stroke="#2a2a2a"
+            style={{ stroke: 'var(--badge-card-strap-stitch, #2a2a2a)' }}
             strokeWidth="1"
             transform="rotate(1, 190, -62)"
           />
@@ -156,7 +156,7 @@ export const ConferenceBadgeCardBack = memo(
             y1="-600"
             x2="215"
             y2="-62"
-            stroke="#2a2a2a"
+            style={{ stroke: 'var(--badge-card-strap-stitch, #2a2a2a)' }}
             strokeWidth="1"
             transform="rotate(1, 190, -62)"
           />
@@ -165,7 +165,7 @@ export const ConferenceBadgeCardBack = memo(
             y1="-600"
             x2="164"
             y2="-62"
-            stroke="#333"
+            style={{ stroke: 'var(--badge-card-strap-highlight, #333)' }}
             strokeWidth="0.5"
             opacity="0.25"
             transform="rotate(1, 190, -62)"
@@ -181,14 +181,14 @@ export const ConferenceBadgeCardBack = memo(
           />
           <path
             d="M 158,-64 C 158,-60 160,-56 162,-55 L 218,-55 C 220,-56 222,-60 222,-64 Z"
-            fill="#1a1a1a"
+            style={{ fill: 'var(--badge-card-strap, #1a1a1a)' }}
           />
           <line
             x1="159"
             y1="-64"
             x2="221"
             y2="-64"
-            stroke="#2c2c2c"
+            style={{ stroke: 'var(--badge-card-strap-fold, #2c2c2c)' }}
             strokeWidth="1"
             opacity="0.5"
           />
@@ -331,7 +331,7 @@ export const ConferenceBadgeCardBack = memo(
           rx="16"
           ry="16"
           fill="none"
-          stroke="#0a0a0a"
+          style={{ stroke: 'var(--badge-card-border-outer, #0a0a0a)' }}
           strokeWidth="3"
         />
         <rect
@@ -350,7 +350,7 @@ export const ConferenceBadgeCardBack = memo(
           transform={`translate(0, ${cardTop})`}
           clipPath="url(#card-clip-back)"
         >
-          <rect width="380" height="540" fill="#111" rx="16" ry="16" />
+          <rect width="380" height="540" style={{ fill: 'var(--badge-card-bg-alt, #111)' }} rx="16" ry="16" />
 
           {/* Subtle dot pattern texture */}
           <rect width="380" height="540" fill="url(#back-grid)" opacity="0.6" />
@@ -369,17 +369,16 @@ export const ConferenceBadgeCardBack = memo(
             cx="190"
             cy="10"
             r="7"
-            fill="#0a0a0a"
-            stroke="#222"
+            style={{ fill: 'var(--badge-card-border-outer, #0a0a0a)', stroke: 'var(--badge-card-border-inner, #222)' }}
             strokeWidth="1.5"
           />
-          <circle cx="190" cy="10" r="5" fill="#070707" />
+          <circle cx="190" cy="10" r="5" style={{ fill: 'var(--badge-card-hole, #070707)' }} />
           <circle
             cx="190"
             cy="10"
             r="5.5"
             fill="none"
-            stroke="#444"
+            style={{ stroke: 'var(--badge-card-hole-ring, #444)' }}
             strokeWidth="0.8"
             opacity="0.45"
           />
@@ -401,8 +400,7 @@ export const ConferenceBadgeCardBack = memo(
             width="126"
             height="126"
             rx="8"
-            fill="#1a1a1a"
-            stroke="#222"
+            style={{ fill: 'var(--badge-card-surface, #1a1a1a)', stroke: 'var(--badge-card-border-inner, #222)' }}
             strokeWidth="1"
           />
           <rect
@@ -411,7 +409,7 @@ export const ConferenceBadgeCardBack = memo(
             width="106"
             height="106"
             rx="4"
-            fill="#0e0e0e"
+            style={{ fill: 'var(--badge-card-surface-dim, #0e0e0e)' }}
           />
 
           {/* QR grid pattern */}
@@ -426,7 +424,7 @@ export const ConferenceBadgeCardBack = memo(
                   width="10"
                   height="10"
                   rx="1"
-                  fill="#2a2a2a"
+                  style={{ fill: 'var(--badge-card-text-muted, #2a2a2a)' }}
                   opacity={0.6 + Math.sin(row * col) * 0.3}
                 />
               ) : null
@@ -437,7 +435,7 @@ export const ConferenceBadgeCardBack = memo(
           <text
             x="190"
             y="464"
-            fill="white"
+            style={{ fill: 'var(--badge-card-text, white)' }}
             fontSize="9"
             fontFamily="'Inter Variable', monospace"
             letterSpacing="0.15em"
@@ -451,7 +449,7 @@ export const ConferenceBadgeCardBack = memo(
           <text
             x="190"
             y="508"
-            fill="white"
+            style={{ fill: 'var(--badge-card-text, white)' }}
             fontSize="12"
             fontFamily="'Inter Variable', sans-serif"
             fontWeight="600"
@@ -466,7 +464,7 @@ export const ConferenceBadgeCardBack = memo(
           <text
             x="190"
             y="524"
-            fill="white"
+            style={{ fill: 'var(--badge-card-text, white)' }}
             fontSize="9"
             fontFamily="'Inter Variable', monospace"
             letterSpacing="0.1em"

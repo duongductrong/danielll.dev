@@ -68,10 +68,13 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
 });
 
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(t&&['dark','amber','blue'].includes(t)){document.documentElement.className=t}else{document.documentElement.className='dark'}}catch(e){document.documentElement.className='dark'}})()`;
+
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark">
       <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         {isDev ? (
           <script
             crossOrigin="anonymous"

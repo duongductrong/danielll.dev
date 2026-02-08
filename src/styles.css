@@ -72,6 +72,134 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.552 0.016 285.938);
+
+  /* Badge card theme tokens */
+  --badge-card-bg: #141414;
+  --badge-card-bg-alt: #111;
+  --badge-card-surface: #1a1a1a;
+  --badge-card-surface-dim: #0e0e0e;
+  --badge-card-border-outer: #0a0a0a;
+  --badge-card-border-inner: #222;
+  --badge-card-text: #ffffff;
+  --badge-card-text-muted: #2a2a2a;
+  --badge-card-hole: #070707;
+  --badge-card-hole-ring: #444;
+  --badge-card-strap: #1a1a1a;
+  --badge-card-strap-back: #101010;
+  --badge-card-strap-stitch: #2a2a2a;
+  --badge-card-strap-detail: #1f1f1f;
+  --badge-card-strap-highlight: #333;
+  --badge-card-strap-fold: #2c2c2c;
+  --badge-card-light-color: #b8b0d8;
+  --badge-card-light-mid: #8fa3c4;
+}
+
+.amber {
+  --background: #1a1409;
+  --foreground: oklch(0.985 0 0);
+  --card: #2a2010;
+  --card-foreground: oklch(0.985 0 0);
+  --popover: #2a2010;
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #f5c542;
+  --primary-foreground: #1a1409;
+  --secondary: #362a14;
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: #362a14;
+  --muted-foreground: #b09860;
+  --accent: #362a14;
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(245, 197, 66, 0.12);
+  --input: rgba(245, 197, 66, 0.15);
+  --ring: #b09860;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: #2a2010;
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #f5c542;
+  --sidebar-primary-foreground: #1a1409;
+  --sidebar-accent: #362a14;
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: rgba(245, 197, 66, 0.12);
+  --sidebar-ring: #b09860;
+
+  /* Badge card theme tokens — warm amber */
+  --badge-card-bg: #1c1708;
+  --badge-card-bg-alt: #171305;
+  --badge-card-surface: #2a2010;
+  --badge-card-surface-dim: #141005;
+  --badge-card-border-outer: #0f0c04;
+  --badge-card-border-inner: #3a2e16;
+  --badge-card-text: #fff5e0;
+  --badge-card-text-muted: #3a2e16;
+  --badge-card-hole: #0c0904;
+  --badge-card-hole-ring: #5a4a28;
+  --badge-card-strap: #2a2010;
+  --badge-card-strap-back: #181008;
+  --badge-card-strap-stitch: #3a2e16;
+  --badge-card-strap-detail: #2e2212;
+  --badge-card-strap-highlight: #4a3a1e;
+  --badge-card-strap-fold: #3e3018;
+  --badge-card-light-color: #f5c542;
+  --badge-card-light-mid: #d4a030;
+}
+
+.blue {
+  --background: #0a1420;
+  --foreground: oklch(0.985 0 0);
+  --card: #0f1d30;
+  --card-foreground: oklch(0.985 0 0);
+  --popover: #0f1d30;
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #4a9eff;
+  --primary-foreground: #0a1420;
+  --secondary: #142840;
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: #142840;
+  --muted-foreground: #6090b8;
+  --accent: #142840;
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: rgba(74, 158, 255, 0.12);
+  --input: rgba(74, 158, 255, 0.15);
+  --ring: #6090b8;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: #0f1d30;
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #4a9eff;
+  --sidebar-primary-foreground: #0a1420;
+  --sidebar-accent: #142840;
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: rgba(74, 158, 255, 0.12);
+  --sidebar-ring: #6090b8;
+
+  /* Badge card theme tokens — cool blue */
+  --badge-card-bg: #0c1826;
+  --badge-card-bg-alt: #0a1420;
+  --badge-card-surface: #122438;
+  --badge-card-surface-dim: #081220;
+  --badge-card-border-outer: #060e18;
+  --badge-card-border-inner: #1a3050;
+  --badge-card-text: #e0f0ff;
+  --badge-card-text-muted: #1a3050;
+  --badge-card-hole: #050c14;
+  --badge-card-hole-ring: #2a4a6a;
+  --badge-card-strap: #122438;
+  --badge-card-strap-back: #0a1828;
+  --badge-card-strap-stitch: #1a3050;
+  --badge-card-strap-detail: #162a42;
+  --badge-card-strap-highlight: #2a4060;
+  --badge-card-strap-fold: #1e3454;
+  --badge-card-light-color: #4a9eff;
+  --badge-card-light-mid: #3080d0;
 }
 
 @theme inline {
