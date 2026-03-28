@@ -112,7 +112,7 @@ export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps
       <div className="absolute inset-x-8 -bottom-4 h-7 rounded-full bg-black/10 blur-xl" />
 
       <motion.ul
-        className="relative mx-auto flex w-[min(95vw,560px)] items-end justify-center pb-2"
+        className="relative left-1/2 flex w-[min(95vw,560px)] -translate-x-1/2 items-end pb-2"
         aria-label="Memory polaroids"
       >
         {MEMORY_CARDS.map((card, index) => {
