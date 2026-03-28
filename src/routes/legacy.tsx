@@ -1,9 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { InteractiveConferenceBadge } from "@/features/home/components/interactive-conference-badge";
 
 export const Route = createFileRoute("/legacy")({ component: LegacyPage });
 
 export function LegacyPage() {
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+
+    return () => {
+      document.documentElement.classList.remove("dark");
+    };
+  }, []);
+
   return (
     <div className="bg-background flex min-h-screen flex-col items-center justify-start overflow-hidden">
       <div className="mt-[min(20vh,160px)] w-full max-w-[70vw] px-4 sm:max-w-[50vw] md:max-w-[40vw] lg:max-w-[30vw] xl:max-w-[25vw] 2xl:max-w-[21.25vw]">
