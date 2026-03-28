@@ -77,6 +77,18 @@ export function HomePage() {
               and delightful to use. I also maintain open-source projects
               focused on developer experience and performance.
             </motion.p>
+            <motion.p variants={contentItemVariants} className="mb-5">
+              If my open-source work helps you, consider supporting it on{" "}
+              <a
+                href="https://github.com/sponsors/duongductrong"
+                target="_blank"
+                rel="noreferrer"
+                className="underline transition-colors duration-200 hover:text-black/50"
+              >
+                GitHub Sponsors
+              </a>
+              .
+            </motion.p>
             <motion.p variants={contentItemVariants} className="mb-2">
               I occasionally share notes and experiments.
             </motion.p>
