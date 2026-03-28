@@ -100,9 +100,15 @@ export function HomePage() {
                 href="https://snapzy.app/"
                 target="_blank"
                 rel="noreferrer"
-                className="transition-colors duration-200 hover:text-black/50"
+                className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-black/50"
               >
-                snapzy.app ↗
+                <img
+                  src="/images/apps/snapzy/brand-logo.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="size-4 rounded-[4px] object-cover"
+                />
+                <span>snapzy.app ↗</span>
               </a>{" "}
               ·{" "}
               <a
