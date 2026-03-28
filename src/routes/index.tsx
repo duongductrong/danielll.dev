@@ -170,6 +170,9 @@ export function HomePage() {
             </motion.p>
           </motion.div>
         </section>
+        {/* <section className="mx-auto mt-20 w-full max-w-[1150px]">
+          <ModularBlockShowcase shouldReduceMotion={shouldReduceMotion} />
+        </section> */}
       </main>
     </div>
   );
