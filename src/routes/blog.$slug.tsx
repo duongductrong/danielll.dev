@@ -6,7 +6,6 @@ import {
 } from "@/components/editorial-layout";
 import { BlogProse } from "@/features/blog/components/blog-prose";
 import { getBlogPostBySlug } from "@/features/blog/lib/blog-posts";
-import { formatBlogDate } from "@/features/blog/lib/format-blog-date";
 
 export const Route = createFileRoute("/blog/$slug")({
   loader: ({ params }) => {
@@ -37,7 +36,7 @@ export function BlogDetailPage() {
               to="/blog"
               className="text-foreground/45 hover:text-foreground/65 inline-block transition-colors duration-200"
             >
-              Blog
+              Writing
             </Link>
           </p>
           <p className="text-foreground/72 mb-6">
@@ -71,7 +70,7 @@ export function BlogDetailPage() {
               to="/blog"
               className="text-foreground/45 hover:text-foreground/65 inline-block transition-colors duration-200"
             >
-              blog ‹
+              back to blog
             </Link>
           </div>
         </div>

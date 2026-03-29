@@ -46,7 +46,7 @@ export function BlogPage() {
             variants={contentItemVariants}
             className="mb-2 text-[15px] leading-[1.2] font-semibold tracking-[-0.015em]"
           >
-            Blog
+            Writing
           </motion.h1>
           <motion.p
             variants={contentItemVariants}
@@ -97,7 +97,7 @@ export function BlogPage() {
               to="/"
               className="text-foreground/45 hover:text-foreground/65 inline-block transition-colors duration-200"
             >
-              home ‹
+              home
             </Link>
           </motion.div>
         </motion.div>
