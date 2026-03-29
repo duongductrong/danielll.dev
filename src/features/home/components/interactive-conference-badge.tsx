@@ -39,7 +39,6 @@ type InteractiveConferenceBadgeProps = {
 const SPRING_CONFIG = { stiffness: 150, damping: 20, mass: 0.5 };
 const TILT_MAX = 12;
 const LANYARD_SWAY_MAX = 8;
-const MOUSE_INFLUENCE_RADIUS = 600;
 const GRAVITY_BIAS_X = -6;
 const GRAVITY_BIAS_Y = -3;
 const IDLE_TIMEOUT = 1500;
@@ -52,6 +51,13 @@ const DEFAULT_MAX_VELOCITY_BONUS = 300;
 
 // High mass + low damping = heavy, powerful oscillation
 const DEFAULT_SWING_SPRING = { stiffness: 45, damping: 4, mass: 2.5 };
+
+function getMouseInfluenceRadius(rect: DOMRect | null) {
+  if (!rect) return 360;
+  const dominantAxis = Math.max(rect.width, rect.height);
+
+  return Math.max(220, Math.min(600, dominantAxis * 0.9));
+}
 
 export function InteractiveConferenceBadge({
   className,
@@ -187,11 +193,12 @@ export function InteractiveConferenceBadge({
         rafPending.current = false;
         const rect = cachedRectRef.current;
         if (!rect) return;
+        const influenceRadius = getMouseInfluenceRadius(rect);
 
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        const x = 0.5 + (e.clientX - centerX) / (MOUSE_INFLUENCE_RADIUS * 2);
-        const y = 0.5 + (e.clientY - centerY) / (MOUSE_INFLUENCE_RADIUS * 2);
+        const x = 0.5 + (e.clientX - centerX) / (influenceRadius * 2);
+        const y = 0.5 + (e.clientY - centerY) / (influenceRadius * 2);
 
         mouseX.set(Math.max(0, Math.min(1, x)));
         mouseY.set(Math.max(0, Math.min(1, y)));
@@ -215,10 +222,11 @@ export function InteractiveConferenceBadge({
     if (!touch) return;
     const rect = cachedRectRef.current;
     if (!rect) return;
+    const influenceRadius = getMouseInfluenceRadius(rect);
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const x = 0.5 + (touch.clientX - centerX) / (MOUSE_INFLUENCE_RADIUS * 2);
-    const y = 0.5 + (touch.clientY - centerY) / (MOUSE_INFLUENCE_RADIUS * 2);
+    const x = 0.5 + (touch.clientX - centerX) / (influenceRadius * 2);
+    const y = 0.5 + (touch.clientY - centerY) / (influenceRadius * 2);
     mouseX.set(Math.max(0, Math.min(1, x)));
     mouseY.set(Math.max(0, Math.min(1, y)));
     resetIdleTimer();
@@ -227,7 +235,7 @@ export function InteractiveConferenceBadge({
   return (
     <div
       ref={containerRef}
-      className={cn(className, "select-none")}
+      className={cn(className, "relative select-none")}
       style={{ perspective: 800 }}
       onTouchMove={handleTouchMove}
       onTouchEnd={() => {
@@ -242,7 +250,7 @@ export function InteractiveConferenceBadge({
           rotateX: lanyardRotateX,
           transformOrigin: "top center",
         }}
-        className="will-change-transform select-none"
+        className="relative w-full will-change-transform select-none"
       >
         <motion.div
           drag
@@ -294,9 +302,9 @@ export function InteractiveConferenceBadge({
             cursor: "grab",
           }}
           className={cn(
-            "absolute top-24 left-0 z-10 h-[80%] w-full bg-amber-400/0 will-change-transform",
+            "absolute top-[12%] left-0 z-10 h-[78%] w-full bg-amber-400/0 will-change-transform",
             "after:absolute after:size-14 after:bg-amber-400/0",
-            "after:-top-56 after:left-1/2 after:h-full after:-translate-x-1/2",
+            "after:-top-[42%] after:left-1/2 after:h-[42%] after:-translate-x-1/2",
           )}
           whileDrag={{ cursor: "grabbing" }}
         />
@@ -312,7 +320,7 @@ export function InteractiveConferenceBadge({
             filter:
               "drop-shadow(0 4px 6px rgba(0,0,0,0.5)) drop-shadow(0 12px 30px rgba(0,0,0,0.35))",
           }}
-          className="pointer-events-none will-change-transform"
+          className="pointer-events-none mx-auto w-full will-change-transform"
         >
           {/* Front face */}
           <div style={{ backfaceVisibility: "hidden" }}>

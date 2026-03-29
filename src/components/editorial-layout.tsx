@@ -9,7 +9,7 @@ const editorialSectionVariants = cva(
     variants: {
       width: {
         compact: "max-w-[430px] sm:max-w-[440px]",
-        reading: "max-w-[620px]",
+        reading: "max-w-[568px]",
       },
     },
     defaultVariants: {

@@ -1,0 +1,56 @@
+import { ExperimentEmbed } from "../components/experiment-embed";
+
+export const metadata = {
+  title: "Embedding UI experiments into blog posts",
+  description:
+    "A reusable way to stage interactive UI experiments inside MDX articles instead of treating them like detached demos.",
+  date: "2026-03-29",
+  tags: ["mdx", "editorial-embed", "experiments"],
+};
+
+# Embedding UI experiments into blog posts
+
+I do not want blog posts to be only paragraphs and screenshots. Some ideas are easier to explain when the post can host the experiment itself.
+
+<ExperimentEmbed id="interactive-conference-badge" />
+
+## The split that matters
+
+- The experiment stays a normal React component.
+- The article owns the editorial shell around it.
+- The author chooses width, frame, caption, and fallback without rewriting the experiment.
+
+## Direct composition
+
+If I already know which component I want to place in the article, I can embed it directly.
+
+```tsx
+import { EditorialEmbed } from "@/features/blog/components/editorial-embed";
+import { SomeExperiment } from "@/features/some-feature/components/some-experiment";
+
+<EditorialEmbed
+  layout="wide"
+  frame="soft"
+  caption="Any local React experiment can be staged like this."
+>
+  <SomeExperiment />
+</EditorialEmbed>;
+```
+
+## Registry-driven authoring
+
+If I want a shorter authoring API or lazy loading for heavier pieces, I can use an id-based wrapper instead.
+
+```tsx
+<ExperimentEmbed
+  id="interactive-conference-badge"
+  layout="wide"
+  frame="dark-stage"
+/>
+```
+
+## Why this matters
+
+- Experiments can explain an idea, not just decorate the post.
+- The same payload can live in a demo route, a blog article, or a case study.
+- The product gets more expressive ways to communicate than text alone.

@@ -45,7 +45,7 @@ export function BlogDetailPage() {
           </p>
           <EditorialDivider className="mb-8" />
 
-          <header className="mb-8">
+          {/* <header className="mb-8">
             <h1 className="text-[30px] leading-[1.12] font-semibold tracking-[-0.03em] sm:text-[34px]">
               {post.metadata.title}
             </h1>
@@ -60,7 +60,7 @@ export function BlogDetailPage() {
                 <span> · {post.metadata.tags.join(" · ")}</span>
               ) : null}
             </p>
-          </header>
+          </header> */}
 
           <BlogProse>
             <Content />

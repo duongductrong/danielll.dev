@@ -8,6 +8,7 @@ const blogProseClassName = cn(
   "[&_h3]:text-foreground [&_h3]:mt-8 [&_h3]:mb-2 [&_h3]:text-[18px] [&_h3]:leading-[1.32] [&_h3]:font-semibold [&_h3]:tracking-[-0.014em]",
   "[&_h4]:text-foreground [&_h4]:mt-6 [&_h4]:mb-2 [&_h4]:text-[16px] [&_h4]:leading-[1.4] [&_h4]:font-semibold [&_h4]:tracking-[-0.01em]",
   "[&_p]:my-4 [&_ul]:my-4 [&_ol]:my-4 [&_blockquote]:my-4 [&_table]:my-4 [&_figure]:my-4",
+  "[&_figure[data-editorial-embed]]:my-10 [&_figure[data-editorial-embed]]:sm:my-12",
   "[&_a]:decoration-foreground/25 [&_a]:underline [&_a]:decoration-[0.06em] [&_a]:underline-offset-[3px] [&_a]:transition-all [&_a]:duration-200 [&_a:hover]:decoration-foreground/50",
   "[&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_li+li]:mt-1.5 [&_li>p]:my-1",
   "[&_hr]:my-10 [&_hr]:h-px [&_hr]:border-none [&_hr]:[background:linear-gradient(to_right,transparent,color-mix(in_srgb,var(--color-foreground)_14%,transparent)_20%,color-mix(in_srgb,var(--color-foreground)_14%,transparent)_80%,transparent)]",

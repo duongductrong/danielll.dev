@@ -1,89 +1,98 @@
-import { memo, useEffect, useRef } from 'react'
-import type { MotionValue } from 'motion/react'
-import type { SVGProps } from 'react'
+import { memo, useEffect, useRef } from "react";
+import type { MotionValue } from "motion/react";
+import type { SVGProps } from "react";
 
 type ConferenceBadgeCardProps = SVGProps<SVGSVGElement> & {
-  name?: string
-  role?: string
-  date?: string
-  location?: string
-  venue?: string
-  venueAddress?: string
+  name?: string;
+  role?: string;
+  date?: string;
+  location?: string;
+  venue?: string;
+  venueAddress?: string;
   /** Visible strap height above the card in px (default 65) */
-  strapLength?: number
+  strapLength?: number;
   /** Normalized mouse X position (0–1) for light gradient tracking */
-  lightX?: MotionValue<number>
+  lightX?: MotionValue<number>;
   /** Normalized mouse Y position (0–1) for light gradient tracking */
-  lightY?: MotionValue<number>
-}
+  lightY?: MotionValue<number>;
+};
 
 export const ConferenceBadgeCard = memo(
   ({
-    name = 'Trong\nDuong',
-    role = 'SOFTWARE ENGINEER',
-    date = '08/FEB/26',
-    location = 'HO CHI MINH CITY',
-    venue = 'THAO DIEN',
-    venueAddress = 'DISTRICT 2',
+    name = "Trong\nDuong",
+    role = "SOFTWARE ENGINEER",
+    date = "08/FEB/26",
+    location = "HO CHI MINH CITY",
+    venue = "THAO DIEN",
+    venueAddress = "DISTRICT 2",
     strapLength = 65,
     lightX,
     lightY,
+    style,
     ...props
   }: ConferenceBadgeCardProps) => {
-    const [firstName, lastName] = name.split('\n')
-    const cardTop = 35
-    const cardHeight = 540
-    const cardWidth = 380
-    const viewBox = `0 -${strapLength} ${cardWidth} ${cardTop + cardHeight + strapLength}`
+    const [firstName, lastName] = name.split("\n");
+    const cardTop = 35;
+    const cardHeight = 540;
+    const cardWidth = 380;
+    const viewBox = `0 -${strapLength} ${cardWidth} ${cardTop + cardHeight + strapLength}`;
 
     // Mouse-following gradient light — batched via rAF to avoid per-change DOM thrashing
-    const lightGradientRef = useRef<SVGRadialGradientElement>(null)
+    const lightGradientRef = useRef<SVGRadialGradientElement>(null);
 
     useEffect(() => {
-      if (!lightX || !lightY) return
+      if (!lightX || !lightY) return;
 
-      let pendingX: number | null = null
-      let pendingY: number | null = null
-      let rafId: number | null = null
+      let pendingX: number | null = null;
+      let pendingY: number | null = null;
+      let rafId: number | null = null;
 
       function flush() {
-        rafId = null
-        const el = lightGradientRef.current
-        if (!el) return
-        if (pendingX != null) el.setAttribute('cx', `${pendingX * 100}%`)
-        if (pendingY != null) el.setAttribute('cy', `${pendingY * 100}%`)
-        pendingX = null
-        pendingY = null
+        rafId = null;
+        const el = lightGradientRef.current;
+        if (!el) return;
+        if (pendingX != null) el.setAttribute("cx", `${pendingX * 100}%`);
+        if (pendingY != null) el.setAttribute("cy", `${pendingY * 100}%`);
+        pendingX = null;
+        pendingY = null;
       }
 
       function scheduleFlush() {
-        if (rafId == null) rafId = requestAnimationFrame(flush)
+        if (rafId == null) rafId = requestAnimationFrame(flush);
       }
 
-      const unsubX = lightX.on('change', (v) => {
-        pendingX = v
-        scheduleFlush()
-      })
-      const unsubY = lightY.on('change', (v) => {
-        pendingY = v
-        scheduleFlush()
-      })
+      const unsubX = lightX.on("change", (v) => {
+        pendingX = v;
+        scheduleFlush();
+      });
+      const unsubY = lightY.on("change", (v) => {
+        pendingY = v;
+        scheduleFlush();
+      });
 
       return () => {
-        unsubX()
-        unsubY()
-        if (rafId != null) cancelAnimationFrame(rafId)
-      }
-    }, [lightX, lightY])
+        unsubX();
+        unsubY();
+        if (rafId != null) cancelAnimationFrame(rafId);
+      };
+    }, [lightX, lightY]);
 
     return (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox={viewBox}
         fill="none"
+        preserveAspectRatio="xMidYMin meet"
         role="img"
         aria-label={`Conference badge for ${firstName} ${lastName}`}
-        style={{ overflow: 'visible' }}
+        style={{
+          display: "block",
+          width: "100%",
+          maxWidth: "100%",
+          height: "auto",
+          overflow: "visible",
+          ...style,
+        }}
         {...props}
       >
         <defs>
@@ -131,8 +140,16 @@ export const ConferenceBadgeCard = memo(
             cy="50%"
             r="45%"
           >
-            <stop offset="0%" style={{ stopColor: 'var(--badge-card-light-color, #b8b0d8)' }} stopOpacity="0.15" />
-            <stop offset="40%" style={{ stopColor: 'var(--badge-card-light-mid, #8fa3c4)' }} stopOpacity="0.06" />
+            <stop
+              offset="0%"
+              style={{ stopColor: "var(--badge-card-light-color, #b8b0d8)" }}
+              stopOpacity="0.15"
+            />
+            <stop
+              offset="40%"
+              style={{ stopColor: "var(--badge-card-light-mid, #8fa3c4)" }}
+              stopOpacity="0.06"
+            />
             <stop offset="100%" stopColor="transparent" stopOpacity="0" />
           </radialGradient>
 
@@ -146,7 +163,10 @@ export const ConferenceBadgeCard = memo(
           <linearGradient id="border-depth" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#555" />
             <stop offset="30%" stopColor="#3a3a3a" />
-            <stop offset="70%" style={{ stopColor: 'var(--badge-card-surface, #1a1a1a)' }} />
+            <stop
+              offset="70%"
+              style={{ stopColor: "var(--badge-card-surface, #1a1a1a)" }}
+            />
             <stop offset="100%" stopColor="#0d0d0d" />
           </linearGradient>
 
@@ -166,7 +186,7 @@ export const ConferenceBadgeCard = memo(
         <g className="lanyard-strap-back">
           <path
             d="M 145,-600 L 215,-600 L 213,-62 L 161,-62 Z"
-            style={{ fill: 'var(--badge-card-strap-back, #101010)' }}
+            style={{ fill: "var(--badge-card-strap-back, #101010)" }}
             transform="rotate(-3, 190, -62)"
           />
           {/* Back layer stitching */}
@@ -194,7 +214,7 @@ export const ConferenceBadgeCard = memo(
         <g className="lanyard-strap">
           <path
             d="M 155,-600 L 225,-600 L 218,-62 L 162,-62 Z"
-            style={{ fill: 'var(--badge-card-strap, #1a1a1a)' }}
+            style={{ fill: "var(--badge-card-strap, #1a1a1a)" }}
             transform="rotate(1, 190, -62)"
           />
           {/* Fabric weave texture */}
@@ -203,7 +223,7 @@ export const ConferenceBadgeCard = memo(
             y1="-600"
             x2="174"
             y2="-62"
-            style={{ stroke: 'var(--badge-card-strap-detail, #1f1f1f)' }}
+            style={{ stroke: "var(--badge-card-strap-detail, #1f1f1f)" }}
             strokeWidth="0.5"
             opacity="0.5"
             transform="rotate(1, 190, -62)"
@@ -213,7 +233,7 @@ export const ConferenceBadgeCard = memo(
             y1="-600"
             x2="201"
             y2="-62"
-            style={{ stroke: 'var(--badge-card-strap-detail, #1f1f1f)' }}
+            style={{ stroke: "var(--badge-card-strap-detail, #1f1f1f)" }}
             strokeWidth="0.5"
             opacity="0.4"
             transform="rotate(1, 190, -62)"
@@ -224,7 +244,7 @@ export const ConferenceBadgeCard = memo(
             y1="-600"
             x2="165"
             y2="-62"
-            style={{ stroke: 'var(--badge-card-strap-stitch, #2a2a2a)' }}
+            style={{ stroke: "var(--badge-card-strap-stitch, #2a2a2a)" }}
             strokeWidth="1"
             transform="rotate(1, 190, -62)"
           />
@@ -233,7 +253,7 @@ export const ConferenceBadgeCard = memo(
             y1="-600"
             x2="215"
             y2="-62"
-            style={{ stroke: 'var(--badge-card-strap-stitch, #2a2a2a)' }}
+            style={{ stroke: "var(--badge-card-strap-stitch, #2a2a2a)" }}
             strokeWidth="1"
             transform="rotate(1, 190, -62)"
           />
@@ -243,7 +263,7 @@ export const ConferenceBadgeCard = memo(
             y1="-600"
             x2="164"
             y2="-62"
-            style={{ stroke: 'var(--badge-card-strap-highlight, #333)' }}
+            style={{ stroke: "var(--badge-card-strap-highlight, #333)" }}
             strokeWidth="0.5"
             opacity="0.25"
             transform="rotate(1, 190, -62)"
@@ -261,7 +281,7 @@ export const ConferenceBadgeCard = memo(
           {/* Fabric fold wrapping around clip bar */}
           <path
             d="M 158,-64 C 158,-60 160,-56 162,-55 L 218,-55 C 220,-56 222,-60 222,-64 Z"
-            style={{ fill: 'var(--badge-card-strap, #1a1a1a)' }}
+            style={{ fill: "var(--badge-card-strap, #1a1a1a)" }}
           />
           {/* Fold highlight */}
           <line
@@ -269,7 +289,7 @@ export const ConferenceBadgeCard = memo(
             y1="-64"
             x2="221"
             y2="-64"
-            style={{ stroke: 'var(--badge-card-strap-fold, #2c2c2c)' }}
+            style={{ stroke: "var(--badge-card-strap-fold, #2c2c2c)" }}
             strokeWidth="1"
             opacity="0.5"
           />
@@ -427,7 +447,7 @@ export const ConferenceBadgeCard = memo(
           rx="16"
           ry="16"
           fill="none"
-          style={{ stroke: 'var(--badge-card-border-outer, #0a0a0a)' }}
+          style={{ stroke: "var(--badge-card-border-outer, #0a0a0a)" }}
           strokeWidth="3"
         />
 
@@ -445,7 +465,13 @@ export const ConferenceBadgeCard = memo(
         />
 
         <g transform={`translate(0, ${cardTop})`} clipPath="url(#card-clip)">
-          <rect width="380" height="540" style={{ fill: 'var(--badge-card-bg, #141414)' }} rx="16" ry="16" />
+          <rect
+            width="380"
+            height="540"
+            style={{ fill: "var(--badge-card-bg, #141414)" }}
+            rx="16"
+            ry="16"
+          />
 
           {/* Edge bevel: top highlight + bottom shadow */}
           <rect
@@ -486,16 +512,24 @@ export const ConferenceBadgeCard = memo(
             cx="190"
             cy="10"
             r="7"
-            style={{ fill: 'var(--badge-card-border-outer, #0a0a0a)', stroke: 'var(--badge-card-border-inner, #222)' }}
+            style={{
+              fill: "var(--badge-card-border-outer, #0a0a0a)",
+              stroke: "var(--badge-card-border-inner, #222)",
+            }}
             strokeWidth="1.5"
           />
-          <circle cx="190" cy="10" r="5" style={{ fill: 'var(--badge-card-hole, #070707)' }} />
+          <circle
+            cx="190"
+            cy="10"
+            r="5"
+            style={{ fill: "var(--badge-card-hole, #070707)" }}
+          />
           <circle
             cx="190"
             cy="10"
             r="5.5"
             fill="none"
-            style={{ stroke: 'var(--badge-card-hole-ring, #444)' }}
+            style={{ stroke: "var(--badge-card-hole-ring, #444)" }}
             strokeWidth="0.8"
             opacity="0.45"
           />
@@ -504,7 +538,7 @@ export const ConferenceBadgeCard = memo(
           <text
             x="32"
             y="52"
-            style={{ fill: 'var(--badge-card-text, white)' }}
+            style={{ fill: "var(--badge-card-text, white)" }}
             fontSize="10"
             fontFamily="'Inter Variable', monospace"
             letterSpacing="0.08em"
@@ -515,7 +549,7 @@ export const ConferenceBadgeCard = memo(
           <text
             x="348"
             y="52"
-            style={{ fill: 'var(--badge-card-text, white)' }}
+            style={{ fill: "var(--badge-card-text, white)" }}
             fontSize="10"
             fontFamily="'Inter Variable', monospace"
             letterSpacing="0.08em"
@@ -539,7 +573,7 @@ export const ConferenceBadgeCard = memo(
           <text
             x="32"
             y="390"
-            style={{ fill: 'var(--badge-card-text, white)' }}
+            style={{ fill: "var(--badge-card-text, white)" }}
             fontSize="36"
             fontFamily="'Inter Variable', sans-serif"
             fontWeight="700"
@@ -550,7 +584,7 @@ export const ConferenceBadgeCard = memo(
           <text
             x="32"
             y="430"
-            style={{ fill: 'var(--badge-card-text, white)' }}
+            style={{ fill: "var(--badge-card-text, white)" }}
             fontSize="36"
             fontFamily="'Inter Variable', sans-serif"
             fontWeight="700"
@@ -563,7 +597,7 @@ export const ConferenceBadgeCard = memo(
           <text
             x="32"
             y="460"
-            style={{ fill: 'var(--badge-card-text, white)' }}
+            style={{ fill: "var(--badge-card-text, white)" }}
             fontSize="10"
             fontFamily="'Inter Variable', monospace"
             letterSpacing="0.12em"
@@ -576,7 +610,7 @@ export const ConferenceBadgeCard = memo(
           <text
             x="32"
             y="502"
-            style={{ fill: 'var(--badge-card-text, white)' }}
+            style={{ fill: "var(--badge-card-text, white)" }}
             fontSize="10"
             fontFamily="'Inter Variable', monospace"
             letterSpacing="0.08em"
@@ -587,7 +621,7 @@ export const ConferenceBadgeCard = memo(
           <text
             x="32"
             y="516"
-            style={{ fill: 'var(--badge-card-text, white)' }}
+            style={{ fill: "var(--badge-card-text, white)" }}
             fontSize="10"
             fontFamily="'Inter Variable', monospace"
             letterSpacing="0.08em"
@@ -610,6 +644,6 @@ export const ConferenceBadgeCard = memo(
           strokeWidth="1"
         />
       </svg>
-    )
+    );
   },
-)
+);
