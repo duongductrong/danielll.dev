@@ -31,7 +31,7 @@ export function EditorialPage({
       )}
       {...props}
     >
-      <main className="mx-auto w-full max-w-[1366px] px-6 pt-16 pb-20 sm:px-8 sm:pt-20">
+      <main className="mx-auto w-full max-w-[1366px] px-6 pt-16 pb-16 sm:px-8 sm:pt-16">
         {children}
       </main>
     </div>

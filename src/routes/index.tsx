@@ -114,7 +114,7 @@ export function HomePage() {
           <div>
             <PolaroidStrip shouldReduceMotion={shouldReduceMotion} />
           </div>
-          <p className="mt-16 text-[12px] text-black/40">
+          <p className="mt-12 text-[12px] text-black/40">
             This interface is inspired by{" "}
             <a
               href="https://www.aidenybai.com/"
