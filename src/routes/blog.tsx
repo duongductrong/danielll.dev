@@ -4,7 +4,6 @@ import {
   createFileRoute,
   useRouterState,
 } from "@tanstack/react-router";
-import { motion, useReducedMotion } from "motion/react";
 import {
   EditorialDivider,
   EditorialPage,
@@ -12,7 +11,6 @@ import {
 } from "@/components/editorial-layout";
 import { blogPosts } from "@/features/blog/lib/blog-posts";
 import { formatBlogDate } from "@/features/blog/lib/format-blog-date";
-import { getEditorialContentVariants } from "@/lib/motion/get-editorial-content-variants";
 
 export const Route = createFileRoute("/blog")({ component: BlogPage });
 
@@ -26,42 +24,24 @@ export function BlogPage() {
     return <Outlet />;
   }
 
-  const shouldReduceMotion = useReducedMotion();
-  const { container: contentContainerVariants, item: contentItemVariants } =
-    getEditorialContentVariants(shouldReduceMotion, {
-      delayChildren: 0.05,
-      staggerChildren: 0.07,
-    });
-
   return (
     <EditorialPage>
       <EditorialSection width="reading">
-        <motion.div
-          variants={contentContainerVariants}
-          initial="hidden"
-          animate="visible"
-          exit="exit"
-        >
-          <motion.h1
-            variants={contentItemVariants}
-            className="mb-2 text-[15px] leading-[1.2] font-semibold tracking-[-0.015em]"
-          >
+        <div>
+          <h1 className="mb-2 text-[15px] leading-[1.2] font-semibold tracking-[-0.015em]">
             Writing
-          </motion.h1>
-          <motion.p
-            variants={contentItemVariants}
-            className="text-foreground/72 mb-6"
-          >
+          </h1>
+          <p className="text-foreground/72 mb-6">
             Notes and experiments written in MDX.
-          </motion.p>
-          <motion.div variants={contentItemVariants}>
+          </p>
+          <div>
             <EditorialDivider className="mb-8" />
-          </motion.div>
+          </div>
 
           {blogPosts.length > 0 ? (
             <ul className="space-y-7">
               {blogPosts.map((post) => (
-                <motion.li variants={contentItemVariants} key={post.slug}>
+                <li key={post.slug}>
                   <Link
                     to="/blog/$slug"
                     params={{ slug: post.slug }}
@@ -80,27 +60,22 @@ export function BlogPage() {
                       ) : null}
                     </p>
                   </Link>
-                </motion.li>
+                </li>
               ))}
             </ul>
           ) : (
-            <motion.p
-              variants={contentItemVariants}
-              className="text-foreground/65"
-            >
-              No posts yet.
-            </motion.p>
+            <p className="text-foreground/65">No posts yet.</p>
           )}
 
-          <motion.div variants={contentItemVariants} className="mt-10">
+          <div className="mt-10">
             <Link
               to="/"
               className="text-foreground/45 hover:text-foreground/65 inline-block transition-colors duration-200"
             >
               home
             </Link>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </EditorialSection>
     </EditorialPage>
   );
