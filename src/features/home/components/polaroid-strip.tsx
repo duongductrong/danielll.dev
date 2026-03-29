@@ -1,5 +1,6 @@
-import { useState } from "react";
 import { motion } from "motion/react";
+import { useState } from "react";
+import type { Variants } from "motion/react";
 
 type MemoryCard = {
   src: string;
@@ -65,9 +66,11 @@ type PolaroidStripProps = {
   shouldReduceMotion?: boolean | null;
 };
 
-export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps) {
+export function PolaroidStrip({
+  shouldReduceMotion = false,
+}: PolaroidStripProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const stripVariants = shouldReduceMotion
+  const stripVariants: Variants = shouldReduceMotion
     ? {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0 } },
@@ -89,7 +92,7 @@ export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps
           transition: { duration: 0.18, ease: [0.33, 1, 0.68, 1] },
         },
       };
-  const cardEntryVariants = shouldReduceMotion
+  const cardEntryVariants: Variants = shouldReduceMotion
     ? {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0 } },
@@ -133,7 +136,7 @@ export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps
             <motion.li
               key={card.src}
               variants={cardEntryVariants}
-              className="-mx-[9px] sm:-mx-[11px]"
+              className="-mx-[22px] sm:-mx-[25px]"
               style={{ zIndex: isActive ? 40 : index + 10 }}
             >
               <motion.button
@@ -165,7 +168,7 @@ export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps
                   className="h-[100px] w-[88px] object-cover sm:h-[120px] sm:w-[115px]"
                 />
                 <p
-                  className="mt-2 w-[88px] min-h-[22px] text-center text-[11px] leading-[1.18] text-black/72 sm:w-[115px] sm:text-[12px]"
+                  className="mt-2 min-h-[22px] w-[88px] text-center text-[11px] leading-[1.18] text-black/72 sm:w-[115px] sm:text-[12px]"
                   style={{
                     fontFamily:
                       '"Bradley Hand", "Segoe Print", "Snell Roundhand", "Comic Sans MS", cursive',
