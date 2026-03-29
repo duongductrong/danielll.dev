@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 type MemoryCard = {
   src: string;
   alt: string;
+  caption: string;
   rotation: number;
   offsetY: number;
 };
@@ -12,42 +13,49 @@ const MEMORY_CARDS: Array<MemoryCard> = [
   {
     src: "/images/memories/memory-01.jpg",
     alt: "Memory photo 1",
+    caption: "Morning coffee",
     rotation: -11,
     offsetY: 14,
   },
   {
     src: "/images/memories/memory-02.jpg",
     alt: "Memory photo 2",
+    caption: "Dalat trip",
     rotation: -7,
     offsetY: 7,
   },
   {
     src: "/images/memories/memory-03.jpg",
     alt: "Memory photo 3",
+    caption: "Selfie",
     rotation: -4,
     offsetY: 4,
   },
   {
     src: "/images/memories/memory-04.jpg",
     alt: "Memory photo 4",
+    caption: "Dinner with bae",
     rotation: -1,
     offsetY: 2,
   },
   {
     src: "/images/memories/memory-05.jpg",
     alt: "Memory photo 5",
+    caption: "Cafe vibes",
     rotation: 2,
     offsetY: 4,
   },
   {
     src: "/images/memories/memory-06.jpg",
     alt: "Memory photo 6",
+    caption: "Golden commute",
     rotation: 6,
     offsetY: 7,
   },
   {
     src: "/images/memories/memory-07.jpg",
     alt: "Memory photo 7",
+    caption: "Sleepy head",
     rotation: 10,
     offsetY: 14,
   },
@@ -112,7 +120,7 @@ export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps
       <div className="absolute inset-x-8 -bottom-4 h-7 rounded-full bg-black/10 blur-xl" />
 
       <motion.ul
-        className="relative left-1/2 flex w-[min(95vw,560px)] -translate-x-1/2 items-end pb-2"
+        className="relative left-1/2 flex w-[min(95vw,560px)] -translate-x-1/2 items-end justify-center pb-2"
         aria-label="Memory polaroids"
       >
         {MEMORY_CARDS.map((card, index) => {
@@ -140,7 +148,7 @@ export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps
                     currentIndex === index ? null : index,
                   )
                 }
-                className="block cursor-pointer rounded-[3px] bg-[#f5f5f3] p-[8px] pb-[26px] shadow-[0_10px_22px_rgba(10,10,10,0.16)] transition-[transform,box-shadow,filter] duration-300 ease-out select-none hover:shadow-[0_15px_28px_rgba(10,10,10,0.22)] focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:outline-none"
+                className="block cursor-pointer rounded-[3px] bg-[#f5f5f3] p-[8px] pb-[12px] shadow-[0_10px_22px_rgba(10,10,10,0.16)] transition-[transform,box-shadow,filter] duration-300 ease-out select-none hover:shadow-[0_15px_28px_rgba(10,10,10,0.22)] focus-visible:ring-2 focus-visible:ring-black/30 focus-visible:outline-none"
                 style={{ transformOrigin: "center bottom" }}
                 animate={{ y, rotate, scale }}
                 transition={
@@ -156,6 +164,15 @@ export function PolaroidStrip({ shouldReduceMotion = false }: PolaroidStripProps
                   draggable={false}
                   className="h-[100px] w-[88px] object-cover sm:h-[120px] sm:w-[115px]"
                 />
+                <p
+                  className="mt-2 w-[88px] min-h-[22px] text-center text-[11px] leading-[1.18] text-black/72 sm:w-[115px] sm:text-[12px]"
+                  style={{
+                    fontFamily:
+                      '"Bradley Hand", "Segoe Print", "Snell Roundhand", "Comic Sans MS", cursive',
+                  }}
+                >
+                  {card.caption}
+                </p>
               </motion.button>
             </motion.li>
           );
