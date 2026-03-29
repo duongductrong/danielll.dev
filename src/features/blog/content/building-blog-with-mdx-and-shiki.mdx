@@ -1,0 +1,42 @@
+export const metadata = {
+  title: "Building this blog with MDX + Shiki",
+  description:
+    "A small write-up on how MDX content and syntax highlighting are wired in this TanStack Start app.",
+  date: "2026-03-29",
+  tags: ["mdx", "shiki", "tanstack-start"],
+};
+
+# Building this blog with MDX + Shiki
+
+This page is written in plain MDX. You can mix prose, links, tables, and code blocks in one file.
+
+## Why MDX here?
+
+- Keeps content close to React components
+- Easy to add custom UI blocks later
+- Works well with static imports and route-level rendering
+
+## Syntax highlight sample
+
+```tsx
+import { createFileRoute } from "@tanstack/react-router";
+import { motion } from "motion/react";
+
+export const Route = createFileRoute("/blog")({
+  component: BlogPage,
+});
+
+function BlogPage() {
+  return <motion.main initial={{ opacity: 0 }} animate={{ opacity: 1 }} />;
+}
+```
+
+## Markdown table
+
+| Concern | Decision |
+| --- | --- |
+| Content format | `*.mdx` files |
+| Highlight engine | Shiki via `rehype-pretty-code` |
+| Theme strategy | Light + dark tokens with CSS variables |
+
+> Add more posts by creating new files in `src/features/blog/content`.
