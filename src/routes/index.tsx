@@ -6,6 +6,7 @@ import {
   EditorialSection,
 } from "@/components/editorial-layout";
 import { PixelSpriteRenderer } from "@/features/home/components/pixel-sprite-renderer";
+import { PixelTypingEffect } from "@/features/home/components/pixel-typing-effect";
 import { PolaroidStrip } from "@/features/home/components/polaroid-strip";
 
 export const Route = createFileRoute("/")({ component: HomePage });
@@ -17,11 +18,26 @@ export function HomePage() {
     <EditorialPage>
       <EditorialSection width="compact">
         <div>
-          <div className="mb-4 flex items-end gap-2">
-            <PixelSpriteRenderer variant="codex" animation="idle" scale={4} />
-            <PixelSpriteRenderer variant="claude" animation="idle" scale={3} />
-            <PixelSpriteRenderer variant="cat" animation="idle" scale={3} />
+          <div className="mb-4 flex items-end gap-3">
+            <div className="flex items-end gap-2">
+              <PixelSpriteRenderer variant="codex" animation="idle" scale={4} />
+              <PixelSpriteRenderer
+                variant="claude"
+                animation="idle"
+                scale={3}
+              />
+              <PixelSpriteRenderer variant="cat" animation="idle" scale={3} />
+            </div>
+            <PixelTypingEffect
+              phrases={[
+                "hello, world",
+                "codex, claude and cat are building products",
+                "and shipping it fast_",
+              ]}
+              className="mb-1 font-mono text-[11px] leading-none tracking-wider text-black/30"
+            />
           </div>
+
           <h1 className="mb-4 text-[15px] leading-[1.2] font-semibold tracking-[-0.015em]">
             Trong Duong
           </h1>
