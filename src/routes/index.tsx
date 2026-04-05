@@ -6,6 +6,7 @@ import {
   EditorialSection,
 } from "@/components/editorial-layout";
 import { LuckyCloverMark } from "@/features/home/components/lucky-clover-mark";
+import { PixelSpriteRenderer } from "@/features/home/components/pixel-sprite-renderer";
 import { PolaroidStrip } from "@/features/home/components/polaroid-strip";
 
 export const Route = createFileRoute("/")({ component: HomePage });
@@ -17,8 +18,9 @@ export function HomePage() {
     <EditorialPage>
       <EditorialSection width="compact">
         <div>
-          <div className="mb-2 w-fit">
+          <div className="mb-2 flex items-end gap-2">
             <LuckyCloverMark />
+            <PixelSpriteRenderer animation="idle" scale={5} />
           </div>
           <h1 className="mb-4 text-[15px] leading-[1.2] font-semibold tracking-[-0.015em]">
             Trong Duong
