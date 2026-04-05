@@ -1,118 +1,100 @@
 /**
  * Pixel art data for Claude Code sprite.
- * Grid: 16 wide × 12 tall. Values: 0=transparent, 1=body, 2=eye.
+ * Grid: 11 wide × 8 tall — compact retro space-invader aesthetic.
+ * Palette: Claude Code purple→blue gradient.
+ *
+ * Cell values:
+ *   0 = transparent
+ *   1 = light lavender  (#B4A0FF) — antennae / highlights
+ *   2 = white            (#FFFFFF) — eyes
+ *   3 = mid purple       (#7C6CFA) — main body
+ *   4 = deep indigo-blue (#4F46E5) — arms / legs
  */
 
-export type PixelFrame = number[][];
+export type PixelFrame = Array<Array<number>>;
 
 export type SpriteAnimation = {
   name: string;
-  frames: PixelFrame[];
+  frames: Array<PixelFrame>;
   frameDuration: number;
   loop: boolean;
 };
 
-// Color palette keyed by cell value
 export const PALETTE: Record<number, string> = {
   0: "transparent",
-  1: "#D47C54", // body – terracotta orange
-  2: "#FFFFFF", // eyes – white
+  1: "#B4A0FF", // light lavender — antennae
+  2: "#FFFFFF", // white — eyes
+  3: "#7C6CFA", // mid purple — body
+  4: "#4F46E5", // deep indigo-blue — arms / legs
 };
 
-// ── Base frame (matches reference image) ──────────────────────────
+// ── Base frame ────────────────────────────────────────────────────
 const B: PixelFrame = [
-  //0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
-  [0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0], // row 0  head top
-  [0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0], // row 1
-  [0,0,0,1,1,2,1,1,1,1,2,1,1,0,0,0], // row 2  eyes (top)
-  [0,0,0,1,1,2,1,1,1,1,2,1,1,0,0,0], // row 3  eyes (bottom)
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], // row 4  arms + body
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], // row 5
-  [0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0], // row 6  lower body
-  [0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0], // row 7
-  [0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0], // row 8
-  [0,0,0,1,1,0,1,1,1,1,0,1,1,0,0,0], // row 9  legs gap start
-  [0,0,0,1,1,0,1,0,0,1,0,1,1,0,0,0], // row10  4 legs
-  [0,0,0,1,1,0,1,0,0,1,0,1,1,0,0,0], // row11  legs bottom
+  // 0 1 2 3 4 5 6 7 8 9 10
+  [0,1,0,0,0,0,0,0,0,1,0], // row 0 antennae
+  [0,0,3,3,3,3,3,3,3,0,0], // row 1 head
+  [0,3,3,2,3,3,3,2,3,3,0], // row 2 eyes
+  [0,3,3,3,3,3,3,3,3,3,0], // row 3 body
+  [4,4,0,3,3,3,3,3,0,4,4], // row 4 arms + body
+  [4,4,0,3,0,3,0,3,0,4,4], // row 5 arms + pattern
+  [0,0,0,0,4,0,4,0,0,0,0], // row 6 legs
+  [0,0,0,4,0,0,0,4,0,0,0], // row 7 feet
 ];
 
-// ── Helper: deep-clone a frame ────────────────────────────────────
+const W = 11; // grid width
+
 function cloneFrame(f: PixelFrame): PixelFrame {
   return f.map((row) => [...row]);
 }
 
-// ── Idle animation (2 frames: normal → nudge-down 1px) ───────────
-function buildIdleFrames(): PixelFrame[] {
-  const nudged = cloneFrame(B);
-  // Shift entire grid down by 1: prepend empty row, drop last row
-  const emptyRow = new Array(16).fill(0);
-  nudged.pop();
-  nudged.unshift(emptyRow);
-  return [B, nudged];
+// ── Idle (2 frames): antennae shift inward/outward ────────────────
+function buildIdleFrames(): Array<PixelFrame> {
+  const f1 = cloneFrame(B);
+  f1[0] = [0,0,1,0,0,0,0,0,1,0,0]; // antennae move inward
+  return [B, f1];
 }
 
-// ── Blink animation (5 frames) ───────────────────────────────────
-function buildBlinkFrames(): PixelFrame[] {
-  const half = cloneFrame(B);
-  // Top eye row → body color (half-shut)
-  half[2] = [0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0];
-
-  const shut = cloneFrame(half);
-  // Both eye rows → body color
-  shut[3] = [0,0,0,1,1,1,1,1,1,1,1,1,1,0,0,0];
-
-  return [B, half, shut, half, B];
+// ── Blink (5 frames): eyes shut briefly ───────────────────────────
+function buildBlinkFrames(): Array<PixelFrame> {
+  const shut = cloneFrame(B);
+  shut[2] = [0,3,3,3,3,3,3,3,3,3,0]; // eyes → body color
+  return [B, shut, shut, B, B];
 }
 
-// ── Walk animation (4 frames: alternate leg positions) ────────────
-function buildWalkFrames(): PixelFrame[] {
-  // Frame 1: outer legs shorter
-  const w1 = cloneFrame(B);
-  w1[11] = [0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0]; // only inner legs at bottom
-
-  // Frame 2: base (all 4 legs same)
-  const w2 = cloneFrame(B);
-
-  // Frame 3: inner legs shorter
-  const w3 = cloneFrame(B);
-  w3[11] = [0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0]; // only outer legs at bottom
-
-  return [w2, w1, w2, w3];
+// ── Walk (2-frame classic space-invader leg alternate) ─────────────
+function buildWalkFrames(): Array<PixelFrame> {
+  const alt = cloneFrame(B);
+  alt[6] = [0,0,0,4,0,0,0,4,0,0,0]; // legs shift outward
+  alt[7] = [0,0,4,0,0,0,0,0,4,0,0]; // feet spread wider
+  return [B, alt, B, alt];
 }
 
-// ── Wave animation (6 frames: left arm raises) ───────────────────
-function buildWaveFrames(): PixelFrame[] {
-  // Arm pixels are cols 0-2 on rows 4-5
+// ── Wave (6 frames): left arm raises progressively ────────────────
+function buildWaveFrames(): Array<PixelFrame> {
   const up1 = cloneFrame(B);
-  up1[4][0] = 0; up1[4][1] = 0; // remove left arm row 4
-  up1[3][0] = 1; up1[3][1] = 1; // add arm one row up
+  up1[4][0] = 0; up1[4][1] = 0;
+  up1[3][0] = 4; up1[3][1] = 4;
 
   const up2 = cloneFrame(B);
   up2[4][0] = 0; up2[4][1] = 0;
   up2[5][0] = 0; up2[5][1] = 0;
-  up2[3][0] = 1; up2[3][1] = 1;
-  up2[2][0] = 1; up2[2][1] = 1;
+  up2[3][0] = 4; up2[3][1] = 4;
+  up2[2][0] = 4; up2[2][1] = 4;
 
-  const up3 = cloneFrame(B);
-  up3[4][0] = 0; up3[4][1] = 0;
-  up3[5][0] = 0; up3[5][1] = 0;
-  up3[3][0] = 1; up3[3][1] = 1;
-  up3[2][0] = 1; up3[2][1] = 1;
-  up3[1][0] = 1; up3[1][1] = 1;
+  const up3 = cloneFrame(up2);
+  up3[1][0] = 4; up3[1][1] = 4;
 
   return [B, up1, up2, up3, up2, B];
 }
 
-// ── Jump animation (6 frames) ────────────────────────────────────
-function buildJumpFrames(): PixelFrame[] {
-  const emptyRow = () => new Array(16).fill(0);
+// ── Jump (6 frames): crouch → air → land ──────────────────────────
+function buildJumpFrames(): Array<PixelFrame> {
+  const emptyRow = () => new Array(W).fill(0);
 
-  // Crouch: shift body down 1
   const crouch = cloneFrame(B);
   crouch.pop();
   crouch.unshift(emptyRow());
 
-  // Air: shift body up 2
   const air1 = cloneFrame(B);
   air1.shift();
   air1.shift();
@@ -128,12 +110,12 @@ function buildJumpFrames(): PixelFrame[] {
 
 // ── Exported animation set ────────────────────────────────────────
 export const ANIMATIONS: Record<string, SpriteAnimation> = {
-  idle:  { name: "idle",  frames: buildIdleFrames(),  frameDuration: 600,  loop: true },
-  blink: { name: "blink", frames: buildBlinkFrames(), frameDuration: 90,   loop: false },
-  walk:  { name: "walk",  frames: buildWalkFrames(),  frameDuration: 180,  loop: true },
-  wave:  { name: "wave",  frames: buildWaveFrames(),  frameDuration: 140,  loop: false },
-  jump:  { name: "jump",  frames: buildJumpFrames(),  frameDuration: 110,  loop: false },
+  idle:  { name: "idle",  frames: buildIdleFrames(),  frameDuration: 600, loop: true },
+  blink: { name: "blink", frames: buildBlinkFrames(), frameDuration: 90,  loop: false },
+  walk:  { name: "walk",  frames: buildWalkFrames(),  frameDuration: 250, loop: true },
+  wave:  { name: "wave",  frames: buildWaveFrames(),  frameDuration: 140, loop: false },
+  jump:  { name: "jump",  frames: buildJumpFrames(),  frameDuration: 110, loop: false },
 };
 
-export const GRID_WIDTH = 16;
-export const GRID_HEIGHT = 12;
+export const GRID_WIDTH = W;
+export const GRID_HEIGHT = 8;

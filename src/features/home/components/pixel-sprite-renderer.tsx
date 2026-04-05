@@ -10,7 +10,7 @@ import type { AnimationName } from "../hooks/use-sprite-animation";
 type PixelSpriteRendererProps = {
   /** Initial animation. @default "idle" */
   animation?: AnimationName;
-  /** Pixel-size multiplier. @default 6 */
+  /** Pixel-size multiplier. @default 8 */
   scale?: number;
   /** Auto-play animation on mount. @default true */
   autoPlay?: boolean;
@@ -26,7 +26,7 @@ type PixelSpriteRendererProps = {
  */
 export function PixelSpriteRenderer({
   animation = "idle",
-  scale = 6,
+  scale = 8,
   autoPlay = true,
   speed = 1,
   className,
