@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ANIMATIONS } from "../utils/pixel-claude-sprite-data";
-import type { PixelFrame, SpriteAnimation } from "../utils/pixel-claude-sprite-data";
+import type { PixelFrame, SpriteAnimation } from "../utils/sprite-types";
 
 export type AnimationName = "idle" | "blink" | "walk" | "wave" | "jump";
 
 type UseSpriteAnimationOptions = {
+  /** Animation lookup table — provided by the sprite config. */
+  animations: Record<string, SpriteAnimation>;
   /** Starting animation. @default "idle" */
   initial?: AnimationName;
   /** Playback speed multiplier. @default 1 */
@@ -17,8 +18,9 @@ type UseSpriteAnimationOptions = {
   onComplete?: (name: AnimationName) => void;
 };
 
-export function useSpriteAnimation(opts: UseSpriteAnimationOptions = {}) {
+export function useSpriteAnimation(opts: UseSpriteAnimationOptions) {
   const {
+    animations,
     initial = "idle",
     speed = 1,
     autoPlay = true,
@@ -31,7 +33,7 @@ export function useSpriteAnimation(opts: UseSpriteAnimationOptions = {}) {
   const [playing, setPlaying] = useState(autoPlay);
 
   const timerRef = useRef<ReturnType<typeof setInterval>>(undefined);
-  const animRef = useRef<SpriteAnimation>(ANIMATIONS[initial]);
+  const animRef = useRef<SpriteAnimation>(animations[initial]);
   const queueRef = useRef<AnimationName | null>(null);
 
   // Reduced-motion check
@@ -41,18 +43,19 @@ export function useSpriteAnimation(opts: UseSpriteAnimationOptions = {}) {
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Resolve current frame data
-  const frame: PixelFrame = animRef.current.frames[frameIndex] ?? animRef.current.frames[0];
+  const frame: PixelFrame =
+    animRef.current.frames[frameIndex] ?? animRef.current.frames[0];
 
   // Switch to a different animation
   const play = useCallback(
     (name: AnimationName) => {
-      const anim = ANIMATIONS[name];
+      const anim = animations[name];
       animRef.current = anim;
       setCurrentAnim(name);
       setFrameIndex(0);
       setPlaying(true);
     },
-    [],
+    [animations],
   );
 
   // Queue an animation to play after current one finishes
@@ -74,15 +77,12 @@ export function useSpriteAnimation(opts: UseSpriteAnimationOptions = {}) {
         const next = prev + 1;
         if (next >= anim.frames.length) {
           if (anim.loop) return 0;
-          // Non-looping: finish
           clearInterval(timerRef.current);
           setPlaying(false);
           onComplete?.(currentAnim);
-          // Play queued animation
           if (queueRef.current) {
             const q = queueRef.current;
             queueRef.current = null;
-            // Defer to avoid state update during render
             setTimeout(() => play(q), 0);
           }
           return prev;
@@ -100,7 +100,6 @@ export function useSpriteAnimation(opts: UseSpriteAnimationOptions = {}) {
       if (document.hidden) {
         clearInterval(timerRef.current);
       } else if (playing) {
-        // Re-trigger by toggling
         setPlaying(false);
         setTimeout(() => setPlaying(true), 0);
       }
@@ -109,13 +108,5 @@ export function useSpriteAnimation(opts: UseSpriteAnimationOptions = {}) {
     return () => document.removeEventListener("visibilitychange", handler);
   }, [playing]);
 
-  return {
-    frame,
-    frameIndex,
-    currentAnim,
-    playing,
-    play,
-    stop,
-    queueNext,
-  };
+  return { frame, frameIndex, currentAnim, playing, play, stop, queueNext };
 }

@@ -1,13 +1,20 @@
-import { useCallback, useEffect, useRef } from "react";
-import {
-  GRID_HEIGHT,
-  GRID_WIDTH,
-  PALETTE,
-} from "../utils/pixel-claude-sprite-data";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+import { CLAUDE_CONFIG } from "../utils/pixel-claude-sprite-data";
+import { CODEX_CONFIG } from "../utils/pixel-codex-sprite-data";
 import { useSpriteAnimation } from "../hooks/use-sprite-animation";
 import type { AnimationName } from "../hooks/use-sprite-animation";
+import type { SpriteConfig } from "../utils/sprite-types";
+
+const CONFIGS: Record<string, SpriteConfig> = {
+  claude: CLAUDE_CONFIG,
+  codex: CODEX_CONFIG,
+};
+
+export type SpriteVariant = "claude" | "codex";
 
 type PixelSpriteRendererProps = {
+  /** Sprite variant. @default "codex" */
+  variant?: SpriteVariant;
   /** Initial animation. @default "idle" */
   animation?: AnimationName;
   /** Pixel-size multiplier. @default 8 */
@@ -22,82 +29,78 @@ type PixelSpriteRendererProps = {
 
 /**
  * Renders a pixel-art sprite using an SVG grid of <rect> elements.
- * Applies `crispEdges` and `pixelated` rendering for sharp pixels.
+ * Supports two variants: "claude" (orange, 16×12) and "codex" (purple, 11×8).
  */
 export function PixelSpriteRenderer({
+  variant = "codex",
   animation = "idle",
   scale = 8,
   autoPlay = true,
   speed = 1,
   className,
 }: PixelSpriteRendererProps) {
+  const config = CONFIGS[variant];
+  const { palette, gridWidth, gridHeight, animations } = config;
+
   const blinkTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const scheduleRandomBlink = useCallback(
     (playFn: (name: AnimationName) => void) => {
-      const delay = 3000 + Math.random() * 5000; // 3-8s
-      blinkTimerRef.current = setTimeout(() => {
-        playFn("blink");
-      }, delay);
+      const delay = 3000 + Math.random() * 5000;
+      blinkTimerRef.current = setTimeout(() => playFn("blink"), delay);
     },
     [],
   );
 
   const { frame, play, currentAnim } = useSpriteAnimation({
+    animations,
     initial: animation,
     speed,
     autoPlay,
     onComplete: (finished) => {
-      // After any non-looping animation, return to idle
-      if (finished !== "idle") {
-        play("idle");
-      }
+      if (finished !== "idle") play("idle");
     },
   });
 
   // Schedule random blinks while idling
   useEffect(() => {
-    if (currentAnim === "idle") {
-      scheduleRandomBlink(play);
-    }
+    if (currentAnim === "idle") scheduleRandomBlink(play);
     return () => clearTimeout(blinkTimerRef.current);
   }, [currentAnim, play, scheduleRandomBlink]);
 
-  const pxWidth = GRID_WIDTH * scale;
-  const pxHeight = GRID_HEIGHT * scale;
+  const pxWidth = gridWidth * scale;
+  const pxHeight = gridHeight * scale;
 
-  // Build rect elements from current frame
-  const rects: Array<React.JSX.Element> = [];
-  for (let y = 0; y < GRID_HEIGHT; y++) {
-    for (let x = 0; x < GRID_WIDTH; x++) {
-      const value = frame[y]?.[x] ?? 0;
-      if (value === 0) continue;
-      const fill = PALETTE[value] ?? PALETTE[1];
-      rects.push(
-        <rect
-          key={`${x}-${y}`}
-          x={x * scale}
-          y={y * scale}
-          width={scale}
-          height={scale}
-          fill={fill}
-          shapeRendering="crispEdges"
-        />,
-      );
+  const rects = useMemo(() => {
+    const els: Array<React.JSX.Element> = [];
+    for (let y = 0; y < gridHeight; y++) {
+      for (let x = 0; x < gridWidth; x++) {
+        const v = frame[y]?.[x] ?? 0;
+        if (v === 0) continue;
+        els.push(
+          <rect
+            key={`${x}-${y}`}
+            x={x * scale}
+            y={y * scale}
+            width={scale}
+            height={scale}
+            fill={palette[v] ?? palette[1]}
+            shapeRendering="crispEdges"
+          />,
+        );
+      }
     }
-  }
+    return els;
+  }, [frame, gridWidth, gridHeight, scale, palette]);
 
   return (
-    <div
-      className={className}
-      style={{ imageRendering: "pixelated" }}
-    >
+    <div className={className} style={{ imageRendering: "pixelated" }}>
       <svg
         viewBox={`0 0 ${pxWidth} ${pxHeight}`}
         width={pxWidth}
         height={pxHeight}
         role="img"
-        aria-label="Pixel art Claude Code mascot"
+        aria-label={`Pixel art ${variant} mascot`}
         style={{ display: "block" }}
       >
         {rects}
