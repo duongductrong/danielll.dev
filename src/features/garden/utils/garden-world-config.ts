@@ -55,6 +55,7 @@ export const GARDEN_OBJECTS: Array<GardenObject> = [
   { id: "mushroom-2", type: "decoration", x: 92, y: 73, zIndex: 3, scale: 2, element: "mushroom" },
 
   // ── Characters (centered, grounded at y≈70-72) ────────────
+  { id: "sword-dino", type: "sprite", x: 31, y: 72, zIndex: 4, scale: 3.2, variant: "sword-dino", animation: "idle", offsetY: 13 },
   { id: "codex", type: "sprite", x: 42, y: 70, zIndex: 4, scale: 4, variant: "codex", animation: "idle" },
   { id: "claude", type: "sprite", x: 53, y: 69, zIndex: 4, scale: 3.5, variant: "claude", animation: "idle" },
   { id: "cat", type: "sprite", x: 64, y: 72, zIndex: 4, scale: 3.5, variant: "cat", animation: "idle" },

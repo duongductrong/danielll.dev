@@ -155,12 +155,16 @@ const PixelShadow = memo(
 // ── Object dispatcher ───────────────────────────────────────────
 
 const GardenObjectRenderer = memo(({ obj }: { obj: GardenObject }) => {
+  const transform = obj.offsetY
+    ? `translate(-50%, calc(-100% + ${obj.offsetY}px))`
+    : "translate(-50%, -100%)";
+
   const style: React.CSSProperties = {
     position: "absolute",
     left: `${obj.x}%`,
     top: `${obj.y}%`,
     zIndex: obj.zIndex ?? 2,
-    transform: "translate(-50%, -100%)",
+    transform,
     pointerEvents: "none",
   };
 

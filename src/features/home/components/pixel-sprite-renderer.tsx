@@ -2,17 +2,19 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 import { CLAUDE_CONFIG } from "../utils/pixel-claude-sprite-data";
 import { CODEX_CONFIG } from "../utils/pixel-codex-sprite-data";
 import { CAT_CONFIG } from "../utils/pixel-cat-sprite-data";
+import { SWORD_DINO_CONFIG } from "../utils/pixel-sword-dino-sprite-data";
 import { useSpriteAnimation } from "../hooks/use-sprite-animation";
 import type { AnimationName } from "../hooks/use-sprite-animation";
 import type { SpriteConfig } from "../utils/sprite-types";
 
-const CONFIGS: Record<string, SpriteConfig> = {
+export type SpriteVariant = "claude" | "codex" | "cat" | "sword-dino";
+
+const CONFIGS: Record<SpriteVariant, SpriteConfig> = {
   claude: CLAUDE_CONFIG,
   codex: CODEX_CONFIG,
   cat: CAT_CONFIG,
+  "sword-dino": SWORD_DINO_CONFIG,
 };
-
-export type SpriteVariant = "claude" | "codex" | "cat";
 
 type PixelSpriteRendererProps = {
   /** Sprite variant. @default "codex" */
@@ -31,7 +33,7 @@ type PixelSpriteRendererProps = {
 
 /**
  * Renders a pixel-art sprite using an SVG grid of <rect> elements.
- * Supports "claude" (orange, 16×12), "codex" (purple, 11×8), and "cat" (black, 16×10).
+ * Supports "claude", "codex", "cat", and "sword-dino" variants.
  */
 export function PixelSpriteRenderer({
   variant = "codex",

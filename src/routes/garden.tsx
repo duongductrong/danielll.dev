@@ -14,7 +14,8 @@ function GardenPage() {
             Garden
           </h1>
           <p className="text-[13px] text-black/40">
-            a small terrarium on the internet — codex, claude, and cat live here
+            a small terrarium on the internet — codex, claude, cat, and a tiny sword
+            dino live here
             between the pixels, doing nothing in particular.
           </p>
         </div>
