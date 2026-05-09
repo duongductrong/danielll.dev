@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 
 interface SnapzyDockProps {
   shouldReduceMotion?: boolean;
@@ -135,7 +135,7 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
                 </div>
 
                 {/* Content */}
-                <div className="px-6 pb-7 pt-11 text-center">
+                <div className="px-6 pt-11 pb-7 text-center">
                   <h3 className="text-lg font-semibold tracking-tight text-neutral-900">
                     Snapzy
                   </h3>
@@ -159,7 +159,7 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
                         >
                           {tag}
                         </span>
-                      )
+                      ),
                     )}
                   </div>
 
