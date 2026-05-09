@@ -77,7 +77,7 @@ export function HomePage() {
             .
           </p>
           <div className="mb-4">
-            <SnapzyDock shouldReduceMotion={shouldReduceMotion} />
+            <SnapzyDock shouldReduceMotion={!!shouldReduceMotion} />
           </div>
           <div>
             <EditorialDivider className="my-4 bg-black/8" />

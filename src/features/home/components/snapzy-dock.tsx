@@ -27,13 +27,15 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
     };
   }, [isOpen, close]);
 
-  const springTransition = shouldReduceMotion
-    ? { duration: 0.01 }
-    : { type: "spring", stiffness: 320, damping: 24 };
+  const getSpringTransition = (reduced: boolean | undefined) =>
+    reduced
+      ? ({ duration: 0.01 } as const)
+      : ({ type: "spring", stiffness: 320, damping: 24 } as const);
 
-  const fadeTransition = shouldReduceMotion
-    ? { duration: 0.01 }
-    : { duration: 0.25, ease: "easeOut" };
+  const getFadeTransition = (reduced: boolean | undefined) =>
+    reduced
+      ? ({ duration: 0.01 } as const)
+      : ({ duration: 0.25, ease: "easeOut" } as const);
 
   return (
     <div className="relative inline-flex flex-col items-center">
@@ -46,7 +48,7 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
             className="group relative cursor-pointer"
             whileHover={shouldReduceMotion ? {} : { scale: 1.12, y: -3 }}
             whileTap={shouldReduceMotion ? {} : { scale: 0.94 }}
-            transition={springTransition}
+            transition={getSpringTransition(shouldReduceMotion)}
             aria-label="Open Snapzy details"
           >
             <img
@@ -70,7 +72,7 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={fadeTransition}
+              transition={getFadeTransition(shouldReduceMotion)}
               onClick={close}
               aria-hidden="true"
             />
@@ -81,7 +83,7 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={fadeTransition}
+              transition={getFadeTransition(shouldReduceMotion)}
               onClick={close}
             >
               <motion.div
@@ -97,7 +99,7 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
                     ? { opacity: 0 }
                     : { opacity: 0, scale: 0.88, y: 20 }
                 }
-                transition={springTransition}
+                transition={getSpringTransition(shouldReduceMotion)}
                 role="dialog"
                 aria-modal="true"
                 aria-label="About Snapzy"
@@ -129,7 +131,7 @@ export function SnapzyDock({ shouldReduceMotion }: SnapzyDockProps) {
                       src="/images/apps/snapzy/brand-logo.png"
                       alt="Snapzy"
                       className="size-[72px] rounded-2xl object-cover shadow-[0_12px_32px_-8px_rgba(0,0,0,0.25)] ring-[5px] ring-white"
-                      transition={springTransition}
+                      transition={getSpringTransition(shouldReduceMotion)}
                     />
                   </div>
                 </div>
