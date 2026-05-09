@@ -8,6 +8,7 @@ import {
 import { PixelSpriteRenderer } from "@/features/home/components/pixel-sprite-renderer";
 import { PixelTypingEffect } from "@/features/home/components/pixel-typing-effect";
 import { PolaroidStrip } from "@/features/home/components/polaroid-strip";
+import { SnapzyDock } from "@/features/home/components/snapzy-dock";
 
 export const Route = createFileRoute("/")({ component: HomePage });
 
@@ -75,31 +76,9 @@ export function HomePage() {
             </Link>
             .
           </p>
-          <p className="inline-block text-black/26">
-            <a
-              href="https://snapzy.app/"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-1.5 transition-colors duration-200 hover:text-black/50"
-            >
-              <img
-                src="/images/apps/snapzy/brand-logo.png"
-                alt=""
-                aria-hidden="true"
-                className="size-4 rounded-[4px] object-cover"
-              />
-              <span>snapzy.app ↗</span>
-            </a>{" "}
-            ·{" "}
-            <a
-              href="https://github.com/duongductrong"
-              target="_blank"
-              rel="noreferrer"
-              className="transition-colors duration-200 hover:text-black/50"
-            >
-              github ↗
-            </a>
-          </p>
+          <div className="mb-4">
+            <SnapzyDock shouldReduceMotion={shouldReduceMotion} />
+          </div>
           <div>
             <EditorialDivider className="my-4 bg-black/8" />
           </div>
