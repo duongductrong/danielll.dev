@@ -42,20 +42,14 @@ export function HomePage() {
           <h1 className="mb-4 text-[15px] leading-[1.2] font-semibold tracking-[-0.015em]">
             Trong Duong
           </h1>
-          <p className="mb-5">I&apos;m a software developer at VNG.</p>
           <p className="mb-5">
-            I build web experiences with React, TypeScript, and thoughtful
-            interaction design. My work blends product thinking with clean
-            engineering so interfaces feel fast, clear, and human.
+            I&apos;m a software developer at VNG focused on building fast web experiences.
           </p>
           <p className="mb-5">
-            I care deeply about performance and detail. From architecture to
-            micro-interactions, I enjoy shaping products that are both robust
-            and delightful to use. I also maintain open-source projects focused
-            on developer experience and performance.
+            I focus heavily on performance because I love how it shapes a better user experience. I also enjoy building products that directly solve real user paint points.
           </p>
           <p className="mb-5">
-            If my open-source work helps you, consider supporting it on{" "}
+            Outside of work, I maintain open-source developer tools. If my work helps you, consider supporting it on{" "}
             <a
               href="https://github.com/sponsors/duongductrong"
               target="_blank"
@@ -63,6 +57,15 @@ export function HomePage() {
               className="underline transition-colors duration-200 hover:text-black/50"
             >
               GitHub Sponsors
+            </a>{" "}
+            or{" "}
+            <a
+              href="https://ko-fi.com/duongductrong"
+              target="_blank"
+              rel="noreferrer"
+              className="underline transition-colors duration-200 hover:text-black/50"
+            >
+              Ko-fi
             </a>
             .
           </p>
