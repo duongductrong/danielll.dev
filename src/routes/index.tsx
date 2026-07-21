@@ -103,20 +103,6 @@ export function HomePage() {
               duongductrong06@gmail.com
             </a>{" "}
           </p>
-          <div className="flex items-center gap-3">
-            <Link
-              to="/garden"
-              className="mt-2 inline-block text-black/35 transition-colors duration-200 hover:text-black/55"
-            >
-              garden ›
-            </Link>
-            <Link
-              to="/legacy"
-              className="mt-2 inline-block text-black/35 transition-colors duration-200 hover:text-black/55"
-            >
-              legacy ›
-            </Link>
-          </div>
           <div>
             <PolaroidStrip shouldReduceMotion={shouldReduceMotion} />
           </div>
